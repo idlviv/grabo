@@ -1,13 +1,16 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-var indexRouter = require('./server/routes/index');
-var usersRouter = require('./server/routes/users');
+const index = require('./server/routes');
+const routes = require('./server/routes/routes');
 
-var app = express();
+const ApplicationError = require('./server/errors/applicationError');
+const errorHandler = require('./server/errors/errorHandler');
+
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'server/views'));
@@ -15,12 +18,26 @@ app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
+
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+/**
+ * all apis, api/404 will be handled there
+ */
+
+app.use('/api', routes);
+
+/**
+ * all not-apis, 404 will be handled at frontend
+ */
+
+app.use('/', index);
+
+app.use('*', function(req, res) {
+  res.redirect('/');
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
