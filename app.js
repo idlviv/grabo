@@ -1,6 +1,7 @@
 // const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
+const passport = require('passport');
 const csrf = require('csurf');
 const csrfCookie = require('./server/config/csrf');
 const cookieParser = require('cookie-parser');
@@ -25,6 +26,10 @@ app.use(cookieParser());
 app.use(csrf({cookie: true})); //If the "cookie" option is not false, then this option does nothing.
 // set cookie
 app.use(csrfCookie);
+
+app.use(passport.initialize());
+// app.use(passport.session());
+require('./server/config/passport')(passport);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'server/views'));
