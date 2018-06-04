@@ -1,0 +1,106 @@
+
+  <!--<div class="cell" fxFlex.gt-xs="33" fxFlex.gt-md="25">-->
+
+    <!--<div class="item centered-container">-->
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title class="product-title bold">{{product.name}}</mat-card-title>
+          <!--<mat-card-subtitle></mat-card-subtitle>-->
+        </mat-card-header>
+        <div class="product-cl-image-wrapper-outer">
+          <div class="product-cl-image-wrapper-inner">
+            <img src="{{config.imgPath + config.cloudinary.cloud_name + '/' + product.files[0]}}"
+                 alt="product picture" class="product-cl-image">
+          </div>
+          <!--<cl-image class="product-cl-image"-->
+                    <!--public-id="{{product.files[0] || defaultProductImgPath}}"-->
+                    <!--secure="true">-->
+            <!--<cl-transformation-->
+              <!--quality="auto" fetch_format="auto" crop="thumb">-->
+              <!--&lt;!&ndash;radius="20">&ndash;&gt;-->
+            <!--</cl-transformation>-->
+            <!--&lt;!&ndash;<cl-transformation overlay="cloudinary_icon" gravity="south_east" x="5" y="5" width="50" opacity="60" effect="brightness:200">&ndash;&gt;-->
+            <!--&lt;!&ndash;</cl-transformation>&ndash;&gt;-->
+            <!--&lt;!&ndash;<cl-transformation angle="10">&ndash;&gt;-->
+            <!--&lt;!&ndash;</cl-transformation>&ndash;&gt;-->
+          <!--</cl-image>-->
+        </div>
+
+        <!--<img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">-->
+        <mat-card-content>
+          <div class="container product-content">
+            <div class="row product-description">
+              <div class="item muted" fxFlexAlign="center">
+                {{product.description}}
+              </div>
+              </div>
+            <div class="row muted" fxLayout="row">
+              <p class="product-info-title text-align-left item muted" fxFlex="50">Ширина
+                <span class="product-info-value">{{product.dimensions.width}}</span> см
+              </p>
+              <p class="product-info-title text-align-right item muted" fxFlex="50">Висота
+                <span class="product-info-value">{{product.dimensions.height}}</span> см
+              </p>
+            </div>
+            <div class="row muted" fxLayout="row">
+              <p fxFlex="25"></p>
+              <p class="product-info-title text-align-right item muted" fxFlex="75">Артикул
+                <span class="product-info-value">{{product.sku}}</span>
+              </p>
+            </div>
+
+            <div class="row muted" fxLayout="row">
+              <p class="product-icon-title text-align-left item muted" fxFlex="26"><mat-icon>remove_red_eye</mat-icon>
+                <span class="product-icon-value">{{product.views}}</span>
+              </p>
+              <p class="product-icon-title text-align-center item muted" fxFlex="48"><mat-icon>today</mat-icon>
+                <span class="product-icon-value">{{product.createdAt | date: 'dd.MM.yy'}}</span>
+              </p>
+              <p class="product-icon-title text-align-right item muted" fxFlex="26"><mat-icon>comment</mat-icon>
+                <span class="product-icon-value">{{product.comments.length}}</span>
+              </p>
+
+              <!--<p class="product-info-title text-align-right item muted" fxFlex="20"><mat-icon>thumb_up</mat-icon>-->
+                <!--<span class="product-info-value">{{product.likes}}</span>-->
+              <!--</p>-->
+              <!--<p class="product-info-title text-align-right item muted" fxFlex="20"><mat-icon>thumb_down</mat-icon>-->
+                <!--<span class="product-info-value">{{product.dislikes}}</span>-->
+              <!--</p>-->
+            </div>
+            <!--<div class="row product-info-wrap">-->
+              <!--<div class="item product-info-1 muted">-->
+              <!--</div>-->
+              <!--<div class="item product-info-2 muted">-->
+                <!--<p class="product-info-title">Ширина-->
+                  <!--<span class="product-info-value">{{product.dimensions.width}}</span> см-->
+                <!--</p>-->
+                <!--<p class="product-info-title">Висота-->
+                  <!--<span class="product-info-value">{{product.dimensions.height}}</span> см-->
+                <!--</p>-->
+                <!--<p class="product-info-title">Артикул-->
+                  <!--<span class="product-info-value">{{product.sku}}</span>-->
+                <!--</p>-->
+              <!--</div>-->
+            <!--</div>-->
+          </div>
+
+
+
+        </mat-card-content>
+        <mat-card-actions>
+          <div fxFlex></div>
+          <div fxFlex *ngIf="user && user?.role === 'manager' || user?.role === 'admin'">
+            <a mat-icon-button color="primary"
+               (click)="openDialog({message: 'Видалити продукт ' + product.name, data: product._id})">
+            <mat-icon>delete_forever</mat-icon>
+          </a>
+            <a mat-icon-button color="primary" [routerLink]="['/dashboard', 'product-edit', product._id]">
+              <mat-icon>edit</mat-icon>
+            </a>
+          </div>
+
+        </mat-card-actions>
+      </mat-card>
+    <!--</div>-->
+
+<!--</div>-->

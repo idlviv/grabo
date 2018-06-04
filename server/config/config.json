@@ -1,0 +1,10 @@
+{
+  "port": 8080,
+  "defaultAvatarPath": "https://res.cloudinary.com/hmm6pjfgk/default-avatar180x180.png",
+  "defaultProductImgPath": "https://res.cloudinary.com/hmm6pjfgk/default-product180x180.png",
+  "cookieCsrfOptions": {
+    "secure": false,
+    "httpOnly": false,
+    "maxAge": 360000
+  }
+}

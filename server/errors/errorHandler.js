@@ -4,7 +4,6 @@ const log = require('../config/winston')(module);
 
 module.exports = function(err, req, res, next) {
 
-
   log.debug('Error', err);
 
   if (err.code === 'EBADCSRFTOKEN') {
@@ -38,12 +37,6 @@ module.exports = function(err, req, res, next) {
   if (err instanceof ApplicationError) {
     return res.status(err.status).json(err.message);
     // return res.status(err.status).json(new ResObj(false, err.message, err));
-  }
-
-  if (err.code === 'EBADCSRFTOKEN')
-  // return next(err)
-  {
-    return res.status(403).json('form tampered with');
   }
 
   // all other errors

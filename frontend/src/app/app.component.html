@@ -1,20 +1,202 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+  <mat-toolbar class="mat-elevation-z4 header" color="primary">
+
+    <mat-toolbar-row>
+    <!--<div fxLayoutAlign="flex"></div>-->
+    <a mat-button [routerLink]="['']">
+      <span class="mat-title toolbar-branding">
+        H<span class="mat-subheading-2 toolbar-branding">and</span>MADE
+      </span>
+    </a>
+
+    <!--['/products/ch', {outlets: {primary: 'category/' + category0 + '/' + submenuItem.name,-->
+    <!--productsSubmenu:  'category/' + category0 + '/' + submenuItem.name}}]-->
+    <!--,productSidenav: mainMenuCommonItem._id}}]"-->
+
+    <div fxShow="true" fxHide.lt-md="true">
+      <!--<a *ngFor="let mainMenuProductsItem of mainMenuProductsItems" mat-button-->
+         <!--[routerLink]="['/products', 'cat', {outlets: {primary: [mainMenuProductsItem._id],-->
+          <!--productSidenav:  [mainMenuProductsItem._id]}}]"-->
+         <!--[routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">-->
+        <!--{{mainMenuProductsItem.name}}-->
+      <!--</a>-->
+      <a *ngFor="let mainMenuProductsItem of mainMenuProductsItems" mat-button
+         [routerLink]="['/products', 'cat', mainMenuProductsItem._id]"
+         [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">
+         {{mainMenuProductsItem.name}}
+      </a>
+
+      <!--Blog-->
+
+      <!--<a *ngFor="let mainMenuBlogsItem of mainMenuBlogsItems" mat-button-->
+         <!--[routerLink]="['/blogs']"-->
+         <!--[routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">-->
+        <!--{{mainMenuBlogsItem.name}}-->
+      <!--</a>-->
+
+    </div>
+    <div fxFlex></div>
+
+
+    <div fxShow="true" fxHide.lt-md="true">
+      <!--<a *ngIf="user && user?.role === 'guest' || user?.role === 'user'" mat-button [routerLink]="['/user/profile']"-->
+         <!--[routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">-->
+        <!--<mat-icon>account_circle</mat-icon><span> {{user.login}}</span></a>-->
+
+      <button *ngIf="user"
+              mat-button [matMenuTriggerFor]="settingsMenu" #settingsMenuTrigger="matMenuTrigger"
+              (mouseover)="onSettingsMenuMouseover()">
+        <mat-icon>settings</mat-icon><span> {{user.login}}</span>
+      </button>
+
+      <mat-menu #settingsMenu="matMenu" xPosition="after" yPosition="above" [overlapTrigger]="false">
+        <span (mouseleave)="onSettingsMenuMouseleave()">
+
+        <a *ngIf="user"
+           mat-menu-item [routerLink]="['/user/profile']"
+           [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">
+          <mat-icon>account_circle</mat-icon><span>Профіль</span></a>
+        <a *ngIf="user && user?.role === 'manager' || user?.role === 'admin'"
+           mat-menu-item [routerLink]="['/dashboard']"
+           [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">
+          <mat-icon>settings</mat-icon><span>Dashboard</span></a>
+          <!--<button mat-menu-item >Cards</button>-->
+          <!--<button mat-menu-item >About</button>-->
+        </span>
+
+      </mat-menu>
+
+      <a *ngIf='!user'
+         [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}"
+         mat-button [routerLink]="['/user/login']">Вхід</a>
+
+      <a *ngIf='user'
+         mat-button (click)="userLocalLogout()"><mat-icon>exit_to_app</mat-icon> Вихід</a>
+    </div>
+
+    <div class="menu-button" fxShow="true" fxHide.gt-sm="true">
+      <button mat-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+    </mat-toolbar-row>
+    <mat-toolbar-row *ngIf="subCategoryItems">
+
+      <a *ngFor="let subCategoryItem of subCategoryItems"
+         [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}" mat-button
+         [routerLink]="['/products', 'cat', category, subCategoryItem._id]">
+      <!--<a *ngFor="let productSidenavItem of productSidenavItems"-->
+         <!--[routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}" mat-button-->
+         <!--[routerLink]="['/products', 'cat', {outlets: {primary: [category, productSidenavItem._id]}}]">-->
+
+        <!--[routerLink]="['product', 'cat', {outlets: {primary: [productSidenavItem._id]}}]">-->
+        {{subCategoryItem.name}}</a>
+    </mat-toolbar-row>
+
+  </mat-toolbar>
+
+  <mat-sidenav-container fxFlexFill>
+    <mat-sidenav #sidenav fxLayout="column"
+                 position="end" class="sidenav" role="navigation" mode="side">
+
+      <!--<mat-toolbar class="mat-elevation-z2">-->
+        <!--<mat-toolbar-row *ngFor="let dashboardSidenavItem of dashboardSidenavItems" class="sidenav-mat-toolbar-row">-->
+          <!--<a [routerLinkActive]="['accent-background']" fxLayout=""-->
+             <!--[routerLinkActiveOptions]="{exact: true}" mat-button-->
+             <!--[routerLink]="['/dashboard', dashboardSidenavItem._id]">{{dashboardSidenavItem.name}}</a>-->
+        <!--</mat-toolbar-row>-->
+      <!--</mat-toolbar>-->
+
+      <div fxLayout="column">
+        <mat-nav-list>
+          <mat-list-item *ngFor="let mainMenuProductsItem of mainMenuProductsItems">
+            <!--<mat-icon mat-list-icon>swap_horiz</mat-icon>-->
+
+            <a matLine
+               [routerLinkActive]="['muted']" [routerLinkActiveOptions]="{exact: true}"
+               [routerLink]="['/products', 'cat', mainMenuProductsItem._id]" (click)="sidenav.toggle()">
+              {{mainMenuProductsItem.name}}
+            </a>
+            <!--<button mat-icon-button>-->
+              <!--<mat-icon>info</mat-icon>-->
+            <!--</button>-->
+          </mat-list-item>
+
+          <!--Blog-->
+
+          <!--<mat-list-item *ngFor="let mainMenuBlogsItem of mainMenuBlogsItems">-->
+            <!--<a  matLine-->
+             <!--[routerLinkActive]="['muted']" [routerLinkActiveOptions]="{exact: true}"-->
+             <!--[routerLink]="['/blogs']" (click)="sidenav.toggle()">-->
+             <!--{{mainMenuBlogsItem.name}}-->
+            <!--</a>-->
+          <!--</mat-list-item>-->
+
+          <mat-expansion-panel *ngIf="user" class="mat-elevation-z0">
+            <mat-expansion-panel-header class="sidenav-expansion-panel">
+              <mat-panel-title>
+                <mat-list-item>
+                  <mat-icon matListIcon>settings</mat-icon>
+                  <span matLine>{{user.login}}</span>
+                </mat-list-item>
+              </mat-panel-title>
+              <!--&lt;!&ndash;<mat-panel-description>&ndash;&gt;-->
+              <!--&lt;!&ndash;This is a summary of the content&ndash;&gt;-->
+              <!--&lt;!&ndash;</mat-panel-description>&ndash;&gt;-->
+            </mat-expansion-panel-header>
+            <mat-list-item *ngIf="user">
+            <mat-icon matListIcon>account_circle</mat-icon>
+            <a matLine [routerLink]="['/user/profile']"
+               [routerLinkActive]="['muted']" [routerLinkActiveOptions]="{exact: true}" (click)="sidenav.toggle()">
+              Профіль</a>
+              </mat-list-item>
+            <mat-list-item *ngIf="user && user?.role === 'manager' || user?.role === 'admin'">
+            <mat-icon matListIcon>settings</mat-icon>
+            <a matLine [routerLink]="['/dashboard']"
+               [routerLinkActive]="['muted']" [routerLinkActiveOptions]="{exact: true}" (click)="sidenav.toggle()">
+              Dashboard</a>
+                </mat-list-item>
+          </mat-expansion-panel>
+
+
+          <mat-list-item *ngIf='!user'>
+            <a matLine
+               [routerLinkActive]="['muted']" [routerLinkActiveOptions]="{exact: true}"
+               [routerLink]="['/user/login']" (click)="sidenav.toggle()">Вхід</a>
+          </mat-list-item>
+          <mat-list-item *ngIf='user'>
+            <a matLine
+               (click)="userLocalLogout()" (click)="sidenav.toggle()">
+              Вихід
+            </a>
+            <mat-icon matListIcon>exit_to_app</mat-icon>
+          </mat-list-item>
+        </mat-nav-list>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+
+      <!--Example of grid-->
+
+    <!--<div class="container">-->
+      <!--<div class="row" fxLayout="column" fxLayout.gt-xs="row">-->
+        <!--<div class="cell" fxFlex.gt-xs="50" fxFlex.gt-sm="33.3" fxFlex.gt-md="25" *ngFor="let i of count" >-->
+          <!--<div class="item">{{i.text}}</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+
+      <!--<div class="container">-->
+       <router-outlet></router-outlet>
+      <!--</div>-->
+
+
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+  <mat-toolbar class="mat-elevation-z16 footer" color="primary">
+    <span class="mat-title toolbar-branding">
+      H<span class="mat-subheading-2 toolbar-branding">and</span>MADE
+    </span>
+  </mat-toolbar>
+
 
