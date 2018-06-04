@@ -7,7 +7,7 @@ import { AuthGuard } from './guards/auth.guard';
 const appRoutes: Routes = [
   {
     path: 'products',
-    loadChildren: 'app/components/product/product.module#ProductModule',
+    loadChildren: './components/product/product.module#ProductModule',
     // pathMatch: 'full'
   },
   {
@@ -16,13 +16,13 @@ const appRoutes: Routes = [
   },
   {
     path: 'dashboard',
-    loadChildren: 'app/components/dashboard/dashboard.module#DashboardModule',
+    loadChildren: './components/dashboard/dashboard.module#DashboardModule',
     canActivate: [AuthGuard],
     data: { auth: 'user' },
   },
   {
     path: 'user',
-    loadChildren: 'app/components/user/user.module#UserModule'
+    loadChildren: './components/user/user.module#UserModule'
   },
 
   { path: 'page-404', component: Page404Component },
