@@ -115,6 +115,25 @@ updateUserField = function(_id, modificationRequest) {
 
 module.exports.updateUserField = updateUserField;
 
+updateUserFields = function(_id, modificationRequestObject) {
+  return new Promise(function(resolve, reject) {
+    UserModel.update({_id},
+      {$set: modificationRequestObject})
+      .then(
+        result => {
+          if (result.ok !== 1) {
+            reject(new ApplicationError('Не вдалося внести зміни', 400));
+          }
+          resolve(new ResObj(true, 'Зміни внесено'));
+        },
+        err => reject(new DbError(err.message, err.code))
+      );
+  });
+};
+
+module.exports.updateUserFields = updateUserFields;
+
+
 module.exports.passwordReset = function(req, res, next) {
   let user = {};
   Object.assign(user, req.user._doc);
@@ -203,7 +222,7 @@ module.exports.userEmailVerificationSend = function(req, res, next) {
   const email = user.email;
 
   let mailOptions = {
-    from: 'HandMADE <postmaster@hmade.work>',
+    from: 'Grabo <postmaster@sandbox4d505533524a4360b5506928e2ed0726.mailgun.org>',
     to: email,
     subject: 'Підтвердіть пошту',
     text: 'Будь ласка, перейдіть за посиланням ' + url,
@@ -224,8 +243,10 @@ module.exports.userEdit = function(req, res, next) {
 
   Object.assign(moderator, req.user._doc);
   Object.assign(modificationRequest, req.body);
+
   comparePassword(moderator._id, modificationRequest.password)
     .then(() => {
+
       if (modificationRequest.name === 'password') {
         bcrypt.hash(modificationRequest.value, 10)
           .then(
@@ -239,15 +260,23 @@ module.exports.userEdit = function(req, res, next) {
             },
             err => next(new ApplicationError(err.message, err.status, err.code))
           );
+      } else if (modificationRequest.name === 'email') {
+
+        const modificationRequestObject = {
+          email: modificationRequest.value,
+          role: 'guest'
+        };
+        updateUserFields(moderator._id, modificationRequestObject)
+          .then(
+            result => res.status(200).json(result),
+            err => next(err)
+          );
       } else {
-
-        // MAKE update email verification => user.role = guest
-
         updateUserField(moderator._id, modificationRequest)
           .then(
             result => res.status(200).json(result),
             err => next(err)
-          )
+          );
       }
     },
       err => next(err)
@@ -262,23 +291,26 @@ module.exports.userEdit = function(req, res, next) {
  */
 function comparePassword(_id, passwordCandidate) {
   return new Promise(function(resolve, reject) {
+
     UserModel.findOne({_id})
       .then(
         user => {
           if (!user) {
             reject(new ApplicationError('Користувача не знайдено', 401));
           }
-
-          bcrypt.compare(passwordCandidate, user.password)
-            .then(
-              passwordMatched => {
-                if (!passwordMatched) {
-                  reject(new ApplicationError('Невірний пароль', 401));
+            bcrypt.compare(passwordCandidate, user.password)
+              .then(
+                passwordMatched => {
+                  if (!passwordMatched) {
+                    reject(new ApplicationError('Невірний пароль', 401));
+                  }
+                  resolve();
+                },
+                err => {
+                  reject(new ApplicationError('Помилка перевірки пароля', 401))
                 }
-                resolve();
-              },
-              err => reject(new ApplicationError())
-            );
+              );
+
         },
         err => reject(new DbError(err.message, err.code))
       );
