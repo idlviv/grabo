@@ -5,10 +5,14 @@ import { HomeComponent } from './components/shared/home/home.component';
 import { AuthGuard } from './guards/auth.guard';
 
 const appRoutes: Routes = [
+  // {
+  //   path: 'products',
+  //   loadChildren: './components/product/product.module#ProductModule',
+  //   // pathMatch: 'full'
+  // },
   {
-    path: 'products',
-    loadChildren: './components/product/product.module#ProductModule',
-    // pathMatch: 'full'
+    path: 'common/products',
+    loadChildren: './components/products/products.module#ProductsModule',
   },
   {
     path: 'blogs',

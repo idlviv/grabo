@@ -88,7 +88,6 @@ module.exports.passwordResetCheckCode = function(req, res, next) {
     .catch(err => next(new ApplicationError(err.message, err.status)));
 };
 
-
 /**
  *
  * @param {string} _id - users _id
@@ -285,6 +284,7 @@ module.exports.userEdit = function(req, res, next) {
 
 /**
  * if password match resolves promise
+ *
  * @param _id
  * @param passwordCandidate
  * @returns {Promise}
@@ -298,19 +298,18 @@ function comparePassword(_id, passwordCandidate) {
           if (!user) {
             reject(new ApplicationError('Користувача не знайдено', 401));
           }
-            bcrypt.compare(passwordCandidate, user.password)
-              .then(
-                passwordMatched => {
-                  if (!passwordMatched) {
-                    reject(new ApplicationError('Невірний пароль', 401));
-                  }
-                  resolve();
-                },
-                err => {
-                  reject(new ApplicationError('Помилка перевірки пароля', 401))
+          bcrypt.compare(passwordCandidate, user.password)
+            .then(
+              passwordMatched => {
+                if (!passwordMatched) {
+                  reject(new ApplicationError('Невірний пароль', 401));
                 }
-              );
-
+                resolve();
+              },
+              err => {
+                reject(new ApplicationError('Помилка перевірки пароля', 401))
+              }
+          );
         },
         err => reject(new DbError(err.message, err.code))
       );
@@ -396,7 +395,6 @@ module.exports.userLogin = function(req, res, next) {
 
         bcrypt.compare(userCandidate.password, user.password)
           .then(passwordMatched => {
-
             if (!passwordMatched) {
               const dateNow = Date.now(); // in seconds
               let query;
@@ -416,28 +414,28 @@ module.exports.userLogin = function(req, res, next) {
                     return next(new ApplicationError('Невірний пароль', 401));
                   })
                   .catch(err => next(new ApplicationError()));
-                } else {
-                  if (user.passwordTries >= user.passwordLockTries) {
-                    query = {
-                      $set: {
-                        passwordTries: 1,
-                        passwordLockUntil: dateNow + 600000}
-                    }
-                  } else {
-                    query = {
-                      $inc: {passwordTries: 1},
-                      $set: {passwordLockUntil: dateNow}
-                    }
+              } else {
+                if (user.passwordTries >= user.passwordLockTries) {
+                  query = {
+                    $set: {
+                      passwordTries: 1,
+                      passwordLockUntil: dateNow + 600000}
                   }
-                  UserModel.update({_id: user._id}, query)
-                    .then(result=>{
-                      if (result.ok !== 1) {
-                        next(new DbError());
-                      }
-                      return next(new ApplicationError('Невірний пароль', 401));
-                    })
-                    .catch(err => next(new ApplicationError()));
+                } else {
+                  query = {
+                    $inc: {passwordTries: 1},
+                    $set: {passwordLockUntil: dateNow}
+                  }
                 }
+                UserModel.update({_id: user._id}, query)
+                  .then(result=>{
+                    if (result.ok !== 1) {
+                      next(new DbError());
+                    }
+                    return next(new ApplicationError('Невірний пароль', 401));
+                  })
+                  .catch(err => next(new ApplicationError()));
+              }
               } else {
                 const sub = {
                   _id: user._id,
@@ -447,10 +445,7 @@ module.exports.userLogin = function(req, res, next) {
                 const token = createJWTToken('JWT ', sub, 604800, 'JWT_SECRET');
                 return res.status(200).json(new ResObj(true, 'Вхід виконано', token));
               }
-
-
-
-            })
+          })
           .catch(err => next(new ApplicationError(err.message, err.status)));
       },
       err  => next(new DbError(err.message, err.code))

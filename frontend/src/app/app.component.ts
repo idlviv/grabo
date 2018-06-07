@@ -15,8 +15,8 @@ import { SharedService } from './services/shared.service';
 })
 export class AppComponent implements OnInit {
   user: IUser;
-  mainMenuProductsItems: ICatalog[];
-  mainMenuBlogsItems: ICatalog[];
+  mainMenuCommonItems: ICatalog[];
+  // mainMenuBlogsItems: ICatalog[];
   mainMenuSystemItems: ICatalog[];
   // @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
   @ViewChild('settingsMenuTrigger') settingsMenuTrigger: MatMenuTrigger;
@@ -53,8 +53,8 @@ export class AppComponent implements OnInit {
     // get main menu items
     this.catalogService.getMainMenu()
       .subscribe(menuItems => {
-          this.mainMenuProductsItems = menuItems.data.products;
-          this.mainMenuBlogsItems = menuItems.data.blogs;
+          this.mainMenuCommonItems = menuItems.data.common;
+          // this.mainMenuBlogsItems = menuItems.data.blogs;
           this.mainMenuSystemItems = menuItems.data.system;
         },
         err => {

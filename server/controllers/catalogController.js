@@ -74,17 +74,9 @@ module.exports.getMainMenu = function(req, res, next) {
   CatalogModel.aggregate([
     {
       $facet: {
-        products: [
+        common: [
           {
-            $match: {parent: 'products'}
-          },
-          {
-            $sort: {order: 1}
-          }
-        ],
-        blogs: [
-          {
-            $match: {_id: 'blogs'}
+            $match: {parent: 'common'}
           },
           {
             $sort: {order: 1}

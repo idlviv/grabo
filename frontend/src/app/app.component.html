@@ -4,7 +4,7 @@
     <!--<div fxLayoutAlign="flex"></div>-->
     <a mat-button [routerLink]="['']">
       <span class="mat-title toolbar-branding">
-        H<span class="mat-subheading-2 toolbar-branding">and</span>MADE
+        G<span class="mat-subheading-2 toolbar-branding">rabo</span>
       </span>
     </a>
 
@@ -13,16 +13,21 @@
     <!--,productSidenav: mainMenuCommonItem._id}}]"-->
 
     <div fxShow="true" fxHide.lt-md="true">
-      <!--<a *ngFor="let mainMenuProductsItem of mainMenuProductsItems" mat-button-->
-         <!--[routerLink]="['/products', 'cat', {outlets: {primary: [mainMenuProductsItem._id],-->
-          <!--productSidenav:  [mainMenuProductsItem._id]}}]"-->
+      <!--<a *ngFor="let mainMenuCommonItem
+ of mainMenuCommonItems
+" mat-button-->
+         <!--[routerLink]="['/products', 'cat', {outlets: {primary: [mainMenuCommonItem
+._id],-->
+          <!--productSidenav:  [mainMenuCommonItem
+._id]}}]"-->
          <!--[routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">-->
-        <!--{{mainMenuProductsItem.name}}-->
+        <!--{{mainMenuCommonItem
+.name}}-->
       <!--</a>-->
-      <a *ngFor="let mainMenuProductsItem of mainMenuProductsItems" mat-button
-         [routerLink]="['/products', 'cat', mainMenuProductsItem._id]"
+      <a *ngFor="let mainMenuCommonItem of mainMenuCommonItems" mat-button
+         [routerLink]="['/common', 'cat', mainMenuCommonItem._id]"
          [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">
-         {{mainMenuProductsItem.name}}
+         {{mainMenuCommonItem.name}}
       </a>
 
       <!--Blog-->
@@ -108,13 +113,17 @@
 
       <div fxLayout="column">
         <mat-nav-list>
-          <mat-list-item *ngFor="let mainMenuProductsItem of mainMenuProductsItems">
+          <mat-list-item *ngFor="let mainMenuCommonItem
+ of mainMenuCommonItems
+">
             <!--<mat-icon mat-list-icon>swap_horiz</mat-icon>-->
 
             <a matLine
                [routerLinkActive]="['muted']" [routerLinkActiveOptions]="{exact: true}"
-               [routerLink]="['/products', 'cat', mainMenuProductsItem._id]" (click)="sidenav.toggle()">
-              {{mainMenuProductsItem.name}}
+               [routerLink]="['/products', 'cat', mainMenuCommonItem
+._id]" (click)="sidenav.toggle()">
+              {{mainMenuCommonItem
+.name}}
             </a>
             <!--<button mat-icon-button>-->
               <!--<mat-icon>info</mat-icon>-->
