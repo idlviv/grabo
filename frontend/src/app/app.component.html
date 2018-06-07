@@ -25,7 +25,7 @@
 .name}}-->
       <!--</a>-->
       <a *ngFor="let mainMenuCommonItem of mainMenuCommonItems" mat-button
-         [routerLink]="['/common', 'cat', mainMenuCommonItem._id]"
+         [routerLink]="['/common', mainMenuCommonItem._id]"
          [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">
          {{mainMenuCommonItem.name}}
       </a>
@@ -88,7 +88,7 @@
 
       <a *ngFor="let subCategoryItem of subCategoryItems"
          [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}" mat-button
-         [routerLink]="['/products', 'cat', category, subCategoryItem._id]">
+         [routerLink]="['common/products', subCategoryItem._id]">
       <!--<a *ngFor="let productSidenavItem of productSidenavItems"-->
          <!--[routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}" mat-button-->
          <!--[routerLink]="['/products', 'cat', {outlets: {primary: [category, productSidenavItem._id]}}]">-->
