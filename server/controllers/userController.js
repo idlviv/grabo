@@ -29,7 +29,7 @@ module.exports.passwordResetCheckEmail = function(req, res, next) {
               }
 
               const mailOptions = {
-                from: 'HandMADE <postmaster@mg.hmade.work>',
+                from: 'grabo <postmaster@sandbox4d505533524a4360b5506928e2ed0726.mailgun.org>',
                 to: email,
                 subject: 'Зміна пароля, код підтвердження',
                 text: 'Ваш код підтвердження' + code,
