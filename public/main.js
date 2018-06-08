@@ -456,9 +456,10 @@ var AppComponent = /** @class */ (function () {
             // }
         })).subscribe(function (result) {
             console.log('result bread', result.data);
+            // result.data[0].hierarchy to splice home => common => mainCategory
             _this.currentCategory = result.data[0];
             _this.hierarchyCategory = result.data[0].hierarchy;
-            _this.hierarchyCategory.splice(0, 2);
+            _this.hierarchyCategory.splice(0, 3);
             console.log('hierarchyCategory', _this.hierarchyCategory);
         });
         // initial subscribe on user
