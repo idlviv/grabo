@@ -14,8 +14,8 @@ import { SharedService } from '../../../services/shared.service';
 })
 export class ProductsListComponent implements OnInit {
   products: IProduct[];
-  category: string;
-  subcategory: string;
+  category_id: string;
+  descendants: string;
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
@@ -31,34 +31,27 @@ export class ProductsListComponent implements OnInit {
 
     this.route.paramMap.pipe(
       mergeMap(paramMap => {
-        this.category = paramMap.get('category');
-        // this.subcategory = paramMap.get('subcategory');
-        // this.itemsToShow = paramMap.get('category');
-        if (!this.category) {
-          this.category = 'products';
-        }
-        console.log('this.category', this.category);
-        return this.catalogService.getDescendants(this.category);
+        this.category_id = paramMap.get('category_id');
+        // if (!this.category) {
+        //   this.category = 'products';
+        // }
+        console.log('this.category_id', this.category_id);
+        return this.catalogService.getDescendants(this.category_id);
       }),
-      mergeMap(subCategoryItems => {
-        console.log('subCategoryItems', subCategoryItems);
-        if (!subCategoryItems.data.length) {
-          // this.sharedService.sharingEvent('onNullSubcategory');
-          this.sharedService.sharingEvent(['subCategoryItems', null]);
-          // this.productSidenavItems = null;
+      mergeMap(result => {
+        this.descendants = result.data;
+        this.sharedService.sharingEvent(['category_id', this.category_id]);
+
+        if (!this.descendants.length) {
+          // this.sharedService.sharingEvent(['descendants', null]);
+          console.log('NOdescendants', this.descendants);
+          return this.productService.getProductsByCategory(this.category_id);
         } else {
-          // this.sharedService.sharingEvent('onNotNullSubcategory');
-          this.sharedService.sharingEvent(['subCategoryItems', subCategoryItems.data, 'category', this.category]);
-          // this.productSidenavItems = subCategoryItems.data;
-          // console.log('product sidenav menuItems', subCategoryItems);
-        }
-        if (this.subcategory) {
-          return this.productService.getProducts(this.subcategory);
-        } else {
-          return this.productService.getProducts(this.category);
+          // this.sharedService.sharingEvent(['descendants', this.descendants, 'category', this.category_id]);
+          console.log('YESdescendants', this.descendants);
+          return this.productService.getProductsByCategory(null);
         }
       }))
-
       .subscribe(
         products => this.products = products.data,
         err => console.log('error', err)

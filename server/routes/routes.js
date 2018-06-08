@@ -49,6 +49,10 @@ router.post('/product/add-image',
   productController.productAddImage
 );
 
+// New
+router.get('/product/get-products-by-category',
+  productController.getProductsByCategory
+);
 /**
  * catalog routes
  */
@@ -66,6 +70,11 @@ router.get('/catalog/get-descendants',
 
 router.get('/catalog/get-main-menu',
   catalogController.getMainMenu
+);
+
+// New
+router.get('/catalog/get-all-parents',
+  catalogController.getAllParents
 );
 
 /**

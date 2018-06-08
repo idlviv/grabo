@@ -67,4 +67,19 @@ export class CatalogService {
     );
   }
 
+  // New
+
+  getAllParents(category_id): Observable<IResponse> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+      }),
+      params: new HttpParams().set('category_id', category_id)
+    };
+    return this.http.get<IResponse>(
+      'api/catalog/get-all-parents',
+      httpOptions
+    );
+  }
+
 }

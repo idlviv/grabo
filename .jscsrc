@@ -2,6 +2,6 @@
   "excludeFiles": [
     "node_modules/**",
     "frontend/node_modules/**",
-    "difs/**"
+    "./difs/**"
   ]
 }

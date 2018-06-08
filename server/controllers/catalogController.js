@@ -98,3 +98,32 @@ module.exports.getMainMenu = function(req, res, next) {
     .catch(err => next(new DbError()));
 };
 
+// New
+
+module.exports.getAllParents = function(req, res, next) {
+  const category_id = req.query.category_id;
+
+  CatalogModel.aggregate([
+      {
+        $_id: {parent: category_id}
+      },
+      {
+        $sort: {order: 1}
+      },
+      {
+        $graphLookup: {
+          from: 'catalogs',
+          startWith: '$_id',
+          connectFromField: 'parent',
+          connectToField: '_id',
+          as: 'children',
+        }
+      },
+      {
+        $addFields: {numOfChildren: {$size: '$children'}}
+      }
+    ]).then(result => res.status(200).json(new ResObj(true, 'Каталог', result)))
+      .catch(err => next(new DbError()));
+
+};
+

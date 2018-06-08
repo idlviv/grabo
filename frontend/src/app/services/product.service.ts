@@ -154,5 +154,21 @@ export class ProductService {
       return ({success: true,  message: ''});
     }
   }
+
+  // New
+
+  getProductsByCategory(category) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+      }),
+      params: new HttpParams().set('category', category)
+    };
+    return this.http.get<IResponse>(
+      'api/product/get-products-by-category',
+      httpOptions
+    );
+  }
+
 }
 

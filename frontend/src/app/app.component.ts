@@ -7,6 +7,7 @@ import { ICatalog } from './interfaces/catalog-interface';
 import { Cloudinary } from '@cloudinary/angular-5.x';
 import { MatMenuTrigger } from '@angular/material';
 import { SharedService } from './services/shared.service';
+import { mergeMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -24,6 +25,9 @@ export class AppComponent implements OnInit {
 
   subCategoryItems: ICatalog;
   category: any;
+
+  category_id: string;
+
   constructor(
     private userService: UserService,
     private router: Router,
@@ -34,13 +38,19 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     // subscribe on submenu
-    this.sharedService.getSharingEvent()
-      .subscribe(data => {
-        if (data[0] === 'subCategoryItems') {
-          this.subCategoryItems = data[1];
-          this.category = data[3];
+    this.sharedService.getSharingEvent().pipe(
+      mergeMap(data => {
+        if (data[0] = 'category_id') {
+          this.category_id = data[1];
+          return this.catalogService.getAllParents(this.category_id);
         }
-      });
+
+        // if (data[0] === 'subCategoryItems') {
+        //   this.subCategoryItems = data[1];
+        //   this.category = data[3];
+        // }
+      })
+    ).subscribe(result => console.log('result bread', result.data));
 
     // initial subscribe on user
     this.userService.getUserLocal()

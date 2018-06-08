@@ -1,3 +1,19 @@
 <p>
   products-list works!
 </p>
+
+<div>
+  <a *ngFor="let descendant of descendants" mat-button
+     [routerLink]="['/catalog', descendant._id]"
+     [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">
+    {{descendant.name}}
+  </a>
+</div>
+
+<div>
+  <a *ngFor="let product of products" mat-button
+     [routerLink]="['/catalog', category_id, 'details', product._id]"
+     [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">
+    {{product.name}}
+  </a>
+</div>

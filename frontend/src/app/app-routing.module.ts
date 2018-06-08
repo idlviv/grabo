@@ -11,7 +11,7 @@ const appRoutes: Routes = [
   //   // pathMatch: 'full'
   // },
   {
-    path: 'common/products',
+    path: 'catalog',
     loadChildren: './components/products/products.module#ProductsModule',
   },
   {

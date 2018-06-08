@@ -159,3 +159,17 @@ module.exports.productDelete = function(req, res, next) {
   //     err => next(new DbError(err.message, err.code))
   //   );
 };
+
+// New
+module.exports.getProductsByCategory = function(req, res, next) {
+  const category = req.query.category;
+
+  ProductModel.find(
+    {parent: category},
+  )
+    .then(result => {
+      return res.status(200).json(new ResObj(true, 'Продукти категорії' + category, result));
+    })
+    .catch(err => next(new DbError())
+    );
+};
