@@ -3,6 +3,7 @@ const ResObj = require('../libs/responseObject');
 const DbError = require('../errors/dbError');
 const ApplicationError = require('../errors/applicationError');
 const ObjectId = require('../config/mongoose').Types.ObjectId;
+const log = require('../config/winston')(module);
 
 module.exports.getPrefix = function(req, res, next) {
   const _id = req.query.category;
@@ -102,10 +103,10 @@ module.exports.getMainMenu = function(req, res, next) {
 
 module.exports.getAllParents = function(req, res, next) {
   const category_id = req.query.category_id;
-
+  log.debug ('category_id', category_id);
   CatalogModel.aggregate([
       {
-        $_id: {parent: category_id}
+        $match: {_id: category_id}
       },
       {
         $sort: {order: 1}
@@ -113,14 +114,14 @@ module.exports.getAllParents = function(req, res, next) {
       {
         $graphLookup: {
           from: 'catalogs',
-          startWith: '$_id',
+          startWith: '$parent',
           connectFromField: 'parent',
           connectToField: '_id',
-          as: 'children',
+          as: 'hierarchy',
         }
       },
       {
-        $addFields: {numOfChildren: {$size: '$children'}}
+        $addFields: {numOfChildren: {$size: '$hierarchy'}}
       }
     ]).then(result => res.status(200).json(new ResObj(true, 'Каталог', result)))
       .catch(err => next(new DbError()));

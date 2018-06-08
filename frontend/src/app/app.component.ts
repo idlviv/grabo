@@ -28,6 +28,9 @@ export class AppComponent implements OnInit {
 
   category_id: string;
 
+  currentCategory: any;
+  hierarchyCategory = [];
+
   constructor(
     private userService: UserService,
     private router: Router,
@@ -50,7 +53,13 @@ export class AppComponent implements OnInit {
         //   this.category = data[3];
         // }
       })
-    ).subscribe(result => console.log('result bread', result.data));
+    ).subscribe(result => {
+      console.log('result bread', result.data);
+      this.currentCategory = result.data[0];
+      this.hierarchyCategory = result.data[0].hierarchy;
+      console.log('hierarchyCategory', this.hierarchyCategory);
+
+    });
 
     // initial subscribe on user
     this.userService.getUserLocal()
