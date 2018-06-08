@@ -57,6 +57,7 @@ export class AppComponent implements OnInit {
       console.log('result bread', result.data);
       this.currentCategory = result.data[0];
       this.hierarchyCategory = result.data[0].hierarchy;
+      this.hierarchyCategory.splice(0, 2);
       console.log('hierarchyCategory', this.hierarchyCategory);
 
     });
