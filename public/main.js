@@ -459,8 +459,8 @@ var AppComponent = /** @class */ (function () {
             // result.data[0].hierarchy to splice home => common => mainCategory
             _this.currentCategory = result.data[0];
             _this.hierarchyCategory = result.data[0].hierarchy;
-            _this.hierarchyCategory.splice(0, 3);
-            console.log('hierarchyCategory', _this.hierarchyCategory);
+            // this.hierarchyCategory.splice(0, 3);
+            // console.log('hierarchyCategory', this.hierarchyCategory);
         });
         // initial subscribe on user
         this.userService.getUserLocal()
