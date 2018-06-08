@@ -88,7 +88,7 @@
     <mat-toolbar-row *ngIf="currentCategory">
       <a *ngFor="let hierarchyCategoryItem of hierarchyCategory" mat-button [routerLink]="['/catalog', hierarchyCategoryItem._id]"
          [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}"> {{hierarchyCategoryItem.name}}</a>
-      <a mat-button [routerLink]="['/catalog', currentCategory._id]"
+      <a mat-button disabled [routerLink]="['/catalog', currentCategory._id]"
          [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">
         {{currentCategory.name}}
       </a>

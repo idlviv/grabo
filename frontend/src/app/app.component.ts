@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from './services/user.service';
 import { IUser } from './interfaces/user-interface';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CatalogService } from './services/catalog.service';
 import { ICatalog } from './interfaces/catalog-interface';
 import { Cloudinary } from '@cloudinary/angular-5.x';
@@ -36,11 +36,11 @@ export class AppComponent implements OnInit {
     private router: Router,
     private catalogService: CatalogService,
     private sharedService: SharedService,
-
   ) { }
 
   ngOnInit() {
-    // subscribe on submenu
+
+
     this.sharedService.getSharingEvent().pipe(
       mergeMap(data => {
         if (data[0] = 'category_id') {
