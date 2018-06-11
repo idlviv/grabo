@@ -32,23 +32,24 @@ export class ProductsListComponent implements OnInit {
     this.route.paramMap.pipe(
       mergeMap(paramMap => {
         this.category_id = paramMap.get('category_id');
-        // if (!this.category) {
-        //   this.category = 'products';
-        // }
-        console.log('this.category_id', this.category_id);
+        console.log('list this.category_id', this.category_id);
+
+        if (!this.category_id) {
+          return this.catalogService.getDescendants('products');
+        }
         return this.catalogService.getDescendants(this.category_id);
       }),
       mergeMap(result => {
         this.descendants = result.data;
-        this.sharedService.sharingEvent(['category_id', this.category_id]);
+        // this.sharedService.sharingEvent(['category_id', this.category_id]);
 
         if (!this.descendants.length) {
           // this.sharedService.sharingEvent(['descendants', null]);
-          console.log('NOdescendants', this.descendants);
+          // console.log('NOdescendants', this.descendants);
           return this.productService.getProductsByCategory(this.category_id);
         } else {
           // this.sharedService.sharingEvent(['descendants', this.descendants, 'category', this.category_id]);
-          console.log('YESdescendants', this.descendants);
+          // console.log('YESdescendants', this.descendants);
           return this.productService.getProductsByCategory(null);
         }
       }))

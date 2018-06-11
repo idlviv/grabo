@@ -1,0 +1,15 @@
+<p>
+  breadcrumb works!
+</p>
+<div>
+<!--<div *ngIf="currentCategory">-->
+  <a *ngFor="let hierarchyCategoryItem of hierarchyCategory" mat-button
+     [routerLink]="['/products', 'ch', {outlets: {primary: [hierarchyCategoryItem._id], breadcrumb: [hierarchyCategoryItem._id]}}]"
+     [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}"> {{hierarchyCategoryItem.name}}</a>
+  <!--<a mat-button disabled [routerLink]="['/catalog', currentCategory._id, {outlets: {breadcrumb: [currentCategory._id]}}]"-->
+     <!--[routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">-->
+    <!--{{currentCategory.name}}-->
+  <!--</a>-->
+
+</div>
+

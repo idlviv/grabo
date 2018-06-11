@@ -25,7 +25,7 @@
 .name}}-->
       <!--</a>-->
       <a *ngFor="let mainMenuCommonItem of mainMenuCommonItems" mat-button
-         [routerLink]="['/catalog', mainMenuCommonItem._id]"
+         [routerLink]="['/', mainMenuCommonItem._id, 'ch']"
          [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">
          {{mainMenuCommonItem.name}}
       </a>
@@ -85,15 +85,15 @@
     </div>
     </mat-toolbar-row>
 
-    <mat-toolbar-row *ngIf="currentCategory">
-      <a *ngFor="let hierarchyCategoryItem of hierarchyCategory" mat-button [routerLink]="['/catalog', hierarchyCategoryItem._id]"
-         [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}"> {{hierarchyCategoryItem.name}}</a>
-      <a mat-button disabled [routerLink]="['/catalog', currentCategory._id]"
-         [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">
-        {{currentCategory.name}}
-      </a>
+    <!--<mat-toolbar-row *ngIf="currentCategory">-->
+      <!--<a *ngFor="let hierarchyCategoryItem of hierarchyCategory" mat-button [routerLink]="['/products', hierarchyCategoryItem._id]"-->
+         <!--[routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}"> {{hierarchyCategoryItem.name}}</a>-->
+      <!--<a mat-button disabled [routerLink]="['/products', currentCategory._id]"-->
+         <!--[routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">-->
+        <!--{{currentCategory.name}}-->
+      <!--</a>-->
 
-    </mat-toolbar-row>
+    <!--</mat-toolbar-row>-->
 
 
     <!--<mat-toolbar-row *ngIf="subCategoryItems">-->

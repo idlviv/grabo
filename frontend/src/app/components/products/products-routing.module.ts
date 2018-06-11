@@ -2,20 +2,43 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ProductsComponent } from './products.component';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 
 const productsRoutes: Routes = [
   {
-    path: ':category_id',
-    component: ProductsListComponent,
-  },
-  {
-    path: ':category_id/details/:product_id',
-    component: ProductDetailsComponent,
-  },
-  {
-    path: '',
-    component: ProductsListComponent,
-  },
+    path: 'ch',
+    component: ProductsComponent,
+    children: [
+      {
+        path: '',
+        component: ProductsListComponent,
+      },
+      {
+        path: '',
+        component: BreadcrumbComponent,
+        outlet: 'breadcrumb',
+      },
+      {
+        path: ':category_id',
+        component: ProductsListComponent,
+      },
+      {
+        path: ':category_id',
+        component: BreadcrumbComponent,
+        outlet: 'breadcrumb',
+      },
+      {
+        path: ':category_id/details/:product_id',
+        component: ProductDetailsComponent,
+      },
+      {
+        path: ':category_id/details/:product_id',
+        component: BreadcrumbComponent,
+        outlet: 'breadcrumb',
+      },
+    ],
+  }
 ];
 
 @NgModule({

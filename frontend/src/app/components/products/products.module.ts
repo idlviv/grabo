@@ -6,6 +6,8 @@ import { SharedModule } from '../shared/shared.module';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductsRoutingModule } from './products-routing.module';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { ProductsComponent } from './products.component';
 
 @NgModule({
   imports: [
@@ -15,6 +17,6 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     CloudinaryModule,
     SharedModule,
   ],
-  declarations: [ProductsListComponent, ProductDetailsComponent]
+  declarations: [ProductsListComponent, ProductDetailsComponent, BreadcrumbComponent, ProductsComponent]
 })
 export class ProductsModule { }

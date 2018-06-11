@@ -4,15 +4,20 @@
 
 <div>
   <a *ngFor="let descendant of descendants" mat-button
-     [routerLink]="['/catalog', descendant._id]"
+     [routerLink]="['/products', 'ch', {outlets: {primary: [descendant._id], breadcrumb: [descendant._id]}}]"
      [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">
     {{descendant.name}}
   </a>
 </div>
 
+<!--['/products/ch', {outlets: {primary: 'category/' + category0 + '/' + submenuItem.name,-->
+<!--productsSubmenu:  'category/' + category0 + '/' + submenuItem.name}}]-->
+<!--,productSidenav: mainMenuCommonItem._id}}]"-->
+
 <div>
   <a *ngFor="let product of products" mat-button
-     [routerLink]="['/catalog', category_id, 'details', product._id]"
+     [routerLink]="['/products', 'ch', {outlets: {primary: [category_id, 'details', product._id],
+     breadcrumb: [category_id, 'details', product._id]}}]"
      [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">
     {{product.name}}
   </a>

@@ -41,27 +41,27 @@ export class AppComponent implements OnInit {
   ngOnInit() {
 
 
-    this.sharedService.getSharingEvent().pipe(
-      mergeMap(data => {
-        if (data[0] = 'category_id') {
-          this.category_id = data[1];
-          return this.catalogService.getAllParents(this.category_id);
-        }
-
-        // if (data[0] === 'subCategoryItems') {
-        //   this.subCategoryItems = data[1];
-        //   this.category = data[3];
-        // }
-      })
-    ).subscribe(result => {
-      console.log('result bread', result.data);
-      // result.data[0].hierarchy to splice home => common => mainCategory
-      this.currentCategory =  result.data[0];
-      this.hierarchyCategory = result.data[0].hierarchy;
-      // this.hierarchyCategory.splice(0, 3);
-      // console.log('hierarchyCategory', this.hierarchyCategory);
-
-    });
+    // this.sharedService.getSharingEvent().pipe(
+    //   mergeMap(data => {
+    //     if (data[0] = 'category_id') {
+    //       this.category_id = data[1];
+    //       return this.catalogService.getAllParents(this.category_id);
+    //     }
+    //
+    //     // if (data[0] === 'subCategoryItems') {
+    //     //   this.subCategoryItems = data[1];
+    //     //   this.category = data[3];
+    //     // }
+    //   })
+    // ).subscribe(result => {
+    //   console.log('result bread', result.data);
+    //   // result.data[0].hierarchy to splice home => common => mainCategory
+    //   this.currentCategory =  result.data[0];
+    //   this.hierarchyCategory = result.data[0].hierarchy;
+    //   // this.hierarchyCategory.splice(0, 3);
+    //   // console.log('hierarchyCategory', this.hierarchyCategory);
+    //
+    // });
 
     // initial subscribe on user
     this.userService.getUserLocal()
