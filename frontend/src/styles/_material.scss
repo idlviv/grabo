@@ -13,7 +13,7 @@ $mat-custom-darker: (
         A100 : #f1f3fe,
         A200 : #c2c9fb,
         A400 : #8b9aff,
-        A700 : #7184ff,
+        A700 : #5459ad,
         contrast: (
                 50 : #000000,
                 100 : #000000,
@@ -106,7 +106,7 @@ $warn:    mat-palette($mat-custom-warn);
 $theme: mat-light-theme($primary, $accent, $warn);
 
 $_primary: mat-color($primary);
-$_accent: mat-color($accent);
+$_accent: mat-color($accent, A700);
 $_warn: mat-color($warn);
 
 

@@ -1,11 +1,26 @@
-  <mat-toolbar class="mat-elevation-z4 header" color="primary">
+<div class="container" fxHide.lt-md="true">
+  <div class="row">
+    <div class="cell">
+      <img src="./assets/images/graboplast_logo373x90.png" alt="graboplast logo">
+    </div>
+    <div fxFlex></div>
 
+    <div class="cell">
+      Контакти
+    </div>
+  </div>
+</div>
+
+  <mat-toolbar class="mat-elevation-z4 header" color="primary">
     <mat-toolbar-row>
     <!--<div fxLayoutAlign="flex"></div>-->
-    <a mat-button [routerLink]="['']">
-      <span class="mat-title toolbar-branding">
-        G<span class="mat-subheading-2 toolbar-branding">rabo</span>
-      </span>
+    <a fxHide.gt-sm="true" mat-button [routerLink]="['']">
+      <img src="./assets/images/graboplast_logo60x60.png" alt="graboplast logo">
+
+
+      <!--<span class="mat-title toolbar-branding">-->
+        <!--G<span class="mat-subheading-2 toolbar-branding">rabo</span>-->
+      <!--</span>-->
     </a>
 
     <!--['/products/ch', {outlets: {primary: 'category/' + category0 + '/' + submenuItem.name,-->
@@ -26,7 +41,7 @@
       <!--</a>-->
       <a *ngFor="let mainMenuCommonItem of mainMenuCommonItems" mat-button
          [routerLink]="['/', mainMenuCommonItem._id, 'ch']"
-         [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">
+         [routerLinkActive]="['accent']" [routerLinkActiveOptions]="{exact: true}">
          {{mainMenuCommonItem.name}}
       </a>
 
@@ -84,30 +99,6 @@
       </button>
     </div>
     </mat-toolbar-row>
-
-    <!--<mat-toolbar-row *ngIf="currentCategory">-->
-      <!--<a *ngFor="let hierarchyCategoryItem of hierarchyCategory" mat-button [routerLink]="['/products', hierarchyCategoryItem._id]"-->
-         <!--[routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}"> {{hierarchyCategoryItem.name}}</a>-->
-      <!--<a mat-button disabled [routerLink]="['/products', currentCategory._id]"-->
-         <!--[routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">-->
-        <!--{{currentCategory.name}}-->
-      <!--</a>-->
-
-    <!--</mat-toolbar-row>-->
-
-
-    <!--<mat-toolbar-row *ngIf="subCategoryItems">-->
-
-      <!--<a *ngFor="let subCategoryItem of subCategoryItems"-->
-         <!--[routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}" mat-button-->
-         <!--[routerLink]="['/products', subCategoryItem._id]">-->
-      <!--&lt;!&ndash;<a *ngFor="let productSidenavItem of productSidenavItems"&ndash;&gt;-->
-         <!--&lt;!&ndash;[routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}" mat-button&ndash;&gt;-->
-         <!--&lt;!&ndash;[routerLink]="['/products', 'cat', {outlets: {primary: [category, productSidenavItem._id]}}]">&ndash;&gt;-->
-
-        <!--&lt;!&ndash;[routerLink]="['product', 'cat', {outlets: {primary: [productSidenavItem._id]}}]">&ndash;&gt;-->
-        <!--{{subCategoryItem.name}}</a>-->
-    <!--</mat-toolbar-row>-->
 
   </mat-toolbar>
 

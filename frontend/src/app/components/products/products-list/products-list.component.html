@@ -1,7 +1,3 @@
-<p>
-  products-list works!
-</p>
-
 <div>
   <a *ngFor="let descendant of descendants" mat-button
      [routerLink]="['/products', 'ch', {outlets: {primary: [descendant._id], breadcrumb: [descendant._id]}}]"
@@ -9,10 +5,6 @@
     {{descendant.name}}
   </a>
 </div>
-
-<!--['/products/ch', {outlets: {primary: 'category/' + category0 + '/' + submenuItem.name,-->
-<!--productsSubmenu:  'category/' + category0 + '/' + submenuItem.name}}]-->
-<!--,productSidenav: mainMenuCommonItem._id}}]"-->
 
 <div>
   <a *ngFor="let product of products" mat-button

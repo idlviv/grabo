@@ -33,18 +33,7 @@ export class ProductService {
     );
   }
 
-  getProductById(_id) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-      }),
-      params: new HttpParams().set('_id', _id)
-    };
-    return this.http.get<IResponse>(
-      'api/product/get-product-by-id',
-      httpOptions
-    );
-  }
+
 
   getProducts(category) {
     const httpOptions = {
@@ -169,6 +158,20 @@ export class ProductService {
       httpOptions
     );
   }
+
+  getProductById(_id) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+      }),
+      params: new HttpParams().set('_id', _id)
+    };
+    return this.http.get<IResponse>(
+      'api/product/get-product-by-id',
+      httpOptions
+    );
+  }
+
 
 }
 

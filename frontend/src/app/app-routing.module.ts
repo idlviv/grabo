@@ -13,6 +13,7 @@ const appRoutes: Routes = [
   {
     path: 'products',
     loadChildren: './components/products/products.module#ProductsModule',
+    // pathMatch: 'full'
   },
   {
     path: 'blogs',
