@@ -1,18 +1,18 @@
 <div>
-<!--&lt;!&ndash;<div *ngIf="currentCategory">&ndash;&gt;-->
-  <!--<a mat-button-->
-     <!--[routerLink]="['/products', 'ch']"-->
-     <!--[routerLinkActive]="['accent']" [routerLinkActiveOptions]="{exact: true}">-->
-    <!--<mat-icon>home</mat-icon> Каталог<mat-icon>keyboard_arrow_right</mat-icon></a>-->
-  <!--<a *ngFor="let hierarchyCategoryItem of hierarchyCategory" mat-button-->
-     <!--[routerLink]="['/products', 'ch', {outlets: {primary: [hierarchyCategoryItem._id], breadcrumb: [hierarchyCategoryItem._id]}}]"-->
-     <!--[routerLinkActive]="['accent']" [routerLinkActiveOptions]="{exact: true}">-->
-    <!--<mat-icon>folder</mat-icon> {{hierarchyCategoryItem.name}}<mat-icon>keyboard_arrow_right</mat-icon></a>-->
-  <!--&lt;!&ndash;<a mat-button disabled [routerLink]="['/catalog', currentCategory._id, {outlets: {breadcrumb: [currentCategory._id]}}]"&ndash;&gt;-->
-     <!--&lt;!&ndash;[routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">&ndash;&gt;-->
-    <!--&lt;!&ndash;{{currentCategory.name}}&ndash;&gt;-->
-  <!--&lt;!&ndash;</a>&ndash;&gt;-->
-    <!--<a *ngIf="product" mat-button-->
-       <!--[routerLinkActive]="['accent']" [routerLinkActiveOptions]="{exact: true}" disabled>-->
-      <!--<mat-icon>insert_photo</mat-icon> {{product.name}}</a>-->
+<!--<div *ngIf="currentCategory">-->
+  <a mat-button
+     [routerLink]="['/products', 'ch']"
+     [routerLinkActive]="['accent']" [routerLinkActiveOptions]="{exact: true}">
+    <mat-icon>home</mat-icon> Каталог<mat-icon>keyboard_arrow_right</mat-icon></a>
+  <a *ngFor="let hierarchyCategoryItem of hierarchyCategory" mat-button
+     [routerLink]="['/products', 'ch', {outlets: {primary: [hierarchyCategoryItem._id], breadcrumb: [hierarchyCategoryItem._id]}}]"
+     [routerLinkActive]="['accent']" [routerLinkActiveOptions]="{exact: true}">
+    <mat-icon>folder</mat-icon> {{hierarchyCategoryItem.name}}<mat-icon>keyboard_arrow_right</mat-icon></a>
+  <!--<a mat-button disabled [routerLink]="['/catalog', currentCategory._id, {outlets: {breadcrumb: [currentCategory._id]}}]"-->
+     <!--[routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">-->
+    <!--{{currentCategory.name}}-->
+  <!--</a>-->
+    <a *ngIf="productName" mat-button
+       [routerLinkActive]="['accent']" [routerLinkActiveOptions]="{exact: true}" disabled>
+      <mat-icon>insert_photo</mat-icon> {{productName}}</a>
 </div>

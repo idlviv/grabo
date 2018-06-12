@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { mergeMap } from 'rxjs/operators';
-import { forkJoin, of, merge } from 'rxjs';
+import { mergeMap, map } from 'rxjs/operators';
+import { forkJoin, of, merge, combineLatest} from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { CatalogService } from '../../../services/catalog.service';
 import { ProductService } from '../../../services/product.service';
@@ -16,7 +16,7 @@ export class BreadcrumbComponent implements OnInit {
   currentCategory: any;
   hierarchyCategory: any;
   product_id: string;
-  product: any;
+  productName: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,7 +28,9 @@ export class BreadcrumbComponent implements OnInit {
     const $paramMap = this.route.paramMap;
     const $queryParamMap = this.route.queryParamMap;
 
-    merge(
+    // const c = $paramMap.pipe(res => combineLatest(res, $queryParamMap));
+    // c.subscribe(res => console.log('res', res);)
+    combineLatest(
       $paramMap
         .pipe(
         mergeMap(paramMap => {
@@ -42,17 +44,21 @@ export class BreadcrumbComponent implements OnInit {
       )
       ,
       $queryParamMap
-      //   .pipe(
-      //   mergeMap(paramMap => {
-      //     this.categoryName = paramMap.get('name');
-      //     console.log('bread this.categoryName', this.categoryName);
-      //     return of(this.categoryName);
-      //   })
-      // )
     )
-      .subscribe(forkData => {
-        console.log('forkData', typeof forkData);
-      });
+      .subscribe(result => {
+          console.log('result bread hierarchy', result[0]);
+          console.log('result bread product', result[1].get('name'));
+          // result.data[0].hierarchy to splice home => common => mainCategory
+          // this.currentCategory =  result.data[0];
+          this.productName = result[1].get('name');
+          this.hierarchyCategory = result[0].data[0].hierarchy;
+          this.hierarchyCategory.push(result[0].data[0]);
+          this.hierarchyCategory.splice(0, 3);
+          console.log('hierarchyCategory', this.hierarchyCategory);
+
+        },
+        err => console.log('Помилка breadcrumb', err)
+      );
 
 
 
