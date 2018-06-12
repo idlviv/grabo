@@ -1,6 +1,7 @@
 <div>
   <a *ngFor="let descendant of descendants" mat-button
      [routerLink]="['/products', 'ch', {outlets: {primary: [descendant._id], breadcrumb: [descendant._id]}}]"
+     [queryParams]="{ name: descendant.name }"
      [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">
     {{descendant.name}}
   </a>
@@ -10,6 +11,7 @@
   <a *ngFor="let product of products" mat-button
      [routerLink]="['/products', 'ch', {outlets: {primary: [category_id, 'details', product._id],
      breadcrumb: [category_id, 'details', product._id]}}]"
+     [queryParams]="{ name: product.name }"
      [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">
     {{product.name}}
   </a>
