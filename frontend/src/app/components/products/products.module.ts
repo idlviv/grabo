@@ -23,7 +23,7 @@ import { ProductsListItemComponent } from './products-list-item/products-list-it
     ProductDetailsComponent,
     BreadcrumbComponent,
     ProductsComponent,
-    ProductsListItemComponent
+    ProductsListItemComponent,
   ]
 })
 export class ProductsModule { }
