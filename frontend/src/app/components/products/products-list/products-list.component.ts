@@ -16,6 +16,7 @@ export class ProductsListComponent implements OnInit {
   products: IProduct[];
   category_id: string;
   descendants: string;
+
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,

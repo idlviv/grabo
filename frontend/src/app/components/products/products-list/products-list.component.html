@@ -1,17 +1,7 @@
-<div>
-  <a *ngFor="let descendant of descendants" mat-button
-     [routerLink]="['/products', 'ch', {outlets: {primary: [descendant._id], breadcrumb: [descendant._id]}}]"
-     [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">
-    {{descendant.name}}
-  </a>
-</div>
-
-<div>
-  <a *ngFor="let product of products" mat-button
-     [routerLink]="['/products', 'ch', {outlets: {primary: [category_id, 'details', product._id],
-     breadcrumb: [category_id, 'details', product._id]}}]"
-     [queryParams]="{ name: product.name }"
-     [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">
-    {{product.name}}
-  </a>
+<div class="row" fxLayout="column" fxLayout.gt-xs="row">
+  <div *ngFor="let descendant of descendants" class="cell"
+       fxFlex.sm="50" fxFlex.md="33.3" fxFlex.gt-md="20">
+    <!--<p>Показати: {{itemsToShow}}</p>-->
+    <app-products-list-item [descendant]="descendant"></app-products-list-item>
+  </div>
 </div>
