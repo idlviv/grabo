@@ -1,14 +1,14 @@
 <mat-card class="example-card">
   <mat-card-header>
-    <mat-card-title class="product-title bold">{{descendant.name}}</mat-card-title>
+    <!--<mat-card-title class="product-title bold">{{descendant.name}}</mat-card-title>-->
     <!--<mat-card-subtitle></mat-card-subtitle>-->
   </mat-card-header>
-  <!--<div class="product-cl-image-wrapper-outer">-->
-    <!--<div class="product-cl-image-wrapper-inner">-->
-      <!--<img src="{{config.imgPath + config.cloudinary.cloud_name + '/' + product.files[0]}}"-->
-           <!--alt="product picture" class="product-cl-image">-->
-    <!--</div>-->
-  <!--</div>-->
+  <div class="product-cl-image-wrapper-outer">
+    <div class="product-cl-image-wrapper-inner">
+      <img src="{{config.imgPath + config.cloudinary.cloud_name + '/' + descendant.assets[0]}}"
+           alt="product picture" class="product-cl-image">
+    </div>
+  </div>
 
 
   <mat-card-content>
