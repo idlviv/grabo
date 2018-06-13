@@ -1,0 +1,101 @@
+{
+  "configVersion": 1,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/0.961d0ba264fd1a57e573.js",
+        "/1.e81f55c90bd32467b53a.js",
+        "/2.7bd8134e7a3db747ea84.js",
+        "/3.3ee8a8795d089369dc93.js",
+        "/favicon.ico",
+        "/index.html",
+        "/main.dbc2d404b742fb730eb7.js",
+        "/polyfills.a5e611dccaf86beb778a.js",
+        "/runtime.4d4c6a92316ce22bed59.js",
+        "/styles.c9af408e0cdc080e8851.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/assets/icons/icon-128x128.png",
+        "/assets/icons/icon-144x144.png",
+        "/assets/icons/icon-152x152.png",
+        "/assets/icons/icon-192x192.png",
+        "/assets/icons/icon-384x384.png",
+        "/assets/icons/icon-512x512.png",
+        "/assets/icons/icon-72x72.png",
+        "/assets/icons/icon-96x96.png",
+        "/assets/images/default-avatar180x180.png",
+        "/assets/images/default-product180x180.png",
+        "/assets/images/graboplast_logo207x50.png",
+        "/assets/images/graboplast_logo373x90.png",
+        "/assets/images/graboplast_logo50x50.png",
+        "/assets/images/graboplast_logo60x60.png",
+        "/assets/images/graboplast_logo90x90.png",
+        "/assets/images/graboplast_logo_inverse207x50.png",
+        "/assets/images/logo400x140-1.jpg",
+        "/assets/images/logo400x140-2.jpg",
+        "/assets/images/logo400x140-3.jpg"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/0.961d0ba264fd1a57e573.js": "ac0621cdd5f86f3decec0ac81c253310324fa74a",
+    "/1.e81f55c90bd32467b53a.js": "46baa2142286d34a34ff12c765f22f1a88c1ec57",
+    "/2.7bd8134e7a3db747ea84.js": "f834da30450e9167303ee49db73d50d9f83f9292",
+    "/3.3ee8a8795d089369dc93.js": "8e7e2fa899dbb84fc4dc057710dde6b6b6d5185c",
+    "/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/assets/images/default-avatar180x180.png": "23abb35733a46ff741ce94b1db3d8f3539ca675b",
+    "/assets/images/default-product180x180.png": "60892b781022fc6c2585ff6aef8f5ce504104f52",
+    "/assets/images/graboplast_logo207x50.png": "b7dcf88b7c35dc2180601b0a6d6ffd87c3efde6f",
+    "/assets/images/graboplast_logo373x90.png": "98af7e75c8f48225cbf714466f6238c86109d3a5",
+    "/assets/images/graboplast_logo50x50.png": "1ca30688b62f8486782ca6513cf6cfbe609efcbf",
+    "/assets/images/graboplast_logo60x60.png": "592d1f318321b80bfa3f2454d1797cc0d1e2f161",
+    "/assets/images/graboplast_logo90x90.png": "e5ce5b411c9ffc1dac52b09e982ca18755744900",
+    "/assets/images/graboplast_logo_inverse207x50.png": "5e6227cf90a486f0ed557dce3dd584272dcda5fe",
+    "/assets/images/logo400x140-1.jpg": "0e9a131116ad00c9f07504f279023d9095a3340a",
+    "/assets/images/logo400x140-2.jpg": "176ebcdd85c54a19f41ebd746c7435228fe234be",
+    "/assets/images/logo400x140-3.jpg": "009cdd0f0a96e21b72e6c01b250be342543d5ae8",
+    "/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
+    "/index.html": "4d9e732f7f5ee3fa82480468b521628d72abae9a",
+    "/main.dbc2d404b742fb730eb7.js": "af61fc2f861d9a75d200ad982b10cabc19615339",
+    "/polyfills.a5e611dccaf86beb778a.js": "ad3e139f4e46a56685ccbe012b885aac67989adb",
+    "/runtime.4d4c6a92316ce22bed59.js": "f8ba81df53159f8995a44681ea2f9a108564ed62",
+    "/styles.c9af408e0cdc080e8851.css": "5bc3ecc0b451e97b7628a0797eed86305368237a"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^\\/]*\\.[^\\/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^\\/]*__[^\\/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^\\/]*__[^\\/]*\\/.*$"
+    }
+  ]
+}
