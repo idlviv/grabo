@@ -3,7 +3,7 @@
   <mat-card-header>
   </mat-card-header>
 
-{{product || json}}
+{{product | json}}
   <mat-card-content>
 
 
@@ -13,7 +13,7 @@
     <a mat-button
        [routerLink]="['/products', 'ch', {outlets: {primary: [category_id, 'details', product._id],
      breadcrumb: [category_id, 'details', product._id]}}]"
-       [queryParams]="{ name: product.name }"
+       [queryParams]="{name: product.name}"
        [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">
       {{product.name}}
     </a>

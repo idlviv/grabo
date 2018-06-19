@@ -44,7 +44,7 @@ const cloudinaryCloudName = config.cloudinary.cloud_name;
     HttpClientModule,
     MaterialModule,
     AppRoutingModule,
-    // SharedModule,
+    SharedModule,
     RecaptchaModule.forRoot(),
     RecaptchaFormsModule,
     CloudinaryModule.forRoot(cloudinaryLib, {cloud_name: cloudinaryCloudName}),

@@ -28,7 +28,12 @@ export class ProductsDetailComponent implements OnInit {
         return this.productService.getProductById(this.product_id);
       })
     )
-      .subscribe(result => this.product = result.data);
+      .subscribe(
+        result => {
+          this.product = result.data;
+          console.log('detail product', this.product);
+        }
+      );
   }
 
 }
