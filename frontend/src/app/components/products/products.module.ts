@@ -5,11 +5,12 @@ import { CloudinaryModule } from '@cloudinary/angular-5.x';
 import { SharedModule } from '../shared/shared.module';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductsRoutingModule } from './products-routing.module';
-import { ProductDetailsComponent } from './product-details/product-details.component';
+// import { ProductDetailsComponent } from './product-details/product-details.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { ProductsComponent } from './products.component';
-import { ProductsListItemComponent } from './products-list-item/products-list-item.component';
 import { ProductsCatalogComponent } from './products-catalog/products-catalog.component';
+import { ProductsDetailComponent } from './products-detail/products-detail.component';
+import { ProductsBriefComponent } from './products-brief/products-brief.component';
 
 @NgModule({
   imports: [
@@ -21,11 +22,12 @@ import { ProductsCatalogComponent } from './products-catalog/products-catalog.co
   ],
   declarations: [
     ProductsListComponent,
-    ProductDetailsComponent,
+    // ProductDetailsComponent,
     BreadcrumbComponent,
     ProductsComponent,
-    ProductsListItemComponent,
     ProductsCatalogComponent,
+    ProductsDetailComponent,
+    ProductsBriefComponent,
   ]
 })
 export class ProductsModule { }

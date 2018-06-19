@@ -5,11 +5,11 @@ import { CatalogService } from '../../../services/catalog.service';
 import { mergeMap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-product-details',
-  templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.scss']
+  selector: 'app-products-detail',
+  templateUrl: './products-detail.component.html',
+  styleUrls: ['./products-detail.component.scss']
 })
-export class ProductDetailsComponent implements OnInit {
+export class ProductsDetailComponent implements OnInit {
   category_id: string;
   product_id: string;
   product: any; // IProduct
@@ -28,7 +28,7 @@ export class ProductDetailsComponent implements OnInit {
         return this.productService.getProductById(this.product_id);
       })
     )
-  .subscribe(result => this.product = result.data);
+      .subscribe(result => this.product = result.data);
   }
 
 }
