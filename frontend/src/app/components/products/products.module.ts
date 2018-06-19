@@ -9,6 +9,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { ProductsComponent } from './products.component';
 import { ProductsListItemComponent } from './products-list-item/products-list-item.component';
+import { ProductsCatalogComponent } from './products-catalog/products-catalog.component';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { ProductsListItemComponent } from './products-list-item/products-list-it
     BreadcrumbComponent,
     ProductsComponent,
     ProductsListItemComponent,
+    ProductsCatalogComponent,
   ]
 })
 export class ProductsModule { }
