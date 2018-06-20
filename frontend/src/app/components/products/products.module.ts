@@ -11,6 +11,8 @@ import { ProductsComponent } from './products.component';
 import { ProductsCatalogComponent } from './products-catalog/products-catalog.component';
 import { ProductsDetailComponent } from './products-detail/products-detail.component';
 import { ProductsBriefComponent } from './products-brief/products-brief.component';
+import { ProductsDetailSideComponent } from './products-detail-side/products-detail-side.component';
+import { ProductsDetailMainComponent } from './products-detail-main/products-detail-main.component';
 
 @NgModule({
   imports: [
@@ -28,6 +30,8 @@ import { ProductsBriefComponent } from './products-brief/products-brief.componen
     ProductsCatalogComponent,
     ProductsDetailComponent,
     ProductsBriefComponent,
+    ProductsDetailSideComponent,
+    ProductsDetailMainComponent,
   ]
 })
 export class ProductsModule { }
