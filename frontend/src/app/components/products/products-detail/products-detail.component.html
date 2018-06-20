@@ -18,10 +18,9 @@
 <!--</div>-->
 <div class="row" fxLayout="column" fxLayout.gt-xs="row">
   <div class="cell" fxFlex.gt-xs="20" fxFlex.gt-md="15">
-    <app-products-detail-side></app-products-detail-side>
+    <app-products-detail-side [siblings]="siblings" [category_id]="category_id"></app-products-detail-side>
   </div>
   <div class="cell" fxFlex.gt-xs="80" fxFlex.gt-md="85">
     <app-products-detail-main [product]="product" [category_id]="category_id"></app-products-detail-main>
-
   </div>
 </div>

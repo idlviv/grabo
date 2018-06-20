@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../../services/product.service';
 import { CatalogService } from '../../../services/catalog.service';
 import { mergeMap } from 'rxjs/operators';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-products-detail',
@@ -13,6 +14,7 @@ export class ProductsDetailComponent implements OnInit {
   category_id: string;
   product_id: string;
   product: any; // IProduct
+  siblings: string[];
 
   constructor(
     private route: ActivatedRoute,
@@ -21,17 +23,25 @@ export class ProductsDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
     this.route.paramMap.pipe(
       mergeMap(paramMap => {
         this.category_id = paramMap.get('category_id');
         this.product_id = paramMap.get('product_id');
-        return this.productService.getProductById(this.product_id);
+        return forkJoin (
+          this.productService.getProductById(this.product_id),
+          this.productService.getProductsByCategory(this.category_id)
+        );
       })
     )
       .subscribe(
         result => {
-          this.product = result.data;
+          // console.log('result', result);
+          this.product = result[0].data;
           console.log('detail product', this.product);
+          this.siblings = result[1].data;
+          console.log('detail descendants', this.siblings);
+
         }
       );
   }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { mergeMap, map } from 'rxjs/operators';
-import { forkJoin, of, merge, combineLatest} from 'rxjs';
+import { forkJoin, of, merge, combineLatest } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { CatalogService } from '../../../services/catalog.service';
 import { ProductService } from '../../../services/product.service';
@@ -35,7 +35,6 @@ export class BreadcrumbComponent implements OnInit {
         .pipe(
         mergeMap(paramMap => {
           this.category_id = paramMap.get('category_id');
-          console.log('bread this.category_id', this.category_id);
           if (!this.category_id) {
             return this.catalogService.getAllParents('products');
           }
@@ -46,15 +45,12 @@ export class BreadcrumbComponent implements OnInit {
       $queryParamMap
     )
       .subscribe(result => {
-          console.log('result bread hierarchy', result[0]);
-          console.log('result bread product', result[1].get('name'));
           // result.data[0].hierarchy to splice home => common => mainCategory
           // this.currentCategory =  result.data[0];
           this.productName = result[1].get('name');
           this.hierarchyCategory = result[0].data[0].hierarchy;
           this.hierarchyCategory.push(result[0].data[0]);
           this.hierarchyCategory.splice(0, 3);
-          console.log('hierarchyCategory', this.hierarchyCategory);
 
         },
         err => console.log('Помилка breadcrumb', err)

@@ -68,22 +68,18 @@ var BreadcrumbComponent = /** @class */ (function () {
         Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["combineLatest"])($paramMap
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["mergeMap"])(function (paramMap) {
             _this.category_id = paramMap.get('category_id');
-            console.log('bread this.category_id', _this.category_id);
             if (!_this.category_id) {
                 return _this.catalogService.getAllParents('products');
             }
             return _this.catalogService.getAllParents(_this.category_id);
         })), $queryParamMap)
             .subscribe(function (result) {
-            console.log('result bread hierarchy', result[0]);
-            console.log('result bread product', result[1].get('name'));
             // result.data[0].hierarchy to splice home => common => mainCategory
             // this.currentCategory =  result.data[0];
             _this.productName = result[1].get('name');
             _this.hierarchyCategory = result[0].data[0].hierarchy;
             _this.hierarchyCategory.push(result[0].data[0]);
             _this.hierarchyCategory.splice(0, 3);
-            console.log('hierarchyCategory', _this.hierarchyCategory);
         }, function (err) { return console.log('Помилка breadcrumb', err); });
         ////////////////////////////
         // this.route.paramMap.pipe(
@@ -359,7 +355,7 @@ var ProductsDetailMainComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  products-detail-side works!\n</p>\n"
+module.exports = "<a *ngFor=\"let sibling of siblings\" mat-button\n   [routerLink]=\"['/products', 'ch', {outlets: {primary: [category_id, 'details', sibling._id],\n     breadcrumb: [category_id, 'details', sibling._id]}}]\"\n   [queryParams]=\"{name: sibling.name}\"\n   [routerLinkActive]=\"['accent-background']\" [routerLinkActiveOptions]=\"{exact: true}\">\n  {{sibling.name}}\n</a>"
 
 /***/ }),
 
@@ -400,6 +396,14 @@ var ProductsDetailSideComponent = /** @class */ (function () {
     }
     ProductsDetailSideComponent.prototype.ngOnInit = function () {
     };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], ProductsDetailSideComponent.prototype, "siblings", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], ProductsDetailSideComponent.prototype, "category_id", void 0);
     ProductsDetailSideComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-products-detail-side',
@@ -422,7 +426,7 @@ var ProductsDetailSideComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--<div class=\"row\">-->\n  <!--<div class=\"cell\">-->\n    <!--<mat-card>-->\n      <!--<mat-card-header>-->\n        <!--category_id {{category_id}}-->\n      <!--</mat-card-header>-->\n      <!--product {{product | json}}-->\n\n\n      <!--<mat-card-content>-->\n\n\n      <!--</mat-card-content>-->\n      <!--<mat-card-actions>-->\n      <!--</mat-card-actions>-->\n    <!--</mat-card>-->\n  <!--</div>-->\n<!--</div>-->\n<div class=\"row\" fxLayout=\"column\" fxLayout.gt-xs=\"row\">\n  <div class=\"cell\" fxFlex.gt-xs=\"20\" fxFlex.gt-md=\"15\">\n    <app-products-detail-side></app-products-detail-side>\n  </div>\n  <div class=\"cell\" fxFlex.gt-xs=\"80\" fxFlex.gt-md=\"85\">\n    <app-products-detail-main [product]=\"product\" [category_id]=\"category_id\"></app-products-detail-main>\n\n  </div>\n</div>"
+module.exports = "<!--<div class=\"row\">-->\n  <!--<div class=\"cell\">-->\n    <!--<mat-card>-->\n      <!--<mat-card-header>-->\n        <!--category_id {{category_id}}-->\n      <!--</mat-card-header>-->\n      <!--product {{product | json}}-->\n\n\n      <!--<mat-card-content>-->\n\n\n      <!--</mat-card-content>-->\n      <!--<mat-card-actions>-->\n      <!--</mat-card-actions>-->\n    <!--</mat-card>-->\n  <!--</div>-->\n<!--</div>-->\n<div class=\"row\" fxLayout=\"column\" fxLayout.gt-xs=\"row\">\n  <div class=\"cell\" fxFlex.gt-xs=\"20\" fxFlex.gt-md=\"15\">\n    <app-products-detail-side [siblings]=\"siblings\" [category_id]=\"category_id\"></app-products-detail-side>\n  </div>\n  <div class=\"cell\" fxFlex.gt-xs=\"80\" fxFlex.gt-md=\"85\">\n    <app-products-detail-main [product]=\"product\" [category_id]=\"category_id\"></app-products-detail-main>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -452,6 +456,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_product_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../services/product.service */ "./src/app/services/product.service.ts");
 /* harmony import */ var _services_catalog_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../services/catalog.service */ "./src/app/services/catalog.service.ts");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -461,6 +466,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -477,11 +483,14 @@ var ProductsDetailComponent = /** @class */ (function () {
         this.route.paramMap.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["mergeMap"])(function (paramMap) {
             _this.category_id = paramMap.get('category_id');
             _this.product_id = paramMap.get('product_id');
-            return _this.productService.getProductById(_this.product_id);
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_5__["forkJoin"])(_this.productService.getProductById(_this.product_id), _this.productService.getProductsByCategory(_this.category_id));
         }))
             .subscribe(function (result) {
-            _this.product = result.data;
+            // console.log('result', result);
+            _this.product = result[0].data;
             console.log('detail product', _this.product);
+            _this.siblings = result[1].data;
+            console.log('detail descendants', _this.siblings);
         });
     };
     ProductsDetailComponent = __decorate([
