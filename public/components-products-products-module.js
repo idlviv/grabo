@@ -284,7 +284,7 @@ var ProductsCatalogComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  products-detail-main works!\n</p>\n<div class=\"row\">\n  <div class=\"cell\">\n    <mat-card>\n      <mat-card-header>\n        category_id {{category_id}}\n      </mat-card-header>\n      product {{product | json}}\n\n\n      <mat-card-content>\n\n\n      </mat-card-content>\n      <mat-card-actions>\n      </mat-card-actions>\n    </mat-card>\n  </div>\n</div>"
+module.exports = "<div class=\"row\">\n  <div class=\"cell\">\n    <mat-card>\n      <mat-card-header>\n        category_id {{category_id}}\n      </mat-card-header>\n      product {{product | json}}\n\n\n      <mat-card-content>\n\n\n      </mat-card-content>\n      <mat-card-actions>\n      </mat-card-actions>\n    </mat-card>\n  </div>\n</div>"
 
 /***/ }),
 
