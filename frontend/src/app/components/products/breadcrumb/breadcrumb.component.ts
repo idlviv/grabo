@@ -17,6 +17,7 @@ export class BreadcrumbComponent implements OnInit {
   hierarchyCategory: any;
   product_id: string;
   productName: any;
+  processing = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,13 +28,14 @@ export class BreadcrumbComponent implements OnInit {
   ngOnInit() {
     const $paramMap = this.route.paramMap;
     const $queryParamMap = this.route.queryParamMap;
-
+    this.processing = true;
     // const c = $paramMap.pipe(res => combineLatest(res, $queryParamMap));
     // c.subscribe(res => console.log('res', res);)
     combineLatest(
       $paramMap
         .pipe(
         mergeMap(paramMap => {
+          this.processing = true;
           this.category_id = paramMap.get('category_id');
           if (!this.category_id) {
             return this.catalogService.getAllParents('products');
@@ -51,6 +53,7 @@ export class BreadcrumbComponent implements OnInit {
           this.hierarchyCategory = result[0].data[0].hierarchy;
           this.hierarchyCategory.push(result[0].data[0]);
           this.hierarchyCategory.splice(0, 3);
+          this.processing = false;
 
         },
         err => console.log('Помилка breadcrumb', err)

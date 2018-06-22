@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n<!--<div *ngIf=\"currentCategory\">-->\r\n  <a mat-button\r\n     [routerLink]=\"['/products', 'ch']\"\r\n     [routerLinkActive]=\"['accent']\" [routerLinkActiveOptions]=\"{exact: true}\">\r\n    <mat-icon>home</mat-icon> Каталог<mat-icon>keyboard_arrow_right</mat-icon></a>\r\n  <a *ngFor=\"let hierarchyCategoryItem of hierarchyCategory\" mat-button\r\n     [routerLink]=\"['/products', 'ch', {outlets: {primary: [hierarchyCategoryItem._id], breadcrumb: [hierarchyCategoryItem._id]}}]\"\r\n     [routerLinkActive]=\"['accent']\" [routerLinkActiveOptions]=\"{exact: true}\">\r\n    <mat-icon>folder</mat-icon> {{hierarchyCategoryItem.name}}<mat-icon>keyboard_arrow_right</mat-icon></a>\r\n  <!--<a mat-button disabled [routerLink]=\"['/catalog', currentCategory._id, {outlets: {breadcrumb: [currentCategory._id]}}]\"-->\r\n     <!--[routerLinkActive]=\"['accent-background']\" [routerLinkActiveOptions]=\"{exact: true}\">-->\r\n    <!--{{currentCategory.name}}-->\r\n  <!--</a>-->\r\n    <a *ngIf=\"productName\" mat-button\r\n       [routerLinkActive]=\"['accent']\" [routerLinkActiveOptions]=\"{exact: true}\" disabled>\r\n      <mat-icon>insert_photo</mat-icon> {{productName}}</a>\r\n</div>"
+module.exports = "<div class=\"row\">\r\n<!--<div *ngIf=\"currentCategory\">-->\r\n  <a mat-button\r\n     [routerLink]=\"['/products', 'ch']\"\r\n     [routerLinkActive]=\"['accent']\" [routerLinkActiveOptions]=\"{exact: true}\">\r\n    <mat-icon>home</mat-icon> Каталог<mat-icon>keyboard_arrow_right</mat-icon></a>\r\n  <div *ngIf=\"!processing\" >\r\n    <a *ngFor=\"let hierarchyCategoryItem of hierarchyCategory\" mat-button\r\n       [routerLink]=\"['/products', 'ch', {outlets: {primary: [hierarchyCategoryItem._id], breadcrumb: [hierarchyCategoryItem._id]}}]\"\r\n       [routerLinkActive]=\"['accent']\" [routerLinkActiveOptions]=\"{exact: true}\">\r\n      <mat-icon>folder</mat-icon> {{hierarchyCategoryItem.name}}<mat-icon>keyboard_arrow_right</mat-icon></a>\r\n    <!--<a mat-button disabled [routerLink]=\"['/catalog', currentCategory._id, {outlets: {breadcrumb: [currentCategory._id]}}]\"-->\r\n    <!--[routerLinkActive]=\"['accent-background']\" [routerLinkActiveOptions]=\"{exact: true}\">-->\r\n    <!--{{currentCategory.name}}-->\r\n    <!--</a>-->\r\n    <a *ngIf=\"productName\" mat-button\r\n       [routerLinkActive]=\"['accent']\" [routerLinkActiveOptions]=\"{exact: true}\" disabled>\r\n      <mat-icon>insert_photo</mat-icon> {{productName}}</a>\r\n  </div>\r\n\r\n</div>"
 
 /***/ }),
 
@@ -58,15 +58,18 @@ var BreadcrumbComponent = /** @class */ (function () {
         this.route = route;
         this.catalogService = catalogService;
         this.productService = productService;
+        this.processing = true;
     }
     BreadcrumbComponent.prototype.ngOnInit = function () {
         var _this = this;
         var $paramMap = this.route.paramMap;
         var $queryParamMap = this.route.queryParamMap;
+        this.processing = true;
         // const c = $paramMap.pipe(res => combineLatest(res, $queryParamMap));
         // c.subscribe(res => console.log('res', res);)
         Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["combineLatest"])($paramMap
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["mergeMap"])(function (paramMap) {
+            _this.processing = true;
             _this.category_id = paramMap.get('category_id');
             if (!_this.category_id) {
                 return _this.catalogService.getAllParents('products');
@@ -80,6 +83,7 @@ var BreadcrumbComponent = /** @class */ (function () {
             _this.hierarchyCategory = result[0].data[0].hierarchy;
             _this.hierarchyCategory.push(result[0].data[0]);
             _this.hierarchyCategory.splice(0, 3);
+            _this.processing = false;
         }, function (err) { return console.log('Помилка breadcrumb', err); });
         ////////////////////////////
         // this.route.paramMap.pipe(
@@ -284,7 +288,7 @@ var ProductsCatalogComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"cell\">\n    <mat-card>\n      <mat-card-header>\n        category_id {{category_id}}\n      </mat-card-header>\n      product {{product | json}}\n\n\n      <mat-card-content>\n\n\n      </mat-card-content>\n      <mat-card-actions>\n      </mat-card-actions>\n    </mat-card>\n  </div>\n</div>"
+module.exports = "<div class=\"row\">\n  <div class=\"cell\">\n    <mat-card>\n      <mat-card-header>\n        <!--category_id {{category_id}}-->\n      </mat-card-header>\n      <!--product {{product | json}}-->\n\n\n      <mat-card-content>\n        <div class=\"row\" fxLayout=\"column\" fxLayout.gt-xs=\"row\">\n          <div class=\"cell\">\n            <h1>TITLE GRABOFLEX START</h1>\n            <p>MAIN TEXT Экономичное решение для небольших мультифункциональных спортзалов,\n              где важно иметь долговечную и безопасную площадку для игр. Плотный\n              вспененный слой на обратной стороне обеспечивает соответствующий\n              комфорт ходьбы. Рекомендуем для покрытия пола небольших спортивных\n              помещений, а также и помещений для игр в детских садах.\n            </p>\n          </div>\n        </div>\n        <div class=\"row\" fxLayout=\"column\" fxLayout.gt-xs=\"row\">\n          <div class=\"cell\" fxFlex=\"100\" fxFlex.gt-sm=\"50\">\n            <p>ADDITIONAL SECTOR1 Паркетная система Grabo StrongAir Elite, специально разработанная для больших нагрузок,\n              предназначена для мультифункциональных спортзалов. Верхняя часть системы представляет\n              собой трёхслойный спортивный паркет толщиной 22 мм, со стабильным средним слоем и износостойким\n              спортивным лаком. Благодаря своему отличному энергопоглащающему основанию, система эффективно защищает\n              суставы спортсмена, максимально способствует достижению выдающихся спортивных результатов.\n            </p>\n          </div>\n          <div class=\"cell\" fxFlex=\"100\" fxFlex.gt-sm=\"50\">\n            <p>ADDITIONAL SECTOR2 Паркетная система Grabo StrongAir Elite, специально разработанная для больших нагрузок,\n              предназначена для мультифункциональных спортзалов. Верхняя часть системы представляет\n              собой трёхслойный спортивный паркет толщиной 22 мм, со стабильным средним слоем и износостойким\n              спортивным лаком. Благодаря своему отличному энергопоглащающему основанию, система эффективно защищает\n              суставы спортсмена, максимально способствует достижению выдающихся спортивных результатов.\n            </p>\n          </div>\n        </div>\n\n          <div class=\"row\" fxLayout=\"column\" fxLayout.gt-xs=\"row\">\n            <div class=\"cell\">\n              <p>DESIGN ZONE Паркетная система Grabo StrongAir Elite, специально разработанная для больших нагрузок,\n                предназначена для мультифункциональных спортзалов. Верхняя часть системы представляет\n                собой трёхслойный спортивный паркет толщиной 22 мм, со стабильным средним слоем и износостойким\n                спортивным лаком. Благодаря своему отличному энергопоглащающему основанию, система эффективно защищает\n                суставы спортсмена, максимально способствует достижению выдающихся спортивных результатов.\n              </p>\n            </div>\n          </div>\n\n\n      </mat-card-content>\n      <mat-card-actions>\n      </mat-card-actions>\n    </mat-card>\n  </div>\n</div>"
 
 /***/ }),
 
