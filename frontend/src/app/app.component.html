@@ -116,17 +116,12 @@
 
       <div fxLayout="column">
         <mat-nav-list>
-          <mat-list-item *ngFor="let mainMenuCommonItem
- of mainMenuCommonItems
-">
+          <mat-list-item *ngFor="let mainMenuCommonItem of mainMenuCommonItems">
             <!--<mat-icon mat-list-icon>swap_horiz</mat-icon>-->
-
             <a matLine
                [routerLinkActive]="['muted']" [routerLinkActiveOptions]="{exact: true}"
-               [routerLink]="['/products', 'cat', mainMenuCommonItem
-._id]" (click)="sidenav.toggle()">
-              {{mainMenuCommonItem
-.name}}
+               [routerLink]="['/', mainMenuCommonItem._id, 'ch']" (click)="sidenav.toggle()">
+              {{mainMenuCommonItem.name}}
             </a>
             <!--<button mat-icon-button>-->
               <!--<mat-icon>info</mat-icon>-->
