@@ -692,3 +692,21 @@ mat-sidenav-content {
 //  position: relative;
 //  right: -50%;
 //}
+
+
+//new
+.flex {
+  display: flex;
+}
+
+.product-detail-main {
+  @include gt-xs {
+    flex: 1 1 calc(100% - 200px);
+  }
+}
+
+.product-detail-side {
+  @include gt-xs {
+    flex: 0 0 200px;
+  }
+}

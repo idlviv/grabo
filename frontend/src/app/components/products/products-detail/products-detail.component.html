@@ -16,11 +16,22 @@
     <!--</mat-card>-->
   <!--</div>-->
 <!--</div>-->
-<div class="row" fxLayout="column" fxLayout.gt-xs="row">
-  <div class="cell" fxFlex.gt-xs="0 0 200px">
+<div class="row flex" fxLayout="column" fxLayout.gt-xs="row">
+
+  <div class="cell" fxFlex.gt-xs="200px">
     <app-products-detail-side [siblings]="siblings" [category_id]="category_id"></app-products-detail-side>
   </div>
-  <div class="cell" fxFlex.gt-xs="1 1 100%-200px">
+  <div class="cell" fxFlex.gt-xs="100%-200px">
     <app-products-detail-main [product]="product" [category_id]="category_id"></app-products-detail-main>
   </div>
 </div>
+
+<!--<div class="row flex" fxLayout="column" fxLayout.gt-xs="row">-->
+
+  <!--<div class="cell product-detail-side">-->
+    <!--<app-products-detail-side [siblings]="siblings" [category_id]="category_id"></app-products-detail-side>-->
+  <!--</div>-->
+  <!--<div class="cell product-detail-main">-->
+    <!--<app-products-detail-main [product]="product" [category_id]="category_id"></app-products-detail-main>-->
+  <!--</div>-->
+<!--</div>-->
