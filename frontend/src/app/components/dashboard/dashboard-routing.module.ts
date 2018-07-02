@@ -4,8 +4,9 @@ import { ProductCreateComponent } from './product-create/product-create.componen
 import { DashboardComponent } from './dashboard.component';
 import { DashboardSidenavComponent } from './dashboard-sidenav/dashboard-sidenav.component';
 import { UserProfileComponent } from '../user/user-profile/user-profile.component';
-import { ProductEditComponent } from './product-edit/product-edit.component';
+import { DesignsEditorComponent } from './designs-editor/designs-editor.component';
 import { AuthGuard } from '../../guards/auth.guard';
+import { DesignsEditorFormComponent } from './designs-editor-form/designs-editor-form.component';
 
 const dashboardRoutes: Routes = [
   {
@@ -20,17 +21,37 @@ const dashboardRoutes: Routes = [
         path: '',
         component: DashboardSidenavComponent,
         outlet: 'dashboardSidenav',
-      },
-      {
-        path: 'product-create',
-        component: ProductCreateComponent,
-      },
-      {
-        path: 'product-edit/:_id',
-        component: ProductCreateComponent,
         canActivate: [AuthGuard],
         data: { auth: 'manager' },
       },
+      {
+        path: 'designs_editor',
+        component: DesignsEditorComponent,
+        canActivate: [AuthGuard],
+        data: { auth: 'manager' },
+      },
+      {
+        path: 'designs_editor_edit/:_id',
+        component: DesignsEditorFormComponent,
+        canActivate: [AuthGuard],
+        data: { auth: 'manager' },
+      },
+      {
+        path: 'designs_editor_new',
+        component: DesignsEditorFormComponent,
+        canActivate: [AuthGuard],
+        data: { auth: 'manager' },
+      },
+      // {
+      //   path: 'product-create',
+      //   component: ProductCreateComponent,
+      // },
+      // {
+      //   path: 'product-edit/:_id',
+      //   component: ProductCreateComponent,
+      //   canActivate: [AuthGuard],
+      //   data: { auth: 'manager' },
+      // },
       {
         path: 'profile',
         component: UserProfileComponent,

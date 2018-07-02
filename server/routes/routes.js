@@ -6,7 +6,16 @@ const userController = require('../controllers/userController');
 const catalogController = require('../controllers/catalogController');
 const uploadController = require('../controllers/uploadController');
 const productController = require('../controllers/productController');
+const designController = require('../controllers/designController');
 const recaptcha = require('../middleware/recaptcha');
+
+/**
+ * product routes
+ */
+
+router.get('/product/get-designs',
+  designController.getDesigns
+);
 
 /**
  * product routes

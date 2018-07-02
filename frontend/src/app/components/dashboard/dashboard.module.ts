@@ -9,6 +9,9 @@ import { UserModule } from '../user/user.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductEditComponent } from './product-edit/product-edit.component';
 import { CloudinaryModule } from '@cloudinary/angular-5.x';
+import { DesignsEditorComponent } from './designs-editor/designs-editor.component';
+import { SharedModule } from '../shared/shared.module';
+import { DesignsEditorFormComponent } from './designs-editor-form/designs-editor-form.component';
 
 @NgModule({
   imports: [
@@ -17,8 +20,9 @@ import { CloudinaryModule } from '@cloudinary/angular-5.x';
     MaterialModule,
     DashboardRoutingModule,
     UserModule,
-    CloudinaryModule
+    CloudinaryModule,
+    SharedModule,
   ],
-  declarations: [ProductCreateComponent, DashboardComponent, DashboardSidenavComponent, ProductEditComponent]
+  declarations: [ProductCreateComponent, DashboardComponent, DashboardSidenavComponent, ProductEditComponent, DesignsEditorComponent, DesignsEditorFormComponent]
 })
 export class DashboardModule { }

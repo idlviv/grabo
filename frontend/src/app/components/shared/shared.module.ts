@@ -10,6 +10,7 @@ import { MessageComponent } from './message/message.component';
 import { CloudinaryModule } from '@cloudinary/angular-5.x';
 import { RouterModule } from '@angular/router';
 import { ConfirmPopupComponent } from './confirm-popup/confirm-popup.component';
+import { DesignItemComponent } from './design-item/design-item.component';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { ConfirmPopupComponent } from './confirm-popup/confirm-popup.component';
     HomeComponent,
     MessageComponent,
     ProductItemComponent,
+    DesignItemComponent,
   ],
   declarations: [
     NavbarComponent,
@@ -34,6 +36,7 @@ import { ConfirmPopupComponent } from './confirm-popup/confirm-popup.component';
     MessageComponent,
     ProductItemComponent,
     ConfirmPopupComponent,
+    DesignItemComponent,
   ],
   // entryComponents: [
   //   ConfirmPopupComponent,

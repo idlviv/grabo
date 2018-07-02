@@ -49,45 +49,32 @@
             <div class="info-block-row-title mat-title">{{user.login}}</div>
           </div>
         </div>
+
         <div class="info-block-row-wrapper">
-            <div fxLayout="row" fxLayoutAlign="center" class="info-block-row wrap">
-              <div fxFlex="100%">
+            <div fxLayout="row" fxLayoutAlign="center" class="info-block-row">
+              <!--<div fxFlex="100%">-->
                 <div class="info-block-row-title mat-subheading-1" fxFlex="40%">Email</div>
-                <div class="mat-subheading-2 muted" fxFlex="60%">{{user.email}}</div>
+                <div class="mat-body-1 muted" fxFlex="60%">{{user.email}}</div>
                 <mat-icon *ngIf="processing !== 'email'" fxFlex="30px"
                           (click)="openDialog(makeEmailObject())" class="muted">edit</mat-icon>
                 <mat-spinner *ngIf="processing === 'email'" fxFlex="30px" [diameter]="24"></mat-spinner>
-              </div>
-
-              <!--<div fxFlex="100%" *ngIf="user.role === 'guest'">-->
-                <!--<div class="info-block-row-title" fxFlex="100%">-->
-                  <!--<a class="mat-body-1 danger" [routerLink]="['/user/create']">Пошту не верифіковано</a>-->
-                <!--</div>-->
-                <!--&lt;!&ndash;<div fxFlex></div>&ndash;&gt;-->
               <!--</div>-->
             </div>
         </div>
+
         <div *ngIf="user.role === 'guest' && !verificationSent" class="info-block-row-wrapper border-0">
           <div fxLayout="row" fxLayoutAlign="center" class="info-block-row mail-verification">
-            <!--<div class="info-block-row-title mat-subheading-1" fxFlex="100%">Пошту не верифіковано</div>-->
-            <!--<div fxFlex></div>-->
             <div class="mat-body-1" fxFlex="100%">Пошту не верифіковано, надіслати код</div>
             <mat-icon *ngIf="processing !== 'verification'" fxFlex="30px" (click)="onVerificationSend()">mail</mat-icon>
             <mat-spinner *ngIf="processing === 'verification'" fxFlex="30px" [diameter]="24"></mat-spinner>
-
           </div>
         </div>
 
         <div *ngIf="user.role === 'guest' && verificationSent" class="info-block-row-wrapper border-0">
           <div fxLayout="row" fxLayoutAlign="center" class="info-block-row mail-verification">
-            <!--<div class="info-block-row-title mat-subheading-1" fxFlex="100%">Пошту не верифіковано</div>-->
-            <!--<div fxFlex></div>-->
             <div class="mat-body-1 muted" fxFlex="100%">На пошту надіслано посилання</div>
             <mat-icon *ngIf="processing !== 'verification'" fxFlex="30px" class="muted" (click)="onVerificationSend()">refresh</mat-icon>
             <mat-spinner *ngIf="processing === 'verification'" fxFlex="30px" [diameter]="24"></mat-spinner>
-
-            <!--<mat-spinner *ngIf="processing === 'name'" fxFlex="30px" [diameter]="24"></mat-spinner>-->
-
           </div>
         </div>
 

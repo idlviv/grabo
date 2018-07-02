@@ -6,21 +6,32 @@ const DesignSchema = new Schema({
   _id: {
     type: String,
     required: true,
-    unique: true
+    // unique: true
   },
-  img: {
+  imgBig: {
     type: [String],
     default: config.get('defaultProductImgPath'),
     required: true
   },
-  cols: {
+  imgSmall: {
     type: [String],
+    default: config.get('defaultProductImgPath'),
     required: true
   },
-  tags: {
-    type: [String],
-    required: true
-  },
+  // cols: {
+  //   type: [String],
+  //   required: true
+  // },
+  tags: [{
+    name: {
+      type: String,
+      required: true
+    },
+    value: {
+      type: String,
+      required: true
+    },
+  }],
 });
 
 let DesignModel = mongoose.model('designs', DesignSchema);
