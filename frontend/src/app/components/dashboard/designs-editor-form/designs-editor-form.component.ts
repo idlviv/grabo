@@ -1,4 +1,6 @@
+
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-designs-editor-form',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DesignsEditorFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+
+  ) { }
 
   ngOnInit() {
   }
-
 }

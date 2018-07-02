@@ -1,4 +1,4 @@
-<mat-card *ngIf="design._id">
+<mat-card *ngIf="!editMode">
   <mat-card-header></mat-card-header>
   <mat-card-title></mat-card-title>
 
@@ -10,25 +10,21 @@
              alt="design picture" class="product-cl-image">
       </div>
     </div>
-    <div *ngFor="let tag of design.tags">
       <!--<div class="info-block-row-wrapper">-->
-        <div fxLayout="row" fxLayoutAlign="center" class="info-block-row">
-          <!--<mat-icon class="muted">edit</mat-icon>-->
-          <div class="info-block-row-title mat-subheading-1" fxFlex="40%">{{tag.name}}</div>
-          <div class="mat-subheading-1 muted" fxFlex="60%">{{tag.value}}</div>
-          <!--<mat-icon *ngIf="processing !== 'email'" fxFlex="30px"-->
-                    <!--(click)="openDialog(makeEmailObject())" class="muted">edit</mat-icon>-->
-          <!--<mat-spinner *ngIf="processing === 'email'" fxFlex="30px" [diameter]="24"></mat-spinner>-->
-        <!--</div>-->
+      <div fxLayout="row" fxLayoutAlign="center" class="info-block-row">
+        <!--<mat-icon class="muted">edit</mat-icon>-->
+        <div class="info-block-row-title mat-subheading-1" fxFlex="40%">Структура</div>
+        <div class="mat-subheading-1 muted" fxFlex="60%">{{design.structure}}</div>
+        <!--<mat-icon *ngIf="processing !== 'email'" fxFlex="30px"-->
+                  <!--(click)="openDialog(makeEmailObject())" class="muted">edit</mat-icon>-->
+        <!--<mat-spinner *ngIf="processing === 'email'" fxFlex="30px" [diameter]="24"></mat-spinner>-->
+      <!--</div>-->
       </div>
-    </div>
   </mat-card-content>
   <mat-card-actions>
     <div fxFlex></div>
     <div fxFlex>
-      <a mat-icon-button
-         [routerLink]="['/dashboard/designs_editor_edit', design._id]"
-         [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">
+      <a mat-icon-button (click)="onEditMode(true)">
         <mat-icon>edit</mat-icon>
       </a>
       <a mat-icon-button>

@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { config } from '../../../app.config';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-design-item',
@@ -9,10 +12,32 @@ import { config } from '../../../app.config';
 export class DesignItemComponent implements OnInit {
   @Input() design;
   config = config;
+  designForm: FormGroup;
+  processingLoadFile = -1;
+  editMode = false;
+  edited_id: string;
 
-  constructor() { }
+  constructor(
+    private matSnackBar: MatSnackBar,
+    private route: ActivatedRoute,
+  ) { }
 
   ngOnInit() {
+    this.designForm = new FormGroup({
+      _id: new FormControl('', [
+        Validators.required,
+        Validators.minLength(7),
+        Validators.maxLength(12),
+      ]),
+      structure: new FormControl('', [
+        Validators.required,
+      ]),
+      files: new FormControl('file', [
+      ])
+    });
   }
 
+  onEditMode(editMode) {
+    this.editMode = editMode;
+  }
 }

@@ -9,29 +9,31 @@ const DesignSchema = new Schema({
     // unique: true
   },
   imgBig: {
-    type: [String],
+    type: String,
     default: config.get('defaultProductImgPath'),
     required: true
   },
   imgSmall: {
-    type: [String],
+    type: String,
     default: config.get('defaultProductImgPath'),
     required: true
   },
-  // cols: {
-  //   type: [String],
-  //   required: true
-  // },
-  tags: [{
-    name: {
-      type: String,
-      required: true
-    },
-    value: {
-      type: String,
-      required: true
-    },
-  }],
+  structure: {
+    type: String,
+    required: true,
+    enum: ['дошка', 'художній паркет', 'плитка', 'абстракція'],
+
+  },
+  // tags: [{
+  //   name: {
+  //     type: String,
+  //     required: true
+  //   },
+  //   value: {
+  //     type: String,
+  //     required: true
+  //   },
+  // }],
 });
 
 let DesignModel = mongoose.model('designs', DesignSchema);
