@@ -6,7 +6,7 @@ import { DashboardComponent } from './dashboard.component';
 import { MaterialModule } from '../../material.module';
 import { DashboardSidenavComponent } from './dashboard-sidenav/dashboard-sidenav.component';
 import { UserModule } from '../user/user.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CloudinaryModule } from '@cloudinary/angular-5.x';
 import { DesignsEditorComponent } from './designs-editor/designs-editor.component';
 import { SharedModule } from '../shared/shared.module';
@@ -16,6 +16,7 @@ import { DesignsEditorFormComponent } from './designs-editor-form/designs-editor
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
     MaterialModule,
     DashboardRoutingModule,
     UserModule,

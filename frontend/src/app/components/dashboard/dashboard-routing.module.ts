@@ -30,18 +30,18 @@ const dashboardRoutes: Routes = [
         canActivate: [AuthGuard],
         data: { auth: 'manager' },
       },
-      // {
-      //   path: 'designs_editor_edit/:_id',
-      //   component: DesignsEditorFormComponent,
-      //   canActivate: [AuthGuard],
-      //   data: { auth: 'manager' },
-      // },
-      // {
-      //   path: 'designs_editor_new',
-      //   component: DesignsEditorFormComponent,
-      //   canActivate: [AuthGuard],
-      //   data: { auth: 'manager' },
-      // },
+      {
+        path: 'designs_editor_edit/:_id',
+        component: DesignsEditorFormComponent,
+        canActivate: [AuthGuard],
+        data: { auth: 'manager' },
+      },
+      {
+        path: 'designs_editor_new',
+        component: DesignsEditorFormComponent,
+        canActivate: [AuthGuard],
+        data: { auth: 'manager' },
+      },
       // {
       //   path: 'product-create',
       //   component: ProductCreateComponent,

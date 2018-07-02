@@ -23,21 +23,6 @@ export class DesignItemComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.designForm = new FormGroup({
-      _id: new FormControl('', [
-        Validators.required,
-        Validators.minLength(7),
-        Validators.maxLength(12),
-      ]),
-      structure: new FormControl('', [
-        Validators.required,
-      ]),
-      files: new FormControl('file', [
-      ])
-    });
-  }
 
-  onEditMode(editMode) {
-    this.editMode = editMode;
   }
 }

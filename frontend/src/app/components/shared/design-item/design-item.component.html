@@ -1,4 +1,4 @@
-<mat-card *ngIf="!editMode">
+<mat-card>
   <mat-card-header></mat-card-header>
   <mat-card-title></mat-card-title>
 
@@ -24,7 +24,9 @@
   <mat-card-actions>
     <div fxFlex></div>
     <div fxFlex>
-      <a mat-icon-button (click)="onEditMode(true)">
+      <a mat-icon-button
+      [routerLink]="['/dashboard/designs_editor_edit', design._id]"
+      [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">
         <mat-icon>edit</mat-icon>
       </a>
       <a mat-icon-button>
