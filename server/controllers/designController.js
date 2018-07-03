@@ -18,3 +18,37 @@ module.exports.getDesigns = function(req, res, next) {
         })
         .catch(err => next(new DbError()));
 };
+
+module.exports.designAddImage = function(req, res, next) {
+  let form = new formidable.IncomingForm({maxFileSize: 10500000});
+
+  form.parse(req, function(err, fields, files) {
+    if (err) {
+      return next(new ApplicationError('Помилка завантаження зображення - form parse', 400));
+    }
+
+    log.verbose('fields', fields);
+    // log.verbose('files', files);
+    log.verbose('date', Date.now());
+    log.verbose('date-slice', String(Date.now()).slice(0, 7));
+
+    cloudinary.v2.uploader.upload(
+      files.file.path,
+      {
+        public_id: fields.design_id + '-' + Date.now(), // jscs:ignore requireCamelCaseOrUpperCaseIdentifiers
+        width: 650, height: 650, crop: 'fill'
+      },
+      function(err, result) {
+        if (err) {
+          return next(
+            new ApplicationError('Помилка завантаження аватара - upload', 400)
+          );
+        }
+        console.log('product_img_cloudinary result', result);
+        return res.status(200).json(
+          new ResObj(true, 'Зображення завнтажене', result.public_id) // jscs:ignore requireCamelCaseOrUpperCaseIdentifiers
+        );
+      });
+
+  });
+};

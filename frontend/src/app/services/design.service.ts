@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { IResponse } from '../interfaces/server-response-interface';
 import { UserService } from './user.service';
+import { Observable } from 'rxjs/index';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,26 @@ export class DesignService {
       }),
     };
     return this.http.get<IResponse>(
-      'api/product/get-designs',
+      'api/design/get-designs',
+      httpOptions
+    );
+  }
+
+  designAddImage(file, design_id): Observable<IResponse> {
+    console.log('file', file);
+    const formData: FormData = new FormData();
+    formData.append('file', file, file.name);
+    formData.append('design_id', design_id);
+
+    const token = this.userService.userLocalGetToken('token');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': token
+      })
+    };
+    return this.http.post<IResponse>(
+      'api/design/add-image',
+      formData,
       httpOptions
     );
   }

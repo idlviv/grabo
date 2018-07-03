@@ -6,6 +6,7 @@ import { config } from '../../../app.config';
 import { IProduct } from '../../../interfaces/product-interface';
 import { IDesign } from '../../../interfaces/interface';
 import { ProductService } from '../../../services/product.service';
+import { DesignService } from '../../../services/design.service';
 
 
 @Component({
@@ -16,7 +17,7 @@ import { ProductService } from '../../../services/product.service';
 export class DesignsEditorFormComponent implements OnInit {
   config = config;
   designForm: FormGroup;
-  processingLoadFile = -1;
+  processingLoadFile = false;
   editMode = false;
   edited_id: string;
   design: IDesign;
@@ -24,7 +25,8 @@ export class DesignsEditorFormComponent implements OnInit {
   constructor(
     private matSnackBar: MatSnackBar,
     private route: ActivatedRoute,
-    private productService: ProductService
+    private productService: ProductService,
+    private designService: DesignService,
   ) { }
 
   ngOnInit() {
@@ -38,7 +40,8 @@ export class DesignsEditorFormComponent implements OnInit {
       structure: new FormControl('', [
         Validators.required,
       ]),
-      image: new FormControl('file', [
+      image: new FormControl('', [
+        Validators.required,
       ])
     });
 
@@ -52,40 +55,35 @@ export class DesignsEditorFormComponent implements OnInit {
   }
 
   addPictures(event) {
-    this.processingLoadFile = this.designForm.get('image').value.length;
+    this.processingLoadFile = true;
     const file = event.target.files[0];
     const checkFile = this.productService.checkFile(file);
 
     if (!checkFile.success) {
       this.matSnackBar.open(checkFile.message || 'Помилка', '',
         {duration: 3000, panelClass: 'snack-bar-danger'});
-      this.processingLoadFile = -1;
+      this.processingLoadFile = false;
+      this.designForm.get('_id').enable();
+      this.designForm.get('structure').enable();
     } else {
 
-      this.designForm.get('image').setValue(file);
+      // this.designForm.get('image').setValue(file);
       console.log('added file', this.designForm.get('image').value);
-      // this.productService.productAddImage(file, this.designForm.get('sku').value)
-      //   .subscribe(result => {
-      //       // this.previewProductImages.pop();
-      //       filesLinks.pop();
-      //       filesLinks.push(result.data);
-      //       this.designForm.get('files').setValue(filesLinks);
-      //       console.log('this.designForm.get(\'files\').value', this.designForm.get('files').value);
-      //       // this.previewProductImages = filesLinks;
-      //       // console.log('this.previewProductImages', this.previewProductImages);
-      //       console.log(result);
-      //       this.processingLoadFile = -1;
-      //     },
-      //     err => {
-      //       this.matSnackBar.open(err.error || 'Помилка', '',
-      //         {duration: 3000, panelClass: 'snack-bar-danger'});
-      //       this.removeFile(this.designForm.get('files').value.length - 1);
-      //       // this.previewProductImages.pop();
-      //       filesLinks.pop();
-      //       this.processingLoadFile = -1;
-      //
-      //     }
-      //   );
+      this.designService.designAddImage(file, this.designForm.get('_id').value)
+        .subscribe(result => {
+            this.designForm.get('image').setValue(result.data);
+            this.processingLoadFile = false;
+            this.designForm.get('_id').enable();
+            this.designForm.get('structure').enable();
+          },
+          err => {
+            this.matSnackBar.open(err.error || 'Помилка', '',
+              {duration: 3000, panelClass: 'snack-bar-danger'});
+            this.processingLoadFile = false;
+            this.designForm.get('_id').enable();
+            this.designForm.get('structure').enable();
+          }
+        );
     }
   }
 

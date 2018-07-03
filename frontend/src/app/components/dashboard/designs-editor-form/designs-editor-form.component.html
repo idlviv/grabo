@@ -37,18 +37,17 @@
                     </div>
 
                     <div class="cell" fxFlex="100">
-<!--{{config | json}}-->
                       <mat-form-field>
-                        <mat-select placeholder="Структура" formControlName="structure">
+                        <mat-select placeholder="Структура" formControlName="structure" required>
                           <mat-option *ngFor="let struct of config.designStructure" [value]="struct">
                             {{struct}}
                           </mat-option>
-                          <mat-error
-                            *ngIf="designForm.get('_id').errors?.required &&
-                            designForm.get('_id').touched">
-                            Виберіть категорію
-                          </mat-error>
                         </mat-select>
+                        <mat-error
+                          *ngIf="designForm.get('structure').errors?.required &&
+                            designForm.get('structure').touched">
+                          Виберіть категорію
+                        </mat-error>
                       </mat-form-field>
                     </div>
 
@@ -56,19 +55,27 @@
                 </div>
                 <div class="cell" fxFlex.gt-xs="50">
                     <div class="preview-img-wrapper">
-                      <img src="{{config.defaultProductImgPath}}" alt="designImage">
+                      <img *ngIf="designForm.get('image').value"
+                           src="{{config.imgPath + config.cloudinary.cloud_name + '/' + designForm.get('image').value}}"
+                           alt="designImage">
+                      <img *ngIf="!designForm.get('image').value"
+                           src="{{config.defaultProductImgPath}}" alt="designImage">
                       <input #inputFile type="file" (change)="addPictures($event)"
                              accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png" style="display:none;">
-
                       <div class="preview-div-processing">
-                        <div class="button-wrapper">
+                        <div *ngIf="processingLoadFile" class="spinner-wrapper">
+                          <mat-spinner [diameter]="24"></mat-spinner>
+                        </div>
+
+
+                        <div *ngIf="!processingLoadFile" class="button-wrapper">
                           <button mat-mini-fab color="primary" type="button"
-                                  (click)="inputFile.click();">
-                                <!--this.designForm.get('_id').disable();-->
-                                <!--this.designForm.get('structure').disable();"-->
-                                  <!--[disabled]="!productCreateForm.get('sku').disabled &&-->
-                                <!--!productCreateForm.get('sku').valid || processingLoadFile >= 0">-->
-                            <mat-icon>add</mat-icon>
+                                  (click)="inputFile.click();
+                                  designForm.get('_id').disable();
+                                  designForm.get('structure').disable();"
+                                  [disabled]="processingLoadFile || designForm.get('_id').invalid">
+                            <mat-icon *ngIf="!designForm.get('image').value">add</mat-icon>
+                            <mat-icon *ngIf="designForm.get('image').value">redo</mat-icon>
                           </button>
 
                         </div>
@@ -83,8 +90,10 @@
                 <!--<span fxFlex></span>-->
                 <!--<button *ngIf="!editMode" mat-raised-button class="full-width" color="primary"-->
                         <!--[disabled]="!productCreateForm.valid || processingLoadFile >= 0">Створити</button>-->
-                <button *ngIf="editMode" mat-raised-button class="full-width" color="primary">Зберегти</button>
-                <button *ngIf="!editMode" mat-raised-button class="full-width" color="primary">Створити</button>
+                <button *ngIf="editMode" mat-raised-button class="full-width" color="primary"
+                        [disabled]="!designForm.valid || processingLoadFile">Зберегти</button>
+                <button *ngIf="!editMode" mat-raised-button class="full-width" color="primary"
+                        [disabled]="!designForm.valid || processingLoadFile">Створити</button>
               </div>
             </form>
           </div>

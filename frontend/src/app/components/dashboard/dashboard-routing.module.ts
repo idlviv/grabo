@@ -27,6 +27,12 @@ const dashboardRoutes: Routes = [
         data: { auth: 'manager' },
       },
       {
+        path: 'tmp',
+        component: ProductCreateComponent,
+        canActivate: [AuthGuard],
+        data: { auth: 'manager' },
+      },
+      {
         path: 'designs_editor',
         component: DesignsEditorComponent,
         canActivate: [AuthGuard],

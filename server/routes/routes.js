@@ -10,11 +10,16 @@ const designController = require('../controllers/designController');
 const recaptcha = require('../middleware/recaptcha');
 
 /**
- * product routes
+ * design routes
  */
 
-router.get('/product/get-designs',
+router.get('/design/get-designs',
   designController.getDesigns
+);
+
+router.post('/design/add-image',
+  passport.authenticate('jwt', {session: false}),
+  designController.designAddImage
 );
 
 /**
