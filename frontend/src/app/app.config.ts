@@ -10,5 +10,6 @@ export const config = {
   imgPath: 'https://res.cloudinary.com/',
   cloudinary: {
     cloud_name: 'hmm6pjfgk'
-  }
+  },
+  designStructure: ['дошка', 'художній паркет', 'плитка', 'абстракція']
 };

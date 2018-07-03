@@ -8,16 +8,16 @@ const DesignSchema = new Schema({
     required: true,
     // unique: true
   },
-  imgBig: {
+  image: {
     type: String,
     default: config.get('defaultProductImgPath'),
     required: true
   },
-  imgSmall: {
-    type: String,
-    default: config.get('defaultProductImgPath'),
-    required: true
-  },
+  // imgSmall: {
+  //   type: String,
+  //   default: config.get('defaultProductImgPath'),
+  //   required: true
+  // },
   structure: {
     type: String,
     required: true,

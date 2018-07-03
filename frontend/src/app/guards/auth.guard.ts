@@ -1,7 +1,5 @@
-
-import {of as observableOf,  Observable } from 'rxjs';
-
-import {catchError, map} from 'rxjs/operators';
+import { of as observableOf,  Observable } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { UserService } from '../services/user.service';

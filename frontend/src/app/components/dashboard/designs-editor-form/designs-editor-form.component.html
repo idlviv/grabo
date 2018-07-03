@@ -17,47 +17,74 @@
               </div>
             </div>
 
-            <form [formGroup]="designForm" (submit)="onDesignFormSubmit()">
+            <form [formGroup]="designForm" (submit)="onDesignFormSubmit()" novalidate>
 
               <div class="row" fxLayout="column" fxLayout.gt-xs="row">
+                <div class="container" fxFlex.gt-xs="50">
+                  <div class="row" fxLayout="column">
 
-                <!--<div formArrayName="categories" class="cell" fxFlex.gt-xs="50"-->
-                     <!--*ngFor="let categoryBlock of designForm.get('categories')['controls']; let i = index">-->
-                  <!--&lt;!&ndash;<div [formGroupName]="i">&ndash;&gt;-->
-                  <!--<mat-form-field>-->
-                    <!--<mat-select placeholder="Категорія" formControlName="{{i}}" required-->
-                                <!--(selectionChange)="onSelectCategory($event)">-->
-                      <!--<mat-optgroup *ngFor="let category of categories" [label]="category.name">-->
-                        <!--<mat-option *ngIf="category.numOfChildren === 0" [value]="category._id">-->
-                          <!--{{ category.name }}-->
-                        <!--</mat-option>-->
-                        <!--<mat-option *ngFor="let subCategory of category.children" [value]="subCategory._id">-->
-                          <!--{{ subCategory.name }}-->
-                        <!--</mat-option>-->
-                      <!--</mat-optgroup>-->
-                    <!--</mat-select>-->
-                    <!--<mat-error *ngIf="designForm.get('categories').at(i).errors?.required &&-->
-                        <!--designForm.get('categories').at(i).touched">-->
-                      <!--Виберіть категорію-->
-                    <!--</mat-error>-->
-                  <!--</mat-form-field>-->
-                  <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                <!--</div>-->
-
-                <div class="cell" fxFlex.gt-xs="50">
-                  <mat-form-field>
-                    <input matInput placeholder="Дизайн" formControlName="_id" required>
-                    <mat-error
-                      *ngIf="(designForm.get('_id').errors?.minlength ||
+                    <div class="cell" fxFlex="100">
+                        <mat-form-field>
+                          <input matInput placeholder="Дизайн" formControlName="_id" required>
+                          <mat-error
+                            *ngIf="(designForm.get('_id').errors?.minlength ||
                       designForm.get('_id').errors?.maxlength ||
                       designForm.get('_id').errors?.required) &&
                       designForm.get('_id').touched">
-                      Довжина повинна бути від 7 до 12 символів
-                    </mat-error>
-                  </mat-form-field>
+                            Довжина повинна бути від 7 до 12 символів
+                          </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="cell" fxFlex="100">
+<!--{{config | json}}-->
+                      <mat-form-field>
+                        <mat-select placeholder="Структура" formControlName="structure">
+                          <mat-option *ngFor="let struct of config.designStructure" [value]="struct">
+                            {{struct}}
+                          </mat-option>
+                          <mat-error
+                            *ngIf="designForm.get('_id').errors?.required &&
+                            designForm.get('_id').touched">
+                            Виберіть категорію
+                          </mat-error>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="cell" fxFlex.gt-xs="50">
+                    <div class="preview-img-wrapper">
+                      <img src="{{config.defaultProductImgPath}}" alt="designImage">
+                      <input #inputFile type="file" (change)="addPictures($event)"
+                             accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png" style="display:none;">
+
+                      <div class="preview-div-processing">
+                        <div class="button-wrapper">
+                          <button mat-mini-fab color="primary" type="button"
+                                  (click)="inputFile.click();">
+                                <!--this.designForm.get('_id').disable();-->
+                                <!--this.designForm.get('structure').disable();"-->
+                                  <!--[disabled]="!productCreateForm.get('sku').disabled &&-->
+                                <!--!productCreateForm.get('sku').valid || processingLoadFile >= 0">-->
+                            <mat-icon>add</mat-icon>
+                          </button>
+
+                        </div>
+                      </div>
+                    </div>
+
                 </div>
 
 
+              </div>
+              <div class="submit-button-wrapper">
+                <!--<span fxFlex></span>-->
+                <!--<button *ngIf="!editMode" mat-raised-button class="full-width" color="primary"-->
+                        <!--[disabled]="!productCreateForm.valid || processingLoadFile >= 0">Створити</button>-->
+                <button *ngIf="editMode" mat-raised-button class="full-width" color="primary">Зберегти</button>
+                <button *ngIf="!editMode" mat-raised-button class="full-width" color="primary">Створити</button>
               </div>
             </form>
           </div>

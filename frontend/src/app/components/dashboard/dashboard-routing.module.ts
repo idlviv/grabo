@@ -15,7 +15,9 @@ const dashboardRoutes: Routes = [
     children: [
       {
         path: '',
-        component: ProductCreateComponent,
+        component: DesignsEditorComponent,
+        canActivate: [AuthGuard],
+        data: { auth: 'manager' },
       },
       {
         path: '',
