@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -27,6 +28,7 @@ export class DesignsEditorFormComponent implements OnInit {
   constructor(
     private matSnackBar: MatSnackBar,
     private route: ActivatedRoute,
+    private location: Location,
     private productService: ProductService,
     private designService: DesignService,
   ) { }
@@ -132,6 +134,10 @@ export class DesignsEditorFormComponent implements OnInit {
 
   resetForm() {
     console.log('reset form');
+  }
+
+  goBack() {
+    this.location.back();
   }
 
 }

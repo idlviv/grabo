@@ -16,3 +16,5 @@ export class SharedService {
     return this.shareEvent$;
   }
 }
+
+// ['updateDesigns'] design-item-component => design-editor-component

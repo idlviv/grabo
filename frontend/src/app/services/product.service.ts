@@ -128,7 +128,7 @@ export class ProductService {
 
   checkFile(file): IResponse {
     if (!file) {
-      return ({success: false, message: 'Виберіть файл'});
+      return ({success: false, message: 'Файл не вибрано'});
     } else if (file.size > 10500000) {
       return ({success: false, message: 'Розмір файлу повинен бути менше 10Мб'});
     } else if (

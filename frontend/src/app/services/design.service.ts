@@ -76,4 +76,18 @@ export class DesignService {
     );
   }
 
+  designDelete(_id): Observable<IResponse> {
+    const token = this.userService.userLocalGetToken('token');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': token
+      })
+    };
+    return this.http.delete<IResponse>(
+      'api/design/delete/' + _id,
+      httpOptions
+    );
+  }
+
 }

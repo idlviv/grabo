@@ -79,3 +79,22 @@ module.exports.getDesignById = function(req, res, next) {
     .catch(err => next(new DbError())
     );
 };
+
+module.exports.designDelete = function(req, res, next) {
+  const _id = req.params._id;
+
+  // res.status(200).json(new ResObj(true, 'FAKE !! Продукт видалено'));
+  DesignModel.deleteOne({_id: _id})
+    .then(
+      result => {
+        log.debug('result', result);
+
+        if (result.n !== 1) {
+          next(new ApplicationError('Не вдалося внести зміни', 400));
+        } else {
+          return res.status(200).json(new ResObj(true, 'Продукт видалено'));
+        }
+      },
+      err => next(new DbError(err.message, err.code))
+    );
+};

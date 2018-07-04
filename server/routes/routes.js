@@ -31,6 +31,11 @@ router.get('/design/get-design-by-id/:_id',
   designController.getDesignById
 );
 
+router.delete('/design/delete/:_id',
+  passport.authenticate('jwt', {session: false}),
+  designController.designDelete
+);
+
 /**
  * product routes
  */

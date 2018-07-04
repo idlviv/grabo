@@ -90,10 +90,11 @@
                 <!--<span fxFlex></span>-->
                 <!--<button *ngIf="!editMode" mat-raised-button class="full-width" color="primary"-->
                         <!--[disabled]="!productCreateForm.valid || processingLoadFile >= 0">Створити</button>-->
-                <button *ngIf="editMode" mat-raised-button class="full-width" color="primary"
+                <button *ngIf="editMode" mat-raised-button color="primary"
                         [disabled]="!designForm.valid || processingLoadFile">Зберегти</button>
-                <button *ngIf="!editMode" mat-raised-button class="full-width" color="primary"
+                <button *ngIf="!editMode" mat-raised-button color="primary"
                         [disabled]="!designForm.valid || processingLoadFile">Створити</button>
+                <button mat-raised-button  type="button" (click)="goBack()">Повернутись</button>
               </div>
             </form>
           </div>
