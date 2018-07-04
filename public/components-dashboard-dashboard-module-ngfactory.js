@@ -1302,6 +1302,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../app.config */ "./src/app/app.config.ts");
 /* harmony import */ var _services_product_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../services/product.service */ "./src/app/services/product.service.ts");
 /* harmony import */ var _services_design_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../services/design.service */ "./src/app/services/design.service.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+
+
 
 
 
@@ -1337,8 +1341,27 @@ var DesignsEditorFormComponent = /** @class */ (function () {
         this.route.paramMap
             .subscribe(function (paramMap) {
             if (paramMap.get('_id')) {
-                _this.edited_id = paramMap.get('_id');
+                // this.edited_id = paramMap.get('_id');
+                // this.editMode = true;
+            }
+        });
+        this.route.paramMap.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["mergeMap"])(function (paramMap) {
+            _this.edited_id = paramMap.get('_id');
+            console.log('edited design _id', _this.edited_id);
+            if (!_this.edited_id) {
+                return Object(rxjs__WEBPACK_IMPORTED_MODULE_8__["of"])(null);
+            }
+            return _this.designService.getDesignById(_this.edited_id);
+        }))
+            .subscribe(function (result) {
+            if (result) {
+                // this.edited_id = paramMap.get('_id');
                 _this.editMode = true;
+                console.log('true', result);
+                _this.designForm.patchValue(result.data);
+            }
+            else {
+                console.log('false');
             }
         });
     };
@@ -1371,8 +1394,19 @@ var DesignsEditorFormComponent = /** @class */ (function () {
         }
     };
     DesignsEditorFormComponent.prototype.onDesignFormSubmit = function () {
+        var _this = this;
         this.design = this.designForm.value;
         console.log('design form submit', this.design);
+        this.designService.designUpsert(this.design)
+            .subscribe(function (result) {
+            _this.matSnackBar.open(result.message, '', { duration: 3000 });
+            _this.resetForm();
+            console.log('designUpsert', result);
+            // this.editMode = false;
+        }, function (err) { return _this.matSnackBar.open(err.error, '', { duration: 3000, panelClass: 'snack-bar-danger' }); });
+    };
+    DesignsEditorFormComponent.prototype.resetForm = function () {
+        console.log('reset form');
     };
     return DesignsEditorFormComponent;
 }());
@@ -2459,6 +2493,14 @@ var DesignService = /** @class */ (function () {
         };
         return this.http.get('api/design/get-designs', httpOptions);
     };
+    DesignService.prototype.getDesignById = function (_id) {
+        var httpOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpHeaders"]({
+                'Content-Type': 'application/json',
+            }),
+        };
+        return this.http.get('api/design/get-design-by-id/' + _id, httpOptions);
+    };
     DesignService.prototype.designAddImage = function (file, design_id) {
         console.log('file', file);
         var formData = new FormData();
@@ -2471,6 +2513,17 @@ var DesignService = /** @class */ (function () {
             })
         };
         return this.http.post('api/design/add-image', formData, httpOptions);
+    };
+    DesignService.prototype.designUpsert = function (design) {
+        console.log('desUpsert', design);
+        var token = this.userService.userLocalGetToken('token');
+        var httpOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpHeaders"]({
+                'Content-Type': 'application/json',
+                'Authorization': token
+            })
+        };
+        return this.http.post('api/design/upsert', design, httpOptions);
     };
     DesignService.ngInjectableDef = _angular_core__WEBPACK_IMPORTED_MODULE_2__["defineInjectable"]({ factory: function DesignService_Factory() { return new DesignService(_angular_core__WEBPACK_IMPORTED_MODULE_2__["inject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["inject"](_user_service__WEBPACK_IMPORTED_MODULE_1__["UserService"])); }, token: DesignService, providedIn: "root" });
     return DesignService;

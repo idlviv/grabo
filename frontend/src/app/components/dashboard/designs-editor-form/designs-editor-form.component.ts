@@ -7,6 +7,8 @@ import { IProduct } from '../../../interfaces/product-interface';
 import { IDesign } from '../../../interfaces/interface';
 import { ProductService } from '../../../services/product.service';
 import { DesignService } from '../../../services/design.service';
+import { mergeMap } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 
 @Component({
@@ -48,8 +50,33 @@ export class DesignsEditorFormComponent implements OnInit {
     this.route.paramMap
       .subscribe(paramMap => {
         if (paramMap.get('_id')) {
+          // this.edited_id = paramMap.get('_id');
+          // this.editMode = true;
+
+        }
+      });
+
+
+    this.route.paramMap.pipe(
+      mergeMap(paramMap => {
           this.edited_id = paramMap.get('_id');
+          console.log('edited design _id', this.edited_id);
+
+          if (!this.edited_id) {
+            return of(null);
+          }
+          return this.designService.getDesignById(this.edited_id);
+        }),
+      )
+
+      .subscribe(result => {
+        if (result) {
+          // this.edited_id = paramMap.get('_id');
           this.editMode = true;
+          console.log('true', result);
+          this.designForm.patchValue(result.data);
+        } else {
+          console.log('false');
         }
       });
   }
@@ -90,6 +117,21 @@ export class DesignsEditorFormComponent implements OnInit {
   onDesignFormSubmit() {
     this.design = <IDesign>this.designForm.value;
     console.log('design form submit', this.design);
-
+    this.designService.designUpsert(this.design)
+      .subscribe(result => {
+          this.matSnackBar.open(result.message, '',
+            {duration: 3000});
+          this.resetForm();
+          console.log('designUpsert', result);
+          // this.editMode = false;
+        },
+        err => this.matSnackBar.open(err.error, '',
+          {duration: 3000, panelClass: 'snack-bar-danger'})
+      );
   }
+
+  resetForm() {
+    console.log('reset form');
+  }
+
 }

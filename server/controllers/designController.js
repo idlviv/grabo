@@ -52,3 +52,30 @@ module.exports.designAddImage = function(req, res, next) {
 
   });
 };
+
+module.exports.designUpsert = function(req, res, next) {
+  const design = req.body;
+
+  DesignModel.findOneAndUpdate(
+    {_id: design._id},
+    {$set: design},
+    {upsert: true, new: true} // upsert + return updated object
+  )
+    .then(result => {
+      return res.status(200).json(new ResObj(true, 'Дизайн додано/змінено', result));
+    })
+    .catch(err => next(new DbError()));
+};
+
+module.exports.getDesignById = function(req, res, next) {
+  const _id = req.params._id;
+
+  DesignModel.findById(
+    {_id: _id},
+  )
+    .then(result => {
+      return res.status(200).json(new ResObj(true, 'дизайн', result));
+    })
+    .catch(err => next(new DbError())
+    );
+};

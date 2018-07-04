@@ -22,6 +22,15 @@ router.post('/design/add-image',
   designController.designAddImage
 );
 
+router.post('/design/upsert',
+  passport.authenticate('jwt', {session: false}),
+  designController.designUpsert
+);
+
+router.get('/design/get-design-by-id/:_id',
+  designController.getDesignById
+);
+
 /**
  * product routes
  */

@@ -4,6 +4,8 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { IResponse } from '../interfaces/server-response-interface';
 import { UserService } from './user.service';
 import { Observable } from 'rxjs/index';
+import { IProduct } from '../interfaces/product-interface';
+import { IDesign } from '../interfaces/interface';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +29,18 @@ export class DesignService {
     );
   }
 
+  getDesignById(_id) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+      }),
+    };
+    return this.http.get<IResponse>(
+      'api/design/get-design-by-id/' + _id,
+      httpOptions
+    );
+  }
+
   designAddImage(file, design_id): Observable<IResponse> {
     console.log('file', file);
     const formData: FormData = new FormData();
@@ -42,6 +56,22 @@ export class DesignService {
     return this.http.post<IResponse>(
       'api/design/add-image',
       formData,
+      httpOptions
+    );
+  }
+
+  designUpsert(design: IDesign): Observable<IResponse> {
+    console.log('desUpsert', design);
+    const token = this.userService.userLocalGetToken('token');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': token
+      })
+    };
+    return this.http.post<IResponse>(
+      'api/design/upsert',
+      design,
       httpOptions
     );
   }
