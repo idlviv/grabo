@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { config } from '../../../app.config';
 import { IProduct } from '../../../interfaces/product-interface';
 import { IDesign } from '../../../interfaces/interface';
@@ -18,6 +18,7 @@ import { of } from 'rxjs';
   styleUrls: ['./designs-editor-form.component.scss']
 })
 export class DesignsEditorFormComponent implements OnInit {
+  @ViewChild('f') designFormDirective: FormGroupDirective;
   config = config;
   designForm: FormGroup;
   processingLoadFile = false;
@@ -77,6 +78,7 @@ export class DesignsEditorFormComponent implements OnInit {
           this.editMode = true;
           console.log('true', result);
           this.designForm.patchValue(result.data);
+          this.designForm.get('_id').disable();
         } else {
           console.log('false');
         }
@@ -92,7 +94,9 @@ export class DesignsEditorFormComponent implements OnInit {
       this.matSnackBar.open(checkFile.message || 'Помилка', '',
         {duration: 3000, panelClass: 'snack-bar-danger'});
       this.processingLoadFile = false;
-      this.designForm.get('_id').enable();
+      if (!this.editMode) {
+        this.designForm.get('_id').enable();
+      }
       this.designForm.get('structure').enable();
     } else {
 
@@ -102,14 +106,18 @@ export class DesignsEditorFormComponent implements OnInit {
         .subscribe(result => {
             this.designForm.get('image').setValue(result.data);
             this.processingLoadFile = false;
-            this.designForm.get('_id').enable();
+            if (!this.editMode) {
+              this.designForm.get('_id').enable();
+            }
             this.designForm.get('structure').enable();
           },
           err => {
             this.matSnackBar.open(err.error || 'Помилка', '',
               {duration: 3000, panelClass: 'snack-bar-danger'});
             this.processingLoadFile = false;
-            this.designForm.get('_id').enable();
+            if (!this.editMode) {
+              this.designForm.get('_id').enable();
+            }
             this.designForm.get('structure').enable();
           }
         );
@@ -117,15 +125,21 @@ export class DesignsEditorFormComponent implements OnInit {
   }
 
   onDesignFormSubmit() {
-    this.design = <IDesign>this.designForm.value;
+    this.design = <IDesign>{
+      _id: this.designForm.getRawValue()._id, // raw because may be disabled
+      image: this.designForm.get('image').value,
+      structure: this.designForm.get('structure').value,
+    };
+
     console.log('design form submit', this.design);
     this.designService.designUpsert(this.design)
       .subscribe(result => {
           this.matSnackBar.open(result.message, '',
             {duration: 3000});
           this.resetForm();
-          console.log('designUpsert', result);
-          // this.editMode = false;
+          if (this.editMode) {
+            this.goBack();
+          }
         },
         err => this.matSnackBar.open(err.error, '',
           {duration: 3000, panelClass: 'snack-bar-danger'})
@@ -133,7 +147,7 @@ export class DesignsEditorFormComponent implements OnInit {
   }
 
   resetForm() {
-    console.log('reset form');
+    this.designFormDirective.resetForm();
   }
 
   goBack() {

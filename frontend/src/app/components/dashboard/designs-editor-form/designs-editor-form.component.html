@@ -17,7 +17,7 @@
               </div>
             </div>
 
-            <form [formGroup]="designForm" (submit)="onDesignFormSubmit()" novalidate>
+            <form [formGroup]="designForm" #f="ngForm" (submit)="onDesignFormSubmit()" novalidate>
 
               <div class="row" fxLayout="column" fxLayout.gt-xs="row">
                 <div class="container" fxFlex.gt-xs="50">
@@ -86,15 +86,20 @@
 
 
               </div>
-              <div class="submit-button-wrapper">
-                <!--<span fxFlex></span>-->
-                <!--<button *ngIf="!editMode" mat-raised-button class="full-width" color="primary"-->
-                        <!--[disabled]="!productCreateForm.valid || processingLoadFile >= 0">Створити</button>-->
-                <button *ngIf="editMode" mat-raised-button color="primary"
-                        [disabled]="!designForm.valid || processingLoadFile">Зберегти</button>
-                <button *ngIf="!editMode" mat-raised-button color="primary"
-                        [disabled]="!designForm.valid || processingLoadFile">Створити</button>
-                <button mat-raised-button  type="button" (click)="goBack()">Повернутись</button>
+              <div class="submit-button-wrapper" fxLayout="row">
+               <div>
+                 <button *ngIf="editMode" mat-raised-button color="primary" class="full-width"
+                         [disabled]="!designForm.valid || processingLoadFile">Зберегти</button>
+                 <button *ngIf="!editMode" mat-raised-button color="primary" class="full-width"
+                         [disabled]="!designForm.valid || processingLoadFile">Створити</button>
+               </div>
+
+                <div fxFlex></div>
+                <div>
+                  <button mat-raised-button  type="button" (click)="goBack()" class="full-width"
+                          [disabled]="processingLoadFile">Повернутись</button>
+                </div>
+
               </div>
             </form>
           </div>
