@@ -6,8 +6,21 @@
     <h2 class="mat-h3">{{design._id}}</h2>
     <div class="product-cl-image-wrapper-outer">
       <div class="product-cl-image-wrapper-inner">
-        <img src="{{config.imgPath + config.cloudinary.cloud_name + '/' + design.image}}"
+        <img src="{{config.imgPath + config.cloudinary.cloud_name + '/c_fill,h_180,w_180/' + design.image + '.jpg'}}"
              alt="design picture" class="product-cl-image">
+
+        <!--<cl-image class="product-cl-image"-->
+          <!--public-id="{{design.image || config.defaultProductImgPath}}"-->
+          <!--secure="true">-->
+        <!--<cl-transformation-->
+        <!--quality="auto" fetch_format="auto" crop="thumb">-->
+        <!--&lt;!&ndash;radius="20">&ndash;&gt;-->
+        <!--</cl-transformation>-->
+        <!--&lt;!&ndash;<cl-transformation overlay="cloudinary_icon" gravity="south_east" x="5" y="5" width="50" opacity="60" effect="brightness:200">&ndash;&gt;-->
+        <!--&lt;!&ndash;</cl-transformation>&ndash;&gt;-->
+        <!--&lt;!&ndash;<cl-transformation angle="10">&ndash;&gt;-->
+        <!--&lt;!&ndash;</cl-transformation>&ndash;&gt;-->
+        <!--</cl-image>-->
       </div>
     </div>
       <!--<div class="info-block-row-wrapper">-->

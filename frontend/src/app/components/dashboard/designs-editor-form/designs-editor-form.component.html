@@ -56,7 +56,7 @@
                 <div class="cell" fxFlex.gt-xs="50">
                     <div class="preview-img-wrapper">
                       <img *ngIf="designForm.get('image').value"
-                           src="{{config.imgPath + config.cloudinary.cloud_name + '/' + designForm.get('image').value}}"
+                           src="{{config.imgPath + config.cloudinary.cloud_name + '/c_fill,h_180,w_180/' + designForm.get('image').value + '.jpg'}}"
                            alt="designImage">
                       <img *ngIf="!designForm.get('image').value"
                            src="{{config.defaultProductImgPath}}" alt="designImage">

@@ -36,7 +36,12 @@ module.exports.designAddImage = function(req, res, next) {
       files.file.path,
       {
         public_id: fields.design_id + '-' + Date.now(), // jscs:ignore requireCamelCaseOrUpperCaseIdentifiers
-        width: 650, height: 650, crop: 'fill'
+        // width: 650, height: 650, crop: 'fill'
+        eager: [
+          {width: 650, height: 650, crop: 'fill'},
+          {width: 180, height: 180, crop: 'fill'},
+          {width: 40, height: 40, crop: 'fill'},
+          ]
       },
       function(err, result) {
         if (err) {
