@@ -1,9 +1,9 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { ProductsListComponent } from './products-list/products-list.component';
-// import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductsComponent } from './products.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+// import { ProductItemDetailComponent } from '../shared/product-item-detail/product-item-detail.component';
 import { ProductsDetailComponent } from './products-detail/products-detail.component';
 
 const productsRoutes: Routes = [

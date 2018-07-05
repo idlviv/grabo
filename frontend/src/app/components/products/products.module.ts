@@ -8,11 +8,11 @@ import { ProductsRoutingModule } from './products-routing.module';
 // import { ProductDetailsComponent } from './product-details/product-details.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { ProductsComponent } from './products.component';
-import { ProductsCatalogComponent } from './products-catalog/products-catalog.component';
+// import { ProductsCatalogComponent } from './products-catalog/products-catalog.component';
 import { ProductsDetailComponent } from './products-detail/products-detail.component';
-import { ProductsBriefComponent } from './products-brief/products-brief.component';
+// import { ProductsBriefComponent } from './products-brief/products-brief.component';
 import { ProductsDetailSideComponent } from './products-detail-side/products-detail-side.component';
-import { ProductsDetailMainComponent } from './products-detail-main/products-detail-main.component';
+// import { ProductsDetailMainComponent } from './products-detail-main/products-detail-main.component';
 
 @NgModule({
   imports: [
@@ -27,11 +27,11 @@ import { ProductsDetailMainComponent } from './products-detail-main/products-det
     // ProductDetailsComponent,
     BreadcrumbComponent,
     ProductsComponent,
-    ProductsCatalogComponent,
+    // ProductsCatalogComponent,
     ProductsDetailComponent,
-    ProductsBriefComponent,
+    // ProductsBriefComponent,
     ProductsDetailSideComponent,
-    ProductsDetailMainComponent,
+    // ProductsDetailMainComponent,
   ]
 })
 export class ProductsModule { }

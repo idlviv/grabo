@@ -1,0 +1,21 @@
+<mat-card>
+  <mat-card-header>
+  </mat-card-header>
+
+  {{product | json}}
+  <mat-card-content>
+
+
+  </mat-card-content>
+  <mat-card-actions>
+    <div fxFlex>
+      <a mat-button
+         [routerLink]="['/products', 'ch', {outlets: {primary: [category_id, 'details', product._id],
+     breadcrumb: [category_id, 'details', product._id]}}]"
+         [queryParams]="{name: product.name}"
+         [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">
+        {{product.name}}
+      </a>
+    </div>
+  </mat-card-actions>
+</mat-card>

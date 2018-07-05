@@ -11,6 +11,7 @@ import { CloudinaryModule } from '@cloudinary/angular-5.x';
 import { DesignsEditorComponent } from './designs-editor/designs-editor.component';
 import { SharedModule } from '../shared/shared.module';
 import { DesignsEditorFormComponent } from './designs-editor-form/designs-editor-form.component';
+import { ProductsEditorComponent } from './products-editor/products-editor.component';
 
 @NgModule({
   imports: [
@@ -23,6 +24,13 @@ import { DesignsEditorFormComponent } from './designs-editor-form/designs-editor
     CloudinaryModule,
     SharedModule,
   ],
-  declarations: [ProductCreateComponent, DashboardComponent, DashboardSidenavComponent, DesignsEditorComponent, DesignsEditorFormComponent]
+  declarations: [
+    ProductCreateComponent,
+    DashboardComponent,
+    DashboardSidenavComponent,
+    DesignsEditorComponent,
+    DesignsEditorFormComponent,
+    ProductsEditorComponent
+  ]
 })
 export class DashboardModule { }

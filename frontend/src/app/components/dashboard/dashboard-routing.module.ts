@@ -7,6 +7,7 @@ import { UserProfileComponent } from '../user/user-profile/user-profile.componen
 import { DesignsEditorComponent } from './designs-editor/designs-editor.component';
 import { AuthGuard } from '../../guards/auth.guard';
 import { DesignsEditorFormComponent } from './designs-editor-form/designs-editor-form.component';
+import { ProductsEditorComponent } from './products-editor/products-editor.component';
 
 const dashboardRoutes: Routes = [
   {
@@ -29,6 +30,12 @@ const dashboardRoutes: Routes = [
       {
         path: 'tmp',
         component: ProductCreateComponent,
+        canActivate: [AuthGuard],
+        data: { auth: 'manager' },
+      },
+      {
+        path: 'products_editor',
+        component: ProductsEditorComponent,
         canActivate: [AuthGuard],
         data: { auth: 'manager' },
       },

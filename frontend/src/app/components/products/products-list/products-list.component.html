@@ -1,11 +1,11 @@
 <div class="row" fxLayout="column" fxLayout.gt-xs="row">
   <div *ngFor="let product of products"  class="cell"
        fxFlex.sm="50" fxFlex.md="33.3" fxFlex.gt-md="20">
-    <app-products-brief [product]="product" [category_id]="category_id"></app-products-brief>
+    <app-product-item-brief [product]="product" [category_id]="category_id"></app-product-item-brief>
   </div>
   <div *ngFor="let descendant of descendants" class="cell"
        fxFlex.sm="50" fxFlex.md="33.3" fxFlex.gt-md="20">
     <!--<p>Показати: {{itemsToShow}}</p>-->
-    <app-products-catalog [descendant]="descendant"></app-products-catalog>
+    <app-catalog-item [descendant]="descendant"></app-catalog-item>
   </div>
 </div>
