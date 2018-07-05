@@ -61,7 +61,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"components-dashboard-dashboard-module-ngfactory~components-user-user-module-ngfactory":"components-dashboard-dashboard-module-ngfactory~components-user-user-module-ngfactory","components-dashboard-dashboard-module-ngfactory":"components-dashboard-dashboard-module-ngfactory","components-user-user-module-ngfactory":"components-user-user-module-ngfactory","components-products-products-module-ngfactory":"components-products-products-module-ngfactory"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"components-dashboard-dashboard-module-ngfactory~components-user-user-module-ngfactory":"components-dashboard-dashboard-module-ngfactory~components-user-user-module-ngfactory","components-dashboard-dashboard-module-ngfactory":"components-dashboard-dashboard-module-ngfactory","components-user-user-module-ngfactory":"components-user-user-module-ngfactory","components-dashboard-dashboard-module-ngfactory~products-products-module-ngfactory":"products-products-module-ngfactory"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function

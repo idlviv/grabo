@@ -539,7 +539,7 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\it\pNode\grabo\frontend\src\styles\styles.scss */"./src/styles/styles.scss");
+module.exports = __webpack_require__(/*! C:\it\projects\grabo\frontend\src\styles\styles.scss */"./src/styles/styles.scss");
 
 
 /***/ })

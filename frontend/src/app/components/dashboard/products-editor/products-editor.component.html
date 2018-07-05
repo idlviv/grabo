@@ -11,6 +11,22 @@
         <div class="cell">
           <h2 class="mat-h2">Редактор колекцій</h2>
         </div>
+      </div>
+      <form [formGroup]="catalogForm" #f="ngForm" (submit)="onCatalogFormSubmit()">
+        <div class="row" fxLayout="column" fxLayout.gt-xs="row">
+          <div formArrayName="categories" class="cell" fxFlex.sm="50" fxFlex.md="33.3" fxFlex.gt-md="25"
+               *ngFor="let categoryBlock of catalogForm.get('categories')['controls']; let i = index">
+
+                <mat-select placeholder="Виберіть категорію" formControlName="{{i}}" required
+                            (selectionChange)="onSelectCategory($event, i)">
+                  <mat-option *ngFor="let descendant of descendants[i]" [value]="descendant._id">
+                    {{descendant.name}}
+                  </mat-option>
+            </mat-select>
+          </div>
+
+        </div>
+      </form>
         <!--<div class="cell">-->
 
           <!--<a mat-icon-button-->
@@ -19,9 +35,14 @@
             <!--<mat-icon>add_circle</mat-icon>-->
           <!--</a>-->
         <!--</div>-->
-      </div>
+
 
       <div class="row" fxLayout="column" fxLayout.gt-xs="row">
+
+        <div class="cell" *ngFor="let product of products">
+          <p>{{product.name}}</p>
+        </div>
+
         <!--<div class="cell"-->
         <!--fxFlex.sm="50" fxFlex.md="33.3" fxFlex.gt-md="25">-->
         <!--<mat-card>-->
@@ -32,29 +53,11 @@
         <!--</div>-->
 
 
-
-
-
-
-
-
-
-
         <!--<div *ngFor="let design of designs" class="cell"-->
              <!--fxFlex.sm="50" fxFlex.md="33.3" fxFlex.gt-md="25">-->
           <!--<app-design-item [design]="design"></app-design-item>-->
 
         <!--</div>-->
-
-
-
-
-
-
-
-
-
-
 
 
       </div>

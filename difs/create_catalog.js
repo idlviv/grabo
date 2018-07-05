@@ -38,7 +38,9 @@ db.collection()
           //   auth: 'casual', order: 4, prefix: '', assets: ['default-product180x180.png'], description: ''},
           // { _id: 'fortis', name: 'Fortis', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
           //   auth: 'casual', order: 5, prefix: '', assets: ['default-product180x180.png'], description: ''},
-
+			{ _id: 'safety', name: 'Безпечні покриття', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
+			  auth: 'casual', order: 1, prefix: '', assets: ['default-product180x180.png'], description: ''},
+		  
         { _id: 'transport', name: 'Транспортний лінолеум', ancestors: ['home', 'common', 'products'], parent: 'products',
           auth: 'casual', order: 5, prefix: '', assets: ['default-product180x180.png'], description: ''},
 

@@ -22,6 +22,7 @@ import { ProductsDetailSideComponent } from './products-detail-side/products-det
     CloudinaryModule,
     SharedModule,
   ],
+  exports: [],
   declarations: [
     ProductsListComponent,
     // ProductDetailsComponent,

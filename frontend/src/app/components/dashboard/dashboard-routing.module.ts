@@ -8,6 +8,7 @@ import { DesignsEditorComponent } from './designs-editor/designs-editor.componen
 import { AuthGuard } from '../../guards/auth.guard';
 import { DesignsEditorFormComponent } from './designs-editor-form/designs-editor-form.component';
 import { ProductsEditorComponent } from './products-editor/products-editor.component';
+import { ProductsComponent } from '../products/products.component';
 
 const dashboardRoutes: Routes = [
   {
