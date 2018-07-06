@@ -8918,12 +8918,27 @@ var ProductsEditorFormComponent = /** @class */ (function () {
                 _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].minLength(7),
                 _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].maxLength(12),
             ]),
-            structure: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('', [
+            name: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('', [
+                _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required,
+                _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].minLength(3),
+                _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].maxLength(50),
+            ]),
+            parent: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('', [
                 _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required,
             ]),
-            image: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('', [
+            display: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('', [
                 _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required,
-            ])
+            ]),
+            order: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('', [
+                _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required,
+            ]),
+            assets: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormArray"]([this.initAssets()]),
+            techAssets: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormArray"]([this.initTechAssets()]),
+            description: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('', [
+                _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required,
+                _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].minLength(3),
+                _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].maxLength(500),
+            ]),
         });
         // this.route.paramMap
         //   .subscribe(paramMap => {
@@ -9017,6 +9032,32 @@ var ProductsEditorFormComponent = /** @class */ (function () {
     };
     ProductsEditorFormComponent.prototype.goBack = function () {
         this.location.back();
+    };
+    ProductsEditorFormComponent.prototype.addAssets = function () {
+        var control = this.productForm.get('files');
+        control.push(this.initAssets());
+    };
+    ProductsEditorFormComponent.prototype.removeAssets = function (i) {
+        var control = this.productForm.get('files');
+        control.removeAt(i);
+    };
+    ProductsEditorFormComponent.prototype.initAssets = function () {
+        return new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('', [
+            _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required,
+        ]);
+    };
+    ProductsEditorFormComponent.prototype.addTechAssets = function () {
+        var control = this.productForm.get('techAssets');
+        control.push(this.initAssets());
+    };
+    ProductsEditorFormComponent.prototype.removeTechAssets = function (i) {
+        var control = this.productForm.get('techAssets');
+        control.removeAt(i);
+    };
+    ProductsEditorFormComponent.prototype.initTechAssets = function () {
+        return new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('', [
+            _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required,
+        ]);
     };
     return ProductsEditorFormComponent;
 }());

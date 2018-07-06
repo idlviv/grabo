@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
-import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { config } from '../../../app.config';
 import { IProduct } from '../../../interfaces/product-interface';
 import { IDesign } from '../../../interfaces/interface';
@@ -41,12 +41,27 @@ export class ProductsEditorFormComponent implements OnInit {
         Validators.minLength(7),
         Validators.maxLength(12),
       ]),
-      structure: new FormControl('', [
+      name: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(50),
+      ]),
+      parent: new FormControl('', [ // select
         Validators.required,
       ]),
-      image: new FormControl('', [
+      display: new FormControl('', [ // select
         Validators.required,
-      ])
+      ]),
+      order: new FormControl('', [ // select
+        Validators.required,
+      ]),
+      assets: new FormArray([this.initAssets()]),
+      techAssets: new FormArray([this.initTechAssets()]),
+      description: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(500),
+      ]),
     });
 
     // this.route.paramMap
@@ -150,6 +165,38 @@ export class ProductsEditorFormComponent implements OnInit {
 
   goBack() {
     this.location.back();
+  }
+
+  addAssets() {
+    const control = <FormArray>this.productForm.get('files');
+    control.push(this.initAssets());
+  }
+
+  removeAssets(i: number) {
+    const control = <FormArray>this.productForm.get('files');
+    control.removeAt(i);
+  }
+
+  initAssets() {
+    return new FormControl('', [
+      Validators.required,
+    ]);
+  }
+
+  addTechAssets() {
+    const control = <FormArray>this.productForm.get('techAssets');
+    control.push(this.initAssets());
+  }
+
+  removeTechAssets(i: number) {
+    const control = <FormArray>this.productForm.get('techAssets');
+    control.removeAt(i);
+  }
+
+  initTechAssets() {
+    return new FormControl('', [
+      Validators.required,
+    ]);
   }
 
 }

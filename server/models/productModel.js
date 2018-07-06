@@ -15,15 +15,13 @@ const ProductSchema = new Schema({
     type: String,
     required: true,
   },
-  auth: {
-    type: String,
+  display: {
+    type: Boolean,
     required: true,
+    default: true
   },
   order: {
     type: Number
-  },
-  prefix: {
-    type: String,
   },
   assets: {
     type: [String],
@@ -43,10 +41,42 @@ const ProductSchema = new Schema({
     type: [String],
     required: true
   },
+  techDescription: [
+    {
+      techName: {
+        type: String,
+        required: true,
+      },
+      techUnit: {
+        type: String,
+        required: true,
+      },
+      techValue: {
+        type: String,
+        required: true,
+      }
+    }
+  ],
   designs: {
     type: [String],
     required: true
-  }
+  },
+  downloads: [
+    {
+      downloadName: {
+        type: String,
+        required: true,
+      },
+      downloadLink: {
+        type: String,
+        required: true,
+      },
+      downloadIcon: {
+        type: String,
+        required: true,
+      },
+    }
+  ]
 });
 
 let ProductModel = mongoose.model('products', ProductSchema);
