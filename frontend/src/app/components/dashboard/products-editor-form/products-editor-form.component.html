@@ -25,7 +25,7 @@
 
                     <div class="cell" fxFlex="100">
                       <mat-form-field>
-                        <input matInput placeholder="Колекція" formControlName="_id" required>
+                        <input matInput placeholder="Колекція_id" formControlName="_id" required>
                         <mat-error
                           *ngIf="(productForm.get('_id').errors?.minlength ||
                       productForm.get('_id').errors?.maxlength ||
@@ -35,6 +35,19 @@
                         </mat-error>
                       </mat-form-field>
                     </div>
+                    <div class="cell" fxFlex="100">
+                      <mat-form-field>
+                        <input matInput placeholder="Колекція" formControlName="name" required>
+                        <mat-error
+                          *ngIf="(productForm.get('_id').errors?.minlength ||
+                      productForm.get('_id').errors?.maxlength ||
+                      productForm.get('_id').errors?.required) &&
+                      productForm.get('_id').touched">
+                          Довжина повинна бути від 7 до 12 символів
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+
 
                     <!--<div class="cell" fxFlex="100">-->
                       <!--<mat-form-field>-->
