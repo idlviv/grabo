@@ -9,10 +9,17 @@
   </mat-card-content>
   <mat-card-actions>
     <div fxFlex>
-      <a mat-button
+      <!--using with catalog, category_id for breadcrumb-->
+      <a *ngIf="category_id" mat-button
          [routerLink]="['/products', 'ch', {outlets: {primary: [category_id, 'details', product._id],
-     breadcrumb: [category_id, 'details', product._id]}}]"
+         breadcrumb: [category_id, 'details', product._id]}}]"
          [queryParams]="{name: product.name}"
+         [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">
+        {{product.name}}
+      </a>
+      <!--using with dashboard-->
+      <a *ngIf="!category_id" mat-button
+         [routerLink]="['/dashboard', 'products_editor_edit', product._id]"
          [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">
         {{product.name}}
       </a>

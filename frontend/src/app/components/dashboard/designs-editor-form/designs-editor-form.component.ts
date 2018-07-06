@@ -50,14 +50,14 @@ export class DesignsEditorFormComponent implements OnInit {
       ])
     });
 
-    this.route.paramMap
-      .subscribe(paramMap => {
-        if (paramMap.get('_id')) {
-          // this.edited_id = paramMap.get('_id');
-          // this.editMode = true;
-
-        }
-      });
+    // this.route.paramMap
+    //   .subscribe(paramMap => {
+    //     if (paramMap.get('_id')) {
+    //       // this.edited_id = paramMap.get('_id');
+    //       // this.editMode = true;
+    //
+    //     }
+    //   });
 
 
     this.route.paramMap.pipe(

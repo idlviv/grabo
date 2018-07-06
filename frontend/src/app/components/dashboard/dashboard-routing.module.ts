@@ -9,6 +9,7 @@ import { AuthGuard } from '../../guards/auth.guard';
 import { DesignsEditorFormComponent } from './designs-editor-form/designs-editor-form.component';
 import { ProductsEditorComponent } from './products-editor/products-editor.component';
 import { ProductsComponent } from '../products/products.component';
+import { ProductsEditorFormComponent } from './products-editor-form/products-editor-form.component';
 
 const dashboardRoutes: Routes = [
   {
@@ -37,6 +38,12 @@ const dashboardRoutes: Routes = [
       {
         path: 'products_editor',
         component: ProductsEditorComponent,
+        canActivate: [AuthGuard],
+        data: { auth: 'manager' },
+      },
+      {
+        path: 'products_editor_edit/:_id',
+        component: ProductsEditorFormComponent,
         canActivate: [AuthGuard],
         data: { auth: 'manager' },
       },

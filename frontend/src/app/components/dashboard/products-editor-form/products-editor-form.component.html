@@ -1,0 +1,110 @@
+<p>Design editor form</p>
+<p>Edited id  {{edited_id}}</p>
+<p>editMode  {{editMode}}</p>
+
+<div class="row" fxLayout="row">
+  <div class="cell" fxFlex="100">
+    <div class="item full-width-container">
+      <mat-card  class="form-block">
+        <mat-card-header></mat-card-header>
+        <mat-card-title></mat-card-title>
+
+        <mat-card-content>
+          <div class="container">
+            <div class="row">
+              <div class="cell">
+                <h2 class="mat-h2">Редагувати колекцію</h2>
+              </div>
+            </div>
+
+            <form [formGroup]="productForm" #f="ngForm" (submit)="onProductFormSubmit()" novalidate>
+
+              <div class="row" fxLayout="column" fxLayout.gt-xs="row">
+                <div class="container" fxFlex.gt-xs="50">
+                  <div class="row" fxLayout="column">
+
+                    <div class="cell" fxFlex="100">
+                      <mat-form-field>
+                        <input matInput placeholder="Колекція" formControlName="_id" required>
+                        <mat-error
+                          *ngIf="(productForm.get('_id').errors?.minlength ||
+                      productForm.get('_id').errors?.maxlength ||
+                      productForm.get('_id').errors?.required) &&
+                      productForm.get('_id').touched">
+                          Довжина повинна бути від 7 до 12 символів
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+
+                    <!--<div class="cell" fxFlex="100">-->
+                      <!--<mat-form-field>-->
+                        <!--<mat-select placeholder="Структура" formControlName="structure" required>-->
+                          <!--<mat-option *ngFor="let struct of config.designStructure" [value]="struct">-->
+                            <!--{{struct}}-->
+                          <!--</mat-option>-->
+                        <!--</mat-select>-->
+                        <!--<mat-error-->
+                          <!--*ngIf="productForm.get('structure').errors?.required &&-->
+                            <!--productForm.get('structure').touched">-->
+                          <!--Виберіть категорію-->
+                        <!--</mat-error>-->
+                      <!--</mat-form-field>-->
+                    <!--</div>-->
+
+                  </div>
+                </div>
+                <!--<div class="cell" fxFlex.gt-xs="50">-->
+                  <!--<div class="preview-img-wrapper">-->
+                    <!--<img *ngIf="productForm.get('image').value"-->
+                         <!--src="{{config.imgPath + config.cloudinary.cloud_name + '/c_fill,h_180,w_180/' + productForm.get('image').value + '.jpg'}}"-->
+                         <!--alt="designImage">-->
+                    <!--<img *ngIf="!productForm.get('image').value"-->
+                         <!--src="{{config.defaultProductImgPath}}" alt="designImage">-->
+                    <!--<input #inputFile type="file" (change)="addPictures($event)"-->
+                           <!--accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png" style="display:none;">-->
+                    <!--<div class="preview-div-processing">-->
+                      <!--<div *ngIf="processingLoadFile" class="spinner-wrapper">-->
+                        <!--<mat-spinner [diameter]="24"></mat-spinner>-->
+                      <!--</div>-->
+
+
+                      <!--<div *ngIf="!processingLoadFile" class="button-wrapper">-->
+                        <!--<button mat-mini-fab color="primary" type="button"-->
+                                <!--(click)="inputFile.click();-->
+                                  <!--productForm.get('_id').disable();-->
+                                  <!--productForm.get('structure').disable();"-->
+                                <!--[disabled]="processingLoadFile || productForm.get('_id').invalid">-->
+                          <!--<mat-icon *ngIf="!productForm.get('image').value">add</mat-icon>-->
+                          <!--<mat-icon *ngIf="productForm.get('image').value">redo</mat-icon>-->
+                        <!--</button>-->
+
+                      <!--</div>-->
+                    <!--</div>-->
+                  <!--</div>-->
+
+                <!--</div>-->
+
+
+              </div>
+              <div class="submit-button-wrapper" fxLayout="row">
+                <div>
+                  <button *ngIf="editMode" mat-raised-button color="primary" class="full-width"
+                          [disabled]="!productForm.valid || processingLoadFile">Зберегти</button>
+                  <button *ngIf="!editMode" mat-raised-button color="primary" class="full-width"
+                          [disabled]="!productForm.valid || processingLoadFile">Створити</button>
+                </div>
+
+                <div fxFlex></div>
+                <div>
+                  <button mat-raised-button  type="button" (click)="goBack()" class="full-width"
+                          [disabled]="processingLoadFile">Повернутись</button>
+                </div>
+
+              </div>
+            </form>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

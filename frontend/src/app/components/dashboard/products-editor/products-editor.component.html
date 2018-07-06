@@ -38,10 +38,11 @@
 
 
       <div class="row" fxLayout="column" fxLayout.gt-xs="row">
-
-        <div class="cell" *ngFor="let product of products">
-          <p>{{product.name}}</p>
+        <div *ngFor="let product of products"  class="cell"
+             fxFlex.sm="50" fxFlex.md="33.3" fxFlex.gt-md="20">
+          <app-product-item-brief [product]="product"></app-product-item-brief>
         </div>
+      </div>
 
         <!--<div class="cell"-->
         <!--fxFlex.sm="50" fxFlex.md="33.3" fxFlex.gt-md="25">-->
@@ -60,7 +61,6 @@
         <!--</div>-->
 
 
-      </div>
 
 
     </div>
