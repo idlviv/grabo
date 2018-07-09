@@ -20,31 +20,38 @@
             <form [formGroup]="productForm" #f="ngForm" (submit)="onProductFormSubmit()" novalidate>
 
               <div class="row" fxLayout="row" fxFlex="100">
+
                 <div formArrayName="assets" class="cell" fxFlex="25" fxFlex.lt-md="50"
                      *ngFor="let asset of productForm.get('assets')['controls']; let i = index">
                   <div *ngIf="productForm.get('assets').value[i]" class="preview-img-wrapper">
-                    <img src="{{config.imgPath + config.cloudinary.cloud_name + '/c_fill,h_180,w_180/' + productForm.get('assets').value[i] + '.jpg'}}"
-                         alt="designImage">
-
+                    <img
+                         src="{{config.imgPath + config.cloudinary.cloud_name + '/c_fill,h_180,w_180/' + productForm.get('assets').value[i] + '.jpg'}}"
+                         alt="productImage">
+                      <!--<img *ngIf="processingLoadFile === i"-->
+                           <!--src="{{config.imgPath + config.cloudinary.cloud_name + '/' + productForm.get('assets').value[i] + '.jpg'}}"-->
+                           <!--alt="productImage">-->
+                      <div *ngIf="processingLoadFile === i" class="preview-div-processing">
+                      <div class="spinner-wrapper">
+                        <mat-spinner [diameter]="24"></mat-spinner>
+                      </div>
+                    </div>
                   </div>
-                  <p *ngIf="processingLoadFile !== i" class="remove-field text-center" (click)="removeAssets(i)">
-                    Видалити зображення</p>
 
+                  <p *ngIf="processingLoadFile !== i" class="remove-field text-center" (click)="removeAssetsControl(i)">
+                    Видалити зображення</p>
                 </div>
 
                 <div class="cell" fxFlex="25" fxFlex.lt-md="50"
                      *ngIf="productForm.get('assets').value.length < 4">
                   <div class="preview-img-wrapper">
                     <img src="{{config.defaultProductImgPath}}" alt="productImage">
-                    <input #inputFile type="file" (change)="addPictures($event)"
+                    <input #inputFile type="file" (change)="addAssets($event)"
                            accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png" style="display:none;">
 
                     <div class="preview-div-processing">
                       <div class="button-wrapper">
                         <button mat-mini-fab color="primary" type="button"
                                 (click)="inputFile.click();"
-
-
                                 [disabled]="processingLoadFile >= 0">
                           <mat-icon>add</mat-icon>
                         </button>

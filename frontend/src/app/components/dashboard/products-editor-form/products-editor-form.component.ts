@@ -58,7 +58,7 @@ export class ProductsEditorFormComponent implements OnInit {
       order: new FormControl('', [ // select
         Validators.required,
       ]),
-      assets: new FormArray([this.initAssets()]),
+      assets: new FormArray([this.initAssetsControl()]),
       // techAssets: new FormArray([this.initTechAssets()]),
       description: new FormControl('', [
         Validators.required,
@@ -100,7 +100,7 @@ export class ProductsEditorFormComponent implements OnInit {
           this.editMode = true;
           console.log('true', result);
           for (let i = 1; i < result.data.assets.length; i++) {
-            this.addAssets();
+            this.addAssetsControl();
           }
           this.productForm.patchValue(result.data);
           this.productForm.get('_id').disable();
@@ -110,43 +110,36 @@ export class ProductsEditorFormComponent implements OnInit {
       });
   }
 
-  addPictures(event) {
-    // this.processingLoadFile = true;
-    // const file = event.target.files[0];
-    // const checkFile = this.productService.checkFile(file);
-    //
-    // if (!checkFile.success) {
-    //   this.matSnackBar.open(checkFile.message || 'Помилка', '',
-    //     {duration: 3000, panelClass: 'snack-bar-danger'});
-    //   this.processingLoadFile = false;
-    //   if (!this.editMode) {
-    //     this.productForm.get('_id').enable();
-    //   }
-    //   this.productForm.get('structure').enable();
-    // } else {
-    //
-    //   // this.productForm.get('image').setValue(file);
-    //   console.log('added file', this.productForm.get('image').value);
-    //   this.designService.designAddImage(file, this.productForm.get('_id').value)
-    //     .subscribe(result => {
-    //         this.productForm.get('image').setValue(result.data);
-    //         this.processingLoadFile = false;
-    //         if (!this.editMode) {
-    //           this.productForm.get('_id').enable();
-    //         }
-    //         this.productForm.get('structure').enable();
-    //       },
-    //       err => {
-    //         this.matSnackBar.open(err.error || 'Помилка', '',
-    //           {duration: 3000, panelClass: 'snack-bar-danger'});
-    //         this.processingLoadFile = false;
-    //         if (!this.editMode) {
-    //           this.productForm.get('_id').enable();
-    //         }
-    //         this.productForm.get('structure').enable();
-    //       }
-    //     );
-    // }
+  addAssets(event) {
+    this.processingLoadFile = this.productForm.get('assets').value.length;
+    const file = event.target.files[0];
+    const checkFile = this.productService.checkFile(file);
+
+    if (!checkFile.success) {
+      this.matSnackBar.open(checkFile.message || 'Помилка', '',
+        {duration: 3000, panelClass: 'snack-bar-danger'});
+      this.processingLoadFile = -1;
+    } else {
+      const filesLinks = this.productForm.get('assets').value;
+      filesLinks.push(config.defaultProductImg);
+      this.addAssetsControl();
+      this.productForm.get('assets').setValue(filesLinks);
+      this.productService.productAddAssets(file, this.productForm.get('_id').value)
+        .subscribe(result => {
+            filesLinks.pop();
+            filesLinks.push(result.data);
+            this.productForm.get('assets').setValue(filesLinks);
+            this.processingLoadFile = -1;
+          },
+          err => {
+            this.matSnackBar.open(err.error || 'Помилка', '',
+              {duration: 3000, panelClass: 'snack-bar-danger'});
+            this.removeAssetsControl(this.productForm.get('assets').value.length - 1);
+            filesLinks.pop();
+            this.processingLoadFile = -1;
+          }
+        );
+    }
   }
 
   onProductFormSubmit() {
@@ -179,65 +172,65 @@ export class ProductsEditorFormComponent implements OnInit {
     this.location.back();
   }
 
-  addAssets() {
+  addAssetsControl() {
     const control = <FormArray>this.productForm.get('assets');
-    control.push(this.initAssets());
+    control.push(this.initAssetsControl());
   }
 
-  removeAssets(i: number) {
+  removeAssetsControl(i: number) {
     const control = <FormArray>this.productForm.get('assets');
     control.removeAt(i);
   }
 
-  initAssets() {
+  initAssetsControl() {
     return new FormControl('', [
       Validators.required,
     ]);
   }
 
-  addTechAssets() {
+  addTechAssetsControl() {
     const control = <FormArray>this.productForm.get('techAssets');
-    control.push(this.initAssets());
+    control.push(this.initAssetsControl());
   }
 
-  removeTechAssets(i: number) {
+  removeTechAssetsControl(i: number) {
     const control = <FormArray>this.productForm.get('techAssets');
     control.removeAt(i);
   }
 
-  initTechAssets() {
+  initTechAssetsControl() {
     return new FormControl('', [
       Validators.required,
     ]);
   }
 
-  addRecommendations() {
+  addRecommendationsControl() {
     const control = <FormArray>this.productForm.get('recommendations');
-    control.push(this.initRecommendations());
+    control.push(this.initRecommendationsControl());
   }
 
-  removeRecommendations(i: number) {
+  removeRecommendationsControl(i: number) {
     const control = <FormArray>this.productForm.get('recommendations');
     control.removeAt(i);
   }
 
-  initRecommendations() {
+  initRecommendationsControl() {
     return new FormControl('', [
       Validators.required,
     ]);
   }
 
-  addDesigns() {
+  addDesignsControl() {
     const control = <FormArray>this.productForm.get('designs');
-    control.push(this.initDesigns());
+    control.push(this.initDesignsControl());
   }
 
-  removeDesigns(i: number) {
+  removeDesignsControl(i: number) {
     const control = <FormArray>this.productForm.get('designs');
     control.removeAt(i);
   }
 
-  initDesigns() {
+  initDesignsControl() {
     return new FormControl('', [
       Validators.required,
     ]);

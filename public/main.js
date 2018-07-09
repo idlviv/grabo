@@ -509,8 +509,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "config", function() { return config; });
 var config = {
     serverUrl: '/',
-    defaultAvatarPath: 'https://res.cloudinary.com/hcwwcxz0m/default-avatar180x180.png',
-    defaultProductImgPath: 'https://res.cloudinary.com/hcwwcxz0m/default-product180x180.png',
+    defaultAvatarPath: 'https://res.cloudinary.com/hcwwcxz0m/default-avatar180x180.jpg',
+    defaultProductImgPath: 'https://res.cloudinary.com/hcwwcxz0m/default-product180x180.jpg',
+    defaultProductImg: 'default-product180x180',
+    defaultAvatar: 'default-avatar180x180',
     blogOptions: {
         showViews: true,
         showComments: true,
@@ -2111,6 +2113,19 @@ var ProductService = /** @class */ (function () {
             params: new _angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpParams"]().set('_id', _id)
         };
         return this.http.get('api/product/get-product-by-id', httpOptions);
+    };
+    ProductService.prototype.productAddAssets = function (file, _id) {
+        console.log('file', file);
+        var formData = new FormData();
+        formData.append('file', file, file.name);
+        formData.append('_id', _id);
+        var token = this.userService.userLocalGetToken('token');
+        var httpOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpHeaders"]({
+                'Authorization': token
+            })
+        };
+        return this.http.post('api/product/add-assets', formData, httpOptions);
     };
     return ProductService;
 }());

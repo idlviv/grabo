@@ -173,3 +173,41 @@ module.exports.getProductsByCategory = function(req, res, next) {
     .catch(err => next(new DbError())
     );
 };
+
+module.exports.productAddAssets = function(req, res, next) {
+  let form = new formidable.IncomingForm({maxFileSize: 10500000});
+  // form.on('file', function(file) {
+  //   log.verbose('file - uploaded');
+  // });
+  form.parse(req, function(err, fields, files) {
+    if (err) {
+      return next(new ApplicationError('Помилка завантаження зображення - form parse', 400));
+    }
+
+    log.verbose('fields', fields);
+    // log.verbose('files', files);
+    log.verbose('date', Date.now());
+    log.verbose('date-slice', String(Date.now()).slice(0, 7));
+
+    cloudinary.v2.uploader.upload(
+      files.file.path,
+      {
+        public_id: 'assets_' + fields._id + '_' + Date.now(),// jscs:ignore requireCamelCaseOrUpperCaseIdentifiers
+        eager: [
+          {width: 650, height: 650, crop: 'fill'},
+          {width: 180, height: 180, crop: 'fill'},
+          {width: 40, height: 40, crop: 'fill'},
+        ]
+      },
+      function(err, result) {
+        if (err) {
+          return next(
+            new ApplicationError('Помилка завантаження - product assets', 400)
+          );
+        }
+        console.log('product_img_cloudinary result', result);
+        return res.status(200).json(new ResObj(true, 'Зображення завнтажене', result.public_id)); // jscs:ignore requireCamelCaseOrUpperCaseIdentifiers
+      });
+
+  });
+};
