@@ -211,3 +211,17 @@ module.exports.productAddAssets = function(req, res, next) {
 
   });
 };
+
+module.exports.productUpsert = function(req, res, next) {
+  const product = req.body;
+
+  ProductModel.findOneAndUpdate(
+    {_id: product._id},
+    {$set: product},
+    {upsert: true, new: true} // upsert + return updated object
+  )
+    .then(result => {
+      return res.status(200).json(new ResObj(true, 'Колекцію додано/змінено', result));
+    })
+    .catch(err => next(new DbError()));
+};

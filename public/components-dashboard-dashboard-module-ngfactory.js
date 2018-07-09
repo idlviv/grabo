@@ -9016,7 +9016,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ProductsEditorFormComponent = /** @class */ (function () {
-    // design: IDesign;
     function ProductsEditorFormComponent(matSnackBar, route, location, productService, designService) {
         this.matSnackBar = matSnackBar;
         this.route = route;
@@ -9121,25 +9120,26 @@ var ProductsEditorFormComponent = /** @class */ (function () {
         }
     };
     ProductsEditorFormComponent.prototype.onProductFormSubmit = function () {
-        // this.product = <IDesign>{
-        //   _id: this.productForm.getRawValue()._id, // raw because may be disabled
-        //   image: this.productForm.get('image').value,
-        //   structure: this.productForm.get('structure').value,
-        // };
+        var _this = this;
+        this.product = {
+            _id: this.productForm.getRawValue()._id,
+            name: this.productForm.get('name').value,
+            parent: this.productForm.get('parent').value,
+            display: this.productForm.get('display').value,
+            order: this.productForm.get('order').value,
+            assets: this.productForm.get('assets').value,
+            description: this.productForm.get('description').value,
+        };
         //
-        console.log('productForm submit');
-        // this.designService.designUpsert(this.design)
-        //   .subscribe(result => {
-        //       this.matSnackBar.open(result.message, '',
-        //         {duration: 3000});
-        //       this.resetForm();
-        //       if (this.editMode) {
-        //         this.goBack();
-        //       }
-        //     },
-        //     err => this.matSnackBar.open(err.error, '',
-        //       {duration: 3000, panelClass: 'snack-bar-danger'})
-        //   );
+        console.log('productForm submit', this.product);
+        this.productService.productUpsert(this.product)
+            .subscribe(function (result) {
+            _this.matSnackBar.open(result.message, '', { duration: 3000 });
+            _this.resetForm();
+            if (_this.editMode) {
+                _this.goBack();
+            }
+        }, function (err) { return _this.matSnackBar.open(err.error, '', { duration: 3000, panelClass: 'snack-bar-danger' }); });
     };
     ProductsEditorFormComponent.prototype.resetForm = function () {
         this.productFormDirective.resetForm();

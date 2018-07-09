@@ -39,6 +39,11 @@ router.delete('/design/delete/:_id',
 /**
  * product routes
  */
+router.post('/product/upsert',
+  passport.authenticate('jwt', {session: false}),
+  productController.productUpsert
+);
+
 router.post('/product/add-assets',
   passport.authenticate('jwt', {session: false}),
   productController.productAddAssets

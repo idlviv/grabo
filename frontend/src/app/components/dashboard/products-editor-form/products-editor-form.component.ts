@@ -27,6 +27,7 @@ export class ProductsEditorFormComponent implements OnInit {
   parentCategory_id: string;
   parentCategoryName: string;
   // design: IDesign;
+  product: any;
 
   constructor(
     private matSnackBar: MatSnackBar,
@@ -143,25 +144,29 @@ export class ProductsEditorFormComponent implements OnInit {
   }
 
   onProductFormSubmit() {
-    // this.product = <IDesign>{
-    //   _id: this.productForm.getRawValue()._id, // raw because may be disabled
-    //   image: this.productForm.get('image').value,
-    //   structure: this.productForm.get('structure').value,
-    // };
+    this.product = {
+      _id: this.productForm.getRawValue()._id, // raw because may be disabled
+      name: this.productForm.get('name').value,
+      parent: this.productForm.get('parent').value,
+      display: this.productForm.get('display').value,
+      order: this.productForm.get('order').value,
+      assets: this.productForm.get('assets').value,
+      description: this.productForm.get('description').value,
+    };
     //
-    console.log('productForm submit');
-    // this.designService.designUpsert(this.design)
-    //   .subscribe(result => {
-    //       this.matSnackBar.open(result.message, '',
-    //         {duration: 3000});
-    //       this.resetForm();
-    //       if (this.editMode) {
-    //         this.goBack();
-    //       }
-    //     },
-    //     err => this.matSnackBar.open(err.error, '',
-    //       {duration: 3000, panelClass: 'snack-bar-danger'})
-    //   );
+    console.log('productForm submit', this.product);
+    this.productService.productUpsert(this.product)
+      .subscribe(result => {
+          this.matSnackBar.open(result.message, '',
+            {duration: 3000});
+          this.resetForm();
+          if (this.editMode) {
+            this.goBack();
+          }
+        },
+        err => this.matSnackBar.open(err.error, '',
+          {duration: 3000, panelClass: 'snack-bar-danger'})
+      );
   }
 
   resetForm() {

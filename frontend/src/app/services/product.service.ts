@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { IProduct } from '../interfaces/product-interface';
 import { UserService } from './user.service';
 import { config } from '../app.config';
+import { IDesign } from '../interfaces/interface';
 
 
 @Injectable()
@@ -190,5 +191,22 @@ export class ProductService {
       httpOptions
     );
   }
+
+  productUpsert(product): Observable<IResponse> {
+    const token = this.userService.userLocalGetToken('token');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': token
+      })
+    };
+    return this.http.post<IResponse>(
+      'api/product/upsert',
+      product,
+      httpOptions
+    );
+  }
 }
+
+
 

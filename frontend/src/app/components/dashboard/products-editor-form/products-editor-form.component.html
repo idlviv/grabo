@@ -27,9 +27,6 @@
                     <img
                          src="{{config.imgPath + config.cloudinary.cloud_name + '/c_fill,h_180,w_180/' + productForm.get('assets').value[i] + '.jpg'}}"
                          alt="productImage">
-                      <!--<img *ngIf="processingLoadFile === i"-->
-                           <!--src="{{config.imgPath + config.cloudinary.cloud_name + '/' + productForm.get('assets').value[i] + '.jpg'}}"-->
-                           <!--alt="productImage">-->
                       <div *ngIf="processingLoadFile === i" class="preview-div-processing">
                       <div class="spinner-wrapper">
                         <mat-spinner [diameter]="24"></mat-spinner>

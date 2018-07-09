@@ -2127,6 +2127,16 @@ var ProductService = /** @class */ (function () {
         };
         return this.http.post('api/product/add-assets', formData, httpOptions);
     };
+    ProductService.prototype.productUpsert = function (product) {
+        var token = this.userService.userLocalGetToken('token');
+        var httpOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpHeaders"]({
+                'Content-Type': 'application/json',
+                'Authorization': token
+            })
+        };
+        return this.http.post('api/product/upsert', product, httpOptions);
+    };
     return ProductService;
 }());
 
