@@ -20,7 +20,8 @@ export class ProductsEditorFormComponent implements OnInit {
   @ViewChild('f') productFormDirective: FormGroupDirective;
   config = config;
   productForm: FormGroup;
-  processingLoadFile = false;
+  processingLoadFile = -1;
+
   editMode = false;
   edited_id: string;
   parentCategory_id: string;
@@ -40,8 +41,8 @@ export class ProductsEditorFormComponent implements OnInit {
     this.productForm = new FormGroup({
       _id: new FormControl('', [
         Validators.required,
-        Validators.minLength(7),
-        Validators.maxLength(12),
+        Validators.minLength(3),
+        Validators.maxLength(25),
       ]),
       name: new FormControl('', [
         Validators.required,
@@ -58,12 +59,15 @@ export class ProductsEditorFormComponent implements OnInit {
         Validators.required,
       ]),
       assets: new FormArray([this.initAssets()]),
-      techAssets: new FormArray([this.initTechAssets()]),
+      // techAssets: new FormArray([this.initTechAssets()]),
       description: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(500),
       ]),
+      // recommendations: new FormArray([this.initRecommendations()]),
+      // designs: new FormArray([this.initDesigns()]),
+
     });
 
     // this.route.paramMap
@@ -93,10 +97,13 @@ export class ProductsEditorFormComponent implements OnInit {
 
       .subscribe(result => {
         if (result) {
-          // this.editMode = true;
-          // console.log('true', result);
-          // this.productForm.patchValue(result.data);
-          // this.productForm.get('_id').disable();
+          this.editMode = true;
+          console.log('true', result);
+          for (let i = 1; i < result.data.assets.length; i++) {
+            this.addAssets();
+          }
+          this.productForm.patchValue(result.data);
+          this.productForm.get('_id').disable();
         } else {
           console.log('false');
         }
@@ -149,7 +156,7 @@ export class ProductsEditorFormComponent implements OnInit {
     //   structure: this.productForm.get('structure').value,
     // };
     //
-    // console.log('design form submit', this.design);
+    console.log('productForm submit');
     // this.designService.designUpsert(this.design)
     //   .subscribe(result => {
     //       this.matSnackBar.open(result.message, '',
@@ -173,12 +180,12 @@ export class ProductsEditorFormComponent implements OnInit {
   }
 
   addAssets() {
-    const control = <FormArray>this.productForm.get('files');
+    const control = <FormArray>this.productForm.get('assets');
     control.push(this.initAssets());
   }
 
   removeAssets(i: number) {
-    const control = <FormArray>this.productForm.get('files');
+    const control = <FormArray>this.productForm.get('assets');
     control.removeAt(i);
   }
 
@@ -199,6 +206,38 @@ export class ProductsEditorFormComponent implements OnInit {
   }
 
   initTechAssets() {
+    return new FormControl('', [
+      Validators.required,
+    ]);
+  }
+
+  addRecommendations() {
+    const control = <FormArray>this.productForm.get('recommendations');
+    control.push(this.initRecommendations());
+  }
+
+  removeRecommendations(i: number) {
+    const control = <FormArray>this.productForm.get('recommendations');
+    control.removeAt(i);
+  }
+
+  initRecommendations() {
+    return new FormControl('', [
+      Validators.required,
+    ]);
+  }
+
+  addDesigns() {
+    const control = <FormArray>this.productForm.get('designs');
+    control.push(this.initDesigns());
+  }
+
+  removeDesigns(i: number) {
+    const control = <FormArray>this.productForm.get('designs');
+    control.removeAt(i);
+  }
+
+  initDesigns() {
     return new FormControl('', [
       Validators.required,
     ]);
