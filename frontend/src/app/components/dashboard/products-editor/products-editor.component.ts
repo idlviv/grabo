@@ -16,8 +16,10 @@ export class ProductsEditorComponent implements OnInit {
   descendants: any;
   catalogForm: FormGroup;
   products: any;
+  parentCategory_id: string;
+  parentCategoryName: string;
 
-  constructor(
+    constructor(
     private catalogService: CatalogService,
     private sharedService: SharedService,
     private productService: ProductService,
@@ -44,7 +46,7 @@ export class ProductsEditorComponent implements OnInit {
     while (level + 1 < this.catalogForm.get('categories')['controls'].length) {
       this.removeCategory(this.catalogForm.get('categories')['controls'].length - 1);
     }
-
+    console.log('event', event);
     this.catalogService.getDescendants(event.value)
       .subscribe(result => {
         if (result.data.length) {
@@ -57,7 +59,10 @@ export class ProductsEditorComponent implements OnInit {
             .subscribe(result => this.products = result.data,
               err => console.log('помилка завантаження категорій', err)
             );
+          this.parentCategory_id = event.value;
+          this.parentCategoryName = event.source.triggerValue;
           console.log('descedants absent', result.data);
+          console.log('this.parentCategory_id', this.parentCategory_id);
         }
         this.descendants[level + 1] = result.data;
         },

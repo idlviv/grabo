@@ -40,7 +40,7 @@
       <div class="row" fxLayout="column" fxLayout.gt-xs="row">
         <div *ngFor="let product of products"  class="cell"
              fxFlex.sm="50" fxFlex.md="33.3" fxFlex.gt-md="20">
-          <app-product-item-brief [product]="product"></app-product-item-brief>
+          <app-product-item-brief [product]="product" [parentCategory_id]="parentCategory_id" [parentCategoryName]="parentCategoryName"></app-product-item-brief>
         </div>
       </div>
 

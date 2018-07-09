@@ -23,6 +23,8 @@ export class ProductsEditorFormComponent implements OnInit {
   processingLoadFile = false;
   editMode = false;
   edited_id: string;
+  parentCategory_id: string;
+  parentCategoryName: string;
   // design: IDesign;
 
   constructor(
@@ -77,9 +79,12 @@ export class ProductsEditorFormComponent implements OnInit {
     this.route.paramMap.pipe(
       mergeMap(paramMap => {
         this.edited_id = paramMap.get('_id');
+        this.parentCategory_id = paramMap.get('parentCategory_id');
+        this.parentCategoryName = paramMap.get('parentCategoryName');
         console.log('edited product _id', this.edited_id);
-
-        if (!this.edited_id) {
+        console.log('edited parentCategory', this.parentCategory_id);
+        console.log('edited parentCategoryName', this.parentCategoryName);
+         if (!this.edited_id) {
           return of(null);
         }
         return this.productService.getProductById(this.edited_id);

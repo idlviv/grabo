@@ -8,6 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ProductItemBriefComponent implements OnInit {
   @Input() product;
   @Input() category_id;
+  @Input() parentCategory_id;
+  @Input() parentCategoryName;
 
   constructor() { }
 

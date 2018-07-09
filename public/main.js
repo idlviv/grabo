@@ -8,26 +8,21 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"../products/products.module.ngfactory": [
-		"./src/app/components/products/products.module.ngfactory.js",
-		"components-dashboard-dashboard-module-ngfactory~products-products-module-ngfactory",
-		"components-products-products-module-ngfactory"
-	],
 	"./components/dashboard/dashboard.module.ngfactory": [
 		"./src/app/components/dashboard/dashboard.module.ngfactory.js",
 		"components-dashboard-dashboard-module-ngfactory~components-user-user-module-ngfactory",
-		"components-dashboard-dashboard-module-ngfactory~products-products-module-ngfactory",
+		"common",
 		"components-dashboard-dashboard-module-ngfactory"
 	],
 	"./components/products/products.module.ngfactory": [
 		"./src/app/components/products/products.module.ngfactory.js",
-		"components-dashboard-dashboard-module-ngfactory~products-products-module-ngfactory",
+		"common",
 		"components-products-products-module-ngfactory"
 	],
 	"./components/user/user.module.ngfactory": [
 		"./src/app/components/user/user.module.ngfactory.js",
 		"components-dashboard-dashboard-module-ngfactory~components-user-user-module-ngfactory",
-		"components-dashboard-dashboard-module-ngfactory~products-products-module-ngfactory",
+		"common",
 		"components-user-user-module-ngfactory"
 	]
 };

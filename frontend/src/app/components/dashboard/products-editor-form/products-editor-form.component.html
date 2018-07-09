@@ -13,41 +13,68 @@
           <div class="container">
             <div class="row">
               <div class="cell">
-                <h2 class="mat-h2">Редагувати колекцію</h2>
+                <h2 class="mat-h2">Редагувати колекцію {{parentCategory_id}} - {{parentCategoryName}}</h2>
               </div>
             </div>
 
             <form [formGroup]="productForm" #f="ngForm" (submit)="onProductFormSubmit()" novalidate>
 
               <div class="row" fxLayout="column" fxLayout.gt-xs="row">
-                <div class="container" fxFlex.gt-xs="50">
-                  <div class="row" fxLayout="column">
 
-                    <div class="cell" fxFlex="100">
+
+                    <div class="cell" fxFlex="33">
                       <mat-form-field>
-                        <input matInput placeholder="Колекція_id" formControlName="_id" required>
+                        <input matInput placeholder="Ідентифікатор" formControlName="_id" required>
                         <mat-error
                           *ngIf="(productForm.get('_id').errors?.minlength ||
-                      productForm.get('_id').errors?.maxlength ||
-                      productForm.get('_id').errors?.required) &&
-                      productForm.get('_id').touched">
+                                  productForm.get('_id').errors?.maxlength ||
+                                  productForm.get('_id').errors?.required) &&
+                                  productForm.get('_id').touched">
                           Довжина повинна бути від 7 до 12 символів
                         </mat-error>
                       </mat-form-field>
                     </div>
-                    <div class="cell" fxFlex="100">
+                    <div class="cell" fxFlex="33">
                       <mat-form-field>
-                        <input matInput placeholder="Колекція" formControlName="name" required>
+                        <input matInput placeholder="Назва" formControlName="name" required>
                         <mat-error
-                          *ngIf="(productForm.get('_id').errors?.minlength ||
-                      productForm.get('_id').errors?.maxlength ||
-                      productForm.get('_id').errors?.required) &&
-                      productForm.get('_id').touched">
-                          Довжина повинна бути від 7 до 12 символів
+                          *ngIf="(productForm.get('name').errors?.minlength ||
+                                  productForm.get('name').errors?.maxlength ||
+                                  productForm.get('name').errors?.required) &&
+                                  productForm.get('name').touched">
+                          Довжина повинна бути від 3 до 50 символів
                         </mat-error>
                       </mat-form-field>
                     </div>
 
+                    <div class="cell" fxFlex="33">
+                      <mat-form-field>
+                        <mat-select placeholder="Публікувати" formControlName="display" required>
+                          <mat-option [value]="true">
+                            Так
+                          </mat-option>
+                          <mat-option [value]="false">
+                            Ні
+                          </mat-option>
+                        </mat-select>
+                        <mat-error
+                          *ngIf="productForm.get('display').errors?.required &&
+                                  productForm.get('display').touched">
+                          Обов'язкове поле
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+
+                <div class="cell" fxFlex="33">
+                  <mat-form-field>
+                    <input matInput placeholder="Порядок" formControlName="order" required>
+                    <mat-error
+                      *ngIf="productForm.get('order').errors?.required &&
+                                  productForm.get('order').touched">
+                      Обов'язкове поле
+                    </mat-error>
+                  </mat-form-field>
+                </div>
 
                     <!--<div class="cell" fxFlex="100">-->
                       <!--<mat-form-field>-->
@@ -64,8 +91,7 @@
                       <!--</mat-form-field>-->
                     <!--</div>-->
 
-                  </div>
-                </div>
+
                 <!--<div class="cell" fxFlex.gt-xs="50">-->
                   <!--<div class="preview-img-wrapper">-->
                     <!--<img *ngIf="productForm.get('image').value"-->
