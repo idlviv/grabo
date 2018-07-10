@@ -9065,8 +9065,8 @@ var ProductsEditorFormComponent = /** @class */ (function () {
             order: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('', [
                 _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required,
             ]),
-            assets: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormArray"]([this.initAssetsControl()]),
-            // techAssets: new FormArray([this.initTechAssets()]),
+            assets: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormArray"]([]),
+            techAssets: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormArray"]([]),
             description: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('', [
                 _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required,
                 _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].minLength(3),
@@ -9097,8 +9097,12 @@ var ProductsEditorFormComponent = /** @class */ (function () {
             if (result) {
                 _this.editMode = true;
                 console.log('true', result);
-                for (var i = 1; i < result.data.assets.length; i++) {
+                for (var i = 0; i < result.data.assets.length; i++) {
                     _this.addAssetsControl();
+                }
+                console.log('result.data.techAssets.length', result.data.techAssets.length);
+                for (var i = 0; i < result.data.techAssets.length; i++) {
+                    _this.addTechAssetsControl();
                 }
                 _this.productForm.patchValue(result.data);
                 _this.productForm.get('_id').disable();

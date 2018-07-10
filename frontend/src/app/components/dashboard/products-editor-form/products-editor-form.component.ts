@@ -60,8 +60,8 @@ export class ProductsEditorFormComponent implements OnInit {
       order: new FormControl('', [ // select
         Validators.required,
       ]),
-      assets: new FormArray([this.initAssetsControl()]),
-      // techAssets: new FormArray([this.initTechAssets()]),
+      assets: new FormArray([]),
+      techAssets: new FormArray([]),
       description: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
@@ -100,8 +100,12 @@ export class ProductsEditorFormComponent implements OnInit {
         if (result) {
           this.editMode = true;
           console.log('true', result);
-          for (let i = 1; i < result.data.assets.length; i++) {
+          for (let i = 0; i < result.data.assets.length; i++) {
             this.addAssetsControl();
+          }
+          console.log('result.data.techAssets.length', result.data.techAssets.length);
+          for (let i = 0; i < result.data.techAssets.length; i++) {
+            this.addTechAssetsControl();
           }
           this.productForm.patchValue(result.data);
           this.productForm.get('_id').disable();
