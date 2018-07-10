@@ -49,6 +49,11 @@ router.post('/product/add-assets',
   productController.productAddAssets
 );
 
+router.post('/product/add-techassets',
+  passport.authenticate('jwt', {session: false}),
+  productController.productAddTechAssets
+);
+
 router.get('/product/get-products',
   productController.getProducts
 );

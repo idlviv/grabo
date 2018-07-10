@@ -76,9 +76,10 @@
                     </mat-error>
                   </mat-form-field>
                 </div>
+
                 <div class="cell" fxFlex="33">
                   <mat-form-field>
-                    <input matInput placeholder="Опис" formControlName="description" required>
+                    <textarea matInput placeholder="Опис" formControlName="description" required></textarea>
                     <mat-error
                       *ngIf="(productForm.get('description').errors?.minlength ||
                                   productForm.get('description').errors?.maxlength ||
@@ -89,6 +90,56 @@
                   </mat-form-field>
                 </div>
               </div>
+
+              <div class="row" fxLayout="column" fxLayout.gt-xs="row">
+
+                <div formArrayName="recommendations" class="cell" fxFlex="33"
+                  *ngFor="let recommendation of productForm.get('recommendations')['controls']; let i = index">
+                  <mat-form-field>
+                    <input matInput placeholder="Рекомендації" formControlName="{{i}}" required>
+                    <!--<mat-hint *ngIf="productForm.get('recommendations').value.length > 1 " align="end"-->
+                              <!--class="remove-field" (click)="removeRecommendationsControl(i)">Видалити</mat-hint>-->
+                    <mat-icon matSuffix color="accent" (click)="removeRecommendationsControl(i)">delete_forever</mat-icon>
+                    <mat-error
+                      *ngIf="productForm.get('recommendations').at(i).errors?.required &&
+                                  productForm.get('recommendations').at(i).touched">
+                      Обов'язкове поле
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div *ngIf="productForm.get('recommendations').value.length < 5" class="cell" fxFlex="33">
+                  <button mat-mini-fab color="accent" type="button"
+                          (click)="addRecommendationsControl()"><mat-icon>add</mat-icon></button>
+                </div>
+              </div>
+
+
+
+
+
+              <!--<div class="row" fxLayout="row" fxFlex="100">-->
+                <!--<div class="cell">-->
+                  <!--<h3 class="mat-h3">Дизайни</h3>-->
+                <!--</div>-->
+              <!--</div>-->
+              <!--<div class="row" fxLayout="row" fxFlex="100">-->
+                <!--<div formArrayName="assets" class="cell" fxFlex="25" fxFlex.lt-md="50"-->
+                     <!--*ngFor="let design of productForm.get('designs')['controls']; let i = index">-->
+                  <!--<mat-form-field>-->
+                    <!--<input type="text" matInput placeholder="Дизайни" formControlName="{{i}}" required [matAutocomplete]="autoGroup">-->
+                    <!--<mat-autocomplete #autoGroup="matAutocomplete">-->
+                      <!--<mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">-->
+                        <!--<mat-option *ngFor="let name of group.names" [value]="name">-->
+                          <!--{{name}}-->
+                        <!--</mat-option>-->
+                      <!--</mat-optgroup>-->
+                    <!--</mat-autocomplete>-->
+                  <!--</mat-form-field>-->
+                <!--</div>-->
+              <!--</div>-->
+
+
+
 
                 <div class="row" fxLayout="row" fxFlex="100">
                   <div class="cell">
@@ -114,7 +165,7 @@
                   </div>
 
                   <div class="cell" fxFlex="25" fxFlex.lt-md="50"
-                       *ngIf="productForm.get('assets').value.length < 4">
+                       *ngIf="productForm.get('assets').value.length < 5">
                     <div class="preview-img-wrapper">
                       <img src="{{config.defaultProductImgPath}}" alt="productImage">
                       <input #inputFile type="file" (change)="addAssets($event)"
@@ -158,7 +209,7 @@
                 </div>
 
                 <div class="cell" fxFlex="25" fxFlex.lt-md="50"
-                     *ngIf="productForm.get('techAssets').value.length < 4">
+                     *ngIf="productForm.get('techAssets').value.length < 5">
                   <div class="preview-img-wrapper">
                     <img src="{{config.defaultProductImgPath}}" alt="productImage">
                     <input #inputFile type="file" (change)="addTechAssets($event)"
@@ -168,7 +219,7 @@
                       <div class="button-wrapper">
                         <button mat-mini-fab color="primary" type="button"
                                 (click)="inputFile.click();"
-                                [disabled]="processingLoadFile >= 0">
+                                [disabled]="processingLoadTechAssets >= 0">
                           <mat-icon>add</mat-icon>
                         </button>
                       </div>
@@ -180,15 +231,15 @@
               <div class="submit-button-wrapper row" fxLayout="row">
                 <div>
                   <button *ngIf="editMode" mat-raised-button color="primary" class="full-width"
-                          [disabled]="!productForm.valid || processingLoadFile >=0">Зберегти</button>
+                          [disabled]="!productForm.valid || processingLoadAssets >=0 || processingLoadTechAssets >= 0">Зберегти</button>
                   <button *ngIf="!editMode" mat-raised-button color="primary" class="full-width"
-                          [disabled]="!productForm.valid || processingLoadFile >=0">Створити</button>
+                          [disabled]="!productForm.valid || processingLoadAssets >=0 || processingLoadTechAssets >= 0">Створити</button>
                 </div>
 
                 <div fxFlex></div>
                 <div>
                   <button mat-raised-button  type="button" (click)="goBack()" class="full-width"
-                          [disabled]="processingLoadFile >=0 ">Повернутись</button>
+                          [disabled]="processingLoadAssets >=0 || processingLoadTechAssets >= 0">Повернутись</button>
                 </div>
 
               </div>

@@ -5,7 +5,7 @@ import {
   MatGridListModule, MatSidenavModule, MatSnackBarModule, MatTabsModule,
   MatDialogModule, MatTableModule, MatProgressSpinnerModule, MatStepperModule,
   MatRadioModule, MatSelectModule, MatIconModule, MatCheckboxModule, MatMenuModule,
-  MatExpansionModule, MatListModule,
+  MatExpansionModule, MatListModule, MatAutocompleteModule
 } from '@angular/material';
 // import { MatIconModule } from '@angular/material/icon';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -33,6 +33,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatMenuModule,
     MatExpansionModule,
     MatListModule,
+    MatAutocompleteModule,
     ],
   exports: [
     MatButtonModule,
@@ -55,6 +56,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatMenuModule,
     MatExpansionModule,
     MatListModule,
+    MatAutocompleteModule,
   ],
 })
 

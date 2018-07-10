@@ -11,6 +11,20 @@ import { DesignService } from '../../../services/design.service';
 import { mergeMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
+// import {Observable} from 'rxjs';
+// import {startWith, map} from 'rxjs/operators';
+//
+// export interface StateGroup {
+//   letter: string;
+//   names: string[];
+// }
+
+// export const _filter = (opt: string[], value: string): string[] => {
+//   const filterValue = value.toLowerCase();
+//
+//   return opt.filter(item => item.toLowerCase().indexOf(filterValue) === 0);
+// };
+
 @Component({
   selector: 'app-products-editor-form',
   templateUrl: './products-editor-form.component.html',
@@ -27,8 +41,9 @@ export class ProductsEditorFormComponent implements OnInit {
   edited_id: string;
   parentCategory_id: string;
   parentCategoryName: string;
-  // design: IDesign;
+  designs: IDesign[];
   product: any;
+  // stateGroupOptions: Observable<StateGroup[]>;
 
   constructor(
     private matSnackBar: MatSnackBar,
@@ -67,20 +82,9 @@ export class ProductsEditorFormComponent implements OnInit {
         Validators.minLength(3),
         Validators.maxLength(500),
       ]),
-      // recommendations: new FormArray([this.initRecommendations()]),
-      // designs: new FormArray([this.initDesigns()]),
-
+      recommendations: new FormArray([this.initRecommendationsControl()]),
+      designs: new FormArray([this.initDesignsControl()]),
     });
-
-    // this.route.paramMap
-    //   .subscribe(paramMap => {
-    //     if (paramMap.get('_id')) {
-    //       // this.edited_id = paramMap.get('_id');
-    //       // this.editMode = true;
-    //
-    //     }
-    //   });
-
 
     this.route.paramMap.pipe(
       mergeMap(paramMap => {
@@ -113,7 +117,27 @@ export class ProductsEditorFormComponent implements OnInit {
           console.log('false');
         }
       });
+
+    // this.designService.getDesigns()
+    //   .subscribe(result => this.designs = result.data,
+    //     err => console.log('Помилка завантеження дизайнів', err));
+
+    // this.stateGroupOptions = this.stateForm.get('stateGroup')!.valueChanges
+    //   .pipe(
+    //     startWith(''),
+    //     map(value => this._filterGroup(value))
+    //   );
   }
+
+  // private _filterGroup(value: string): StateGroup[] {
+  //   if (value) {
+  //     return this.stateGroups
+  //       .map(group => ({letter: group.letter, names: _filter(group.names, value)}))
+  //       .filter(group => group.names.length > 0);
+  //   }
+  //
+  //   return this.stateGroups;
+  // }
 
   addAssets(event) {
     this.processingLoadAssets = this.productForm.get('assets').value.length;
@@ -148,7 +172,7 @@ export class ProductsEditorFormComponent implements OnInit {
   }
 
   addTechAssets(event) {
-    this.processingLoadTechAssets = this.productForm.get('assets').value.length;
+    this.processingLoadTechAssets = this.productForm.get('techAssets').value.length;
     const file = event.target.files[0];
     const checkFile = this.productService.checkFile(file);
 
@@ -157,21 +181,21 @@ export class ProductsEditorFormComponent implements OnInit {
         {duration: 3000, panelClass: 'snack-bar-danger'});
       this.processingLoadTechAssets = -1;
     } else {
-      const filesLinks = this.productForm.get('assets').value;
+      const filesLinks = this.productForm.get('techAssets').value;
       filesLinks.push(config.defaultProductImg);
-      this.addAssetsControl();
-      this.productForm.get('assets').setValue(filesLinks);
+      this.addTechAssetsControl();
+      this.productForm.get('techAssets').setValue(filesLinks);
       this.productService.productAddTechAssets(file, this.productForm.get('_id').value)
         .subscribe(result => {
             filesLinks.pop();
             filesLinks.push(result.data);
-            this.productForm.get('assets').setValue(filesLinks);
+            this.productForm.get('techAssets').setValue(filesLinks);
             this.processingLoadTechAssets = -1;
           },
           err => {
             this.matSnackBar.open(err.error || 'Помилка', '',
               {duration: 3000, panelClass: 'snack-bar-danger'});
-            this.removeAssetsControl(this.productForm.get('assets').value.length - 1);
+            this.removeAssetsControl(this.productForm.get('techAssets').value.length - 1);
             filesLinks.pop();
             this.processingLoadTechAssets = -1;
           }
@@ -187,6 +211,7 @@ export class ProductsEditorFormComponent implements OnInit {
       display: this.productForm.get('display').value,
       order: this.productForm.get('order').value,
       assets: this.productForm.get('assets').value,
+      techAssets: this.productForm.get('techAssets').value,
       description: this.productForm.get('description').value,
     };
     //

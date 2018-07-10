@@ -25,12 +25,12 @@ const ProductSchema = new Schema({
   },
   assets: {
     type: [String],
-    default: config.get('defaultProductImgPath'),
+    // default: config.get('defaultProductImgPath'),
     required: true
   },
   techAssets: {
     type: [String],
-    default: config.get('defaultProductImgPath'),
+    // default: config.get('defaultProductImgPath'),
     required: true
   },
   description: {
