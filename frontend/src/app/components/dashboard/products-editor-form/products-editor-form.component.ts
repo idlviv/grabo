@@ -95,7 +95,6 @@ export class ProductsEditorFormComponent implements OnInit {
         return this.productService.getProductById(this.edited_id);
       }),
     )
-
       .subscribe(result => {
         if (result) {
           this.editMode = true;
