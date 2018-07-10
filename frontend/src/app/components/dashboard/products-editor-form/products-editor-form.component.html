@@ -117,6 +117,27 @@
 
 
 
+              <div class="row" fxLayout="row" fxFlex="100">
+                <div class="cell">
+                  <h3 class="mat-h3">Дизайни</h3>
+                </div>
+              </div>
+              <div class="row" fxLayout="row" fxFlex="100">
+                <div formArrayName="assets" class="cell" fxFlex="25" fxFlex.lt-md="50"
+                     *ngFor="let design of productForm.get('designs')['controls']; let i = index">
+                  <mat-form-field>
+                    <input type="text" matInput placeholder="Дизайни" formControlName="{{i}}" required [matAutocomplete]="autoGroup">
+                    <mat-autocomplete #autoGroup="matAutocomplete">
+                      <!--<mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">-->
+                        <!--<mat-option *ngFor="let filteredDesign of filteredDesigns | async" [value]="filteredDesign._id">-->
+                          <!--{{filteredDesign._id}}-->
+                        <!--</mat-option>-->
+                      <!--</mat-optgroup>-->
+                    </mat-autocomplete>
+                  </mat-form-field>
+                </div>
+              </div>
+
               <!--<div class="row" fxLayout="row" fxFlex="100">-->
                 <!--<div class="cell">-->
                   <!--<h3 class="mat-h3">Дизайни</h3>-->
