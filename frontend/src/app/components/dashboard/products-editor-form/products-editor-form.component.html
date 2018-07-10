@@ -3,13 +3,15 @@
     <div class="item full-width-container">
       <mat-card  class="form-block">
         <mat-card-header></mat-card-header>
-        <mat-card-title></mat-card-title>
+        <mat-card-title>
+          <h2 *ngIf="editMode" class="mat-h2">Редагувати колекцію {{productForm.get('name').value}}</h2>
+          <h2 *ngIf="!editMode" class="mat-h2">Редагувати колекцію {{productForm.get('name').value}}</h2>
+        </mat-card-title>
 
         <mat-card-content>
           <div class="container">
-            <div *ngIf="editMode" class="row">
+            <div class="row">
               <div class="cell">
-                <h2 class="mat-h2">Редагувати колекцію {{productForm.get('name').value}}</h2>
                 <p>{{parentCategory_id}} - {{parentCategoryName}}</p>
               </div>
             </div>
@@ -93,21 +95,20 @@
                     <h3 class="mat-h3">Головні зображення колекції</h3>
                   </div>
                 </div>
-
                 <div class="row" fxLayout="row" fxFlex="100">
                   <div formArrayName="assets" class="cell" fxFlex="25" fxFlex.lt-md="50"
                        *ngFor="let asset of productForm.get('assets')['controls']; let i = index">
                     <div *ngIf="productForm.get('assets').value[i]" class="preview-img-wrapper">
                       <img src="{{config.imgPath + config.cloudinary.cloud_name + '/c_fill,h_180,w_180/' + productForm.get('assets').value[i] + '.jpg'}}"
                            alt="productImage">
-                      <div *ngIf="processingLoadFile === i" class="preview-div-processing">
+                      <div *ngIf="processingLoadAssets === i" class="preview-div-processing">
                         <div class="spinner-wrapper">
                           <mat-spinner [diameter]="24"></mat-spinner>
                         </div>
                       </div>
                     </div>
 
-                    <p *ngIf="processingLoadFile !== i" class="remove-field text-center"
+                    <p *ngIf="processingLoadAssets !== i" class="remove-field text-center"
                        (click)="removeAssetsControl(i)">
                       Видалити зображення</p>
                   </div>
@@ -123,7 +124,7 @@
                         <div class="button-wrapper">
                           <button mat-mini-fab color="primary" type="button"
                                   (click)="inputFile.click();"
-                                  [disabled]="processingLoadFile >= 0">
+                                  [disabled]="processingLoadAssets >= 0">
                             <mat-icon>add</mat-icon>
                           </button>
                         </div>
@@ -131,54 +132,50 @@
                     </div>
                   </div>
                 </div>
-                    <!--<div class="cell" fxFlex="100">-->
-                      <!--<mat-form-field>-->
-                        <!--<mat-select placeholder="Структура" formControlName="structure" required>-->
-                          <!--<mat-option *ngFor="let struct of config.designStructure" [value]="struct">-->
-                            <!--{{struct}}-->
-                          <!--</mat-option>-->
-                        <!--</mat-select>-->
-                        <!--<mat-error-->
-                          <!--*ngIf="productForm.get('structure').errors?.required &&-->
-                            <!--productForm.get('structure').touched">-->
-                          <!--Виберіть категорію-->
-                        <!--</mat-error>-->
-                      <!--</mat-form-field>-->
-                    <!--</div>-->
 
+                           
+              <div class="row" fxLayout="row" fxFlex="100">
+                <div class="cell">
+                  <h3 class="mat-h3">Технічні властивості (зображення) колекції</h3>
+                </div>
+              </div>
+              <div class="row" fxLayout="row" fxFlex="100">
+                <div formArrayName="techAssets" class="cell" fxFlex="25" fxFlex.lt-md="50"
+                     *ngFor="let asset of productForm.get('techAssets')['controls']; let i = index">
+                  <div *ngIf="productForm.get('techAssets').value[i]" class="preview-img-wrapper">
+                    <img src="{{config.imgPath + config.cloudinary.cloud_name + '/c_fill,h_180,w_180/' + productForm.get('techAssets').value[i] + '.jpg'}}"
+                         alt="productImage">
+                    <div *ngIf="processingLoadTechAssets === i" class="preview-div-processing">
+                      <div class="spinner-wrapper">
+                        <mat-spinner [diameter]="24"></mat-spinner>
+                      </div>
+                    </div>
+                  </div>
 
-                <!--<div class="cell" fxFlex.gt-xs="50">-->
-                  <!--<div class="preview-img-wrapper">-->
-                    <!--<img *ngIf="productForm.get('image').value"-->
-                         <!--src="{{config.imgPath + config.cloudinary.cloud_name + '/c_fill,h_180,w_180/' + productForm.get('image').value + '.jpg'}}"-->
-                         <!--alt="designImage">-->
-                    <!--<img *ngIf="!productForm.get('image').value"-->
-                         <!--src="{{config.defaultProductImgPath}}" alt="designImage">-->
-                    <!--<input #inputFile type="file" (change)="addPictures($event)"-->
-                           <!--accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png" style="display:none;">-->
-                    <!--<div class="preview-div-processing">-->
-                      <!--<div *ngIf="processingLoadFile" class="spinner-wrapper">-->
-                        <!--<mat-spinner [diameter]="24"></mat-spinner>-->
-                      <!--</div>-->
+                  <p *ngIf="processingLoadTechAssets !== i" class="remove-field text-center"
+                     (click)="removeTechAssetsControl(i)">
+                    Видалити зображення</p>
+                </div>
 
+                <div class="cell" fxFlex="25" fxFlex.lt-md="50"
+                     *ngIf="productForm.get('techAssets').value.length < 4">
+                  <div class="preview-img-wrapper">
+                    <img src="{{config.defaultProductImgPath}}" alt="productImage">
+                    <input #inputFile type="file" (change)="addTechAssets($event)"
+                           accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png" style="display:none;">
 
-                      <!--<div *ngIf="!processingLoadFile" class="button-wrapper">-->
-                        <!--<button mat-mini-fab color="primary" type="button"-->
-                                <!--(click)="inputFile.click();-->
-                                  <!--productForm.get('_id').disable();-->
-                                  <!--productForm.get('structure').disable();"-->
-                                <!--[disabled]="processingLoadFile || productForm.get('_id').invalid">-->
-                          <!--<mat-icon *ngIf="!productForm.get('image').value">add</mat-icon>-->
-                          <!--<mat-icon *ngIf="productForm.get('image').value">redo</mat-icon>-->
-                        <!--</button>-->
-
-                      <!--</div>-->
-                    <!--</div>-->
-                  <!--</div>-->
-
-                <!--</div>-->
-
-
+                    <div class="preview-div-processing">
+                      <div class="button-wrapper">
+                        <button mat-mini-fab color="primary" type="button"
+                                (click)="inputFile.click();"
+                                [disabled]="processingLoadFile >= 0">
+                          <mat-icon>add</mat-icon>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
               <div class="submit-button-wrapper row" fxLayout="row">
                 <div>

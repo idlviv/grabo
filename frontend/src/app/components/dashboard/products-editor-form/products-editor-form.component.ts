@@ -20,7 +20,8 @@ export class ProductsEditorFormComponent implements OnInit {
   @ViewChild('f') productFormDirective: FormGroupDirective;
   config = config;
   productForm: FormGroup;
-  processingLoadFile = -1;
+  processingLoadAssets = -1;
+  processingLoadTechAssets = -1;
 
   editMode = false;
   edited_id: string;
@@ -111,14 +112,14 @@ export class ProductsEditorFormComponent implements OnInit {
   }
 
   addAssets(event) {
-    this.processingLoadFile = this.productForm.get('assets').value.length;
+    this.processingLoadAssets = this.productForm.get('assets').value.length;
     const file = event.target.files[0];
     const checkFile = this.productService.checkFile(file);
 
     if (!checkFile.success) {
       this.matSnackBar.open(checkFile.message || 'Помилка', '',
         {duration: 3000, panelClass: 'snack-bar-danger'});
-      this.processingLoadFile = -1;
+      this.processingLoadAssets = -1;
     } else {
       const filesLinks = this.productForm.get('assets').value;
       filesLinks.push(config.defaultProductImg);
@@ -129,14 +130,46 @@ export class ProductsEditorFormComponent implements OnInit {
             filesLinks.pop();
             filesLinks.push(result.data);
             this.productForm.get('assets').setValue(filesLinks);
-            this.processingLoadFile = -1;
+            this.processingLoadAssets = -1;
           },
           err => {
             this.matSnackBar.open(err.error || 'Помилка', '',
               {duration: 3000, panelClass: 'snack-bar-danger'});
             this.removeAssetsControl(this.productForm.get('assets').value.length - 1);
             filesLinks.pop();
-            this.processingLoadFile = -1;
+            this.processingLoadAssets = -1;
+          }
+        );
+    }
+  }
+
+  addTechAssets(event) {
+    this.processingLoadTechAssets = this.productForm.get('assets').value.length;
+    const file = event.target.files[0];
+    const checkFile = this.productService.checkFile(file);
+
+    if (!checkFile.success) {
+      this.matSnackBar.open(checkFile.message || 'Помилка', '',
+        {duration: 3000, panelClass: 'snack-bar-danger'});
+      this.processingLoadTechAssets = -1;
+    } else {
+      const filesLinks = this.productForm.get('assets').value;
+      filesLinks.push(config.defaultProductImg);
+      this.addAssetsControl();
+      this.productForm.get('assets').setValue(filesLinks);
+      this.productService.productAddTechAssets(file, this.productForm.get('_id').value)
+        .subscribe(result => {
+            filesLinks.pop();
+            filesLinks.push(result.data);
+            this.productForm.get('assets').setValue(filesLinks);
+            this.processingLoadTechAssets = -1;
+          },
+          err => {
+            this.matSnackBar.open(err.error || 'Помилка', '',
+              {duration: 3000, panelClass: 'snack-bar-danger'});
+            this.removeAssetsControl(this.productForm.get('assets').value.length - 1);
+            filesLinks.pop();
+            this.processingLoadTechAssets = -1;
           }
         );
     }
