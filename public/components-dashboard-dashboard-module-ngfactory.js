@@ -9281,7 +9281,7 @@ var ProductsEditorFormComponent = /** @class */ (function () {
             _this.designs = result.data;
             _this.designs.map(function (design) { return _this.designs_id.push(design._id); });
         }, function (err) { return console.log('Помилка завантеження дизайнів', err); });
-        this.filteredDesigns = this.productForm.get('des').valueChanges.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["startWith"])('4'), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["map"])(function (value) {
+        this.filteredDesigns = this.productForm.get('des').valueChanges.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["startWith"])(''), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["map"])(function (value) {
             _this.designValidity = _this._checkDesignValidity(value);
             return _this._filter(value);
         }));
