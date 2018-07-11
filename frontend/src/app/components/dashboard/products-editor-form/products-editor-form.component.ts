@@ -36,6 +36,7 @@ export class ProductsEditorFormComponent implements OnInit {
   parentCategory_id: string;
   parentCategoryName: string;
   designs: IDesign[];
+  designs_id = [];
   product: any;
 
   filteredDesigns: Observable<string[]>;
@@ -124,7 +125,10 @@ export class ProductsEditorFormComponent implements OnInit {
       });
 
     this.designService.getDesigns()
-      .subscribe(result => this.designs = result.data,
+      .subscribe(result => {
+        this.designs = result.data;
+        this.designs.map(design => this.designs_id.push(design._id));
+        },
         err => console.log('Помилка завантеження дизайнів', err));
 
       this.filteredDesigns = this.productForm.get('des').valueChanges.pipe(
@@ -144,12 +148,11 @@ export class ProductsEditorFormComponent implements OnInit {
   private _filter(value: string): string[] {
     const filterValue = value;
     this.designFilterValue = value;
-    return this.options.filter(option => option.indexOf(filterValue) === 0);
+    return this.designs_id.filter(option => option.indexOf(filterValue) === 0);
   }
 
   private _checkDesignValidity(value: string): boolean {
-    console.log('check design validity');
-    return this.options.indexOf(value) !== -1;
+    return this.designs_id.indexOf(value) !== -1;
   }
 
   addDesign() {
