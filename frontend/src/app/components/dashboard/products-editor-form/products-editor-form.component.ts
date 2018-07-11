@@ -10,20 +10,12 @@ import { ProductService } from '../../../services/product.service';
 import { DesignService } from '../../../services/design.service';
 import { mergeMap } from 'rxjs/operators';
 import { of } from 'rxjs';
+// import { Observable } from 'rxjs/Observable';
 
-// import {Observable} from 'rxjs';
-// import {startWith, map} from 'rxjs/operators';
-//
-// export interface StateGroup {
-//   letter: string;
-//   names: string[];
-// }
+import {Observable} from 'rxjs';
+import {startWith, map} from 'rxjs/operators';
 
-// export const _filter = (opt: string[], value: string): string[] => {
-//   const filterValue = value.toLowerCase();
-//
-//   return opt.filter(item => item.toLowerCase().indexOf(filterValue) === 0);
-// };
+
 
 @Component({
   selector: 'app-products-editor-form',
@@ -32,6 +24,8 @@ import { of } from 'rxjs';
 })
 export class ProductsEditorFormComponent implements OnInit {
   @ViewChild('f') productFormDirective: FormGroupDirective;
+  // @ViewChild('inp') inputDirective;
+
   config = config;
   productForm: FormGroup;
   processingLoadAssets = -1;
@@ -44,73 +38,10 @@ export class ProductsEditorFormComponent implements OnInit {
   designs: IDesign[];
   product: any;
 
-
-  // stateForm: FormGroup = this.fb.group({
-  //   stateGroup: '',
-  // });
-  //
-  // stateGroups: StateGroup[] = [{
-  //   letter: 'A',
-  //   names: ['Alabama', 'Alaska', 'Arizona', 'Arkansas']
-  // }, {
-  //   letter: 'C',
-  //   names: ['California', 'Colorado', 'Connecticut']
-  // }, {
-  //   letter: 'D',
-  //   names: ['Delaware']
-  // }, {
-  //   letter: 'F',
-  //   names: ['Florida']
-  // }, {
-  //   letter: 'G',
-  //   names: ['Georgia']
-  // }, {
-  //   letter: 'H',
-  //   names: ['Hawaii']
-  // }, {
-  //   letter: 'I',
-  //   names: ['Idaho', 'Illinois', 'Indiana', 'Iowa']
-  // }, {
-  //   letter: 'K',
-  //   names: ['Kansas', 'Kentucky']
-  // }, {
-  //   letter: 'L',
-  //   names: ['Louisiana']
-  // }, {
-  //   letter: 'M',
-  //   names: ['Maine', 'Maryland', 'Massachusetts', 'Michigan',
-  //     'Minnesota', 'Mississippi', 'Missouri', 'Montana']
-  // }, {
-  //   letter: 'N',
-  //   names: ['Nebraska', 'Nevada', 'New Hampshire', 'New Jersey',
-  //     'New Mexico', 'New York', 'North Carolina', 'North Dakota']
-  // }, {
-  //   letter: 'O',
-  //   names: ['Ohio', 'Oklahoma', 'Oregon']
-  // }, {
-  //   letter: 'P',
-  //   names: ['Pennsylvania']
-  // }, {
-  //   letter: 'R',
-  //   names: ['Rhode Island']
-  // }, {
-  //   letter: 'S',
-  //   names: ['South Carolina', 'South Dakota']
-  // }, {
-  //   letter: 'T',
-  //   names: ['Tennessee', 'Texas']
-  // }, {
-  //   letter: 'U',
-  //   names: ['Utah']
-  // }, {
-  //   letter: 'V',
-  //   names: ['Vermont', 'Virginia']
-  // }, {
-  //   letter: 'W',
-  //   names: ['Washington', 'West Virginia', 'Wisconsin', 'Wyoming']
-  // }];
-  //
-  // stateGroupOptions: Observable<StateGroup[]>;
+  filteredDesigns: Observable<string[]>;
+  options: string[] = ['4121-260', '4122-260'];
+  designFilterValue: string;
+  designValidity = false;
 
   constructor(
     private matSnackBar: MatSnackBar,
@@ -133,13 +64,13 @@ export class ProductsEditorFormComponent implements OnInit {
         Validators.minLength(3),
         Validators.maxLength(50),
       ]),
-      parent: new FormControl('', [ // select
+      parent: new FormControl('', [
         Validators.required,
       ]),
-      display: new FormControl('', [ // select
+      display: new FormControl('', [
         Validators.required,
       ]),
-      order: new FormControl('', [ // select
+      order: new FormControl('', [
         Validators.required,
       ]),
       assets: new FormArray([]),
@@ -149,8 +80,10 @@ export class ProductsEditorFormComponent implements OnInit {
         Validators.minLength(3),
         Validators.maxLength(500),
       ]),
-      recommendations: new FormArray([this.initRecommendationsControl()]),
-      designs: new FormArray([this.initDesignsControl()]),
+      recommendations: new FormArray([]),
+      designs: new FormArray([]),
+      des:  new FormControl('', [
+        ])
     });
 
     this.route.paramMap.pipe(
@@ -170,41 +103,62 @@ export class ProductsEditorFormComponent implements OnInit {
       .subscribe(result => {
         if (result) {
           this.editMode = true;
-          console.log('true', result);
+          // for (let i = 0; i < result.data.designs.length; i++) {
+          //   this.addDesignsControl();
+          // }
+          for (let i = 0; i < result.data.recommendations.length; i++) {
+            this.addRecommendationsControl();
+          }
           for (let i = 0; i < result.data.assets.length; i++) {
             this.addAssetsControl();
           }
-          console.log('result.data.techAssets.length', result.data.techAssets.length);
           for (let i = 0; i < result.data.techAssets.length; i++) {
             this.addTechAssetsControl();
           }
           this.productForm.patchValue(result.data);
+
           this.productForm.get('_id').disable();
         } else {
           console.log('false');
         }
       });
 
-    // this.designService.getDesigns()
-    //   .subscribe(result => this.designs = result.data,
-    //     err => console.log('Помилка завантеження дизайнів', err));
+    this.designService.getDesigns()
+      .subscribe(result => this.designs = result.data,
+        err => console.log('Помилка завантеження дизайнів', err));
 
-    // this.stateGroupOptions = this.stateForm.get('stateGroup')!.valueChanges
-    //   .pipe(
-    //     startWith(''),
-    //     map(value => this._filterGroup(value))
-    //   );
+      this.filteredDesigns = this.productForm.get('des').valueChanges.pipe(
+        startWith(''),
+        map(value => {
+          this.designValidity = this._checkDesignValidity(value);
+          return this._filter(value);
+        })
+      );
+
+      // this.filteredDesigns = this.productForm.get('des').valueChanges.pipe(
+      //   startWith(''),
+      //   map(value => this._filter(value))
+      // );
   }
 
-  // private _filterGroup(value: string): StateGroup[] {
-  //   if (value) {
-  //     return this.stateGroups
-  //       .map(group => ({letter: group.letter, names: _filter(group.names, value)}))
-  //       .filter(group => group.names.length > 0);
-  //   }
-  //
-  //   return this.stateGroups;
-  // }
+  private _filter(value: string): string[] {
+    const filterValue = value;
+    this.designFilterValue = value;
+    return this.options.filter(option => option.indexOf(filterValue) === 0);
+  }
+
+  private _checkDesignValidity(value: string): boolean {
+    console.log('check design validity');
+    return this.options.indexOf(value) !== -1;
+  }
+
+  addDesign() {
+    if (this._checkDesignValidity(this.productForm.get('des').value)) {
+      console.log('add design true');
+    } else {
+      console.log('add design false');
+    }
+  }
 
   addAssets(event) {
     this.processingLoadAssets = this.productForm.get('assets').value.length;
@@ -280,6 +234,8 @@ export class ProductsEditorFormComponent implements OnInit {
       assets: this.productForm.get('assets').value,
       techAssets: this.productForm.get('techAssets').value,
       description: this.productForm.get('description').value,
+      recommendations: this.productForm.get('recommendations').value,
+      designs: this.productForm.get('designs').value,
     };
     //
     console.log('productForm submit', this.product);

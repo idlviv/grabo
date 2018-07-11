@@ -1,6 +1,7 @@
 const mongoose = require('../config/mongoose');
 const Schema = mongoose.Schema;
 const config = require('../config');
+const DesignModel = require('./designModel');
 
 const ProductSchema = new Schema({
   _id: {
@@ -57,6 +58,9 @@ const ProductSchema = new Schema({
       }
     }
   ],
+  // designs: [
+  //   DesignModel
+  // ],
   designs: {
     type: [String],
     required: true

@@ -123,43 +123,54 @@
                 </div>
               </div>
               <div class="row" fxLayout="row" fxFlex="100">
-                <div formArrayName="assets" class="cell" fxFlex="25" fxFlex.lt-md="50"
-                     *ngFor="let design of productForm.get('designs')['controls']; let i = index">
-                  <mat-form-field>
-                    <input type="text" matInput placeholder="Дизайни" formControlName="{{i}}" required [matAutocomplete]="autoGroup">
-                    <mat-autocomplete #autoGroup="matAutocomplete">
-                      <!--<mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">-->
-                        <!--<mat-option *ngFor="let filteredDesign of filteredDesigns | async" [value]="filteredDesign._id">-->
-                          <!--{{filteredDesign._id}}-->
-                        <!--</mat-option>-->
-                      <!--</mat-optgroup>-->
-                    </mat-autocomplete>
-                  </mat-form-field>
-                </div>
-              </div>
+                <!--<div formArrayName="designs" class="cell" fxFlex="25" fxFlex.lt-md="50"-->
+                     <!--*ngFor="let des of productForm.get('designs')['controls']; let i = index">-->
 
-              <!--<div class="row" fxLayout="row" fxFlex="100">-->
-                <!--<div class="cell">-->
-                  <!--<h3 class="mat-h3">Дизайни</h3>-->
-                <!--</div>-->
-              <!--</div>-->
-              <!--<div class="row" fxLayout="row" fxFlex="100">-->
-                <!--<div formArrayName="assets" class="cell" fxFlex="25" fxFlex.lt-md="50"-->
-                     <!--*ngFor="let design of productForm.get('designs')['controls']; let i = index">-->
-                  <!--<mat-form-field>-->
-                    <!--<input type="text" matInput placeholder="Дизайни" formControlName="{{i}}" required [matAutocomplete]="autoGroup">-->
-                    <!--<mat-autocomplete #autoGroup="matAutocomplete">-->
-                      <!--<mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">-->
-                        <!--<mat-option *ngFor="let name of group.names" [value]="name">-->
-                          <!--{{name}}-->
-                        <!--</mat-option>-->
-                      <!--</mat-optgroup>-->
+                  <!--<input type="text" matInput placeholder="Дизайни" required [matAutocomplete]="auto" #inp>-->
+                    <!--<mat-autocomplete #auto="matAutocomplete">-->
+                      <!--<mat-option *ngFor="let filteredDesign of filteredDesigns | async" [value]="filteredDesign">-->
+                        <!--{{filteredDesign}}-->
+                      <!--</mat-option>-->
                     <!--</mat-autocomplete>-->
-                  <!--</mat-form-field>-->
+                <div class="cell" fxFlex="33">
+                  <mat-selection-list>
+
+                    <mat-list-option *ngFor="let design of designs">
+                      <!--<div class="flex">-->
+                          <!--<img src="{{config.imgPath + config.cloudinary.cloud_name + '/c_fill,h_40,w_40/' + design.image + '.jpg'}}"-->
+                               <!--class="mat-select-option-avatar" alt="design image">-->
+                          <p class="mat-select-option-text"> {{design._id}} </p>
+                      <!--</div>-->
+                    </mat-list-option>
+                  </mat-selection-list>
+                </div>
+
+                <div class="cell" fxFlex="33">
+                  <div class="item" fxFlex="80">
+                    <mat-form-field>
+                      <input type="text" matInput placeholder="Дизайни" formControlName="des" required [matAutocomplete]="auto">
+
+                      <mat-autocomplete #auto="matAutocomplete">
+
+                        <mat-option *ngFor="let filteredDesign of filteredDesigns | async" [value]="filteredDesign">
+                          {{filteredDesign}}
+                        </mat-option>
+
+                      </mat-autocomplete>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="item" fxFlex="20">
+                    <button [disabled]="!designValidity" mat-mini-fab color="accent" type="button"
+                            (click)="addRecommendationsControl()"><mat-icon>add_circle</mat-icon></button>
+
+                    <!--<mat-icon *ngIf="designValidity" color="accent" class="clickable" (click)="addDesign()">add_circle</mat-icon>-->
+                    <!--<mat-icon *ngIf="!designValidity" color="primary">add_circle_outline</mat-icon>-->
+                  </div>
+
+                </div>
                 <!--</div>-->
-              <!--</div>-->
-
-
+              </div>
 
 
                 <div class="row" fxLayout="row" fxFlex="100">

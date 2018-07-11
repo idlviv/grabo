@@ -182,8 +182,6 @@ body {
   width: 100%;
 }
 
-
-
 .wrap {
   flex-wrap: wrap;
 }
@@ -647,7 +645,6 @@ mat-sidenav-content {
   mat-icon {
     vertical-align: middle;
     display: inline-block;
-
   }
 }
 
@@ -678,6 +675,7 @@ mat-sidenav-content {
   margin: auto;
 }
 
+
 //.img-container-outer {
 //  height: 10rem;
 //  //max-height: 100%;
@@ -696,6 +694,7 @@ mat-sidenav-content {
 .flex {
   display: flex;
 }
+
 
 .product-detail-main {
   @include gt-xs {
