@@ -150,6 +150,10 @@
                   </div>
 
                 </div>
+                <div formArrayName="designs" class="cell" fxFlex="25" fxFlex.lt-md="50"
+                *ngFor="let des of productForm.get('designs')['controls']; let i = index">
+                  <input type="text" matInput placeholder="Дизайни" formControlName="{{i}}">
+                </div>
               </div>
 
 

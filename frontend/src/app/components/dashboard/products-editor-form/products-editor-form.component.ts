@@ -158,6 +158,11 @@ export class ProductsEditorFormComponent implements OnInit {
   addDesign() {
     if (this._checkDesignValidity(this.productForm.get('des').value)) {
       console.log('add design true');
+      const designsList = this.productForm.get('designs').value || [];
+      designsList.push(this.productForm.get('des').value);
+      this.addDesignsControl();
+      this.productForm.get('designs').setValue(designsList);
+      this.productForm.get('des').reset();
     } else {
       console.log('add design false');
     }
