@@ -13,7 +13,7 @@ import { of } from 'rxjs';
 // import { Observable } from 'rxjs/Observable';
 
 import {Observable} from 'rxjs';
-import {startWith, map} from 'rxjs/operators';
+import {startWith, map, tap} from 'rxjs/operators';
 
 
 
@@ -133,10 +133,8 @@ export class ProductsEditorFormComponent implements OnInit {
 
       this.filteredDesigns = this.productForm.get('des').valueChanges.pipe(
         startWith(''),
-        map(value => {
-          this.designValidity = this._checkDesignValidity(value);
-          return this._filter(value);
-        })
+        tap(value => this.designValidity = this._checkDesignValidity(value)),
+        map(value => this._filter(value))
       );
 
       // this.filteredDesigns = this.productForm.get('des').valueChanges.pipe(
