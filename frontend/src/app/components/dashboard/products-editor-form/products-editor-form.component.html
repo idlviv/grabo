@@ -150,12 +150,27 @@
                   </div>
 
                 </div>
-                <div formArrayName="designs" class="cell" fxFlex="25" fxFlex.lt-md="50"
-                *ngFor="let des of productForm.get('designs')['controls']; let i = index">
-                  <input type="text" matInput placeholder="Дизайни" formControlName="{{i}}">
-                </div>
+
               </div>
 
+              <div class="row" fxLayout="row" fxFlex="100">
+                <div formArrayName="designs" class="cell" fxFlex="25" fxFlex.lt-md="50"
+                     *ngFor="let des of productForm.get('designs')['controls']; let i = index">
+                  <h3 *ngIf="productForm.get('designs').value[i]"
+                      class="mat-h3">{{productForm.get('designs').value[i]}}</h3>
+                  <div *ngIf="productForm.get('designs').value[i] && designs" class="preview-img-wrapper">
+                    <img alt="designImage" src="{{
+                    config.imgPath +
+                    config.cloudinary.cloud_name +
+                    '/c_fill,h_180,w_180/' +
+                    getDesign(productForm.get('designs').value[i]).image +
+                    '.jpg'}}">
+                  </div>
+
+                  <p class="remove-field text-center"
+                     (click)="removeDesignsControl(i)">Видалити зображення</p>
+                </div>
+              </div>
 
                 <div class="row" fxLayout="row" fxFlex="100">
                   <div class="cell">
@@ -176,8 +191,7 @@
                     </div>
 
                     <p *ngIf="processingLoadAssets !== i" class="remove-field text-center"
-                       (click)="removeAssetsControl(i)">
-                      Видалити зображення</p>
+                       (click)="removeAssetsControl(i)">Видалити зображення</p>
                   </div>
 
                   <div class="cell" fxFlex="25" fxFlex.lt-md="50"

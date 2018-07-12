@@ -92,9 +92,6 @@ export class ProductsEditorFormComponent implements OnInit {
         this.edited_id = paramMap.get('_id');
         this.parentCategory_id = paramMap.get('parentCategory_id');
         this.parentCategoryName = paramMap.get('parentCategoryName');
-        console.log('edited product _id', this.edited_id);
-        console.log('edited parentCategory', this.parentCategory_id);
-        console.log('edited parentCategoryName', this.parentCategoryName);
          if (!this.edited_id) {
           return of(null);
         }
@@ -104,9 +101,9 @@ export class ProductsEditorFormComponent implements OnInit {
       .subscribe(result => {
         if (result) {
           this.editMode = true;
-          // for (let i = 0; i < result.data.designs.length; i++) {
-          //   this.addDesignsControl();
-          // }
+          for (let i = 0; i < result.data.designs.length; i++) {
+            this.addDesignsControl();
+          }
           for (let i = 0; i < result.data.recommendations.length; i++) {
             this.addRecommendationsControl();
           }
@@ -129,28 +126,33 @@ export class ProductsEditorFormComponent implements OnInit {
         this.designs = result.data;
         this.designs.map(design => this.designs_id.push(design._id));
         },
-        err => console.log('Помилка завантеження дизайнів', err));
-
-      this.filteredDesigns = this.productForm.get('des').valueChanges.pipe(
-        startWith(''),
-        tap(value => this.designValidity = this._checkDesignValidity(value)),
-        map(value => this._filter(value))
+        err => console.log('Помилка завантеження дизайнів', err)
       );
 
-      // this.filteredDesigns = this.productForm.get('des').valueChanges.pipe(
-      //   startWith(''),
-      //   map(value => this._filter(value))
-      // );
+    this.filteredDesigns = this.productForm.get('des').valueChanges.pipe(
+      tap(value => console.log('value', value)),
+      tap(value => this.designValidity = this._checkDesignValidity(value)),
+      startWith(''),
+      map(value => this._filter(value))
+    );
+
   }
 
   private _filter(value: string): string[] {
     const filterValue = value;
-    this.designFilterValue = value;
-    return this.designs_id.filter(option => option.indexOf(filterValue) === 0);
+    const designsFromForm = this.productForm.get('designs').value;
+    return this.designs_id
+      .filter(option => designsFromForm.indexOf(option) === -1) // remove designs, which already in form
+      .filter(option => option.indexOf(filterValue) === 0 ); // filter by input value
   }
 
   private _checkDesignValidity(value: string): boolean {
     return this.designs_id.indexOf(value) !== -1;
+  }
+
+  // takes design object (from local designs array) by design_id
+  getDesign(_id) {
+    return this.designs.filter(design => design._id === _id)[0];
   }
 
   addDesign() {
