@@ -84,7 +84,10 @@ export class ProductsEditorFormComponent implements OnInit {
       recommendations: new FormArray([]),
       designs: new FormArray([]),
       des:  new FormControl('', [
-        ])
+        ]),
+      techDescriptions: new FormArray([
+        this.initTechDescriptionsControl()
+      ]),
     });
 
     this.route.paramMap.pipe(
@@ -333,4 +336,27 @@ export class ProductsEditorFormComponent implements OnInit {
     ]);
   }
 
+  addTechDescriptionsControl() {
+    const control = <FormArray>this.productForm.get('designs');
+    control.push(this.initTechDescriptionsControl());
+  }
+
+  removeTechDescriptionsControl(i: number) {
+    const control = <FormArray>this.productForm.get('designs');
+    control.removeAt(i);
+  }
+
+  initTechDescriptionsControl() {
+    return new FormGroup ({
+      techName: new FormControl('', [
+        // Validators.required,
+      ]),
+      techUnit: new FormControl('', [
+        // Validators.required,
+      ]),
+      techValue: new FormControl('', [
+        // Validators.required,
+      ]),
+    });
+  }
 }

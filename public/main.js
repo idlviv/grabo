@@ -2509,6 +2509,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// import 'hammerjs';
 if (_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].production) {
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["enableProdMode"])();
 }

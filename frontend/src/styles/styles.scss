@@ -85,6 +85,22 @@ body {
   }
 }
 
+.cell-header {
+  @include gt-md {
+    padding: 12px 12px 0 12px;
+  }
+  @include md {
+    padding: 12px 12px 0 12px;
+  }
+  @include sm {
+    padding: 8px 8px 0 8px;
+  }
+  @include xs {
+    padding: 8px 0;
+    //padding: 8px;
+  }
+}
+
 .item {
   @include gt-md {
     @include first {
@@ -180,6 +196,10 @@ body {
 
 .full-width {
   width: 100%;
+}
+
+.padding-bottom {
+  padding-bottom: 1.5rem;
 }
 
 .wrap {

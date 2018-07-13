@@ -42,7 +42,7 @@ const ProductSchema = new Schema({
     type: [String],
     required: true
   },
-  techDescription: [
+  techDescriptions: [
     {
       techName: {
         type: String,

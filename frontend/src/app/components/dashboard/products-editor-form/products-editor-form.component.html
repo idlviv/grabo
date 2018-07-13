@@ -20,8 +20,8 @@
 
 
 
-              <div class="row" fxLayout="column" fxLayout.gt-xs="row">
-                    <div class="cell" fxFlex="33">
+              <div class="row padding-bottom" fxLayout="column" fxLayout.gt-xs="row">
+                    <div class="cell" fxFlex="25" fxFlex.lt-md="50">
                       <mat-form-field>
                         <input matInput placeholder="Ідентифікатор" formControlName="_id" required>
                         <mat-error
@@ -33,7 +33,7 @@
                         </mat-error>
                       </mat-form-field>
                     </div>
-                    <div class="cell" fxFlex="33">
+                    <div class="cell" fxFlex="25" fxFlex.lt-md="50">
                       <mat-form-field>
                         <input matInput placeholder="Назва" formControlName="name" required>
                         <mat-error
@@ -46,9 +46,9 @@
                       </mat-form-field>
                     </div>
 
-                    <div class="cell" fxFlex="33">
+                    <div class="cell" fxFlex="25" fxFlex.lt-md="50">
                       <mat-form-field>
-                        <mat-select placeholder="Публікувати" formControlName="display" required>
+                                        <mat-select placeholder="Публікувати" formControlName="display" required>
                           <mat-option [value]="true">
                             Так
                           </mat-option>
@@ -64,9 +64,7 @@
                       </mat-form-field>
                     </div>
 
-
-
-                <div class="cell" fxFlex="33">
+                <div class="cell" fxFlex="25" fxFlex.lt-md="50">
                   <mat-form-field>
                     <input matInput placeholder="Порядок" formControlName="order" required>
                     <mat-error
@@ -76,8 +74,10 @@
                     </mat-error>
                   </mat-form-field>
                 </div>
+              </div>
 
-                <div class="cell" fxFlex="33">
+              <div class="row padding-bottom" fxLayout="column" fxLayout.gt-xs="row">
+                <div class="cell" fxFlex="100">
                   <mat-form-field>
                     <textarea matInput placeholder="Опис" formControlName="description" required></textarea>
                     <mat-error
@@ -91,9 +91,55 @@
                 </div>
               </div>
 
-              <div class="row" fxLayout="column" fxLayout.gt-xs="row">
+              <div class="row padding-bottom" fxLayout="column" fxLayout.gt-xs="row">
+                <div class="cell-header" fxLayout="row" fxFlex="100">
+                  <h3 class="mat-h3">Технічні характеристики
+                    <!--<span>-->
+                       <!--<button  *ngIf="productForm.get('techDescriptions').value.length < 5"-->
+                                <!--mat-icon-button color="accent" type="button"-->
+                                <!--(click)="addTechDescriptionsControl()"><mat-icon>add_circle</mat-icon></button>-->
+                    <!--</span>-->
+                  </h3>
 
-                <div formArrayName="recommendations" class="cell" fxFlex="33"
+                </div>
+                <div formArrayName="techDescriptions" class="cell" fxFlex="25" fxFlex.lt-md="50"
+                     *ngFor="let techDescription of productForm.get('techDescriptions')['controls']; let i = index">
+                  <div formGroupName="{{i}}">
+                    <mat-form-field>
+                      <input matInput placeholder="Характеристика" formControlName="techName" required>
+                    </mat-form-field>
+                    <mat-form-field>
+                    <input matInput placeholder="Одиниці виміру" formControlName="techUnit" required>
+                    </mat-form-field>
+                    <mat-form-field>
+
+                    <input matInput placeholder="Значення" formControlName="techValue" required>
+                      <!--<mat-hint *ngIf="productForm.get('recommendations').value.length > 1 " align="end"-->
+                      <!--class="remove-field" (click)="removeRecommendationsControl(i)">Видалити</mat-hint>-->
+                      <!--<mat-icon matSuffix color="accent" (click)="removeTechDescriptionsControl(i)">delete_forever</mat-icon>-->
+                      <!--<mat-error-->
+                        <!--*ngIf="productForm.get('techDescriptions').at(i).get(i).get('techName').errors?.required &&-->
+                                  <!--productForm.get('techDescriptions').at(i).get(i).get('techName').touched">-->
+                        <!--Обов'язкове поле-->
+                      <!--</mat-error>-->
+                    </mat-form-field>
+                  </div>
+
+
+                </div>
+              </div>
+
+
+              <div class="row padding-bottom" fxLayout="column" fxLayout.gt-xs="row">
+                <div class="cell-header" fxLayout="row" fxFlex="100">
+                    <h3 class="mat-h3">Рекомендації <span>
+                       <button  *ngIf="productForm.get('recommendations').value.length < 5"
+                                mat-icon-button color="accent" type="button"
+                                (click)="addRecommendationsControl()"><mat-icon>add_circle</mat-icon></button>
+                    </span></h3>
+
+                </div>
+                <div formArrayName="recommendations" class="cell" fxFlex="25" fxFlex.lt-md="50"
                   *ngFor="let recommendation of productForm.get('recommendations')['controls']; let i = index">
                   <mat-form-field>
                     <input matInput placeholder="Рекомендації" formControlName="{{i}}" required>
@@ -107,57 +153,53 @@
                     </mat-error>
                   </mat-form-field>
                 </div>
-                <div *ngIf="productForm.get('recommendations').value.length < 5" class="cell" fxFlex="33">
-                  <button mat-mini-fab color="accent" type="button"
-                          (click)="addRecommendationsControl()"><mat-icon>add</mat-icon></button>
-                </div>
               </div>
 
-
-
-
-
-              <div class="row" fxLayout="row" fxFlex="100">
-                <div class="cell">
-                  <h3 class="mat-h3">Дизайни</h3>
-                </div>
-              </div>
-              <div class="row"  fxLayout="column" fxLayout.gt-xs="row">
-                <!--<div formArrayName="designs" class="cell" fxFlex="25" fxFlex.lt-md="50"-->
-                     <!--*ngFor="let des of productForm.get('designs')['controls']; let i = index">-->
-
-                <div class="cell" fxFlex="33" fxLayout="column" fxLayout.gt-xs="row">
-                  <div class="item" fxFlex="80">
+              <div class="row padding-bottom" fxLayout="column" fxLayout.gt-xs="row">
+                <div class="cell-header" fxLayout="column" fxLayout.gt-xs="row" fxFlex="100">
+                  <div class="item" fxFlex="50">
+                    <h3 class="mat-h3">Дизайни
+                      <span>
+                       <button [disabled]="!designValidity" mat-icon-button color="accent" type="button"
+                               (click)="addDesign()"><mat-icon>add_circle</mat-icon></button>
+                    </span>
+                    </h3>
+                  </div>
+                  <div class="item" fxFlex="50">
                     <mat-form-field>
-                      <input type="text" matInput placeholder="Дизайни" formControlName="des" [matAutocomplete]="auto">
-
+                      <input type="text" matInput placeholder="Виберіть дизайн" formControlName="des" [matAutocomplete]="auto">
                       <mat-autocomplete #auto="matAutocomplete">
-
                         <mat-option *ngFor="let filteredDesign of filteredDesigns | async" [value]="filteredDesign">
                           {{filteredDesign}}
                         </mat-option>
-
                       </mat-autocomplete>
                     </mat-form-field>
                   </div>
 
-                  <div class="item" fxFlex="20">
-                    <button [disabled]="!designValidity" mat-mini-fab color="accent" type="button"
-                            (click)="addDesign()"><mat-icon>add</mat-icon></button>
-
-                    <!--<mat-icon *ngIf="designValidity" color="accent" class="clickable" (click)="addDesign()">add_circle</mat-icon>-->
-                    <!--<mat-icon *ngIf="!designValidity" color="primary">add_circle_outline</mat-icon>-->
-                  </div>
-
                 </div>
+              <!--</div>-->
+              <!--<div class="row"  fxLayout="column" fxLayout.gt-xs="row">-->
+                <!--&lt;!&ndash;<div formArrayName="designs" class="cell" fxFlex="25" fxFlex.lt-md="50"&ndash;&gt;-->
+                     <!--&lt;!&ndash;*ngFor="let des of productForm.get('designs')['controls']; let i = index">&ndash;&gt;-->
 
-              </div>
+                <!--<div class="cell" fxFlex="33" fxLayout="column" fxLayout.gt-xs="row">-->
+                  <!--<div class="item" fxFlex="80">-->
+                    <!---->
+                  <!--</div>-->
 
-              <div class="row" fxLayout="row" fxFlex="100">
+                  <!--<div class="item" fxFlex="20">-->
+                    <!--<button [disabled]="!designValidity" mat-mini-fab color="accent" type="button"-->
+                            <!--(click)="addDesign()"><mat-icon>add</mat-icon></button>-->
+
+                    <!--&lt;!&ndash;<mat-icon *ngIf="designValidity" color="accent" class="clickable" (click)="addDesign()">add_circle</mat-icon>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<mat-icon *ngIf="!designValidity" color="primary">add_circle_outline</mat-icon>&ndash;&gt;-->
+                  <!--</div>-->
+                <!--</div>-->
+
                 <div formArrayName="designs" class="cell" fxFlex="25" fxFlex.lt-md="50"
                      *ngFor="let des of productForm.get('designs')['controls']; let i = index">
-                  <h3 *ngIf="productForm.get('designs').value[i]"
-                      class="mat-h3">{{productForm.get('designs').value[i]}}</h3>
+                  <h4 *ngIf="productForm.get('designs').value[i]"
+                      class="mat-h4 text-center">{{productForm.get('designs').value[i]}}</h4>
                   <div *ngIf="productForm.get('designs').value[i] && designs" class="preview-img-wrapper">
                     <img alt="designImage" src="{{
                     config.imgPath +
@@ -172,24 +214,21 @@
                 </div>
               </div>
 
-                <div class="row" fxLayout="row" fxFlex="100">
-                  <div class="cell">
+              <div class="row padding-bottom" fxLayout="column" fxLayout.gt-xs="row">
+                <div class="cell-header" fxLayout="row" fxFlex="100">
                     <h3 class="mat-h3">Головні зображення колекції</h3>
                   </div>
-                </div>
-                <div class="row" fxLayout="row" fxFlex="100">
                   <div formArrayName="assets" class="cell" fxFlex="25" fxFlex.lt-md="50"
-                       *ngFor="let asset of productForm.get('assets')['controls']; let i = index">
-                    <div *ngIf="productForm.get('assets').value[i]" class="preview-img-wrapper">
-                      <img src="{{config.imgPath + config.cloudinary.cloud_name + '/c_fill,h_180,w_180/' + productForm.get('assets').value[i] + '.jpg'}}"
-                           alt="productImage">
-                      <div *ngIf="processingLoadAssets === i" class="preview-div-processing">
-                        <div class="spinner-wrapper">
-                          <mat-spinner [diameter]="24"></mat-spinner>
-                        </div>
+                     *ngFor="let asset of productForm.get('assets')['controls']; let i = index">
+                  <div *ngIf="productForm.get('assets').value[i]" class="preview-img-wrapper">
+                    <img src="{{config.imgPath + config.cloudinary.cloud_name + '/c_fill,h_180,w_180/' + productForm.get('assets').value[i] + '.jpg'}}"
+                         alt="productImage">
+                    <div *ngIf="processingLoadAssets === i" class="preview-div-processing">
+                      <div class="spinner-wrapper">
+                        <mat-spinner [diameter]="24"></mat-spinner>
                       </div>
                     </div>
-
+                  </div>
                     <p *ngIf="processingLoadAssets !== i" class="remove-field text-center"
                        (click)="removeAssetsControl(i)">Видалити зображення</p>
                   </div>
@@ -214,14 +253,12 @@
                   </div>
                 </div>
 
-                           
-              <div class="row" fxLayout="row" fxFlex="100">
-                <div class="cell">
+
+              <div class="row padding-bottom" fxLayout="column" fxLayout.gt-xs="row">
+                <div class="cell-header" fxFlex="100">
                   <h3 class="mat-h3">Технічні властивості (зображення) колекції</h3>
                 </div>
-              </div>
-              <div class="row" fxLayout="row" fxFlex="100">
-                <div formArrayName="techAssets" class="cell" fxFlex="25" fxFlex.lt-md="50"
+                 <div formArrayName="techAssets" class="cell" fxFlex="25" fxFlex.lt-md="50"
                      *ngFor="let asset of productForm.get('techAssets')['controls']; let i = index">
                   <div *ngIf="productForm.get('techAssets').value[i]" class="preview-img-wrapper">
                     <img src="{{config.imgPath + config.cloudinary.cloud_name + '/c_fill,h_180,w_180/' + productForm.get('techAssets').value[i] + '.jpg'}}"
@@ -259,15 +296,15 @@
               </div>
 
               <div class="submit-button-wrapper row" fxLayout="row">
-                <div>
+                <div class="cell" fxFlex="75">
+
                   <button *ngIf="editMode" mat-raised-button color="primary" class="full-width"
                           [disabled]="!productForm.valid || processingLoadAssets >=0 || processingLoadTechAssets >= 0">Зберегти</button>
                   <button *ngIf="!editMode" mat-raised-button color="primary" class="full-width"
                           [disabled]="!productForm.valid || processingLoadAssets >=0 || processingLoadTechAssets >= 0">Створити</button>
                 </div>
 
-                <div fxFlex></div>
-                <div>
+                <div class="cell" fxFlex="25">
                   <button mat-raised-button  type="button" (click)="goBack()" class="full-width"
                           [disabled]="processingLoadAssets >=0 || processingLoadTechAssets >= 0">Повернутись</button>
                 </div>
