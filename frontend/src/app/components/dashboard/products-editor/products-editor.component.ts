@@ -6,6 +6,7 @@ import { DesignService } from '../../../services/design.service';
 import { CatalogService } from '../../../services/catalog.service';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProductService } from '../../../services/product.service';
+import { config } from '../../../app.config';
 
 @Component({
   selector: 'app-products-editor',
@@ -18,6 +19,8 @@ export class ProductsEditorComponent implements OnInit {
   products: any;
   parentCategory_id: string;
   parentCategoryName: string;
+  config = config;
+  noMoreDescedants = false;
 
     constructor(
     private catalogService: CatalogService,
@@ -53,6 +56,7 @@ export class ProductsEditorComponent implements OnInit {
           console.log('descedants present', result.data);
           this.products = null;
           this.descendants[level + 1] = result.data;
+          this.noMoreDescedants = false;
           this.addCategory();
         } else {
           this.productService.getProductsByCategory(event.value)
@@ -63,6 +67,7 @@ export class ProductsEditorComponent implements OnInit {
           this.parentCategoryName = event.source.triggerValue;
           console.log('descedants absent', result.data);
           console.log('this.parentCategory_id', this.parentCategory_id);
+          this.noMoreDescedants = true;
         }
         this.descendants[level + 1] = result.data;
         },

@@ -4,17 +4,19 @@
       <mat-card  class="form-block">
         <mat-card-header></mat-card-header>
         <mat-card-title>
-          <h2 *ngIf="editMode" class="mat-h2">Редагувати колекцію {{productForm.get('name').value}}</h2>
-          <h2 *ngIf="!editMode" class="mat-h2">Редагувати колекцію {{productForm.get('name').value}}</h2>
+          <h2 *ngIf="editMode" class="mat-h2">Редагувати колекцію
+            <span class="accent">{{productForm.get('name').value}}</span> у розділі
+            <span class="accent">{{parentCategoryName}}</span></h2>
+          <h2 *ngIf="!editMode" class="mat-h2">Створити колекцію у розділі <span class="accent">{{parentCategoryName}}</span></h2>
         </mat-card-title>
 
         <mat-card-content>
           <div class="container">
-            <div class="row">
-              <div class="cell">
-                <p>{{parentCategory_id}} - {{parentCategoryName}}</p>
-              </div>
-            </div>
+            <!--<div class="row">-->
+              <!--<div class="cell">-->
+                <!--<p>{{parentCategory_id}} - {{parentCategoryName}}</p>-->
+              <!--</div>-->
+            <!--</div>-->
 
             <form [formGroup]="productForm" #f="ngForm" (submit)="onProductFormSubmit()" novalidate>
 
@@ -107,7 +109,7 @@
                             *ngFor="let techDescription of productForm.get('techDescriptions')['controls']; let i = index">
                     <mat-card formGroupName="{{i}}" fxLayout="column" fxLayout.gt-xs="row" >
                       <!--<div class="cell" fxFlex="100%-100px" fxLayout="column" fxLayout.gt-xs="row" >-->
-                        <mat-form-field class="item" fxFlex="calc((100%-100px)-67%)">
+                        <mat-form-field class="item" fxFlex="calc((100%-40px)-67%)">
                           <input matInput placeholder="Характеристика" formControlName="techName" required>
                           <mat-error
                             *ngIf="productForm.get('techDescriptions').at(i).get('techName').errors?.required &&
@@ -115,7 +117,7 @@
                             Обов'язкове поле
                           </mat-error>
                         </mat-form-field>
-                        <mat-form-field class="item" fxFlex="calc((100%-100px)-67%)">
+                        <mat-form-field class="item" fxFlex="calc((100%-40px)-67%)">
                           <input matInput placeholder="Одиниці виміру" formControlName="techUnit" required>
                           <mat-error
                             *ngIf="productForm.get('techDescriptions').at(i).get('techUnit').errors?.required &&
@@ -123,7 +125,7 @@
                             Обов'язкове поле
                           </mat-error>
                         </mat-form-field>
-                        <mat-form-field class="item" fxFlex="calc((100%-100px)-67%)">
+                        <mat-form-field class="item" fxFlex="calc((100%-40px)-67%)">
                           <input matInput placeholder="Значення" formControlName="techValue" required>
                           <mat-error
                             *ngIf="productForm.get('techDescriptions').at(i).get('techValue').errors?.required &&
@@ -133,12 +135,12 @@
                         </mat-form-field>
                       <!--</div>-->
 
-                      <div class="item" fxFlex.gt-xs="100px">
-                        <div class="margin-auto">
+                      <div class="item" fxFlex.gt-xs="40px" fxLayoutAlign="center center">
+                        <!--<div class="margin-auto">-->
                           <button class="text-align-center" *ngIf="productForm.get('techDescriptions').value.length < 5"
                                   mat-icon-button color="accent" type="button"
                                   (click)="removeTechDescriptionsControl(i)"><mat-icon>remove_circle</mat-icon></button>
-                        </div>
+                        <!--</div>-->
 
                       </div>
                     </mat-card>
@@ -175,26 +177,32 @@
 
               <div class="row padding-bottom" fxLayout="column" fxLayout.gt-xs="row">
                 <div class="cell-header" fxLayout="column" fxLayout.gt-xs="row" fxFlex="100">
-                  <div class="item" fxFlex="50">
+                  <!--<div class="item" fxFlex="50">-->
                     <h3 class="mat-h3 margin-0">Дизайни
-                      <span>
-                       <button [disabled]="!designValidity" mat-icon-button color="accent" type="button"
-                               (click)="addDesign()"><mat-icon>add_circle</mat-icon></button>
-                    </span>
+
                     </h3>
                   </div>
-                  <div class="item" fxFlex="50">
-                    <mat-form-field>
-                      <input type="text" matInput placeholder="Виберіть дизайн" formControlName="des" [matAutocomplete]="auto">
-                      <mat-autocomplete #auto="matAutocomplete">
-                        <mat-option *ngFor="let filteredDesign of filteredDesigns | async" [value]="filteredDesign">
-                          {{filteredDesign}}
-                        </mat-option>
-                      </mat-autocomplete>
-                    </mat-form-field>
-                  </div>
+                  <div class="cell" fxFlex="50" fxLayout="row">
+                    <div class="item" fxFlex="calc(100%-40px)">
+                      <mat-form-field >
+                        <input type="text" matInput placeholder="Додати дизайн" formControlName="des" [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete">
+                          <mat-option *ngFor="let filteredDesign of filteredDesigns | async" [value]="filteredDesign">
+                            {{filteredDesign}}
+                          </mat-option>
+                        </mat-autocomplete>
+                      </mat-form-field>
+                    </div>
 
+
+                    <div class="item" fxLayoutAlign="center center" fxFlex="40px">
+                       <button [disabled]="!designValidity" mat-icon-button color="accent" type="button"
+                               (click)="addDesign()"><mat-icon>add_circle</mat-icon></button>
+                    </div>
+                  </div>
+                <div class="cell" fxFlex="50">
                 </div>
+                <!--</div>-->
               <!--</div>-->
               <!--<div class="row"  fxLayout="column" fxLayout.gt-xs="row">-->
                 <!--&lt;!&ndash;<div formArrayName="designs" class="cell" fxFlex="25" fxFlex.lt-md="50"&ndash;&gt;-->
@@ -314,7 +322,7 @@
               </div>
 
               <div class="submit-button-wrapper row" fxLayout="row">
-                <div class="cell" fxFlex="75">
+                <div class="cell" fxFlex="65">
 
                   <button *ngIf="editMode" mat-raised-button color="primary" class="full-width"
                           [disabled]="!productForm.valid || processingLoadAssets >=0 || processingLoadTechAssets >= 0">Зберегти</button>
@@ -322,7 +330,7 @@
                           [disabled]="!productForm.valid || processingLoadAssets >=0 || processingLoadTechAssets >= 0">Створити</button>
                 </div>
 
-                <div class="cell" fxFlex="25">
+                <div class="cell" fxFlex="35">
                   <button mat-raised-button  type="button" (click)="goBack()" class="full-width"
                           [disabled]="processingLoadAssets >=0 || processingLoadTechAssets >= 0">Повернутись</button>
                 </div>

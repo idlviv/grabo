@@ -42,6 +42,12 @@ const dashboardRoutes: Routes = [
         data: { auth: 'manager' },
       },
       {
+        path: 'products_editor_new/:parentCategory_id/:parentCategoryName',
+        component: ProductsEditorFormComponent,
+        canActivate: [AuthGuard],
+        data: { auth: 'manager' },
+      },
+      {
         path: 'products_editor_edit/:parentCategory_id/:parentCategoryName/:_id',
         component: ProductsEditorFormComponent,
         canActivate: [AuthGuard],

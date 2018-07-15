@@ -85,9 +85,7 @@ export class ProductsEditorFormComponent implements OnInit {
       designs: new FormArray([]),
       des:  new FormControl('', [
         ]),
-      techDescriptions: new FormArray([
-        this.initTechDescriptionsControl()
-      ]),
+      techDescriptions: new FormArray([]),
     });
 
     this.route.paramMap.pipe(
