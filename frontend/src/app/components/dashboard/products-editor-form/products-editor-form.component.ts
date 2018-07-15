@@ -337,25 +337,25 @@ export class ProductsEditorFormComponent implements OnInit {
   }
 
   addTechDescriptionsControl() {
-    const control = <FormArray>this.productForm.get('designs');
+    const control = <FormArray>this.productForm.get('techDescriptions');
     control.push(this.initTechDescriptionsControl());
   }
 
   removeTechDescriptionsControl(i: number) {
-    const control = <FormArray>this.productForm.get('designs');
+    const control = <FormArray>this.productForm.get('techDescriptions');
     control.removeAt(i);
   }
 
   initTechDescriptionsControl() {
     return new FormGroup ({
       techName: new FormControl('', [
-        // Validators.required,
+        Validators.required,
       ]),
       techUnit: new FormControl('', [
-        // Validators.required,
+        Validators.required,
       ]),
       techValue: new FormControl('', [
-        // Validators.required,
+        Validators.required,
       ]),
     });
   }
