@@ -38,17 +38,14 @@
 
 
       <div *ngIf="noMoreDescedants" class="row" fxLayout="column" fxLayout.gt-xs="row">
-        <div *ngFor="let product of products"  class="cell" fxFlex.sm="50" fxFlex.md="33.3" fxFlex.gt-md="20">
-          <app-product-item-brief [product]="product" [parentCategory_id]="parentCategory_id" [parentCategoryName]="parentCategoryName"></app-product-item-brief>
-        </div>
         <div class="cell" fxFlex.sm="50" fxFlex.md="33.3" fxFlex.gt-md="20">
           <div class="preview-img-wrapper">
             <img src="{{config.defaultProductImgPath}}" alt="productImage">
             <div class="preview-div-processing">
               <div class="button-wrapper">
                 <!--<a mat-icon-button-->
-                   <!--[routerLink]="['/dashboard/designs_editor_new']"-->
-                   <!--[routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">-->
+                <!--[routerLink]="['/dashboard/designs_editor_new']"-->
+                <!--[routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">-->
                 <button mat-mini-fab color="primary" type="button"
                         [routerLink]="['/dashboard', 'products_editor_new', parentCategory_id, parentCategoryName]"
                         [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">
@@ -58,6 +55,10 @@
             </div>
           </div>
         </div>
+        <div *ngFor="let product of products"  class="cell" fxFlex.sm="50" fxFlex.md="33.3" fxFlex.gt-md="20">
+          <app-product-item-brief [product]="product" [parentCategory_id]="parentCategory_id" [parentCategoryName]="parentCategoryName"></app-product-item-brief>
+        </div>
+
       </div>
 
         <!--<div class="cell"-->

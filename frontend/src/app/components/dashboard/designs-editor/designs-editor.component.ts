@@ -3,6 +3,7 @@ import { DesignService } from '../../../services/design.service';
 import { SharedService } from '../../../services/shared.service';
 import { mergeMap } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { config } from '../../../app.config';
 
 @Component({
   selector: 'app-designs-editor',
@@ -11,6 +12,8 @@ import { of } from 'rxjs';
 })
 export class DesignsEditorComponent implements OnInit {
   designs: any;
+  config = config;
+
   constructor(
     private designService: DesignService,
     private sharedService: SharedService,
