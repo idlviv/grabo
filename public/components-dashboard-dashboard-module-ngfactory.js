@@ -9333,6 +9333,9 @@ var ProductsEditorFormComponent = /** @class */ (function () {
                 for (var i = 0; i < result.data.techAssets.length; i++) {
                     _this.addTechAssetsControl();
                 }
+                for (var i = 0; i < result.data.techDescriptions.length; i++) {
+                    _this.addTechDescriptionsControl();
+                }
                 _this.productForm.patchValue(result.data);
                 _this.productForm.get('_id').disable();
             }
@@ -9441,6 +9444,7 @@ var ProductsEditorFormComponent = /** @class */ (function () {
             assets: this.productForm.get('assets').value,
             techAssets: this.productForm.get('techAssets').value,
             description: this.productForm.get('description').value,
+            techDescriptions: this.productForm.get('techDescriptions').value,
             recommendations: this.productForm.get('recommendations').value,
             designs: this.productForm.get('designs').value,
         };

@@ -114,6 +114,9 @@ export class ProductsEditorFormComponent implements OnInit {
           for (let i = 0; i < result.data.techAssets.length; i++) {
             this.addTechAssetsControl();
           }
+          for (let i = 0; i < result.data.techDescriptions.length; i++) {
+            this.addTechDescriptionsControl();
+          }
           this.productForm.patchValue(result.data);
 
           this.productForm.get('_id').disable();
@@ -243,6 +246,7 @@ export class ProductsEditorFormComponent implements OnInit {
       assets: this.productForm.get('assets').value,
       techAssets: this.productForm.get('techAssets').value,
       description: this.productForm.get('description').value,
+      techDescriptions: this.productForm.get('techDescriptions').value,
       recommendations: this.productForm.get('recommendations').value,
       designs: this.productForm.get('designs').value,
     };
