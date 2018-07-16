@@ -186,9 +186,10 @@ module.exports.productAddAssets = function(req, res, next) {
       {
         public_id: 'assets_' + fields._id + '_' + Date.now(),// jscs:ignore requireCamelCaseOrUpperCaseIdentifiers
         eager: [
-          {width: 650, height: 650, crop: 'fill'},
-          {width: 180, height: 180, crop: 'fill'},
-          {width: 40, height: 40, crop: 'fill'},
+          {width: 650, height: 650, crop: 'fill', fetch_format: 'auto'},
+          {width: 535, height: 350, crop: 'fill', fetch_format: 'auto'},
+          {width: 180, height: 180, crop: 'fill', fetch_format: 'auto'},
+          {width: 40, height: 40, crop: 'fill', fetch_format: 'auto'},
         ]
       },
       function(err, result) {
@@ -215,9 +216,9 @@ module.exports.productAddTechAssets = function(req, res, next) {
       {
         public_id: 'techassets_' + fields._id + '_' + Date.now(),// jscs:ignore requireCamelCaseOrUpperCaseIdentifiers
         eager: [
-          {width: 650, height: 650, crop: 'fill'},
-          {width: 180, height: 180, crop: 'fill'},
-          {width: 40, height: 40, crop: 'fill'},
+          {width: 200, height: 200, crop: 'fill'},
+          {width: 100, height: 100, crop: 'fill'},
+          {width: 55, height: 55, crop: 'fill'},
         ]
       },
       function(err, result) {

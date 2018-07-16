@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { config } from '../../../app.config';
+
 
 @Component({
   selector: 'app-product-item-detail',
@@ -8,6 +10,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ProductItemDetailComponent implements OnInit {
   @Input() product;
   @Input() category_id;
+  config = config;
 
   constructor() { }
 

@@ -1,32 +1,30 @@
 <div class="row" fxLayout>
   <div class="cell" fxFlex>
-    <mat-card>
+    <mat-card *ngIf="product">
       <mat-card-header>
         <!--category_id {{category_id}}-->
       </mat-card-header>
-      <!--product {{product | json}}-->
+      product {{product | json}}
 
 
       <mat-card-content>
         <div class="row" fxLayout>
           <div class="cell" fxFlex>
-            <h1>TITLE GRABOFLEX START</h1>
-            <p>MAIN TEXT Экономичное решение для небольших мультифункциональных спортзалов,
-              где важно иметь долговечную и безопасную площадку для игр. Плотный
-              вспененный слой на обратной стороне обеспечивает соответствующий
-              комфорт ходьбы. Рекомендуем для покрытия пола небольших спортивных
-              помещений, а также и помещений для игр в детских садах.
+            <h1>{{product.name}}</h1>
+            <p>{{product.description}}
             </p>
           </div>
         </div>
         <div class="row" fxLayout="column" fxLayout.gt-sm="row">
           <div class="cell" fxFlex.gt-sm="50">
-            <p>ADDITIONAL SECTOR1 Паркетная система Grabo StrongAir Elite, специально разработанная для больших нагрузок,
-              предназначена для мультифункциональных спортзалов. Верхняя часть системы представляет
-              собой трёхслойный спортивный паркет толщиной 22 мм, со стабильным средним слоем и износостойким
-              спортивным лаком. Благодаря своему отличному энергопоглащающему основанию, система эффективно защищает
-              суставы спортсмена, максимально способствует достижению выдающихся спортивных результатов.
-            </p>
+            <div class="product-detail-main-img-wrapper">
+              <img src="{{
+              config.imgPath +
+              config.cloudinary.cloud_name +
+              '/c_fill,h_350,w_535/' +
+              product.assets[0]}}"
+                   alt="designImage">
+            </div>
           </div>
           <div class="cell" fxFlex.gt-sm="50">
             <p>ADDITIONAL SECTOR2 Паркетная система Grabo StrongAir Elite, специально разработанная для больших нагрузок,
