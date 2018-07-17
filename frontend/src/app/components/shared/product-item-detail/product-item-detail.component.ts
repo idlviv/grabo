@@ -15,7 +15,7 @@ export class ProductItemDetailComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-
+    console.log('product', this.product);
   }
 
 }

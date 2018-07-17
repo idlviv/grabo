@@ -2,9 +2,8 @@
   <div class="cell" fxFlex>
     <mat-card *ngIf="product">
       <mat-card-header>
-        <!--category_id {{category_id}}-->
       </mat-card-header>
-      product {{product | json}}
+      <!--product {{product | json}}-->
 
 
       <mat-card-content>
@@ -16,40 +15,49 @@
           </div>
         </div>
         <div class="row" fxLayout="column" fxLayout.gt-sm="row">
-          <div class="cell" fxFlex.gt-sm="50" fxLayout="column">
-            <div class="row" fxFlex="100">
-              <div class="product-detail-assets-wrapper-first">
-                <img src="{{
+
+          <div class="cell" fxFlex.gt-sm="65" fxLayout="column">
+
+            <div class="row" fxFlex fxLayout="row">
+              <div class="cell" fxFlex="100" fxLayout fxLayoutAlign="center center">
+                  <img fxflex class="product-detail-image" src="{{
               config.imgPath +
               config.cloudinary.cloud_name +
               '/c_fill,w_535,h_350,f_auto/' +
               product.mainImage}}"
-                     alt="designImage">
+                       alt="designImage">
               </div>
             </div>
 
-            <div class="row" fxFlex="100" fxLayout="column" fxLayout.gt-sm="row">
-              <div class="item" fxFlex="25" *ngFor="let asset of product.assets; let i = index">
-                <div class="product-detail-assets-wrapper-other">
-                  <img src="{{
+            <div class="row" fxFlex fxLayout="column" fxLayout.gt-xs="row">
+                <div fxFlex="33" class="cell" fxLayout fxLayoutAlign="center center"
+                     *ngFor="let asset of product.assets">
+                    <img fxflex class="product-detail-image" src="{{
               config.imgPath +
               config.cloudinary.cloud_name +
               '/c_fill,w_260,h_170,f_auto/' +
               asset}}"
-                       alt="designImage">
+                         alt="designImage">
                 </div>
-              </div>
-
             </div>
 
           </div>
-          <div class="cell" fxFlex.gt-sm="50">
-            <p>ADDITIONAL SECTOR2 Паркетная система Grabo StrongAir Elite, специально разработанная для больших нагрузок,
-              предназначена для мультифункциональных спортзалов. Верхняя часть системы представляет
-              собой трёхслойный спортивный паркет толщиной 22 мм, со стабильным средним слоем и износостойким
-              спортивным лаком. Благодаря своему отличному энергопоглащающему основанию, система эффективно защищает
-              суставы спортсмена, максимально способствует достижению выдающихся спортивных результатов.
-            </p>
+          <div class="cell" fxFlex.gt-sm="35" fxLayout="column">
+
+            <div class="row" fxFlex fxLayout="row">
+              <!--<div class="cell" fxHide.lt-md fxFlex="30" fxLayout fxLayoutAlign="center"></div>-->
+
+              <div class="cell" fxFlex="100">
+                <H2 class="mat-h2">Рекомендовані області застосування</H2>
+                <mat-list>
+                  <mat-list-item *ngFor="let recommendation of product.recommendations">
+                    <mat-icon matListIcon>arrow_right</mat-icon>
+                    <h3 matLine> {{recommendation}} </h3>
+                  </mat-list-item>
+                </mat-list>
+              </div>
+            </div>
+
           </div>
         </div>
 
