@@ -94,7 +94,7 @@ module.exports.productAddImage = function(req, res, next) {
       function(err, result) {
         if (err) {
           return next(
-            new ApplicationError('Помилка завантаження аватара - upload', 400)
+            new ApplicationError('Помилка завантаження зображення - upload', 400)
           );
         }
         console.log('product_img_cloudinary result', result);
@@ -174,6 +174,36 @@ module.exports.getProductsByCategory = function(req, res, next) {
     );
 };
 
+module.exports.productAddMainImage = function(req, res, next) {
+  let form = new formidable.IncomingForm({maxFileSize: 10500000});
+  form.parse(req, function(err, fields, files) {
+    if (err) {
+      return next(new ApplicationError('Помилка завантаження зображення - form parse', 400));
+    }
+
+    cloudinary.v2.uploader.upload(
+      files.file.path,
+      {
+        public_id: fields._id + '_main_image_' + Date.now(),// jscs:ignore requireCamelCaseOrUpperCaseIdentifiers
+        eager: [
+          {width: 650, height: 650, crop: 'fill', fetch_format: 'auto'},
+          {width: 535, height: 350, crop: 'fill', fetch_format: 'auto'},
+          {width: 260, height: 170, crop: 'fill', fetch_format: 'auto'},
+          {width: 40, height: 40, crop: 'fill', fetch_format: 'auto'},
+        ]
+      },
+      function(err, result) {
+        if (err) {
+          return next(
+            new ApplicationError('Помилка завантаження - product assets', 400)
+          );
+        }
+        console.log('product_img_cloudinary result', result);
+        return res.status(200).json(new ResObj(true, 'Зображення завнтажене', result.public_id)); // jscs:ignore requireCamelCaseOrUpperCaseIdentifiers
+      });
+  });
+};
+
 module.exports.productAddAssets = function(req, res, next) {
   let form = new formidable.IncomingForm({maxFileSize: 10500000});
   form.parse(req, function(err, fields, files) {
@@ -184,7 +214,7 @@ module.exports.productAddAssets = function(req, res, next) {
     cloudinary.v2.uploader.upload(
       files.file.path,
       {
-        public_id: 'assets_' + fields._id + '_' + Date.now(),// jscs:ignore requireCamelCaseOrUpperCaseIdentifiers
+        public_id: fields._id + '_assets_' + Date.now(),// jscs:ignore requireCamelCaseOrUpperCaseIdentifiers
         eager: [
           {width: 650, height: 650, crop: 'fill', fetch_format: 'auto'},
           {width: 535, height: 350, crop: 'fill', fetch_format: 'auto'},
@@ -214,11 +244,11 @@ module.exports.productAddTechAssets = function(req, res, next) {
     cloudinary.v2.uploader.upload(
       files.file.path,
       {
-        public_id: 'techassets_' + fields._id + '_' + Date.now(),// jscs:ignore requireCamelCaseOrUpperCaseIdentifiers
+        public_id: fields._id + '_techassets_' + Date.now(),// jscs:ignore requireCamelCaseOrUpperCaseIdentifiers
         eager: [
-          {width: 200, height: 200, crop: 'fill'},
-          {width: 100, height: 100, crop: 'fill'},
-          {width: 55, height: 55, crop: 'fill'},
+          {width: 200, height: 200, crop: 'fill', fetch_format: 'auto'},
+          {width: 100, height: 100, crop: 'fill', fetch_format: 'auto'},
+          {width: 55, height: 55, crop: 'fill', fetch_format: 'auto'},
         ]
       },
       function(err, result) {

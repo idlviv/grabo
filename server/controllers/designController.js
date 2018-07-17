@@ -35,18 +35,18 @@ module.exports.designAddImage = function(req, res, next) {
     cloudinary.v2.uploader.upload(
       files.file.path,
       {
-        public_id: fields.design_id + '-' + Date.now(), // jscs:ignore requireCamelCaseOrUpperCaseIdentifiers
+        public_id: fields.design_id + '_' + Date.now(), // jscs:ignore requireCamelCaseOrUpperCaseIdentifiers
         // width: 650, height: 650, crop: 'fill'
         eager: [
-          {width: 650, height: 650, crop: 'fill'},
-          {width: 180, height: 180, crop: 'fill'},
-          {width: 40, height: 40, crop: 'fill'},
+          {width: 650, height: 650, crop: 'fill', fetch_format: 'auto'},
+          {width: 180, height: 180, crop: 'fill', fetch_format: 'auto'},
+          {width: 40, height: 40, crop: 'fill', fetch_format: 'auto'},
           ]
       },
       function(err, result) {
         if (err) {
           return next(
-            new ApplicationError('Помилка завантаження аватара - upload', 400)
+            new ApplicationError('Помилка завантаження зображення - upload', 400)
           );
         }
         console.log('product_img_cloudinary result', result);

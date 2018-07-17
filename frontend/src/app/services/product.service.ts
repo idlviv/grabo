@@ -173,6 +173,25 @@ export class ProductService {
     );
   }
 
+  productAddMainImage(file, _id): Observable<IResponse> {
+    console.log('file', file);
+    const formData: FormData = new FormData();
+    formData.append('file', file, file.name);
+    formData.append('_id', _id);
+
+    const token = this.userService.userLocalGetToken('token');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': token
+      })
+    };
+    return this.http.post<IResponse>(
+      'api/product/add-main-image',
+      formData,
+      httpOptions
+    );
+  }
+
   productAddAssets(file, _id): Observable<IResponse> {
     console.log('file', file);
     const formData: FormData = new FormData();

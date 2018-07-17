@@ -30,6 +30,7 @@ export class ProductsEditorFormComponent implements OnInit {
   productForm: FormGroup;
   processingLoadAssets = -1;
   processingLoadTechAssets = -1;
+  processingLoadImage = false;
 
   editMode = false;
   edited_id: string;
@@ -71,7 +72,7 @@ export class ProductsEditorFormComponent implements OnInit {
       display: new FormControl('', [
         Validators.required,
       ]),
-      order: new FormControl('', [
+      mainImage: new FormControl('', [
         Validators.required,
       ]),
       assets: new FormArray([]),
@@ -172,6 +173,45 @@ export class ProductsEditorFormComponent implements OnInit {
     }
   }
 
+  addMainImage(event) {
+    this.processingLoadImage = true;
+    const file = event.target.files[0];
+    const checkFile = this.productService.checkFile(file);
+
+    if (!checkFile.success) {
+      this.matSnackBar.open(checkFile.message || 'Помилка', '',
+        {duration: 3000, panelClass: 'snack-bar-danger'});
+      this.processingLoadImage = false;
+      // if (!this.editMode) {
+      //   this.productForm.get('_id').enable();
+      // }
+      // this.designForm.get('structure').enable();
+    } else {
+
+      // this.designForm.get('image').setValue(file);
+      console.log('added file', this.productForm.get('mainImage').value);
+      this.productService.productAddMainImage(file, this.productForm.get('_id').value)
+        .subscribe(result => {
+            this.productForm.get('mainImage').setValue(result.data);
+            this.processingLoadImage = false;
+            // if (!this.editMode) {
+            //   this.designForm.get('_id').enable();
+            // }
+            // this.designForm.get('structure').enable();
+          },
+          err => {
+            this.matSnackBar.open(err.error || 'Помилка', '',
+              {duration: 3000, panelClass: 'snack-bar-danger'});
+            this.processingLoadImage = false;
+            // if (!this.editMode) {
+            //   this.designForm.get('_id').enable();
+            // }
+            // this.designForm.get('structure').enable();
+          }
+        );
+    }
+  }
+
   addAssets(event) {
     this.processingLoadAssets = this.productForm.get('assets').value.length;
     const file = event.target.files[0];
@@ -242,7 +282,7 @@ export class ProductsEditorFormComponent implements OnInit {
       name: this.productForm.get('name').value,
       parent: this.productForm.get('parent').value,
       display: this.productForm.get('display').value,
-      order: this.productForm.get('order').value,
+      mainImage: this.productForm.get('mainImage').value,
       assets: this.productForm.get('assets').value,
       techAssets: this.productForm.get('techAssets').value,
       description: this.productForm.get('description').value,

@@ -16,15 +16,32 @@
           </div>
         </div>
         <div class="row" fxLayout="column" fxLayout.gt-sm="row">
-          <div class="cell" fxFlex.gt-sm="50">
-            <div class="product-detail-main-img-wrapper">
-              <img src="{{
+          <div class="cell" fxFlex.gt-sm="50" fxLayout="column">
+            <div class="row" fxFlex="100">
+              <div class="product-detail-assets-wrapper-first">
+                <img src="{{
               config.imgPath +
               config.cloudinary.cloud_name +
-              '/c_fill,h_350,w_535,f_auto/' +
-              product.assets[0]}}"
-                   alt="designImage">
+              '/c_fill,w_535,h_350,f_auto/' +
+              product.mainImage}}"
+                     alt="designImage">
+              </div>
             </div>
+
+            <div class="row" fxFlex="100" fxLayout="column" fxLayout.gt-sm="row">
+              <div class="item" fxFlex="25" *ngFor="let asset of product.assets; let i = index">
+                <div class="product-detail-assets-wrapper-other">
+                  <img src="{{
+              config.imgPath +
+              config.cloudinary.cloud_name +
+              '/c_fill,w_260,h_170,f_auto/' +
+              asset}}"
+                       alt="designImage">
+                </div>
+              </div>
+
+            </div>
+
           </div>
           <div class="cell" fxFlex.gt-sm="50">
             <p>ADDITIONAL SECTOR2 Паркетная система Grabo StrongAir Elite, специально разработанная для больших нагрузок,

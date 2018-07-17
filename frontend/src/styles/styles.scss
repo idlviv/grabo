@@ -738,7 +738,7 @@ mat-sidenav-content {
 
 // product-item-detail
 
-.product-detail-main-img-wrapper {
+.product-detail-assets-wrapper-first {
   max-width: 535px;
   height: auto;
   margin: auto;
@@ -746,5 +746,15 @@ mat-sidenav-content {
       width: 100%;
       height: auto;
     }
+}
+
+.product-detail-assets-wrapper-other {
+  max-width: 260px;
+  height: auto;
+  margin: auto;
+  img {
+    width: 100%;
+    height: auto;
+  }
 }
 

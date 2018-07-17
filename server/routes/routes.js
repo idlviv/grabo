@@ -44,6 +44,11 @@ router.post('/product/upsert',
   productController.productUpsert
 );
 
+router.post('/product/add-main-image',
+  passport.authenticate('jwt', {session: false}),
+  productController.productAddMainImage
+);
+
 router.post('/product/add-assets',
   passport.authenticate('jwt', {session: false}),
   productController.productAddAssets

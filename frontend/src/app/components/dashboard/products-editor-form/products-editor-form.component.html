@@ -66,16 +66,16 @@
                       </mat-form-field>
                     </div>
 
-                <div class="cell" fxFlex="25" fxFlex.lt-md="50">
-                  <mat-form-field>
-                    <input matInput placeholder="Порядок" formControlName="order" required>
-                    <mat-error
-                      *ngIf="productForm.get('order').errors?.required &&
-                                  productForm.get('order').touched">
-                      Обов'язкове поле
-                    </mat-error>
-                  </mat-form-field>
-                </div>
+                <!--<div class="cell" fxFlex="25" fxFlex.lt-md="50">-->
+                  <!--<mat-form-field>-->
+                    <!--<input matInput placeholder="Порядок" formControlName="order" required>-->
+                    <!--<mat-error-->
+                      <!--*ngIf="productForm.get('order').errors?.required &&-->
+                                  <!--productForm.get('order').touched">-->
+                      <!--Обов'язкове поле-->
+                    <!--</mat-error>-->
+                  <!--</mat-form-field>-->
+                <!--</div>-->
               </div>
 
               <div class="row padding-bottom" fxLayout="column" fxLayout.gt-xs="row">
@@ -240,9 +240,51 @@
                 </div>
               </div>
 
+
               <div class="row padding-bottom" fxLayout="column" fxLayout.gt-xs="row">
                 <div class="cell-header" fxLayout="row" fxFlex="100">
-                    <h3 class="mat-h3 margin-0">Головні зображення колекції</h3>
+                  <h3 class="mat-h3 margin-0">Головне зображення колекції</h3>
+                </div>
+                <div class="cell" fxFlex="25">
+                  <div class="preview-img-wrapper" >
+                    <img *ngIf="productForm.get('mainImage').value" src="{{
+                      config.imgPath +
+                      config.cloudinary.cloud_name +
+                       '/c_fill,h_180,w_180,f_auto/' + productForm.get('mainImage').value}}"
+                         alt="Main Image">
+                    <img *ngIf="!productForm.get('mainImage').value"
+                         src="{{
+                       config.imgPath +
+                      config.cloudinary.cloud_name +
+                       '/c_fill,h_180,w_180,f_auto/'+
+                       config.defaultProductImg}}" alt="Main Image">
+                    <input #inputFile type="file" (change)="addMainImage($event)"
+                           accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png" style="display:none;">
+                    <div class="preview-div-processing">
+                      <div *ngIf="processingLoadImage" class="spinner-wrapper">
+                        <mat-spinner [diameter]="24"></mat-spinner>
+                      </div>
+
+
+                      <div *ngIf="!processingLoadImage" class="button-wrapper">
+                        <button mat-mini-fab color="primary" type="button"
+                                (click)="inputFile.click();"
+                                [disabled]="processingLoadImage">
+                          <mat-icon *ngIf="!productForm.get('mainImage').value && !processingLoadImage">add</mat-icon>
+                          <mat-icon *ngIf="productForm.get('mainImage').value && !processingLoadImage">redo</mat-icon>
+                        </button>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+
+              <div class="row padding-bottom" fxLayout="column" fxLayout.gt-xs="row">
+                <div class="cell-header" fxLayout="row" fxFlex="100">
+                    <h3 class="mat-h3 margin-0">Зображення колекції</h3>
                   </div>
                   <div formArrayName="assets" class="cell" fxFlex="25" fxFlex.lt-md="50"
                      *ngFor="let asset of productForm.get('assets')['controls']; let i = index">
@@ -260,7 +302,7 @@
                   </div>
 
                   <div class="cell" fxFlex="25" fxFlex.lt-md="50"
-                       *ngIf="productForm.get('assets').value.length < 5">
+                       *ngIf="productForm.get('assets').value.length < 3">
                     <div class="preview-img-wrapper">
                       <img src="{{config.defaultProductImgPath}}" alt="productImage">
                       <input #inputFile type="file" (change)="addAssets($event)"
@@ -325,14 +367,17 @@
                 <div class="cell" fxFlex="65">
 
                   <button *ngIf="editMode" mat-raised-button color="primary" class="full-width"
-                          [disabled]="!productForm.valid || processingLoadAssets >=0 || processingLoadTechAssets >= 0">Зберегти</button>
+                          [disabled]="!productForm.valid || processingLoadAssets >=0 || processingLoadTechAssets >= 0 || processingLoadImage">
+                    Зберегти</button>
                   <button *ngIf="!editMode" mat-raised-button color="primary" class="full-width"
-                          [disabled]="!productForm.valid || processingLoadAssets >=0 || processingLoadTechAssets >= 0">Створити</button>
+                          [disabled]="!productForm.valid || processingLoadAssets >=0 || processingLoadTechAssets >= 0 || processingLoadImage">
+                    Створити</button>
                 </div>
 
                 <div class="cell" fxFlex="35">
                   <button mat-raised-button  type="button" (click)="goBack()" class="full-width"
-                          [disabled]="processingLoadAssets >=0 || processingLoadTechAssets >= 0">Повернутись</button>
+                          [disabled]="processingLoadAssets >=0 || processingLoadTechAssets >= 0
+                          || processingLoadTechAssets >= 0 || processingLoadImage">Повернутись</button>
                 </div>
 
               </div>

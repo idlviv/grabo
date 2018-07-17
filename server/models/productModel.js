@@ -21,8 +21,9 @@ const ProductSchema = new Schema({
     required: true,
     default: true
   },
-  order: {
-    type: Number
+  mainImage: {
+    type: String,
+    required: true,
   },
   assets: {
     type: [String],
