@@ -206,13 +206,13 @@
                 <div formArrayName="designs" class="cell" fxFlex="25" fxFlex.lt-md="50"
                      *ngFor="let des of productForm.get('designs')['controls']; let i = index">
                   <h4 *ngIf="productForm.get('designs').value[i]"
-                      class="mat-h4 text-center">{{getDesignByImage(productForm.get('designs').value[i])._id}}</h4>
+                      class="mat-h4 text-center">{{productForm.get('designs').value[i]}}</h4>
                   <div *ngIf="productForm.get('designs').value[i] && designs" class="preview-img-wrapper">
                     <img alt="designImage" src="{{
                     config.imgPath +
                     config.cloudinary.cloud_name +
                     '/c_fill,h_180,w_180/' +
-                    productForm.get('designs').value[i]}}">
+                    getDesign(productForm.get('designs').value[i]).image}}">
                   </div>
 
                   <p class="remove-field text-center"
@@ -222,36 +222,77 @@
 
 
               <div class="row padding-bottom" fxLayout="column" fxLayout.gt-xs="row">
-                <div class="cell-header" fxLayout="row" fxFlex="100">
-                  <h3 class="mat-h3 margin-0">Головне зображення колекції</h3>
-                </div>
-                <div class="cell" fxFlex="25">
-                  <div class="preview-img-wrapper" >
-                    <img *ngIf="productForm.get('mainImage').value" src="{{
+              <div class="cell-header" fxLayout="row" fxFlex="100">
+                <h3 class="mat-h3 margin-0">Головне зображення колекції</h3>
+              </div>
+              <div class="cell" fxFlex="25">
+                <div class="preview-img-wrapper" >
+                  <img *ngIf="productForm.get('mainImage').value" src="{{
                       config.imgPath +
                       config.cloudinary.cloud_name +
                        '/c_fill,h_180,w_180,f_auto/' + productForm.get('mainImage').value}}"
-                         alt="Main Image">
-                    <img *ngIf="!productForm.get('mainImage').value"
-                         src="{{
+                       alt="Main Image">
+                  <img *ngIf="!productForm.get('mainImage').value"
+                       src="{{
                        config.imgPath +
                       config.cloudinary.cloud_name +
                        '/c_fill,h_180,w_180,f_auto/'+
                        config.defaultProductImg}}" alt="Main Image">
-                    <input #inputFile type="file" (change)="addMainImage($event)"
+                  <input #inputMainImage type="file" (change)="addMainImage($event)"
+                         accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png" style="display:none;">
+                  <div class="preview-div-processing">
+                    <div *ngIf="processingLoadImage" class="spinner-wrapper">
+                      <mat-spinner [diameter]="24"></mat-spinner>
+                    </div>
+
+
+                    <div *ngIf="!processingLoadImage" class="button-wrapper">
+                      <button mat-mini-fab color="primary" type="button"
+                              (click)="inputMainImage.click();"
+                              [disabled]="processingLoadImage">
+                        <mat-icon *ngIf="!productForm.get('mainImage').value && !processingLoadImage">add</mat-icon>
+                        <mat-icon *ngIf="productForm.get('mainImage').value && !processingLoadImage">redo</mat-icon>
+                      </button>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+
+              <div class="row padding-bottom" fxLayout="column" fxLayout.gt-xs="row">
+                <div class="cell-header" fxLayout="row" fxFlex="100">
+                  <h3 class="mat-h3 margin-0">Зображення колекції в меню</h3>
+                </div>
+                <div class="cell" fxFlex="25">
+                  <div class="preview-img-wrapper" >
+                    <img *ngIf="productForm.get('briefImage').value" src="{{
+                      config.imgPath +
+                      config.cloudinary.cloud_name +
+                       '/c_fill,w_180,h_180,f_auto/' + productForm.get('briefImage').value}}"
+                         alt="Main Image">
+                    <img *ngIf="!productForm.get('briefImage').value"
+                         src="{{
+                       config.imgPath +
+                      config.cloudinary.cloud_name +
+                       '/c_fill,w_180,h_180,f_auto/'+
+                       config.defaultProductImg}}" alt="Main Image">
+                    <input #inputBriefImage type="file" (change)="addBriefImage($event)"
                            accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png" style="display:none;">
                     <div class="preview-div-processing">
-                      <div *ngIf="processingLoadImage" class="spinner-wrapper">
+                      <div *ngIf="processingLoadBriefImage" class="spinner-wrapper">
                         <mat-spinner [diameter]="24"></mat-spinner>
                       </div>
 
 
-                      <div *ngIf="!processingLoadImage" class="button-wrapper">
+                      <div *ngIf="!processingLoadBriefImage" class="button-wrapper">
                         <button mat-mini-fab color="primary" type="button"
-                                (click)="inputFile.click();"
+                                (click)="inputBriefImage.click();"
                                 [disabled]="processingLoadImage">
-                          <mat-icon *ngIf="!productForm.get('mainImage').value && !processingLoadImage">add</mat-icon>
-                          <mat-icon *ngIf="productForm.get('mainImage').value && !processingLoadImage">redo</mat-icon>
+                          <mat-icon *ngIf="!productForm.get('briefImage').value && !processingLoadBriefImage">add</mat-icon>
+                          <mat-icon *ngIf="productForm.get('briefImage').value && !processingLoadBriefImage">redo</mat-icon>
                         </button>
 
                       </div>

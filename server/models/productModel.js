@@ -25,6 +25,10 @@ const ProductSchema = new Schema({
     type: String,
     required: true,
   },
+  briefImage: {
+    type: String,
+    required: true,
+  },
   assets: {
     type: [String],
     // default: config.get('defaultProductImgPath'),

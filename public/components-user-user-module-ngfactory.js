@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["components-user-user-module-ngfactory"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["common"],{
 
 /***/ "./src/app/components/user/user.module.ngfactory.js":
 /*!**********************************************************!*\

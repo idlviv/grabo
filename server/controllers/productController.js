@@ -189,6 +189,38 @@ module.exports.productAddMainImage = function(req, res, next) {
           {width: 650, height: 650, crop: 'fill', fetch_format: 'auto'},
           {width: 535, height: 350, crop: 'fill', fetch_format: 'auto'},
           {width: 260, height: 170, crop: 'fill', fetch_format: 'auto'},
+          {width: 180, height: 180, crop: 'fill', fetch_format: 'auto'},
+          {width: 40, height: 40, crop: 'fill', fetch_format: 'auto'},
+        ]
+      },
+      function(err, result) {
+        if (err) {
+          return next(
+            new ApplicationError('Помилка завантаження - product assets', 400)
+          );
+        }
+        console.log('product_img_cloudinary result', result);
+        return res.status(200).json(new ResObj(true, 'Зображення завнтажене', result.public_id)); // jscs:ignore requireCamelCaseOrUpperCaseIdentifiers
+      });
+  });
+};
+
+module.exports.productAddBriefImage = function(req, res, next) {
+  let form = new formidable.IncomingForm({maxFileSize: 10500000});
+  form.parse(req, function(err, fields, files) {
+    if (err) {
+      return next(new ApplicationError('Помилка завантаження зображення - form parse', 400));
+    }
+
+    cloudinary.v2.uploader.upload(
+      files.file.path,
+      {
+        public_id: fields._id + '_brief_image_' + Date.now(),// jscs:ignore requireCamelCaseOrUpperCaseIdentifiers
+        eager: [
+          {width: 650, height: 650, crop: 'fill', fetch_format: 'auto'},
+          {width: 535, height: 350, crop: 'fill', fetch_format: 'auto'},
+          {width: 260, height: 170, crop: 'fill', fetch_format: 'auto'},
+          {width: 180, height: 180, crop: 'fill', fetch_format: 'auto'},
           {width: 40, height: 40, crop: 'fill', fetch_format: 'auto'},
         ]
       },

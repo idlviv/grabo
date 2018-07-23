@@ -198,6 +198,8 @@ body {
   width: 100%;
 }
 
+
+
 .padding-bottom {
   padding-bottom: 1.5rem;
 }
@@ -212,6 +214,22 @@ body {
 
 .margin-auto {
   margin: auto;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
+.no-margin {
+  padding: 0 !important;
+}
+
+.no-margin-bottom {
+  padding-bottom: 0 !important;
+}
+
+.no-padding-bottom {
+  padding-bottom: 0 !important;
 }
 
 //coloring
@@ -738,27 +756,20 @@ mat-sidenav-content {
 
 // product-item-detail
 
-.product-detail-assets-wrapper-first {
-  //width: 535px;
-  //height: 350px;
-  //height: 350px;
-  //width: auto;
-  //margin: auto;
-
-}
-
 .product-detail-image {
   max-width: 100%;
   height: auto;
 }
 
-.product-detail-assets-wrapper-other {
-  //max-width: 260px;
-  //height: auto;
-  //margin: auto;
-  //img {
-  //  width: 100%;
-  //  height: auto;
-  //}
+.design-image-title {
+  margin-top: .5rem;
 }
+
+// product-item-brief
+
+.mat-card-wide-image {
+  margin-left: -24px !important;
+  margin-right: -24px !important;
+}
+
 

@@ -11,19 +11,18 @@ var map = {
 	"./components/dashboard/dashboard.module.ngfactory": [
 		"./src/app/components/dashboard/dashboard.module.ngfactory.js",
 		"components-dashboard-dashboard-module-ngfactory~components-user-user-module-ngfactory",
-		"common",
+		"components-dashboard-dashboard-module-ngfactory~components-products-products-module-ngfactory",
 		"components-dashboard-dashboard-module-ngfactory"
 	],
 	"./components/products/products.module.ngfactory": [
 		"./src/app/components/products/products.module.ngfactory.js",
-		"common",
+		"components-dashboard-dashboard-module-ngfactory~components-products-products-module-ngfactory",
 		"components-products-products-module-ngfactory"
 	],
 	"./components/user/user.module.ngfactory": [
 		"./src/app/components/user/user.module.ngfactory.js",
 		"components-dashboard-dashboard-module-ngfactory~components-user-user-module-ngfactory",
-		"common",
-		"components-user-user-module-ngfactory"
+		"common"
 	]
 };
 function webpackAsyncContext(req) {
@@ -2135,6 +2134,19 @@ var ProductService = /** @class */ (function () {
             })
         };
         return this.http.post('api/product/add-main-image', formData, httpOptions);
+    };
+    ProductService.prototype.productAddBriefImage = function (file, _id) {
+        console.log('file', file);
+        var formData = new FormData();
+        formData.append('file', file, file.name);
+        formData.append('_id', _id);
+        var token = this.userService.userLocalGetToken('token');
+        var httpOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpHeaders"]({
+                'Authorization': token
+            })
+        };
+        return this.http.post('api/product/add-brief-image', formData, httpOptions);
     };
     ProductService.prototype.productAddAssets = function (file, _id) {
         console.log('file', file);

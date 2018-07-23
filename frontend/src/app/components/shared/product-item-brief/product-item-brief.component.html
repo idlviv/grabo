@@ -2,8 +2,15 @@
   <mat-card-header>
   </mat-card-header>
 
-  {{product | json}}
   <mat-card-content>
+    <div class="mat-card-wide-image" fxLayoutAlign="center">
+      <img fxflex class="product-detail-image" src="{{
+              config.imgPath +
+              config.cloudinary.cloud_name +
+              '/c_fill,w_260,h_170,f_auto/' +
+              product.briefImage}}"
+           alt="Image">
+    </div>
 
 
   </mat-card-content>

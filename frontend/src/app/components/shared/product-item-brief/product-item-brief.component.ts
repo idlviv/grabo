@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { config } from '../../../app.config';
 
 @Component({
   selector: 'app-product-item-brief',
@@ -10,6 +11,7 @@ export class ProductItemBriefComponent implements OnInit {
   @Input() category_id;
   @Input() parentCategory_id;
   @Input() parentCategoryName;
+  config = config;
 
   constructor() { }
 

@@ -16,12 +16,12 @@
     <!--</mat-card>-->
   <!--</div>-->
 <!--</div>-->
-<div class="row" fxLayout="column" fxLayout.gt-xs="row">
+<div class="row" fxLayout="column" fxLayout.gt-sm="row">
 
-  <div fxFlex.gt-xs="200px">
+  <div fxFlex.gt-sm="200px">
     <app-products-detail-side [siblings]="siblings" [category_id]="category_id"></app-products-detail-side>
   </div>
-  <div class="cell" fxFlex.gt-xs="100%-200px">
+  <div class="cell" fxFlex.gt-sm="100%-200px">
     <app-product-item-detail [product]="product" [category_id]="category_id"></app-product-item-detail>
   </div>
 </div>

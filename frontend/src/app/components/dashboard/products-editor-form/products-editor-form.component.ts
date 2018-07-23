@@ -31,6 +31,7 @@ export class ProductsEditorFormComponent implements OnInit {
   processingLoadAssets = -1;
   processingLoadTechAssets = -1;
   processingLoadImage = false;
+  processingLoadBriefImage = false;
 
   editMode = false;
   edited_id: string;
@@ -73,6 +74,9 @@ export class ProductsEditorFormComponent implements OnInit {
         Validators.required,
       ]),
       mainImage: new FormControl('', [
+        Validators.required,
+      ]),
+      briefImage: new FormControl('', [
         Validators.required,
       ]),
       assets: new FormArray([]),
@@ -143,9 +147,8 @@ export class ProductsEditorFormComponent implements OnInit {
 
   }
 
-  private _filter(value: string): string[] {
-    const filterValue = value;
-    const designsFromForm = this.productForm.get('designs').value.map(image => this.getDesignByImage(image));
+  private _filter(filterValue: string): string[] {
+    const designsFromForm = this.productForm.get('designs').value;
     return this.designs_id
       .filter(option => designsFromForm.indexOf(option) === -1) // remove designs, which already in form
       .filter(option => option.indexOf(filterValue) === 0 ); // filter by input value
@@ -159,16 +162,16 @@ export class ProductsEditorFormComponent implements OnInit {
   getDesign(_id) {
     return this.designs.filter(design => design._id === _id)[0];
   }
-
-  getDesignByImage(image) {
-    return this.designs.filter(design => design.image === image)[0];
-  }
+  //
+  // getDesignByImage(image) {
+  //   return this.designs.filter(design => design.image === image)[0];
+  // }
 
   addDesign() {
     if (this._checkDesignValidity(this.productForm.get('des').value)) {
       console.log('add design true');
       const designsList = this.productForm.get('designs').value || [];
-      designsList.push(this.getDesign(this.productForm.get('des').value).image);
+      designsList.push(this.productForm.get('des').value);
       this.addDesignsControl();
       this.productForm.get('designs').setValue(designsList);
       this.productForm.get('des').reset();
@@ -211,6 +214,30 @@ export class ProductsEditorFormComponent implements OnInit {
             //   this.designForm.get('_id').enable();
             // }
             // this.designForm.get('structure').enable();
+          }
+        );
+    }
+  }
+
+  addBriefImage(event) {
+    this.processingLoadBriefImage = true;
+    const file = event.target.files[0];
+    const checkFile = this.productService.checkFile(file);
+
+    if (!checkFile.success) {
+      this.matSnackBar.open(checkFile.message || 'Помилка', '',
+        {duration: 3000, panelClass: 'snack-bar-danger'});
+      this.processingLoadBriefImage = false;
+    } else {
+      this.productService.productAddBriefImage(file, this.productForm.get('_id').value)
+        .subscribe(result => {
+            this.productForm.get('briefImage').setValue(result.data);
+            this.processingLoadBriefImage = false;
+          },
+          err => {
+            this.matSnackBar.open(err.error || 'Помилка', '',
+              {duration: 3000, panelClass: 'snack-bar-danger'});
+            this.processingLoadBriefImage = false;
           }
         );
     }
@@ -287,6 +314,7 @@ export class ProductsEditorFormComponent implements OnInit {
       parent: this.productForm.get('parent').value,
       display: this.productForm.get('display').value,
       mainImage: this.productForm.get('mainImage').value,
+      briefImage: this.productForm.get('briefImage').value,
       assets: this.productForm.get('assets').value,
       techAssets: this.productForm.get('techAssets').value,
       description: this.productForm.get('description').value,
