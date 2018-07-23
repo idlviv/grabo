@@ -39,6 +39,7 @@ module.exports.designAddImage = function(req, res, next) {
         // width: 650, height: 650, crop: 'fill'
         eager: [
           {width: 650, height: 650, crop: 'fill', fetch_format: 'auto'},
+          {width: 250, height: 250, crop: 'fill', fetch_format: 'auto'},
           {width: 180, height: 180, crop: 'fill', fetch_format: 'auto'},
           {width: 40, height: 40, crop: 'fill', fetch_format: 'auto'},
           ]
