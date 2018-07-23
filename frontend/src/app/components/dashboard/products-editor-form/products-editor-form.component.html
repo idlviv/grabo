@@ -202,37 +202,17 @@
                   </div>
                 <div class="cell" fxFlex="50">
                 </div>
-                <!--</div>-->
-              <!--</div>-->
-              <!--<div class="row"  fxLayout="column" fxLayout.gt-xs="row">-->
-                <!--&lt;!&ndash;<div formArrayName="designs" class="cell" fxFlex="25" fxFlex.lt-md="50"&ndash;&gt;-->
-                     <!--&lt;!&ndash;*ngFor="let des of productForm.get('designs')['controls']; let i = index">&ndash;&gt;-->
-
-                <!--<div class="cell" fxFlex="33" fxLayout="column" fxLayout.gt-xs="row">-->
-                  <!--<div class="item" fxFlex="80">-->
-                    <!---->
-                  <!--</div>-->
-
-                  <!--<div class="item" fxFlex="20">-->
-                    <!--<button [disabled]="!designValidity" mat-mini-fab color="accent" type="button"-->
-                            <!--(click)="addDesign()"><mat-icon>add</mat-icon></button>-->
-
-                    <!--&lt;!&ndash;<mat-icon *ngIf="designValidity" color="accent" class="clickable" (click)="addDesign()">add_circle</mat-icon>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<mat-icon *ngIf="!designValidity" color="primary">add_circle_outline</mat-icon>&ndash;&gt;-->
-                  <!--</div>-->
-                <!--</div>-->
 
                 <div formArrayName="designs" class="cell" fxFlex="25" fxFlex.lt-md="50"
                      *ngFor="let des of productForm.get('designs')['controls']; let i = index">
                   <h4 *ngIf="productForm.get('designs').value[i]"
-                      class="mat-h4 text-center">{{productForm.get('designs').value[i]}}</h4>
+                      class="mat-h4 text-center">{{getDesignByImage(productForm.get('designs').value[i])._id}}</h4>
                   <div *ngIf="productForm.get('designs').value[i] && designs" class="preview-img-wrapper">
                     <img alt="designImage" src="{{
                     config.imgPath +
                     config.cloudinary.cloud_name +
                     '/c_fill,h_180,w_180/' +
-                    getDesign(productForm.get('designs').value[i]).image +
-                    '.jpg'}}">
+                    productForm.get('designs').value[i]}}">
                   </div>
 
                   <p class="remove-field text-center"
@@ -284,7 +264,7 @@
 
               <div class="row padding-bottom" fxLayout="column" fxLayout.gt-xs="row">
                 <div class="cell-header" fxLayout="row" fxFlex="100">
-                    <h3 class="mat-h3 margin-0">Додаткові ображення колекції</h3>
+                    <h3 class="mat-h3 margin-0">Додаткові зображення колекції</h3>
                   </div>
                   <div formArrayName="assets" class="cell" fxFlex="25" fxFlex.lt-md="50"
                      *ngFor="let asset of productForm.get('assets')['controls']; let i = index">

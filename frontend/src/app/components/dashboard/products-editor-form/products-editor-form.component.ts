@@ -145,7 +145,7 @@ export class ProductsEditorFormComponent implements OnInit {
 
   private _filter(value: string): string[] {
     const filterValue = value;
-    const designsFromForm = this.productForm.get('designs').value;
+    const designsFromForm = this.productForm.get('designs').value.map(image => this.getDesignByImage(image));
     return this.designs_id
       .filter(option => designsFromForm.indexOf(option) === -1) // remove designs, which already in form
       .filter(option => option.indexOf(filterValue) === 0 ); // filter by input value
@@ -160,11 +160,15 @@ export class ProductsEditorFormComponent implements OnInit {
     return this.designs.filter(design => design._id === _id)[0];
   }
 
+  getDesignByImage(image) {
+    return this.designs.filter(design => design.image === image)[0];
+  }
+
   addDesign() {
     if (this._checkDesignValidity(this.productForm.get('des').value)) {
       console.log('add design true');
       const designsList = this.productForm.get('designs').value || [];
-      designsList.push(this.productForm.get('des').value);
+      designsList.push(this.getDesign(this.productForm.get('des').value).image);
       this.addDesignsControl();
       this.productForm.get('designs').setValue(designsList);
       this.productForm.get('des').reset();
