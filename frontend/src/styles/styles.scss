@@ -794,8 +794,15 @@ mat-sidenav-content {
   margin-right: -24px !important;
 }
 
-// my text styles
 
-.h2 {
-  font-size: 1.5rem;
+// overriding materials
+
+.custom-dialog-container {
+  mat-dialog-container {
+    padding: 5px;
+  }
+}
+
+.mat-h1 .mat-h2 .mat-h3 {
+  padding-bottom: 0 !important;
 }

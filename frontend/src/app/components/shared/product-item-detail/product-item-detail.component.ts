@@ -43,6 +43,7 @@ export class ProductItemDetailComponent implements OnInit {
     const dialogRef = this.dialog.open(DesignPopupComponent, {
       // width: '400px',
       data: design,
+      panelClass: 'custom-dialog-container'
     });
 
     dialogRef.afterClosed()
