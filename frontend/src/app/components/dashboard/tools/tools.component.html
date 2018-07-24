@@ -1,0 +1,35 @@
+<div class="row" fxLayout="row">
+  <div class="cell" fxFlex="100">
+
+    <div class="container">
+      <div class="row">
+        <div class="cell">
+          <h2 class="mat-h2">Редактор дизайнів</h2>
+        </div>
+      </div>
+
+      <div class="row" fxLayout="column" fxLayout.gt-xs="row">
+
+        <div class="cell" fxFlex.sm="100" fxFlex.gt-sm="50" fxLayout fxLayoutAlign="center center">
+          <h4 class="mat-h4">512x512</h4>
+            <img fxflex class="product-detail-image" src="{{
+              config.imgPath +
+              config.cloudinary.cloud_name +
+              '/c_fill,w_512,h_512,f_auto/' +
+              iconFilename}}"
+                 alt="icon">
+        </div>
+        <div class="cell" fxFlex.sm="100" fxFlex.gt-sm="50" fxLayout fxLayoutAlign="center center">
+          <h4 class="mat-h4">384x384</h4>
+          <img fxflex class="product-detail-image" src="{{
+              config.imgPath +
+              config.cloudinary.cloud_name +
+              '/c_fill,w_384,h_384,f_auto/' +
+              iconFilename}}"
+               alt="icon">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

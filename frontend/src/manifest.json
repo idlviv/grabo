@@ -1,8 +1,8 @@
 {
   "name": "frontend",
   "short_name": "frontend",
-  "theme_color": "#9799a3",
-  "background_color": "#fafafa",
+  "theme_color": "#bfc2c9",
+  "background_color": "#bfc2c9",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",

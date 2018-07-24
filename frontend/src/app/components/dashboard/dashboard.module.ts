@@ -13,6 +13,7 @@ import { SharedModule } from '../shared/shared.module';
 import { DesignsEditorFormComponent } from './designs-editor-form/designs-editor-form.component';
 import { ProductsEditorComponent } from './products-editor/products-editor.component';
 import { ProductsEditorFormComponent } from './products-editor-form/products-editor-form.component';
+import { ToolsComponent } from './tools/tools.component';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { ProductsEditorFormComponent } from './products-editor-form/products-edi
     DesignsEditorComponent,
     DesignsEditorFormComponent,
     ProductsEditorComponent,
-    ProductsEditorFormComponent
+    ProductsEditorFormComponent,
+    ToolsComponent
   ]
 })
 export class DashboardModule { }

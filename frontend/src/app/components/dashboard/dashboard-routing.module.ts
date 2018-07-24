@@ -10,6 +10,7 @@ import { DesignsEditorFormComponent } from './designs-editor-form/designs-editor
 import { ProductsEditorComponent } from './products-editor/products-editor.component';
 import { ProductsComponent } from '../products/products.component';
 import { ProductsEditorFormComponent } from './products-editor-form/products-editor-form.component';
+import { ToolsComponent } from './tools/tools.component';
 
 const dashboardRoutes: Routes = [
   {
@@ -30,8 +31,8 @@ const dashboardRoutes: Routes = [
         data: { auth: 'manager' },
       },
       {
-        path: 'tmp',
-        component: ProductCreateComponent,
+        path: 'tools',
+        component: ToolsComponent,
         canActivate: [AuthGuard],
         data: { auth: 'manager' },
       },
