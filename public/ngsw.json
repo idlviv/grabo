@@ -1,0 +1,107 @@
+{
+  "configVersion": 1,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/1.2489b35db9250924172f.js",
+        "/2.6f1886f8022f56897716.js",
+        "/3.c7bb42a792a3a5d1437a.js",
+        "/4.cb0157cdee5448335b3f.js",
+        "/common.8ba9e15ff2493c9f7355.js",
+        "/favicon.ico",
+        "/index.html",
+        "/main.993216586e989a1e3c6b.js",
+        "/polyfills.aa162a86eeedc8907a4b.js",
+        "/runtime.6547f4a045c591d2af98.js",
+        "/styles.f2a8065a6026118d74bc.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/assets/icons/icon-128x128.png",
+        "/assets/icons/icon-144x144.png",
+        "/assets/icons/icon-152x152.png",
+        "/assets/icons/icon-192x192.png",
+        "/assets/icons/icon-384x384.png",
+        "/assets/icons/icon-512x512.png",
+        "/assets/icons/icon-72x72.png",
+        "/assets/icons/icon-96x96.png",
+        "/assets/images/default-avatar180x180.jpg",
+        "/assets/images/default-avatar180x180.png",
+        "/assets/images/default-product180x180.jpg",
+        "/assets/images/default-product180x180.png",
+        "/assets/images/graboplast_logo207x50.png",
+        "/assets/images/graboplast_logo373x90.png",
+        "/assets/images/graboplast_logo50x50.png",
+        "/assets/images/graboplast_logo60x60.png",
+        "/assets/images/graboplast_logo90x90.png",
+        "/assets/images/graboplast_logo_inverse207x50.png",
+        "/assets/images/logo400x140-1.jpg",
+        "/assets/images/logo400x140-2.jpg",
+        "/assets/images/logo400x140-3.jpg"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/1.2489b35db9250924172f.js": "0aa6e5ad857274cb3e1468ce469d3bcff926f724",
+    "/2.6f1886f8022f56897716.js": "f0fabb0611f649129de0ac88f55db58ffed50a0f",
+    "/3.c7bb42a792a3a5d1437a.js": "151861a81a8d73f22e01983cc9a462d85d937241",
+    "/4.cb0157cdee5448335b3f.js": "e99db799d05b929d5179e07df058cb827f0694a9",
+    "/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/assets/images/default-avatar180x180.jpg": "53b9d825a4d53a1bcd3f4dbad8662ebe718d617c",
+    "/assets/images/default-avatar180x180.png": "23abb35733a46ff741ce94b1db3d8f3539ca675b",
+    "/assets/images/default-product180x180.jpg": "4df9f94c782da5bd27432f442a389e7e4c59c2df",
+    "/assets/images/default-product180x180.png": "60892b781022fc6c2585ff6aef8f5ce504104f52",
+    "/assets/images/graboplast_logo207x50.png": "b7dcf88b7c35dc2180601b0a6d6ffd87c3efde6f",
+    "/assets/images/graboplast_logo373x90.png": "98af7e75c8f48225cbf714466f6238c86109d3a5",
+    "/assets/images/graboplast_logo50x50.png": "1ca30688b62f8486782ca6513cf6cfbe609efcbf",
+    "/assets/images/graboplast_logo60x60.png": "592d1f318321b80bfa3f2454d1797cc0d1e2f161",
+    "/assets/images/graboplast_logo90x90.png": "e5ce5b411c9ffc1dac52b09e982ca18755744900",
+    "/assets/images/graboplast_logo_inverse207x50.png": "5e6227cf90a486f0ed557dce3dd584272dcda5fe",
+    "/assets/images/logo400x140-1.jpg": "0e9a131116ad00c9f07504f279023d9095a3340a",
+    "/assets/images/logo400x140-2.jpg": "176ebcdd85c54a19f41ebd746c7435228fe234be",
+    "/assets/images/logo400x140-3.jpg": "009cdd0f0a96e21b72e6c01b250be342543d5ae8",
+    "/common.8ba9e15ff2493c9f7355.js": "c145ebad78cc10b4cfe39db557a1093cf4df3e08",
+    "/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
+    "/index.html": "f77b19ba7065a7cd1fa2b1dc238a4ab30e86076a",
+    "/main.993216586e989a1e3c6b.js": "71550527d3e65e61d8c5d91abf03ab488f4e2a22",
+    "/polyfills.aa162a86eeedc8907a4b.js": "58ea7310c5b7495a8d621fb2ff72cc1e8a766a74",
+    "/runtime.6547f4a045c591d2af98.js": "53a723b3c6d5ede4c8b14467ad7499c688520e3f",
+    "/styles.f2a8065a6026118d74bc.css": "9ed3f4564d638daa16c1d697dc2566a20baeacda"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^\\/]*\\.[^\\/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^\\/]*__[^\\/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^\\/]*__[^\\/]*\\/.*$"
+    }
+  ]
+}
