@@ -9,11 +9,13 @@ import { config } from '../../../app.config';
 export class ToolsComponent implements OnInit {
   config = config;
   iconFilename: string;
+  faviconFilename: string;
 
   constructor() { }
 
   ngOnInit() {
     this.iconFilename = 'icon-650x650.png';
+    this.faviconFilename = 'favicon.ico';
   }
 
 }
