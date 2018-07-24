@@ -57,7 +57,7 @@
                 </mat-list>
               </div>
             </div>
-<!--{{product.techDescriptions | json}}-->
+
             <div class="row padding-bottom" fxFlex fxLayout="row">
               <div class="cell" fxFlex="100" fxLayout>
 
@@ -113,22 +113,22 @@
         </div>
 
         <div class="row" fxFlex fxLayout="column" fxLayout.gt-xs="row">
-          <div fxFlex.gt-xs="33" fxFlex.gt-sm="25" fxFlex.gt-md="20" class="cell" fxLayout fxLayoutAlign="center center"
+          <div fxFlex.xs="33" fxFlex.sm="25" fxFlex.gt-sm="20" class="cell" fxLayout fxLayoutAlign="center center"
                *ngFor="let des of product.designs">
             <mat-card class="no-padding">
               <mat-card-header fxLayoutAlign="center center">
                 <mat-card-subtitle class="design-image-title">{{des}}</mat-card-subtitle>
-
-
               </mat-card-header>
               <mat-card-content>
-                <img *ngIf="designs" fxHide.xs fxflex class="product-detail-image" src="{{
+                <img *ngIf="designs" fxHide.xs fxflex class="product-detail-image hover-cursor"
+                     (click)="openDialog(getDesign(des))" src="{{
               config.imgPath +
               config.cloudinary.cloud_name +
               '/c_fill,w_180,h_180,f_auto/' +
               getDesign(des).image}}"
                      alt="design">
-                <img *ngIf="designs" fxHide.gt-xs fxflex class="product-detail-image" src="{{
+                <img *ngIf="designs" fxHide.gt-xs fxflex class="product-detail-image hover-cursor"
+                     (click)="openDialog(getDesign(des))" src="{{
               config.imgPath +
               config.cloudinary.cloud_name +
               '/c_fill,w_250,h_250,f_auto/' +

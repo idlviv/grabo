@@ -233,6 +233,11 @@ body {
 }
 
 //coloring
+.div200x300 {
+  height: 200px;
+  width: 300px;
+    }
+
 $muted: rgba(0, 0, 0, 0.65);
 $border: rgba(0, 0, 0, 0.12);
 $light-gray: #D6E7F7;
@@ -247,6 +252,14 @@ $light-gray: #D6E7F7;
 
 .primary {
   color: $_primary;
+}
+
+.primary-light {
+  color: mat-color($primary, 100);
+}
+
+.primary-background-light {
+  background-color: mat-color($primary, 100);
 }
 
 .primary-background {
@@ -281,6 +294,11 @@ $light-gray: #D6E7F7;
   border: 0;
 }
 
+.hover-cursor {
+  &:hover {
+    cursor: pointer;
+  }
+}
 
 
 .display-none {
@@ -310,6 +328,10 @@ re-captcha > div{
 
 .text-center {
   text-align: center;
+}
+
+.block-align-right {
+  float: right;
 }
 
 .remove-field {
@@ -772,4 +794,8 @@ mat-sidenav-content {
   margin-right: -24px !important;
 }
 
+// my text styles
 
+.h2 {
+  font-size: 1.5rem;
+}

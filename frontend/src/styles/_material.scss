@@ -66,20 +66,20 @@ $mat-custom-darker: (
 );
 
 $mat-custom-lighter: (
-        50 : #f1f1f1,
-        100 : #dcdcdd,
-        200 : #c4c4c6,
-        300 : #acacaf,
-        400 : #9b9b9e,
-        500 : #89898d,
-        600 : #818185,
-        700 : #76767a,
-        800 : #6c6c70,
-        900 : #59595d,
-        A100 : #d0d0fb,
-        A200 : #8d9dac,
-        A400 : #74889a,
-        A700 : #5c7388,
+        50 : #f7f8f9,
+        100 : #ecedef,
+        200 : #dfe1e4,
+        300 : #d2d4d9,
+        400 : #c9cbd1,
+        500 : #bfc2c9,
+        600 : #b9bcc3,
+        700 : #b1b4bc,
+        800 : #a9acb5,
+        900 : #9b9fa9,
+        A100 : #ffffff,
+        A200 : #ffffff,
+        A400 : #e6edff,
+        A700 : #cddaff,
         contrast: (
                 50 : #000000,
                 100 : #000000,
@@ -88,13 +88,13 @@ $mat-custom-lighter: (
                 400 : #000000,
                 500 : #000000,
                 600 : #000000,
-                700 : #ffffff,
-                800 : #ffffff,
-                900 : #ffffff,
+                700 : #000000,
+                800 : #000000,
+                900 : #000000,
                 A100 : #000000,
                 A200 : #000000,
-                A400 : #ffffff,
-                A700 : #ffffff,
+                A400 : #000000,
+                A700 : #000000,
         )
 );
 
@@ -131,17 +131,15 @@ $mat-custom-warn: (
         )
 );
 
-
 @include mat-core();
 $primary: mat-palette($mat-custom-lighter);
-$accent:  mat-palette($mat-custom-darker);
-$warn:    mat-palette($mat-custom-warn);
+$accent: mat-palette($mat-custom-darker);
+$warn: mat-palette($mat-custom-warn);
 $theme: mat-light-theme($primary, $accent, $warn);
 
 $_primary: mat-color($primary);
 $_accent: mat-color($accent);
 $_warn: mat-color($warn);
-
 
 @include angular-material-theme($theme);
 

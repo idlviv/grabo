@@ -3,14 +3,18 @@
 
     <div class="cell"
          fxFlex.sm="60" fxFlex.md="70" fxFlex.gt-md="80">
-      <div class="row" fxLayout="column" fxLayout.gt-xs="row">
-        <div class="cell"
-             fxFlex.sm="100" fxFlex.md="50" fxFlex.gt-md="25"
-          *ngFor="let product of products">
+      <div class="primary-background div200x300">primary</div>
+      <div class="primary-background-light div200x300">primary-background-light</div>
+      <div class="warn-background div200x300">warn</div>
+
+      <!--<div class="row" fxLayout="column" fxLayout.gt-xs="row">-->
+        <!--<div class="cell"-->
+             <!--fxFlex.sm="100" fxFlex.md="50" fxFlex.gt-md="25"-->
+          <!--*ngFor="let product of products">-->
+
           <!--<p>Показати: {{itemsToShow}}</p>-->
-          <app-product-item [product]="product"></app-product-item>
-        </div>
-      </div>
+          <!--<app-product-item [product]="product"></app-product-item>-->
+        <!--</div>-->
     </div>
 
     <div class="cell" fxFlex.sm="40" fxFlex.md="30" fxFlex.gt-md="20">
@@ -20,9 +24,11 @@
             <img class="avatar-big" src="./assets/images/default-avatar180x180.png" alt="my photo">
           </div>
           <mat-card-header>
-            <mat-card-title>Про себе</mat-card-title>
+            <mat-card-title>Title</mat-card-title>
+            <mat-card-subtitle>Subtitle</mat-card-subtitle>
           </mat-card-header>
           <mat-card-content>
+
             <p class="text-justify muted">text</p>
           </mat-card-content>
         </mat-card>

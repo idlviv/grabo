@@ -28,6 +28,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ConfirmPopupComponent } from './components/shared/confirm-popup/confirm-popup.component';
+import { DesignPopupComponent } from './components/shared/design-popup/design-popup.component';
 
 const cloudinaryLib = {
   Cloudinary: Cloudinary
@@ -65,6 +66,7 @@ const cloudinaryCloudName = config.cloudinary.cloud_name;
   ],
   entryComponents: [
     ConfirmPopupComponent,
+    DesignPopupComponent,
   ],
   bootstrap: [ AppComponent ]
 })

@@ -2,6 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { config } from '../../../app.config';
 import { IDesign } from '../../../interfaces/interface';
 import { DesignService } from '../../../services/design.service';
+import { of } from 'rxjs/index';
+import { ConfirmPopupComponent } from '../confirm-popup/confirm-popup.component';
+import { mergeMap } from 'rxjs/operators';
+import { MatDialog } from '@angular/material';
+import { DesignPopupComponent } from '../design-popup/design-popup.component';
 
 
 @Component({
@@ -17,7 +22,7 @@ export class ProductItemDetailComponent implements OnInit {
 
   constructor(
     private designService: DesignService,
-
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit() {
@@ -32,5 +37,19 @@ export class ProductItemDetailComponent implements OnInit {
   // takes design object (from local designs array) by design_id
   getDesign(_id) {
     return this.designs.filter(design => design._id === _id)[0];
+  }
+
+  openDialog(design): void {
+    const dialogRef = this.dialog.open(DesignPopupComponent, {
+      // width: '400px',
+      data: design,
+    });
+
+    dialogRef.afterClosed()
+      .subscribe(result => {
+          console.log('result popup', result);
+        },
+        err => console.log('err delete', err)
+      );
   }
 }
