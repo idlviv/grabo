@@ -142,9 +142,8 @@ body {
 
 // --end default grid
 
-// --flex
 
-// -- end of flex
+
 
 .sidenav {
   width: 250px;
@@ -242,6 +241,7 @@ $muted: rgba(0, 0, 0, 0.65);
 $border: rgba(0, 0, 0, 0.12);
 $light-gray: #D6E7F7;
 
+
 .accent{
   color: $_accent;
 }
@@ -258,8 +258,10 @@ $light-gray: #D6E7F7;
   color: mat-color($primary, 100);
 }
 
+$primary-background-light: mat-color($primary, 100);
+
 .primary-background-light {
-  background-color: mat-color($primary, 100);
+  background-color: $primary-background-light;
 }
 
 .primary-background {
@@ -289,6 +291,19 @@ $light-gray: #D6E7F7;
 .danger {
   color: $_warn;
 }
+
+.toolbar-color {
+  @include gt-sm {
+    background-color: $_primary;
+  }
+  @include lt-md {
+    background-color: $primary-background-light;
+  }
+}
+
+
+
+
 
 .border0 {
   border: 0;
