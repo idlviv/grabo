@@ -48,7 +48,7 @@
 
             <div class="row padding-bottom" fxFlex fxLayout="row">
               <div class="cell" fxFlex="100">
-                <H2 class="mat-h2">Рекомендовані області застосування</H2>
+                <H2 class="mat-h2 text-align-center">Рекомендовані області застосування</H2>
                 <mat-list>
                   <mat-list-item *ngFor="let recommendation of product.recommendations">
                     <mat-icon matListIcon>arrow_right</mat-icon>
@@ -59,33 +59,36 @@
             </div>
 
             <div class="row padding-bottom" fxFlex fxLayout="row">
-              <div class="cell" fxFlex="100" fxLayout>
+              <div class="cell" fxFlex="100">
+                <H2 class="mat-h2 text-align-center">Технічні характеристики</H2>
+                <div fxLayout>
+                  <table mat-table [dataSource]="product.techDescriptions" class="mat-elevation-z0" fxFlex="100">
 
-                <table mat-table [dataSource]="product.techDescriptions" class="mat-elevation-z0" fxFlex="100">
+                    <ng-container matColumnDef="techName">
+                      <!--<th mat-header-cell *matHeaderCellDef> Характеристики </th>-->
+                      <td mat-cell *matCellDef="let element"> {{element.techName}} </td>
+                    </ng-container>
 
-                  <ng-container matColumnDef="techName">
-                    <!--<th mat-header-cell *matHeaderCellDef> Характеристики </th>-->
-                    <td mat-cell *matCellDef="let element"> {{element.techName}} </td>
-                  </ng-container>
+                    <ng-container matColumnDef="techUnit">
+                      <!--<th mat-header-cell *matHeaderCellDef> Одиниці </th>-->
+                      <td mat-cell *matCellDef="let element"> {{element.techUnit}} </td>
+                    </ng-container>
 
-                  <ng-container matColumnDef="techUnit">
-                    <!--<th mat-header-cell *matHeaderCellDef> Одиниці </th>-->
-                    <td mat-cell *matCellDef="let element"> {{element.techUnit}} </td>
-                  </ng-container>
+                    <ng-container matColumnDef="techValue">
+                      <!--<th mat-header-cell *matHeaderCellDef>  </th>-->
+                      <td mat-cell *matCellDef="let element"> {{element.techValue}} </td>
+                    </ng-container>
 
-                  <ng-container matColumnDef="techValue">
-                    <!--<th mat-header-cell *matHeaderCellDef>  </th>-->
-                    <td mat-cell *matCellDef="let element"> {{element.techValue}} </td>
-                  </ng-container>
+                    <!--<tr mat-header-row *matHeaderRowDef="['techName', 'techUnit', 'techValue']"></tr>-->
+                    <tr mat-row *matRowDef="let row; columns: ['techName', 'techUnit', 'techValue']"></tr>
+                  </table>
+                </div>
 
-                     <!--<tr mat-header-row *matHeaderRowDef="['techName', 'techUnit', 'techValue']"></tr>-->
-                  <tr mat-row *matRowDef="let row; columns: ['techName', 'techUnit', 'techValue']"></tr>
-                </table>
 
               </div>
             </div>
 
-            <div class="row" fxFlex fxLayout="row">
+            <div class="row padding-bottom" fxFlex fxLayout="row">
               <div fxFlex="33" class="cell" fxLayout fxLayoutAlign="center center"
                    *ngFor="let asset of product.techAssets">
                 <img fxflex class="product-detail-image" src="{{

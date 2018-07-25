@@ -27,11 +27,6 @@ module.exports.designAddImage = function(req, res, next) {
       return next(new ApplicationError('Помилка завантаження зображення - form parse', 400));
     }
 
-    log.verbose('fields', fields);
-    // log.verbose('files', files);
-    log.verbose('date', Date.now());
-    log.verbose('date-slice', String(Date.now()).slice(0, 7));
-
     cloudinary.v2.uploader.upload(
       files.file.path,
       {

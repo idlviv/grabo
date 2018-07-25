@@ -5,6 +5,7 @@ import { IUser } from '../../../interfaces/user-interface';
 import { UserService } from '../../../services/user.service';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
+import { config } from '../../../app.config';
 
 @Component({
   selector: 'app-user-create',
@@ -13,6 +14,7 @@ import { Router } from '@angular/router';
 })
 
 export class UserCreateComponent implements OnInit {
+  config = config;
   userCreateForm: FormGroup;
   hidePassword = true;
   user: IUser;

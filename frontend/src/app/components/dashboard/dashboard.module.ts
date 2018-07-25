@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductCreateComponent } from './product-create/product-create.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { MaterialModule } from '../../material.module';
@@ -27,7 +26,6 @@ import { ToolsComponent } from './tools/tools.component';
     SharedModule,
   ],
   declarations: [
-    ProductCreateComponent,
     DashboardComponent,
     DashboardSidenavComponent,
     DesignsEditorComponent,

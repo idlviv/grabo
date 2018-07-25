@@ -357,9 +357,9 @@ re-captcha > div{
 .centered-container {
   margin: auto;
   max-width: 415px;
-    .form-block {
-      padding-top: 0;
-    }
+    //.form-block {
+      //padding-top: 0;
+    //}
 }
 
 .sidenav-expansion-panel {
@@ -543,10 +543,10 @@ div.info-block {
 
 mat-card.form-block,
 div.form-block {
-  img {
-    width: 415px;
-    height: auto;
-  }
+  //img {
+  //  width: 415px;
+  //  height: auto;
+  //}
   mat-form-field {
     width: 100%;
     mat-icon {
@@ -791,9 +791,8 @@ mat-sidenav-content {
   }
 }
 
-// product-item-detail
-
-.product-detail-image {
+.product-detail-image,
+.responsive-image {
   max-width: 100%;
   height: auto;
 }

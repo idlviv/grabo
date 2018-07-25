@@ -15,9 +15,9 @@ export class ToolsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.iconFilename = 'icon-650x650.png';
-    this.faviconFilename = 'favicon.ico';
-    this.logoFilename = 'grabo.png';
+    this.iconFilename = config.gLogo + '.png';
+    this.faviconFilename = config.gLogo + '.png';
+    this.logoFilename = config.graboLogo + '.png';
   }
 
 }

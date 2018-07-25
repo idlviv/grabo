@@ -4,11 +4,12 @@ import { IUser } from './interfaces/user-interface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CatalogService } from './services/catalog.service';
 import { ICatalog } from './interfaces/catalog-interface';
-import { Cloudinary } from '@cloudinary/angular-5.x';
+// import { Cloudinary } from '@cloudinary/angular-5.x';
 import { MatMenuTrigger } from '@angular/material';
-import { SharedService } from './services/shared.service';
-import { mergeMap } from 'rxjs/operators';
-import { SystemService } from './services/system.service';
+// import { SharedService } from './services/shared.service';
+// import { mergeMap } from 'rxjs/operators';
+// import { SystemService } from './services/system.service';
+import { config } from './app.config';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ import { SystemService } from './services/system.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  config = config;
   user: IUser;
   mainMenuCommonItems: ICatalog[];
   // mainMenuBlogsItems: ICatalog[];
@@ -32,12 +34,13 @@ export class AppComponent implements OnInit {
   currentCategory: any;
   hierarchyCategory = [];
 
+
   constructor(
     private userService: UserService,
     private router: Router,
     private catalogService: CatalogService,
-    private sharedService: SharedService,
-    private systemService: SystemService,
+    // private sharedService: SharedService,
+    // private systemService: SystemService,
   ) { }
 
   ngOnInit() {

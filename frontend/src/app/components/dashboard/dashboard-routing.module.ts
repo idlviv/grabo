@@ -1,6 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { ProductCreateComponent } from './product-create/product-create.component';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardSidenavComponent } from './dashboard-sidenav/dashboard-sidenav.component';
 import { UserProfileComponent } from '../user/user-profile/user-profile.component';
@@ -72,10 +71,6 @@ const dashboardRoutes: Routes = [
         canActivate: [AuthGuard],
         data: { auth: 'manager' },
       },
-      // {
-      //   path: 'product-create',
-      //   component: ProductCreateComponent,
-      // },
       {
         path: 'profile',
         component: UserProfileComponent,

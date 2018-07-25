@@ -232,6 +232,9 @@
                       config.cloudinary.cloud_name +
                        '/c_fill,h_180,w_180,f_auto/' + productForm.get('mainImage').value}}"
                        alt="Main Image">
+
+
+
                   <img *ngIf="!productForm.get('mainImage').value"
                        src="{{
                        config.imgPath +
@@ -310,7 +313,7 @@
                   <div formArrayName="assets" class="cell" fxFlex="25" fxFlex.lt-md="50"
                      *ngFor="let asset of productForm.get('assets')['controls']; let i = index">
                   <div *ngIf="productForm.get('assets').value[i]" class="preview-img-wrapper">
-                    <img src="{{config.imgPath + config.cloudinary.cloud_name + '/c_fill,h_180,w_180/' + productForm.get('assets').value[i] + '.jpg'}}"
+                    <img src="{{config.imgPath + config.cloudinary.cloud_name + '/c_fill,h_180,w_180,f_auto/' + productForm.get('assets').value[i]}}"
                          alt="productImage">
                     <div *ngIf="processingLoadAssets === i" class="preview-div-processing">
                       <div class="spinner-wrapper">
@@ -325,7 +328,11 @@
                   <div class="cell" fxFlex="25" fxFlex.lt-md="50"
                        *ngIf="productForm.get('assets').value.length < 3">
                     <div class="preview-img-wrapper">
-                      <img src="{{config.defaultProductImgPath}}" alt="productImage">
+                      <img src="{{
+                        config.imgPath +
+                        config.cloudinary.cloud_name +
+                        '/c_fill,w_180,h_180,f_auto/' +
+                        config.defaultProductImg}}" alt="product">
                       <input #inputFile type="file" (change)="addAssets($event)"
                              accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png" style="display:none;">
 
@@ -350,7 +357,7 @@
                  <div formArrayName="techAssets" class="cell" fxFlex="25" fxFlex.lt-md="50"
                      *ngFor="let asset of productForm.get('techAssets')['controls']; let i = index">
                   <div *ngIf="productForm.get('techAssets').value[i]" class="preview-img-wrapper">
-                    <img src="{{config.imgPath + config.cloudinary.cloud_name + '/c_fill,h_180,w_180/' + productForm.get('techAssets').value[i] + '.jpg'}}"
+                    <img src="{{config.imgPath + config.cloudinary.cloud_name + '/c_fill,h_180,w_180,f_auto/' + productForm.get('techAssets').value[i]}}"
                          alt="productImage">
                     <div *ngIf="processingLoadTechAssets === i" class="preview-div-processing">
                       <div class="spinner-wrapper">
@@ -367,7 +374,11 @@
                 <div class="cell" fxFlex="25" fxFlex.lt-md="50"
                      *ngIf="productForm.get('techAssets').value.length < 5">
                   <div class="preview-img-wrapper">
-                    <img src="{{config.defaultProductImgPath}}" alt="productImage">
+                    <img src="{{
+                        config.imgPath +
+                        config.cloudinary.cloud_name +
+                        '/c_fill,w_180,h_180,f_auto/' +
+                        config.defaultProductImg}}" alt="product">
                     <input #inputFile type="file" (change)="addTechAssets($event)"
                            accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png" style="display:none;">
 

@@ -4,9 +4,11 @@ export const config = {
   serverUrl: '/',
   // defaultAvatarPath: 'https://res.cloudinary.com/hcwwcxz0m/default-avatar180x180.jpg',
   // defaultProductImgPath: 'https://res.cloudinary.com/hcwwcxz0m/default-product180x180.jpg',
-  defaultProductImg: 'default-product180x180',
-  defaultAvatar: 'default-avatar180x180',
-  
+  defaultProductImg: 'product',
+  defaultAvatar: 'avatar',
+  gLogo: 'g_logo',
+  graboLogo: 'grabo_logo',
+  stripe: 'stripe',
   blogOptions: {
     showViews: true,
     showComments: true,

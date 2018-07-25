@@ -16,7 +16,6 @@ import { SharedModule } from './components/shared/shared.module';
 
 import { ValidateService } from './services/validate.service';
 import { UserService } from './services/user.service';
-import { MessageService } from './services/message.service';
 import { CatalogService } from './services/catalog.service';
 import { ProductService } from './services/product.service';
 import { SharedService } from './services/shared.service';
@@ -55,7 +54,6 @@ const cloudinaryCloudName = config.cloudinary.cloud_name;
   providers: [
     ValidateService,
     UserService,
-    MessageService,
     RecaptchaModule,
     RecaptchaFormsModule,
     CatalogService,

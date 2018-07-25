@@ -4,6 +4,7 @@ import { UserService } from '../../../services/user.service';
 import { ValidateService } from '../../../services/validate.service';
 import { MatSnackBar, MatStepper, MatVerticalStepper } from '@angular/material';
 import { Router } from '@angular/router';
+import { config } from '../../../app.config';
 
 
 @Component({
@@ -12,6 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-password-reset.component.scss']
 })
 export class UserPasswordResetComponent implements OnInit {
+  config = config;
   emailForm: FormGroup;
   codeForm: FormGroup;
   passwordForm: FormGroup;

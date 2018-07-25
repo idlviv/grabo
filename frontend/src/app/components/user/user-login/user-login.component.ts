@@ -4,6 +4,7 @@ import { IUser } from '../../../interfaces/user-interface';
 import { UserService } from '../../../services/user.service';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
+import { config } from '../../../app.config';
 
 @Component({
   selector: 'app-user-login',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-login.component.scss']
 })
 export class UserLoginComponent implements OnInit {
+  config = config;
   userLoginForm: FormGroup;
   user: IUser;
   hidePassword = true;

@@ -6,11 +6,15 @@
 
   <div class="item centered-container">
     <mat-card class="form-block">
-      <mat-card-header></mat-card-header>
-      <!--<div class="form-block-img-wrapper">-->
-        <img mat-card-image src="./assets/images/logo400x140-1.jpg" alt="">
-      <!--</div>-->
-       <mat-card-content>
+      <mat-card-content>
+        <div class="padding-bottom" fxLayout fxLayoutAlign="center center">
+          <img class="responsive-image" src="{{
+        config.imgPath +
+        config.cloudinary.cloud_name +
+        '/c_fill,w_367,h_130,f_auto/' +
+        config.graboLogo}}" alt="graboplast logo" alt="">
+        </div>
+
         <form [formGroup]="userCreateForm" (submit)="onUserCreateSubmit()">
 
           <div fxLayout="row">
