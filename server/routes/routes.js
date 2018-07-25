@@ -7,6 +7,7 @@ const catalogController = require('../controllers/catalogController');
 const uploadController = require('../controllers/uploadController');
 const productController = require('../controllers/productController');
 const designController = require('../controllers/designController');
+const systemController = require('../controllers/systemController');
 const recaptcha = require('../middleware/recaptcha');
 
 /**
@@ -185,6 +186,14 @@ router.get('/user/password-reset',
   passport.authenticate('jwt.passwordReset', {session: false}),
   userController.passwordReset
 );
+
+/**
+ * users routes
+ */
+router.get('/system/get-cloudinary',
+  systemController.getCloudinary
+);
+
 /**
  * catch apis 404 and forward to error handler
  */

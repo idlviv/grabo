@@ -8,6 +8,7 @@ import { Cloudinary } from '@cloudinary/angular-5.x';
 import { MatMenuTrigger } from '@angular/material';
 import { SharedService } from './services/shared.service';
 import { mergeMap } from 'rxjs/operators';
+import { SystemService } from './services/system.service';
 
 @Component({
   selector: 'app-root',
@@ -36,38 +37,22 @@ export class AppComponent implements OnInit {
     private router: Router,
     private catalogService: CatalogService,
     private sharedService: SharedService,
+    private systemService: SystemService,
   ) { }
 
   ngOnInit() {
 
-
-    // this.sharedService.getSharingEvent().pipe(
-    //   mergeMap(data => {
-    //     if (data[0] = 'category_id') {
-    //       this.category_id = data[1];
-    //       return this.catalogService.getAllParents(this.category_id);
-    //     }
-    //
-    //     // if (data[0] === 'subCategoryItems') {
-    //     //   this.subCategoryItems = data[1];
-    //     //   this.category = data[3];
-    //     // }
-    //   })
-    // ).subscribe(result => {
-    //   console.log('result bread', result.data);
-    //   // result.data[0].hierarchy to splice home => common => mainCategory
-    //   this.currentCategory =  result.data[0];
-    //   this.hierarchyCategory = result.data[0].hierarchy;
-    //   // this.hierarchyCategory.splice(0, 3);
-    //   // console.log('hierarchyCategory', this.hierarchyCategory);
-    //
-    // });
+    // initial get cloud name
+    // this.systemService.getCloudinary()
+    //   .subscribe(
+    //     cloudinary => console.log('cloudinary', cloudinary)
+    //   );
 
     // initial subscribe on user
     this.userService.getUserLocal()
-      .subscribe(
-        user => this.user = user
-      );
+      .subscribe(user => this.user = user);
+
+
     // initial login user, token will be taken from localStorage
     this.userService.userLocalLogin(null);
 

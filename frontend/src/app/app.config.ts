@@ -1,9 +1,12 @@
+import { environment } from '../environments/environment';
+
 export const config = {
   serverUrl: '/',
-  defaultAvatarPath: 'https://res.cloudinary.com/hcwwcxz0m/default-avatar180x180.jpg',
-  defaultProductImgPath: 'https://res.cloudinary.com/hcwwcxz0m/default-product180x180.jpg',
+  // defaultAvatarPath: 'https://res.cloudinary.com/hcwwcxz0m/default-avatar180x180.jpg',
+  // defaultProductImgPath: 'https://res.cloudinary.com/hcwwcxz0m/default-product180x180.jpg',
   defaultProductImg: 'default-product180x180',
   defaultAvatar: 'default-avatar180x180',
+  
   blogOptions: {
     showViews: true,
     showComments: true,
@@ -11,7 +14,7 @@ export const config = {
   },
   imgPath: 'https://res.cloudinary.com/',
   cloudinary: {
-    cloud_name: 'hcwwcxz0m'
+    cloud_name: environment.cloud_name
   },
   designStructure: ['дошка', 'художній паркет', 'плитка', 'абстракція']
 };

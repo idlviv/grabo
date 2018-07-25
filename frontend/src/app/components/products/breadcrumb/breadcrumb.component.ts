@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { mergeMap, map } from 'rxjs/operators';
-import { forkJoin, of, merge, combineLatest } from 'rxjs';
+import { mergeMap } from 'rxjs/operators';
+import { combineLatest } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { CatalogService } from '../../../services/catalog.service';
 import { ProductService } from '../../../services/product.service';
