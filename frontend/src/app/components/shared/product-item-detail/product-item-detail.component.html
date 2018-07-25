@@ -35,10 +35,10 @@
                 <div fxFlex="33" class="cell" fxLayout fxLayoutAlign="center center"
                      *ngFor="let asset of product.assets">
                     <img fxflex class="product-detail-image" src="{{
-              config.imgPath +
-              config.cloudinary.cloud_name +
-              '/c_fill,w_260,h_170,f_auto/' +
-              asset}}"
+                        config.imgPath +
+                        config.cloudinary.cloud_name +
+                        '/c_fill,w_260,h_170,f_auto/' +
+                        asset}}"
                          alt="designImage">
                 </div>
             </div>
@@ -46,8 +46,8 @@
           </div>
           <div class="cell" fxFlex.gt-sm="35" fxLayout="column">
 
-            <div class="row padding-bottom" fxFlex fxLayout="row">
-              <div class="cell" fxFlex="100">
+            <div class="row" fxFlex fxLayout="row">
+              <div class="cell padding-bottom" fxFlex="100">
                 <H2 class="mat-h2 text-align-center">Рекомендовані області застосування</H2>
                 <mat-list>
                   <mat-list-item *ngFor="let recommendation of product.recommendations">
@@ -58,10 +58,10 @@
               </div>
             </div>
 
-            <div class="row padding-bottom" fxFlex fxLayout="row">
+            <div class="row" fxFlex fxLayout="row">
               <div class="cell" fxFlex="100">
                 <H2 class="mat-h2 text-align-center">Технічні характеристики</H2>
-                <div fxLayout>
+                <div class="padding-bottom" fxLayout>
                   <table mat-table [dataSource]="product.techDescriptions" class="mat-elevation-z0" fxFlex="100">
 
                     <ng-container matColumnDef="techName">
@@ -88,8 +88,8 @@
               </div>
             </div>
 
-            <div class="row padding-bottom" fxFlex fxLayout="row">
-              <div fxFlex="33" class="cell" fxLayout fxLayoutAlign="center center"
+            <div class="row" fxFlex fxLayout="row">
+              <div fxFlex="33" class="cell padding-bottom" fxLayout fxLayoutAlign="center center"
                    *ngFor="let asset of product.techAssets">
                 <img fxflex class="product-detail-image" src="{{
               config.imgPath +
