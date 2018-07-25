@@ -211,7 +211,7 @@
                     <img alt="designImage" src="{{
                     config.imgPath +
                     config.cloudinary.cloud_name +
-                    '/c_fill,h_180,w_180/' +
+                    '/c_fill,w_180,h_180/' +
                     getDesign(productForm.get('designs').value[i]).image}}">
                   </div>
 
@@ -230,7 +230,7 @@
                   <img *ngIf="productForm.get('mainImage').value" src="{{
                       config.imgPath +
                       config.cloudinary.cloud_name +
-                       '/c_fill,h_180,w_180,f_auto/' + productForm.get('mainImage').value}}"
+                       '/c_fill,w_180,h_180,f_auto/' + productForm.get('mainImage').value}}"
                        alt="Main Image">
 
 
@@ -239,7 +239,7 @@
                        src="{{
                        config.imgPath +
                       config.cloudinary.cloud_name +
-                       '/c_fill,h_180,w_180,f_auto/'+
+                       '/c_fill,w_180,h_180,f_auto/'+
                        config.defaultProductImg}}" alt="Main Image">
                   <input #inputMainImage type="file" (change)="addMainImage($event)"
                          accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png, .gif" style="display:none;">
@@ -313,7 +313,7 @@
                   <div formArrayName="assets" class="cell" fxFlex="25" fxFlex.lt-md="50"
                      *ngFor="let asset of productForm.get('assets')['controls']; let i = index">
                   <div *ngIf="productForm.get('assets').value[i]" class="preview-img-wrapper">
-                    <img src="{{config.imgPath + config.cloudinary.cloud_name + '/c_fill,h_180,w_180,f_auto/' + productForm.get('assets').value[i]}}"
+                    <img src="{{config.imgPath + config.cloudinary.cloud_name + '/c_fill,w_180,h_180,f_auto/' + productForm.get('assets').value[i]}}"
                          alt="productImage">
                     <div *ngIf="processingLoadAssets === i" class="preview-div-processing">
                       <div class="spinner-wrapper">
@@ -357,7 +357,7 @@
                  <div formArrayName="techAssets" class="cell" fxFlex="25" fxFlex.lt-md="50"
                      *ngFor="let asset of productForm.get('techAssets')['controls']; let i = index">
                   <div *ngIf="productForm.get('techAssets').value[i]" class="preview-img-wrapper">
-                    <img src="{{config.imgPath + config.cloudinary.cloud_name + '/c_fill,h_180,w_180,f_auto/' + productForm.get('techAssets').value[i]}}"
+                    <img src="{{config.imgPath + config.cloudinary.cloud_name + '/c_fill,w_180,h_180,f_auto/' + productForm.get('techAssets').value[i]}}"
                          alt="productImage">
                     <div *ngIf="processingLoadTechAssets === i" class="preview-div-processing">
                       <div class="spinner-wrapper">

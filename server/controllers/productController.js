@@ -276,7 +276,7 @@ module.exports.productAddTechAssets = function(req, res, next) {
     cloudinary.v2.uploader.upload(
       files.file.path,
       {
-        public_id: fields._id + '_techassets_' + Date.now(),// jscs:ignore requireCamelCaseOrUpperCaseIdentifiers
+        public_id: '_techassets_' + Date.now(),// jscs:ignore requireCamelCaseOrUpperCaseIdentifiers
         eager: [
           {width: 200, height: 200, crop: 'fill', fetch_format: 'auto'},
           {width: 100, height: 100, crop: 'fill', fetch_format: 'auto'},
