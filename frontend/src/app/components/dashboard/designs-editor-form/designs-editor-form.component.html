@@ -68,7 +68,7 @@
                         '/c_fill,w_180,h_180,f_auto/' +
                         config.defaultProductImg}}" alt="designImage">
                       <input #inputFile type="file" (change)="addPictures($event)"
-                             accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png" style="display:none;">
+                             accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png, .gif" style="display:none;">
                       <div class="preview-div-processing">
                         <div *ngIf="processingLoadFile" class="spinner-wrapper">
                           <mat-spinner [diameter]="24"></mat-spinner>

@@ -135,6 +135,7 @@ export class ProductService {
     } else if (
       file.type !== 'image/jpg' &&
       file.type !== 'image/jpe' &&
+      file.type !== 'image/gif' &&
       file.type !== 'image/jpeg' &&
       file.type !== 'image/bmp' &&
       file.type !== 'image/png' &&

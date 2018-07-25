@@ -21,7 +21,7 @@
 
             <div *ngIf="!editAvatar && !processingChangeAvatar" class="avatar-div-change"></div>
             <div *ngIf="!editAvatar && !processingChangeAvatar" class="avatar-button-change">
-              <input type="file" accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png" (change)="changeAvatar($event)" id="input-file">
+              <input type="file" accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png, .gif" (change)="changeAvatar($event)" id="input-file">
               <label for="input-file">Змінити
               </label>
             </div>

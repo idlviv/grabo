@@ -242,7 +242,7 @@
                        '/c_fill,h_180,w_180,f_auto/'+
                        config.defaultProductImg}}" alt="Main Image">
                   <input #inputMainImage type="file" (change)="addMainImage($event)"
-                         accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png" style="display:none;">
+                         accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png, .gif" style="display:none;">
                   <div class="preview-div-processing">
                     <div *ngIf="processingLoadImage" class="spinner-wrapper">
                       <mat-spinner [diameter]="24"></mat-spinner>
@@ -283,7 +283,7 @@
                        '/c_fill,w_180,h_180,f_auto/'+
                        config.defaultProductImg}}" alt="Main Image">
                     <input #inputBriefImage type="file" (change)="addBriefImage($event)"
-                           accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png" style="display:none;">
+                           accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png, .gif" style="display:none;">
                     <div class="preview-div-processing">
                       <div *ngIf="processingLoadBriefImage" class="spinner-wrapper">
                         <mat-spinner [diameter]="24"></mat-spinner>
@@ -334,7 +334,7 @@
                         '/c_fill,w_180,h_180,f_auto/' +
                         config.defaultProductImg}}" alt="product">
                       <input #inputFile type="file" (change)="addAssets($event)"
-                             accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png" style="display:none;">
+                             accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png, .gif" style="display:none;">
 
                       <div class="preview-div-processing">
                         <div class="button-wrapper">
@@ -380,7 +380,7 @@
                         '/c_fill,w_180,h_180,f_auto/' +
                         config.defaultProductImg}}" alt="product">
                     <input #inputFile type="file" (change)="addTechAssets($event)"
-                           accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png" style="display:none;">
+                           accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png, .gif" style="display:none;">
 
                     <div class="preview-div-processing">
                       <div class="button-wrapper">
