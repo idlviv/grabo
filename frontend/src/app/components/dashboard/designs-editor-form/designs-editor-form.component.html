@@ -56,12 +56,17 @@
                 <div class="cell" fxFlex.gt-xs="50">
                     <div class="preview-img-wrapper">
                       <img *ngIf="designForm.get('image').value" src="{{
-                      config.imgPath +
-                      config.cloudinary.cloud_name +
-                       '/c_fill,h_180,w_180/' + designForm.get('image').value + '.jpg'}}"
+                        config.imgPath +
+                        config.cloudinary.cloud_name +
+                        '/c_fill,w_180,h_180,f_auto/' +
+                        designForm.get('image').value}}"
                            alt="designImage">
                       <img *ngIf="!designForm.get('image').value"
-                           src="{{config.defaultProductImgPath}}" alt="designImage">
+                           src="{{
+                        config.imgPath +
+                        config.cloudinary.cloud_name +
+                        '/c_fill,w_180,h_180,f_auto/' +
+                        config.defaultProductImg}}" alt="designImage">
                       <input #inputFile type="file" (change)="addPictures($event)"
                              accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png" style="display:none;">
                       <div class="preview-div-processing">

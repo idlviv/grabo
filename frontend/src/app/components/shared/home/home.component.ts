@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../../services/product.service';
 import { IProduct } from '../../../interfaces/product-interface';
+import { config } from '../../../app.config';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +10,7 @@ import { IProduct } from '../../../interfaces/product-interface';
 })
 
 export class HomeComponent implements OnInit {
+  config = config;
   products: IProduct[];
 
   constructor(
