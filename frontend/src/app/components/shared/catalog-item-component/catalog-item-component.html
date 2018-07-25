@@ -9,8 +9,11 @@
   <mat-card-content>
     <div class="product-cl-image-wrapper-outer">
       <div class="product-cl-image-wrapper-inner">
-        <img src="{{config.imgPath + config.cloudinary.cloud_name + '/' + descendant.assets[0]}}"
-             alt="product picture" class="product-cl-image">
+        <img src="{{
+                        config.imgPath +
+                        config.cloudinary.cloud_name +
+                        '/c_fill,w_180,h_180,f_auto/' +
+                        config.defaultProductImg}}" alt="product">
       </div>
     </div>
     <!--<div class="container product-content">-->
