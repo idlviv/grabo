@@ -7,6 +7,7 @@ import { ConfirmPopupComponent } from '../confirm-popup/confirm-popup.component'
 import { mergeMap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material';
 import { DesignPopupComponent } from '../design-popup/design-popup.component';
+import { ObservableMedia } from '@angular/flex-layout';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class ProductItemDetailComponent implements OnInit {
   constructor(
     private designService: DesignService,
     public dialog: MatDialog,
+    public media: ObservableMedia,
   ) { }
 
   ngOnInit() {

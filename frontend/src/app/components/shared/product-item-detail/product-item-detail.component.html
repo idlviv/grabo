@@ -124,8 +124,7 @@
           <div fxFlex.sm="25" fxFlex.gt-sm="20" class="cell"
                fxLayout fxLayoutAlign="center center"
                *ngFor="let des of product.designs">
-
-            <mat-card class="no-padding" fxHide.gt-xs>
+            <mat-card *ngIf="media.isActive('xs')" class="no-padding">
               <mat-card-header fxLayoutAlign="center center">
                 <mat-card-subtitle class="design-image-title">{{des}}</mat-card-subtitle>
               </mat-card-header>
@@ -140,7 +139,7 @@
               </mat-card-content>
             </mat-card>
 
-            <mat-card class="no-padding" fxHide.xs fxFlex.gt-xs="100">
+            <mat-card *ngIf="media.isActive('gt-xs')" class="no-padding" fxFlex.gt-xs="100">
               <mat-card-header fxLayoutAlign="center center">
                 <mat-card-subtitle class="design-image-title">{{des}}</mat-card-subtitle>
               </mat-card-header>

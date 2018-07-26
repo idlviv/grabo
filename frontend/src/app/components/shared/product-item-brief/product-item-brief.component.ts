@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { config } from '../../../app.config';
+import { ObservableMedia } from '@angular/flex-layout';
 
 @Component({
   selector: 'app-product-item-brief',
@@ -15,7 +16,9 @@ export class ProductItemBriefComponent implements OnInit {
 
   config = config;
 
-  constructor() { }
+  constructor(
+    public media: ObservableMedia,
+  ) { }
 
   ngOnInit() {
   }
