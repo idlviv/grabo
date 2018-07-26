@@ -797,6 +797,11 @@ mat-sidenav-content {
   height: auto;
 }
 
+.responsive-image-stretch {
+  width: 100%;
+  height: auto;
+}
+
 .design-image-title {
   margin-top: .5rem;
 }
@@ -816,6 +821,15 @@ mat-sidenav-content {
     padding: 5px;
   }
 }
+
+// fix for ie
+.mat-header-row, .mat-row {
+  height: 48px;
+}
+
+//.ie-flex-height-250 {
+//  height: 250px
+//}
 
 // custom fonts styles
 .h1 {
@@ -837,3 +851,12 @@ mat-sidenav-content {
   font: 400 1.07rem/1.71rem Roboto, "Helvetica Neue", sans-serif;
   margin: 0
 }
+
+
+//.flex-container {
+//  display: flex;
+//}
+//
+//.flex-item {
+//
+//}

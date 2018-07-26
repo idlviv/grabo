@@ -21,8 +21,8 @@
           <div class="cell" fxFlex.gt-sm="65" fxLayout="column">
 
             <div class="row" fxFlex fxLayout="row">
-              <div class="cell padding-bottom" fxFlex="100" fxLayout fxLayoutAlign="center center">
-                  <img fxflex class="product-detail-image" src="{{
+              <div class="cell padding-bottom" fxFlex="100">
+                  <img class="responsive-image" src="{{
               config.imgPath +
               config.cloudinary.cloud_name +
               '/c_fill,w_535,h_350,f_auto/' +
@@ -48,20 +48,27 @@
 
             <div class="row" fxFlex fxLayout="row">
               <div class="cell padding-bottom" fxFlex="100">
-                <H2 class="mat-h2 text-align-center">Рекомендовані області застосування</H2>
-                <mat-list>
-                  <mat-list-item *ngFor="let recommendation of product.recommendations">
-                    <mat-icon matListIcon>arrow_right</mat-icon>
-                    <h3 matLine> {{recommendation}} </h3>
-                  </mat-list-item>
-                </mat-list>
+                <div fxFlex>
+                  <H2 class="mat-h2 text-align-center">Рекомендовані області застосування</H2>
+                </div>
+                <div fxLayoutAlign="center">
+                  <mat-list>
+                    <mat-list-item *ngFor="let recommendation of product.recommendations">
+                      <mat-icon matListIcon>arrow_right</mat-icon>
+                      <h3 matLine> {{recommendation}} </h3>
+                    </mat-list-item>
+                  </mat-list>
+                </div>
+
               </div>
             </div>
 
             <div class="row" fxFlex fxLayout="row">
-              <div class="cell" fxFlex="100">
-                <H2 class="mat-h2 text-align-center">Технічні характеристики</H2>
-                <div class="padding-bottom" fxLayout>
+              <div class="cell" fxFlex="100" fxLayout="column">
+                <div fxFlex>
+                  <H2 class="mat-h2 text-align-center">Технічні характеристики</H2>
+                </div>
+                <div class="padding-bottom" fxFlex fxLayout="row" fxLayoutAlign="center">
                   <table mat-table [dataSource]="product.techDescriptions" class="mat-elevation-z0" fxFlex="100">
 
                     <ng-container matColumnDef="techName">
@@ -105,7 +112,7 @@
 
         <div class="row" fxLayout="column" fxLayout.gt-xs="row">
           <div class="cell">
-            <p>DESIGN ZONE Паркетная система Grabo StrongAir Elite, специально разработанная для больших нагрузок,
+            <p class="text-justify">DESIGN ZONE Паркетная система Grabo StrongAir Elite, специально разработанная для больших нагрузок,
               предназначена для мультифункциональных спортзалов. Верхняя часть системы представляет
               собой трёхслойный спортивный паркет толщиной 22 мм, со стабильным средним слоем и износостойким
               спортивным лаком. Благодаря своему отличному энергопоглащающему основанию, система эффективно защищает
@@ -115,27 +122,37 @@
           </div>
         </div>
 
-        <div class="row" fxFlex fxLayout="column" fxLayout.gt-xs="row">
-          <div fxFlex.xs="33" fxFlex.sm="25" fxFlex.gt-sm="20" class="cell" fxLayout fxLayoutAlign="center center"
+        <div class="row" fxLayout="column" fxLayout.gt-xs="row">
+          <div fxFlex.sm="25" fxFlex.gt-sm="20" class="cell"
+               fxLayout fxLayoutAlign="center center"
                *ngFor="let des of product.designs">
-            <mat-card class="no-padding">
+
+            <mat-card class="no-padding" fxHide.gt-xs>
               <mat-card-header fxLayoutAlign="center center">
                 <mat-card-subtitle class="design-image-title">{{des}}</mat-card-subtitle>
               </mat-card-header>
-              <mat-card-content>
-                <img *ngIf="designs" fxHide.xs fxflex class="product-detail-image hover-cursor"
+              <mat-card-content fxLayoutAlign="center center">
+                 <img *ngIf="designs" class="responsive-image hover-cursor"
                      (click)="openDialog(getDesign(des))" src="{{
-              config.imgPath +
-              config.cloudinary.cloud_name +
-              '/c_fill,w_180,h_180,f_auto/' +
-              getDesign(des).image}}"
+                    config.imgPath +
+                    config.cloudinary.cloud_name +
+                    '/c_fill,w_250,h_250,f_auto/' +
+                    getDesign(des).image}}"
                      alt="design">
-                <img *ngIf="designs" fxHide.gt-xs fxflex class="product-detail-image hover-cursor"
+              </mat-card-content>
+            </mat-card>
+
+            <mat-card class="no-padding" fxHide.xs fxFlex.gt-xs="100">
+              <mat-card-header fxLayoutAlign="center center">
+                <mat-card-subtitle class="design-image-title">{{des}}</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content fxLayoutAlign="center center">
+                <img *ngIf="designs" class="responsive-image-stretch hover-cursor"
                      (click)="openDialog(getDesign(des))" src="{{
-              config.imgPath +
-              config.cloudinary.cloud_name +
-              '/c_fill,w_250,h_250,f_auto/' +
-              getDesign(des).image}}"
+                    config.imgPath +
+                    config.cloudinary.cloud_name +
+                    '/c_fill,w_180,h_180,f_auto/' +
+                    getDesign(des).image}}"
                      alt="design">
               </mat-card-content>
             </mat-card>
