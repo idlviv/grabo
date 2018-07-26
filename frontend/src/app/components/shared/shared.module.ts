@@ -11,10 +11,7 @@ import { ConfirmPopupComponent } from './confirm-popup/confirm-popup.component';
 import { DesignItemComponent } from './design-item/design-item.component';
 import { ProductItemBriefComponent } from './product-item-brief/product-item-brief.component';
 import { ProductItemDetailComponent } from './product-item-detail/product-item-detail.component';
-import { CatalogItemComponent } from './catalog-item-component/catalog-item-component';
 import { DesignPopupComponent } from './design-popup/design-popup.component';
-// import { ProductItemDetailMainComponent } from './product-item-detail-main/product-item-detail-main.component';
-// import { ProductItemDetailSideComponent } from './product-item-detail-side/product-item-detail-side.component';
 
 @NgModule({
   imports: [
@@ -31,7 +28,6 @@ import { DesignPopupComponent } from './design-popup/design-popup.component';
     DesignItemComponent,
     ProductItemBriefComponent,
     ProductItemDetailComponent,
-    CatalogItemComponent,
   ],
   declarations: [
     NavbarComponent,
@@ -42,13 +38,7 @@ import { DesignPopupComponent } from './design-popup/design-popup.component';
     DesignItemComponent,
     ProductItemBriefComponent,
     ProductItemDetailComponent,
-    CatalogItemComponent,
     DesignPopupComponent,
-    // ProductItemDetailMainComponent,
-    // ProductItemDetailSideComponent,
   ],
-  // entryComponents: [
-  //   ConfirmPopupComponent,
-  // ]
 })
 export class SharedModule { }
