@@ -3,22 +3,23 @@
   </mat-card-header>
 
   <mat-card-content>
-    <div class="mat-card-wide-image" fxLayout="row" fxLayoutAlign="center">
-      <div fxFlex="100">
-        <img fxHide.xs class="responsive-image-stratch" src="{{
+    <div class="mat-card-wide-image" fxLayout="row">
+      <div fxFlex="100" fxLayoutAlign="center">
+        <div><img fxHide.xs class="responsive-image margin-auto" src="{{
               config.imgPath +
               config.cloudinary.cloud_name +
               '/c_fill,w_360,h_170,f_auto/' +
               product.briefImage}}"
-             alt="Image">
-        <img fxHide.gt-xs class="responsive-image" src="{{
+                  alt="Image">
+          <img fxHide.gt-xs class="responsive-image" src="{{
               config.imgPath +
               config.cloudinary.cloud_name +
               '/c_fill,w_460,h_170,f_auto/' +
               product.briefImage}}"
-             alt="Image">
-      </div>
+               alt="Image">
 
+        </div>
+      </div>
     </div>
 
   </mat-card-content>

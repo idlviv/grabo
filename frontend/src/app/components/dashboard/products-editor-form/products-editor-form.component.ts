@@ -68,7 +68,7 @@ export class ProductsEditorFormComponent implements OnInit {
         Validators.maxLength(50),
       ]),
       parent: new FormControl('', [
-        Validators.required,
+        // Validators.required,
       ]),
       display: new FormControl('', [
         Validators.required,
@@ -311,7 +311,7 @@ export class ProductsEditorFormComponent implements OnInit {
     this.product = {
       _id: this.productForm.getRawValue()._id, // raw because may be disabled
       name: this.productForm.get('name').value,
-      parent: this.productForm.get('parent').value,
+      parent: this.parentCategoryName,
       display: this.productForm.get('display').value,
       mainImage: this.productForm.get('mainImage').value,
       briefImage: this.productForm.get('briefImage').value,

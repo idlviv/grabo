@@ -186,11 +186,10 @@ module.exports.productAddMainImage = function(req, res, next) {
       {
         public_id: fields._id + '_main_image_' + Date.now(),// jscs:ignore requireCamelCaseOrUpperCaseIdentifiers
         eager: [
-          {width: 650, height: 650, crop: 'fill', fetch_format: 'auto'},
-          {width: 535, height: 350, crop: 'fill', fetch_format: 'auto'},
+          {width: 535, height: 350, crop: 'fill', fetch_format: 'auto'}, //1.53
           {width: 260, height: 170, crop: 'fill', fetch_format: 'auto'},
           {width: 180, height: 180, crop: 'fill', fetch_format: 'auto'},
-          {width: 40, height: 40, crop: 'fill', fetch_format: 'auto'},
+          // {width: 40, height: 40, crop: 'fill', fetch_format: 'auto'},
         ]
       },
       function(err, result) {
@@ -217,11 +216,11 @@ module.exports.productAddBriefImage = function(req, res, next) {
       {
         public_id: fields._id + '_brief_image_' + Date.now(),// jscs:ignore requireCamelCaseOrUpperCaseIdentifiers
         eager: [
-          {width: 650, height: 650, crop: 'fill', fetch_format: 'auto'},
-          {width: 535, height: 350, crop: 'fill', fetch_format: 'auto'},
-          {width: 260, height: 170, crop: 'fill', fetch_format: 'auto'},
+          // {width: 650, height: 650, crop: 'fill', fetch_format: 'auto'},
+          // {width: 535, height: 350, crop: 'fill', fetch_format: 'auto'},
+          {width: 360, height: 170, crop: 'fill', fetch_format: 'auto'}, //2.12
           {width: 180, height: 180, crop: 'fill', fetch_format: 'auto'},
-          {width: 40, height: 40, crop: 'fill', fetch_format: 'auto'},
+          // {width: 40, height: 40, crop: 'fill', fetch_format: 'auto'},
         ]
       },
       function(err, result) {
@@ -248,10 +247,11 @@ module.exports.productAddAssets = function(req, res, next) {
       {
         public_id: fields._id + '_assets_' + Date.now(),// jscs:ignore requireCamelCaseOrUpperCaseIdentifiers
         eager: [
-          {width: 650, height: 650, crop: 'fill', fetch_format: 'auto'},
-          {width: 535, height: 350, crop: 'fill', fetch_format: 'auto'},
+          // {width: 650, height: 650, crop: 'fill', fetch_format: 'auto'},
+          {width: 535, height: 350, crop: 'fill', fetch_format: 'auto'}, //1.53
+          {width: 260, height: 170, crop: 'fill', fetch_format: 'auto'},
           {width: 180, height: 180, crop: 'fill', fetch_format: 'auto'},
-          {width: 40, height: 40, crop: 'fill', fetch_format: 'auto'},
+          // {width: 40, height: 40, crop: 'fill', fetch_format: 'auto'},
         ]
       },
       function(err, result) {
@@ -278,7 +278,8 @@ module.exports.productAddTechAssets = function(req, res, next) {
       {
         public_id: '_techassets_' + Date.now(),// jscs:ignore requireCamelCaseOrUpperCaseIdentifiers
         eager: [
-          {width: 200, height: 200, crop: 'fill', fetch_format: 'auto'},
+          {width: 200, height: 200, crop: 'fill', fetch_format: 'auto'}, //1
+          {width: 180, height: 180, crop: 'fill', fetch_format: 'auto'},
           {width: 100, height: 100, crop: 'fill', fetch_format: 'auto'},
           {width: 55, height: 55, crop: 'fill', fetch_format: 'auto'},
         ]

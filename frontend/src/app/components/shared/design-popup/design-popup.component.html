@@ -1,5 +1,5 @@
 <div fxLayout="column">
-  <div class="cell" fxFlex fxLayout>
+  <div class="cell" fxLayout>
     <div fxFlex="calc(100%-50px)" fxLayoutAlign="center center">
       <h3 class="h3 muted">{{data._id}}</h3>
     </div>
@@ -14,8 +14,8 @@
     </div>
   </div>
 
-  <div fxFlex fxLayoutAlign="center center">
-    <img class="product-detail-image" src="{{
+  <div>
+    <img class="responsive-image" src="{{
           config.imgPath +
           config.cloudinary.cloud_name +
           '/c_fill,w_650,h_650,f_auto/' +
