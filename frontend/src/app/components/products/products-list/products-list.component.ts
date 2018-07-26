@@ -42,6 +42,7 @@ export class ProductsListComponent implements OnInit {
       }),
       mergeMap(result => {
         this.descendants = result.data;
+        console.log('des', this.descendants );
         // this.sharedService.sharingEvent(['category_id', this.category_id]);
 
         if (!this.descendants.length) {

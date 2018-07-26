@@ -11,6 +11,8 @@ export class ProductItemBriefComponent implements OnInit {
   @Input() category_id;
   @Input() parentCategory_id;
   @Input() parentCategoryName;
+  @Input() descendant;
+
   config = config;
 
   constructor() { }

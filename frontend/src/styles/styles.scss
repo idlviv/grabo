@@ -818,8 +818,15 @@ mat-sidenav-content {
 // product-item-brief
 
 .mat-card-wide-image {
-  margin-left: -24px !important;
-  margin-right: -24px !important;
+  @include gt-xs {
+    margin-left: -24px !important;
+    margin-right: -24px !important;
+  }
+  @include xs {
+    margin-left: -16px !important;
+    margin-right: -16px !important;
+  }
+
 }
 
 
