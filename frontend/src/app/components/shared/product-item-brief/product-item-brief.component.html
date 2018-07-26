@@ -4,21 +4,28 @@
 
   <mat-card-content>
     <div class="mat-card-wide-image" fxLayout="row">
-      <div fxFlex="100" fxLayoutAlign="center">
-        <div><img fxHide.xs class="responsive-image margin-auto" src="{{
+      <div fxFlex="100">
+        <!--<div>-->
+          <!--<img class="responsive-image-stretch" src="{{-->
+              <!--config.imgPath +-->
+              <!--config.cloudinary.cloud_name +-->
+              <!--'/c_fill,w_460,h_215,f_auto/' +-->
+              <!--product.briefImage}}"-->
+              <!--alt="Image">-->
+          <img fxHide.xs class="responsive-image-stretch" src="{{
               config.imgPath +
               config.cloudinary.cloud_name +
               '/c_fill,w_360,h_170,f_auto/' +
               product.briefImage}}"
                   alt="Image">
-          <img fxHide.gt-xs class="responsive-image" src="{{
+          <img fxHide.gt-xs class="responsive-image-stretch" src="{{
               config.imgPath +
               config.cloudinary.cloud_name +
-              '/c_fill,w_460,h_170,f_auto/' +
+              '/c_fill,w_460,h_215,f_auto/' +
               product.briefImage}}"
                alt="Image">
 
-        </div>
+        <!--</div>-->
       </div>
     </div>
 

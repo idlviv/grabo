@@ -11,7 +11,7 @@
 
       <mat-card-content>
         <div class="row" fxLayout>
-          <div class="cell" fxFlex>
+          <div class="cell margin-bottom" fxFlex>
             <p class="text-justify">{{product.description}}
             </p>
           </div>
@@ -56,7 +56,7 @@
             <div fxLayout="column" fxLayout.sm="row">
 
               <div class="row" fxFlex.sm="50" fxLayout="row">
-                <div class="cell padding-bottom" fxFlex="100">
+                <div class="cell margin-bottom-3" fxFlex="100">
                   <div fxFlex>
                     <H2 class="mat-h2 text-align-center">Рекомендовані області застосування</H2>
                   </div>
@@ -73,7 +73,7 @@
               </div>
 
               <div class="row" fxFlex.sm="50" fxLayout="row">
-                <div class="cell" fxFlex="100" fxLayout="column">
+                <div class="cell margin-bottom-3" fxFlex="100" fxLayout="column">
                   <div fxFlex>
                     <H2 class="mat-h2 text-align-center">Технічні характеристики</H2>
                   </div>
@@ -105,7 +105,7 @@
               </div>
             </div>
 
-            <div class="row" fxFlex fxLayout="row">
+            <div class="row  margin-bottom" fxFlex fxLayout="row">
               <div fxFlex="33" class="cell padding-bottom" fxLayout fxLayoutAlign="center center"
                    *ngFor="let asset of product.techAssets">
                 <img fxflex class="product-detail-image" src="{{
