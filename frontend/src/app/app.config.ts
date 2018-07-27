@@ -8,6 +8,8 @@ export const config = {
   defaultAvatar: 'avatar',
   gLogo: 'g_logo',
   graboLogo: 'grabo_logo',
+  grabofloorsLogo: 'grabofloors_logo',
+  graboplastLogo: 'graboplast_logo',
   stripe: 'stripe',
   blogOptions: {
     showViews: true,

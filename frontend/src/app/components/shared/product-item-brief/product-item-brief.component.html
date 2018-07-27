@@ -2,33 +2,45 @@
   <mat-card-content>
     <div class="mat-card-wide-image" fxLayout="row">
       <div *ngIf="product" fxFlex="100">
-          <img *ngIf="media.isActive('gt-xs')" class="responsive-image-stretch" src="{{
+        <img *ngIf="media.isActive('gt-sm')" class="responsive-image-stretch" src="{{
+            config.imgPath +
+            config.cloudinary.cloud_name +
+            '/c_fill,w_352,h_176,f_auto/' +
+            product.briefImage}}"
+                alt="Image">
+        <img *ngIf="media.isActive('sm')" class="responsive-image-stretch" src="{{
+            config.imgPath +
+            config.cloudinary.cloud_name +
+            '/c_fill,w_560,h_280,f_auto/' +
+            product.briefImage}}"
+             alt="Image">
+        <img *ngIf="media.isActive('xs')" class="responsive-image-stretch" src="{{
               config.imgPath +
               config.cloudinary.cloud_name +
-              '/c_fill,w_360,h_170,f_auto/' +
-              product.briefImage}}"
-                  alt="Image">
-          <img *ngIf="media.isActive('xs')" class="responsive-image-stretch" src="{{
-              config.imgPath +
-              config.cloudinary.cloud_name +
-              '/c_fill,w_460,h_215,f_auto/' +
+              '/c_fill,w_440,h_220,f_auto/' +
               product.briefImage}}"
                alt="Image">
       </div>
 
       <div *ngIf="descendant" fxFlex="100">
-          <img *ngIf="media.isActive('gt-xs')" class="responsive-image-stretch" src="{{
+        <img *ngIf="media.isActive('gt-sm')" class="responsive-image-stretch" src="{{
+            config.imgPath +
+            config.cloudinary.cloud_name +
+            '/c_fill,w_352,h_176,f_auto/' +
+            descendant.assets[0]}}"
+                alt="Image">
+        <img *ngIf="media.isActive('sm')" class="responsive-image-stretch" src="{{
               config.imgPath +
               config.cloudinary.cloud_name +
-              '/c_fill,w_360,h_170,f_auto/' +
+              '/c_fill,w_560,h_280,f_auto/' +
               descendant.assets[0]}}"
-                  alt="Image">
-          <img *ngIf="media.isActive('xs')" class="responsive-image-stretch" src="{{
-              config.imgPath +
-              config.cloudinary.cloud_name +
-              '/c_fill,w_460,h_215,f_auto/' +
-              descendant.assets[0]}}"
-               alt="Image">
+             alt="Image">
+        <img *ngIf="media.isActive('xs')" class="responsive-image-stretch" src="{{
+            config.imgPath +
+            config.cloudinary.cloud_name +
+            '/c_fill,w_440,h_220,f_auto/' +
+            descendant.assets[0]}}"
+             alt="Image">
       </div>
     </div>
 

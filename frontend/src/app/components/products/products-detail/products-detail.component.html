@@ -18,12 +18,13 @@
 <!--</div>-->
 <div class="row" fxLayout="column" fxLayout.gt-sm="row">
 
-  <div fxFlex.gt-sm="250px">
+  <div class="cell-menu" fxFlex.gt-sm="250px">
     <app-products-detail-side [siblings]="siblings" [category_id]="category_id"></app-products-detail-side>
   </div>
   <div class="cell" fxFlex.gt-sm="100%-250px">
     <app-product-item-detail [product]="product" [category_id]="category_id"></app-product-item-detail>
   </div>
+
 </div>
 
 <!--<div class="row flex" fxLayout="column" fxLayout.gt-xs="row">-->

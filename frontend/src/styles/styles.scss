@@ -85,6 +85,22 @@ body {
   }
 }
 
+.cell-menu {
+  @include gt-md {
+    padding: 12px 0;
+  }
+  @include md {
+    padding: 12px 0;
+  }
+  @include sm {
+    padding: 8px 0
+  }
+  @include xs {
+    padding: 8px 0;
+    //padding: 8px;
+  }
+}
+
 .cell-header {
   @include gt-md {
     padding: 12px 12px 0 12px;
