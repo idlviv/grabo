@@ -21,10 +21,10 @@
   100% { opacity: 0; }
 }
 
-#block4 {
-  opacity: 0;
-  animation: hideshow-g 3s 1s infinite;
-}
+<!--#block4 {-->
+  <!--opacity: 0;-->
+  <!--animation: hideshow-g 3s 1s infinite;-->
+<!--}-->
 #block5 {
   opacity: 0;
   animation: hideshow-v 3s 1s infinite;
