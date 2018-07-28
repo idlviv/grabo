@@ -86,6 +86,8 @@ db.collection()
           auth: 'manager', order: 2, assets: ['catalog'],  description: ''},
         {_id: 'designs_editor', name: 'Редагувати дизайни', ancestors: ['home', 'system', 'dashboard'], parent: 'dashboard',
           auth: 'manager', order: 3, assets: ['catalog'], description: ''},
+        {_id: 'tools', name: 'Інструменти', ancestors: ['home', 'system', 'dashboard'], parent: 'dashboard',
+          auth: 'manager', order: 4, assets: ['catalog'], description: ''},
       {_id: 'login', name: 'Увійти', ancestors: ['home', 'system'], parent: 'system',
         auth: 'casual', order: 2, assets: ['catalog'], description: ''},
       {_id: 'signup', name: 'Реєстрація', ancestors: ['home', 'system'], parent: 'system',
