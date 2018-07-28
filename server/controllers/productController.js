@@ -218,9 +218,9 @@ module.exports.productAddBriefImage = function(req, res, next) {
         eager: [
           // {width: 650, height: 650, crop: 'fill', fetch_format: 'auto'},
           {width: 1100, height: 550, crop: 'fill', fetch_format: 'auto'},
-          {width: 560, height: 280, crop: 'fill', fetch_format: 'auto'}, //2.12
-          {width: 440, height: 220, crop: 'fill', fetch_format: 'auto'}, //2.12
-          {width: 352, height: 176, crop: 'fill', fetch_format: 'auto'}, //2.12
+          {width: 590, height: 295, crop: 'fill', fetch_format: 'auto'}, //2.12
+          {width: 460, height: 230, crop: 'fill', fetch_format: 'auto'}, //2.12
+          {width: 400, height: 200, crop: 'fill', fetch_format: 'auto'}, //2.12
           {width: 180, height: 180, crop: 'fill', fetch_format: 'auto'},
           // {width: 40, height: 40, crop: 'fill', fetch_format: 'auto'},
         ]

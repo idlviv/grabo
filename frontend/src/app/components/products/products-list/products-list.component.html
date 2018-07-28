@@ -4,7 +4,7 @@
     <app-product-item-brief [product]="product" [category_id]="category_id"></app-product-item-brief>
   </div>
   <div *ngFor="let descendant of descendants" class="cell"
-       fxFlex.xs="100" fxFlex.sm="33.3" fxFlex.md="25" fxFlex.gt-md="20">
+       fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="33.3" fxFlex.gt-md="20">
     <!--<p>Показати: {{itemsToShow}}</p>-->
     <app-product-item-brief  [descendant]="descendant"></app-product-item-brief>
     <!--<app-catalog-item [descendant]="descendant"></app-catalog-item>-->

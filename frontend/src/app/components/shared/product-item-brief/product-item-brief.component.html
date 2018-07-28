@@ -2,12 +2,13 @@
   <mat-card-content>
     <div class="mat-card-wide-image" fxLayout="row">
       <div *ngIf="product" fxFlex="100">
-        <img *ngIf="media.isActive('gt-sm')" class="responsive-image-stretch" src="{{
-            config.imgPath +
-            config.cloudinary.cloud_name +
-            '/c_fill,w_352,h_176,f_auto/' +
-            product.briefImage}}"
-                alt="Image">
+
+        <img *ngIf="media.isActive('gt-md')" class="responsive-image-stretch" src="{{
+              config.imgPath +
+              config.cloudinary.cloud_name +
+              '/c_fill,w_400,h_200,f_auto/' +
+              product.briefImage}}"
+             alt="Image">
         <img *ngIf="media.isActive('sm')" class="responsive-image-stretch" src="{{
               config.imgPath +
               config.cloudinary.cloud_name +
@@ -17,18 +18,19 @@
         <img *ngIf="media.isActive('xs')" class="responsive-image-stretch" src="{{
             config.imgPath +
             config.cloudinary.cloud_name +
-            '/c_fill,w_580,h_290,f_auto/' +
+            '/c_fill,w_590,h_295,f_auto/' +
             product.briefImage}}"
              alt="Image">
       </div>
 
       <div *ngIf="descendant" fxFlex="100">
-        <img *ngIf="media.isActive('gt-sm')" class="responsive-image-stretch" src="{{
-            config.imgPath +
-            config.cloudinary.cloud_name +
-            '/c_fill,w_352,h_176,f_auto/' +
-            descendant.assets[0]}}"
-                alt="Image">
+
+        <img *ngIf="media.isActive('gt-md')" class="responsive-image-stretch" src="{{
+              config.imgPath +
+              config.cloudinary.cloud_name +
+              '/c_fill,w_400,h_200,f_auto/' +
+              descendant.assets[0]}}"
+             alt="Image">
         <img *ngIf="media.isActive('sm')" class="responsive-image-stretch" src="{{
               config.imgPath +
               config.cloudinary.cloud_name +
@@ -38,7 +40,7 @@
         <img *ngIf="media.isActive('xs')" class="responsive-image-stretch" src="{{
             config.imgPath +
             config.cloudinary.cloud_name +
-            '/c_fill,w_580,h_290,f_auto/' +
+            '/c_fill,w_590,h_295,f_auto/' +
             descendant.assets[0]}}"
              alt="Image">
       </div>
