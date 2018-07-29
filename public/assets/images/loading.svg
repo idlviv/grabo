@@ -8,23 +8,23 @@
 	.st2{fill:#FFFFFF;stroke:#D2CFE6;stroke-miterlimit:10;}
 
 	@keyframes hideshow {
-  0% { opacity: 0; }
-  25% { opacity: 1; }
-  50% { opacity: 1; }
-  75% { opacity: 1; }
-  100% { opacity: 0; }
+  0% { opacity: 1; }
+  25% { opacity: 0.3; }
+  50% { opacity: 0.3; }
+  75% { opacity: 0.3; }
+  100% { opacity: 1; }
 }
 
 #block1 {
-  opacity: 0;
+  opacity: 1;
   animation: hideshow 1.5s infinite;
 }
 #block2 {
-  opacity: 0;
+  opacity: 1;
   animation: hideshow 1.5s 0.5s infinite;
 }
 #block3 {
-  opacity: 0;
+  opacity: 1;
   animation: hideshow 1.5s 1s infinite;
 }
 

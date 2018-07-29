@@ -28,7 +28,7 @@ export class BreadcrumbComponent implements OnInit {
   ngOnInit() {
     const $paramMap = this.route.paramMap;
     const $queryParamMap = this.route.queryParamMap;
-    this.processing = true;
+    // this.processing = true;
     // const c = $paramMap.pipe(res => combineLatest(res, $queryParamMap));
     // c.subscribe(res => console.log('res', res);)
     combineLatest(
