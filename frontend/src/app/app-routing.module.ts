@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { Page404Component } from './components/shared/page-404/page-404.component';
 import { HomeComponent } from './components/shared/home/home.component';
 import { AuthGuard } from './guards/auth.guard';
+import { FeedbackComponent } from './components/shared/feedback/feedback.component';
 
 const appRoutes: Routes = [
   // {
@@ -29,7 +30,10 @@ const appRoutes: Routes = [
     path: 'user',
     loadChildren: './components/user/user.module#UserModule'
   },
-
+  {
+    path: 'feedback',
+    component: FeedbackComponent
+  },
   { path: 'page-404', component: Page404Component },
   { path: '', component: HomeComponent, pathMatch: 'full' },
   // { path: '', loadChildren: './components/home/home.module#HomeModule', pathMatch: 'full' },

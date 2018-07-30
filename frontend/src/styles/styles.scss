@@ -285,6 +285,10 @@ $light-gray: #D6E7F7;
   color: mat-color($primary, 100);
 }
 
+.primary-dark {
+  color: mat-color($primary, 900);
+}
+
 $primary-background-light: mat-color($primary, 100);
 
 .primary-background-light {
