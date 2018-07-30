@@ -4,7 +4,7 @@ const log = require('../config/winston')(module);
 const ApplicationError = require('../errors/applicationError');
 
 module.exports = function(req, res, next) {
-  // log.debug('captcha', req.query.recaptcha);
+  log.debug('captcha', req.query.recaptcha);
   let recaptcha = req.query.recaptcha;
   if (recaptcha === '' ||
     recaptcha === null ||

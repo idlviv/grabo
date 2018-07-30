@@ -15,6 +15,8 @@ import { DesignPopupComponent } from './design-popup/design-popup.component';
 import { CrslComponent } from './crsl/crsl.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RecaptchaModule } from 'ng-recaptcha';
+import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 
 @NgModule({
   imports: [
@@ -22,7 +24,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MaterialModule,
     CloudinaryModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RecaptchaModule,
+    RecaptchaFormsModule
   ],
   exports: [
     NavbarComponent,

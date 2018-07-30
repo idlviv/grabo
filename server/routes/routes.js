@@ -8,6 +8,7 @@ const uploadController = require('../controllers/uploadController');
 const productController = require('../controllers/productController');
 const designController = require('../controllers/designController');
 const systemController = require('../controllers/systemController');
+const sharedController = require('../controllers/sharedController');
 const recaptcha = require('../middleware/recaptcha');
 
 /**
@@ -135,6 +136,7 @@ router.get('/catalog/get-all-parents',
  */
 
 router.post('/user/create',
+  recaptcha,
   userController.userCreate
 );
 
@@ -188,10 +190,12 @@ router.get('/user/password-reset',
 );
 
 /**
- * users routes
+ * shared routes
  */
-router.get('/system/get-cloudinary',
-  systemController.getCloudinary
+
+router.post('/shared/send-feedback-message',
+  recaptcha,
+  sharedController.sendFeedbackMessage
 );
 
 /**

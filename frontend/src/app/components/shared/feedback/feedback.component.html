@@ -11,7 +11,7 @@
             <div class="padding-bottom" fxLayout fxLayoutAlign="center center">
               <img class="responsive-image" src="./assets/images/graboplast_logo.svg" width="367px">
             </div>
-            <form [formGroup]="feedbackForm" (submit)="onFeedbackFormSubmit()">
+            <form #fForm="ngForm" [formGroup]="feedbackForm" (submit)="onFeedbackFormSubmit()">
 
               <div fxLayout="row">
                 <div fxFlexAlign="center" class="mat-icon-wrapper">
@@ -36,7 +36,7 @@
                 <mat-form-field>
                   <input matInput placeholder="Ваше ім'я" formControlName="name" required>
                   <mat-error
-                    *ngIf="feedbackForm.get('name').errors?.required &&
+                    *ngIf="feedbackForm.get('contacts').errors?.required &&
                         feedbackForm.get('name').touched">
                     Введіть ім'я
                   </mat-error>
@@ -56,12 +56,22 @@
                   </mat-error>
                 </mat-form-field>
               </div>
-
+              <re-captcha [ngClass]="{'display-none':
+          !feedbackForm.get('contacts').valid || !feedbackForm.get('contacts').valid ||
+          !feedbackForm.get('message').valid}"
+                          [formControlName]="'recaptcha'" #recaptchaRef
+                          siteKey="6LelLF0UAAAAAEd0tfLUO02IAuT-_bf0noIJN0nK">
+              </re-captcha>
+              <!--<div *ngIf="!processing" fxLayout="row">-->
+                <!--<object type="image/svg+xml" data="./assets/images/loading.svg" width="50px" height="20px">-->
+                  <!--Loading..-->
+                <!--</object>-->
+              <!--</div>-->
 
               <div class="submit-button-wrapper">
                 <!--<span fxFlex></span>-->
-                <button mat-raised-button class="full-width" color="primary" [disabled]="!feedbackForm.valid">
-                  <mat-icon>message</mat-icon> Написати нам</button>
+                <button mat-raised-button class="full-width" color="primary" [disabled]="!feedbackForm.valid || processing">
+                  <mat-icon *ngIf="!processing">message</mat-icon> Написати нам</button>
               </div>
 
             </form>

@@ -86,7 +86,7 @@ export class UserCreateComponent implements OnInit {
       // surname: this.userCreateForm.get('surname').value
     };
     // create user
-    this.userService.userCreate(this.user)
+    this.userService.userCreate(this.user,  this.userCreateForm.get('recaptcha').value)
       .subscribe(
         result => {
           const token = result.data;
@@ -104,29 +104,6 @@ export class UserCreateComponent implements OnInit {
       );
   }
 
-  onUserCreateFake() {
-    this.user = <IUser>{
-      login: 'tlogjygtr',
-      password: 'password',
-      email: 'email1h2rt2gj@email.com',
-
-    };
-
-    this.userService.userCreate(this.user)
-      .subscribe(
-        result => {
-          console.log('res', result);
-          this.resetForm();
-          this.matSnackBar.open(result.message, '', {duration: 3000});
-        },
-        err => {
-          // 422 or 400
-          this.matSnackBar.open(err.error, '',
-            {duration: 3000, panelClass: 'snack-bar-danger'});
-          console.log('err', err);
-        }
-      );
-  }
 
   onUserCreateReset() {
     this.resetForm();
