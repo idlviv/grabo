@@ -12,6 +12,7 @@ import { DesignItemComponent } from './design-item/design-item.component';
 import { ProductItemBriefComponent } from './product-item-brief/product-item-brief.component';
 import { ProductItemDetailComponent } from './product-item-detail/product-item-detail.component';
 import { DesignPopupComponent } from './design-popup/design-popup.component';
+import { CrslComponent } from './crsl/crsl.component';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import { DesignPopupComponent } from './design-popup/design-popup.component';
     DesignItemComponent,
     ProductItemBriefComponent,
     ProductItemDetailComponent,
+    CrslComponent,
   ],
   declarations: [
     NavbarComponent,
@@ -39,6 +41,7 @@ import { DesignPopupComponent } from './design-popup/design-popup.component';
     ProductItemBriefComponent,
     ProductItemDetailComponent,
     DesignPopupComponent,
+    CrslComponent,
   ],
 })
 export class SharedModule { }

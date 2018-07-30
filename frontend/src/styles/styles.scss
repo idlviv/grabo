@@ -856,6 +856,24 @@ mat-sidenav-content {
   }
 }
 
+.crsl {
+  .mat-horizontal-stepper-header-container {
+    display: none !important;
+  }
+}
+//.crsl {
+//  .mat-step-label,
+//  .mat-step-label-active,
+//  .mat-step-label-selected {
+//    display: none !important;
+//  }
+//  .mat-step-icon,
+//  .mat-step-icon-not-touched {
+//    margin-left: 8px !important;
+//  }
+//}
+
+
 // fix for ie
 .mat-header-row, .mat-row {
   height: 48px;
