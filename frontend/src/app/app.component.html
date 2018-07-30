@@ -49,10 +49,7 @@
     </div>
     <div fxFlex></div>
 
-      <a fxHide.gt-sm="true" mat-button class="muted"
-         href="tel:+380970000000">
-        <mat-icon>phone</mat-icon> 097 000 00 00
-      </a>
+
     <div fxShow="true" fxHide.lt-md="true">
 
 
@@ -172,16 +169,18 @@
 
   </mat-sidenav-container>
   <mat-toolbar class="mat-elevation-z16 footer" color="primary">
+    <a fxHide.gt-sm="true" mat-button class="muted"
+       href="tel:+380970000000">
+      <mat-icon>phone</mat-icon> 097 000 00 00
+    </a>
     <div fxFlex></div>
       <!--<span class="mat-title toolbar-branding">-->
        <!---->
       <!--</span>-->
-      <div>
         <a mat-button [routerLink]="['/feedback']" class="muted"
            [routerLinkActive]="['accent']" [routerLinkActiveOptions]="{exact: true}">
           <mat-icon>mail</mat-icon> Задати питання
         </a>
-      </div>
   </mat-toolbar>
 
 

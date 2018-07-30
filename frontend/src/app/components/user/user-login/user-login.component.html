@@ -1,18 +1,14 @@
 <div class="row" fxLayout="column" fxLayout.gt-xs="row">
-  <div class="cell" fxFlex.gt-xs="20" fxFlex.gt-md="30"></div>
+  <div fxFlex.gt-xs="20" fxFlex.gt-md="30"></div>
 
   <div class="cell" fxFlex.gt-xs="60" fxFlex.gt-md="40">
     <!--<div class="cell" fxFlex.gt-xs="60" fxFlex.gt-md="40" fxFlexOffset.gt-xs="20" fxFlexOffset.gt-md="30">-->
 
-  <div class="item centered-container">
+  <div class="centered-container">
     <mat-card  class="form-block">
       <mat-card-content>
         <div class="padding-bottom" fxLayout fxLayoutAlign="center center">
-          <img class="responsive-image" src="{{
-        config.imgPath +
-        config.cloudinary.cloud_name +
-        '/c_fill,w_367,h_130,f_auto/' +
-        config.graboLogo}}" alt="graboplast logo" alt="">
+          <img class="responsive-image" src="./assets/images/graboplast_logo.svg" width="367px">
         </div>
         <form [formGroup]="userLoginForm" (submit)="onUserLoginSubmit()">
 

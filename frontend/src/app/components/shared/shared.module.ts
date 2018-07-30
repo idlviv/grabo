@@ -14,13 +14,15 @@ import { ProductItemDetailComponent } from './product-item-detail/product-item-d
 import { DesignPopupComponent } from './design-popup/design-popup.component';
 import { CrslComponent } from './crsl/crsl.component';
 import { FeedbackComponent } from './feedback/feedback.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
     CloudinaryModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
   exports: [
     NavbarComponent,
