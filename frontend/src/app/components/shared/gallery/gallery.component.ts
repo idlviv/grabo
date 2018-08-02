@@ -15,14 +15,15 @@ export class GalleryComponent implements OnInit {
     'catalog_residential',
     'catalog_semi_commercial',
     'catalog_commercial',
-    'catalog_tile',    'catalog_residential',
-    'catalog_semi_commercial',
-    'catalog_commercial',
     'catalog_tile',
     'catalog_residential',
-    'catalog_semi_commercial',
     'catalog_commercial',
     'catalog_tile',
+    'catalog_semi_commercial',
+    'catalog_residential',
+    'catalog_tile',
+    'catalog_semi_commercial',
+    'catalog_commercial',
   ];
 
   constructor(

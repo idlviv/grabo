@@ -46,7 +46,6 @@ export class FeedbackComponent implements OnInit {
   onFeedbackFormSubmit() {
     this.processing = true;
     this.feedback = this.feedbackForm.value;
-    console.log('this.feedbackForm.get(\'recaptcha\').value',this.feedbackForm.get('recaptcha').value);
     this.sharedService.sendFeedbackMessage(this.feedback, this.feedbackForm.get('recaptcha').value)
       .subscribe(
         res => {

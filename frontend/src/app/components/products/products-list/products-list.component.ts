@@ -33,7 +33,7 @@ export class ProductsListComponent implements OnInit {
     this.route.paramMap.pipe(
       mergeMap(paramMap => {
         this.category_id = paramMap.get('category_id');
-        console.log('list this.category_id', this.category_id);
+        // console.log('list this.category_id', this.category_id);
 
         if (!this.category_id) {
           return this.catalogService.getDescendants('products');
@@ -42,7 +42,7 @@ export class ProductsListComponent implements OnInit {
       }),
       mergeMap(result => {
         this.descendants = result.data;
-        console.log('des', this.descendants );
+        // console.log('des', this.descendants );
         // this.sharedService.sharingEvent(['category_id', this.category_id]);
 
         if (!this.descendants.length) {

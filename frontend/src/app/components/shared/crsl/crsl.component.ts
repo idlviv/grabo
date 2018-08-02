@@ -37,11 +37,14 @@ export class CrslComponent implements OnInit {
     //     console.log('st', st);
     //   });
 
+    this.setInterval();
+    // console.log('matStepper', this.matStepper);
 
   }
 
   setInterval() {
     return this.interval = setInterval (() => {
+
       if (this.matStepper.selectedIndex === this.stepperIndex) {
         this.stepperIndex = this.matStepper.selectedIndex;
         this.matStepper.reset();
@@ -49,6 +52,7 @@ export class CrslComponent implements OnInit {
         this.stepperIndex = this.matStepper.selectedIndex;
         this.matStepper.next();
       }
+
     }, 3000);
   }
 }

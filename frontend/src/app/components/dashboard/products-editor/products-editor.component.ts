@@ -20,7 +20,7 @@ export class ProductsEditorComponent implements OnInit {
   parentCategory_id: string;
   parentCategoryName: string;
   config = config;
-  noMoreDescedants = false;
+  noMoreDescendants = false;
 
     constructor(
     private catalogService: CatalogService,
@@ -49,14 +49,14 @@ export class ProductsEditorComponent implements OnInit {
     while (level + 1 < this.catalogForm.get('categories')['controls'].length) {
       this.removeCategory(this.catalogForm.get('categories')['controls'].length - 1);
     }
-    console.log('event', event);
+    // console.log('event', event);
     this.catalogService.getDescendants(event.value)
       .subscribe(result => {
         if (result.data.length) {
-          console.log('descedants present', result.data);
+          // console.log('descedants present', result.data);
           this.products = null;
           this.descendants[level + 1] = result.data;
-          this.noMoreDescedants = false;
+          this.noMoreDescendants = false;
           this.addCategory();
         } else {
           this.productService.getProductsByCategory(event.value)
@@ -65,9 +65,9 @@ export class ProductsEditorComponent implements OnInit {
             );
           this.parentCategory_id = event.value;
           this.parentCategoryName = event.source.triggerValue;
-          console.log('descedants absent', result.data);
-          console.log('this.parentCategory_id', this.parentCategory_id);
-          this.noMoreDescedants = true;
+          // console.log('descedants absent', result.data);
+          // console.log('this.parentCategory_id', this.parentCategory_id);
+          this.noMoreDescendants = true;
         }
         this.descendants[level + 1] = result.data;
         },
