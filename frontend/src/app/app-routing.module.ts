@@ -5,6 +5,9 @@ import { HomeComponent } from './components/shared/home/home.component';
 import { AuthGuard } from './guards/auth.guard';
 import { FeedbackComponent } from './components/shared/feedback/feedback.component';
 import { GalleryComponent } from './components/shared/gallery/gallery.component';
+import { ContactsComponent } from './components/shared/contacts/contacts.component';
+import { DownloadsComponent } from './components/shared/downloads/downloads.component';
+import { InfoComponent } from './components/shared/info/info.component';
 
 const appRoutes: Routes = [
   // {
@@ -20,6 +23,18 @@ const appRoutes: Routes = [
   {
     path: 'gallery/ch',
     component: GalleryComponent
+  },
+  {
+    path: 'contacts/ch',
+    component: ContactsComponent
+  },
+  {
+    path: 'downloads/ch',
+    component: DownloadsComponent
+  },
+  {
+    path: 'info/ch',
+    component: InfoComponent
   },
   {
     path: 'dashboard',

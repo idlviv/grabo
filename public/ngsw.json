@@ -1,0 +1,93 @@
+{
+  "configVersion": 1,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/1.c330340949cfd91b5d30.js",
+        "/2.693a9c61e48c07774b45.js",
+        "/3.c20c387b227defbaf513.js",
+        "/4.98d73c080b608ec7448f.js",
+        "/common.a1a81fd0cccf55abf738.js",
+        "/favicon.ico",
+        "/index.html",
+        "/main.308a96d2a0c7d90aeb31.js",
+        "/polyfills.e185fa9ce214966d338d.js",
+        "/runtime.1dba27a264521044b34d.js",
+        "/styles.6f74a33a009d6f29a894.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/assets/icons/icon-128x128.png",
+        "/assets/icons/icon-144x144.png",
+        "/assets/icons/icon-152x152.png",
+        "/assets/icons/icon-192x192.png",
+        "/assets/icons/icon-384x384.png",
+        "/assets/icons/icon-512x512.png",
+        "/assets/icons/icon-72x72.png",
+        "/assets/icons/icon-96x96.png",
+        "/assets/images/g_logo.svg",
+        "/assets/images/g_logo_animated.svg",
+        "/assets/images/grabo_logo.svg",
+        "/assets/images/grabofloors_logo.svg",
+        "/assets/images/graboplast_logo.svg",
+        "/assets/images/loading.svg"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/1.c330340949cfd91b5d30.js": "bc423bcee16fba1266e3d073b01b3680210c60c1",
+    "/2.693a9c61e48c07774b45.js": "13a0e0b8ef21bf37e698c52cc05dfbafec861387",
+    "/3.c20c387b227defbaf513.js": "8900fcd60363c31073e326d967402b21c08dfd92",
+    "/4.98d73c080b608ec7448f.js": "044e2545c37214943d5152d4a1c4d012ac5ea9c3",
+    "/assets/icons/icon-128x128.png": "0889d85f094f74ae593054728191d15506245d82",
+    "/assets/icons/icon-144x144.png": "98c08fe6ced4bce773b6cc7243ca30548b6f4064",
+    "/assets/icons/icon-152x152.png": "f93fd3231dc883e2371c5b9e1e63dea50e53880f",
+    "/assets/icons/icon-192x192.png": "19097a869f8fe4ad62ec170192a8bccd07fcff4a",
+    "/assets/icons/icon-384x384.png": "d39b7494075a8e7948f08b69b770bf588c91684e",
+    "/assets/icons/icon-512x512.png": "5e261d0ddc7457a6a3eec863a86d16c88a003c86",
+    "/assets/icons/icon-72x72.png": "08930a7b614be0d0fa534c5bfd02b763f68fbb45",
+    "/assets/icons/icon-96x96.png": "04713750e0bf94e1c089c01d5cd1177981e5d3f3",
+    "/assets/images/g_logo.svg": "e77b83abb04d0d5c273c99f85aa9da3737434457",
+    "/assets/images/g_logo_animated.svg": "8f5876d3929f1d4efbdd9f5c756f97238af9dd4b",
+    "/assets/images/grabo_logo.svg": "9e73561e2ab311194d311e2fc63766ba6defadee",
+    "/assets/images/grabofloors_logo.svg": "888a7815869a0465feec3ec726f016a12ebca424",
+    "/assets/images/graboplast_logo.svg": "8678f737faf7dab42c93772c93fa301b34f0bab4",
+    "/assets/images/loading.svg": "e515b13cc79c383c3fe0594e593cc24b669ca81c",
+    "/common.a1a81fd0cccf55abf738.js": "b36d5be9ee8db6eb3646b30a4f6d68eb5e28ba1c",
+    "/favicon.ico": "1a707ab30f1abfe467fa07b603f68779dc5faae6",
+    "/index.html": "d74b7b0b18054ded5f269494242ba2643b2191a9",
+    "/main.308a96d2a0c7d90aeb31.js": "a1c18832fcd94c74d7bb072f166c0e23c648d1ff",
+    "/polyfills.e185fa9ce214966d338d.js": "7ad68fa768a777eb3c307f7d5da3827c8e20d084",
+    "/runtime.1dba27a264521044b34d.js": "9bf5f726fe49144bec97d56274a633b282311ebd",
+    "/styles.6f74a33a009d6f29a894.css": "3527c473ff33d44ee4459df77caa53adacbc9fce"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^\\/]*\\.[^\\/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^\\/]*__[^\\/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^\\/]*__[^\\/]*\\/.*$"
+    }
+  ]
+}
