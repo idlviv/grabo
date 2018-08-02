@@ -1,7 +1,7 @@
 <div class="row" fxLayout>
   <div class="cell" fxFlex>
   <!--<div class="item" fxFlex>-->
-    <mat-card *ngIf="product">
+    <mat-card *ngIf="product" [ngClass]="{'mat-elevation-z0': media.isActive('gt-sm')}">
       <mat-card-header>
         <h1 class="mat-display-2">{{product.name}}</h1>
 

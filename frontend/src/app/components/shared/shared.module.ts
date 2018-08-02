@@ -17,6 +17,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
+import { GalleryComponent } from './gallery/gallery.component';
 
 @NgModule({
   imports: [
@@ -51,6 +52,7 @@ import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
     DesignPopupComponent,
     CrslComponent,
     FeedbackComponent,
+    GalleryComponent,
   ],
 })
 export class SharedModule { }

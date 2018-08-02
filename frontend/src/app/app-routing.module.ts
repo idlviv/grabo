@@ -4,6 +4,7 @@ import { Page404Component } from './components/shared/page-404/page-404.componen
 import { HomeComponent } from './components/shared/home/home.component';
 import { AuthGuard } from './guards/auth.guard';
 import { FeedbackComponent } from './components/shared/feedback/feedback.component';
+import { GalleryComponent } from './components/shared/gallery/gallery.component';
 
 const appRoutes: Routes = [
   // {
@@ -17,8 +18,8 @@ const appRoutes: Routes = [
     // pathMatch: 'full'
   },
   {
-    path: 'blogs',
-    component: Page404Component
+    path: 'gallery/ch',
+    component: GalleryComponent
   },
   {
     path: 'dashboard',

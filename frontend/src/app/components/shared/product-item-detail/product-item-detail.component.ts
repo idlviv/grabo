@@ -15,6 +15,7 @@ import { ObservableMedia } from '@angular/flex-layout';
   templateUrl: './product-item-detail.component.html',
   styleUrls: ['./product-item-detail.component.scss']
 })
+
 export class ProductItemDetailComponent implements OnInit {
   @Input() product;
   @Input() category_id;
