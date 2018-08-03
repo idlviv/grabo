@@ -39,8 +39,8 @@ export class DesignsEditorFormComponent implements OnInit {
     this.designForm = new FormGroup({
       _id: new FormControl('', [
         Validators.required,
-        Validators.minLength(7),
-        Validators.maxLength(12),
+        Validators.minLength(2),
+        Validators.maxLength(25),
       ]),
       structure: new FormControl('', [
         Validators.required,
