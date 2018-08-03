@@ -84,7 +84,7 @@ export class ProductsEditorFormComponent implements OnInit {
       description: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
-        Validators.maxLength(500),
+        Validators.maxLength(2500),
       ]),
       recommendations: new FormArray([]),
       designs: new FormArray([]),
