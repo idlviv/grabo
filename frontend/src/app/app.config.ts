@@ -20,5 +20,78 @@ export const config = {
   cloudinary: {
     cloud_name: environment.cloud_name
   },
-  designStructure: ['дошка', 'художній паркет', 'плитка', 'абстракція']
+  designStructure: ['дошка', 'художній паркет', 'плитка', 'абстракція'],
+  techAssets: [
+    {
+      _id: 'europe',
+      image: 'europe',
+      description: ''
+    },
+    {
+      _id: 'water_resistant',
+      image: 'water_resistant',
+      description: ''
+    },
+    {
+      _id: 'iguard',
+      image: 'iguard',
+      description: ''
+    },
+    {
+      _id: 'leaf',
+      image: 'leaf',
+      description: ''
+    },
+    {
+      _id: 'cdf',
+      image: 'cdf',
+      description: ''
+    },
+    {
+      _id: 'pur',
+      image: 'pur',
+      description: ''
+    },
+    {
+      _id: 'san',
+      image: 'san',
+      description: ''
+    },
+    {
+      _id: 'silver_knight',
+      image: 'silver_knight',
+      description: ''
+    },
+    {
+      _id: 'solvent_free',
+      image: 'solvent_free',
+      description: ''
+    },
+    {
+      _id: 'tech',
+      image: 'tech',
+      description: ''
+    },
+    {
+      _id: 'wax',
+      image: 'wax',
+      description: ''
+    },
+    {
+      _id: 'e_nowaste',
+      image: 'e_nowaste',
+      description: ''
+    },
+    {
+      _id: 'e_phthalate',
+      image: 'e_phthalate',
+      description: ''
+    },
+    {
+      _id: 'e_recycle',
+      image: 'e_recycle',
+      description: ''
+    }
+
+  ]
 };

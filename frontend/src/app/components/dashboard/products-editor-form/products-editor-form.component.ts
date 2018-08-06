@@ -5,7 +5,7 @@ import { MatSnackBar } from '@angular/material';
 import { FormArray, FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { config } from '../../../app.config';
 import { IProduct } from '../../../interfaces/product-interface';
-import { IDesign } from '../../../interfaces/interface';
+import { IDesign, ITechAsset } from '../../../interfaces/interface';
 import { ProductService } from '../../../services/product.service';
 import { DesignService } from '../../../services/design.service';
 import { mergeMap } from 'rxjs/operators';
@@ -41,9 +41,14 @@ export class ProductsEditorFormComponent implements OnInit {
   designs_id = [];
   product: any;
 
+  techAssets: ITechAsset[];
+  filteredTechAssets: Observable<string[]>;
+  techAssets_id = [];
+  techAssetValidity = false;
+
   filteredDesigns: Observable<string[]>;
-  options: string[] = ['4121-260', '4122-260'];
-  designFilterValue: string;
+  // options: string[] = ['4121-260', '4122-260'];
+  // designFilterValue: string;
   designValidity = false;
 
   constructor(
@@ -81,6 +86,8 @@ export class ProductsEditorFormComponent implements OnInit {
       ]),
       assets: new FormArray([]),
       techAssets: new FormArray([]),
+      tech:  new FormControl('', [
+      ]),
       description: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
@@ -130,6 +137,15 @@ export class ProductsEditorFormComponent implements OnInit {
         }
       });
 
+    this.productService.getTechAssets()
+      .subscribe(result => {
+          console.log('tech', result);
+          this.techAssets = result.data;
+          this.techAssets.map(techAsset => this.techAssets_id.push(techAsset._id));
+        },
+        err => console.log('Помилка завантеження тех властивостей', err)
+      );
+
     this.designService.getDesigns()
       .subscribe(result => {
         this.designs = result.data;
@@ -138,13 +154,31 @@ export class ProductsEditorFormComponent implements OnInit {
         err => console.log('Помилка завантеження дизайнів', err)
       );
 
-    this.filteredDesigns = this.productForm.get('des').valueChanges.pipe(
+    this.filteredTechAssets = this.productForm.get('tech').valueChanges.pipe(
+      startWith(''),
       tap(value => console.log('value', value)),
+      tap(value => this.techAssetValidity = this._checkTechAssetValidity(value)),
+      map(value => this._filterTechAssets(value))
+    );
+
+    this.filteredDesigns = this.productForm.get('des').valueChanges.pipe(
+      // tap(value => console.log('value', value)),
       tap(value => this.designValidity = this._checkDesignValidity(value)),
       startWith(''),
       map(value => this._filter(value))
     );
 
+  }
+
+  private _filterTechAssets(filterValue: string): string[] {
+    const techAssetsForm = this.productForm.get('techAssets').value;
+    return this.techAssets_id
+      .filter(option => techAssetsForm.indexOf(option) === -1) // remove designs, which already in form
+      .filter(option => option.indexOf(filterValue) === 0 ); // filter by input value
+  }
+
+  private _checkTechAssetValidity(value: string): boolean {
+    return this.techAssets_id.indexOf(value) !== -1;
   }
 
   private _filter(filterValue: string): string[] {
@@ -162,10 +196,27 @@ export class ProductsEditorFormComponent implements OnInit {
   getDesign(_id) {
     return this.designs.filter(design => design._id === _id)[0];
   }
-  //
+
+  getTechAsset(_id) {
+    return this.techAssets.filter(techAsset => techAsset._id === _id)[0];
+  }
+
   // getDesignByImage(image) {
   //   return this.designs.filter(design => design.image === image)[0];
   // }
+
+  addTechAsset() {
+    if (this._checkTechAssetValidity(this.productForm.get('tech').value)) {
+      console.log('add design true');
+      const techAssetsList = this.productForm.get('techAssets').value || [];
+      techAssetsList.push(this.productForm.get('tech').value);
+      this.addTechAssetsControl();
+      this.productForm.get('techAssets').setValue(techAssetsList);
+      this.productForm.get('tech').reset();
+    } else {
+      console.log('add design false');
+    }
+  }
 
   addDesign() {
     if (this._checkDesignValidity(this.productForm.get('des').value)) {

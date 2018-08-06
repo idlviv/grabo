@@ -9,6 +9,12 @@ export interface IDesign {
   image: string;
 }
 
+export interface ITechAsset {
+  _id: string;
+  image: string;
+  description: string;
+}
+
 export interface IFeedback {
   message: string;
   contacts: string;

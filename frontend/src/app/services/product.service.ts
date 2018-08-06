@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { IResponse } from '../interfaces/server-response-interface';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { IProduct } from '../interfaces/product-interface';
 import { UserService } from './user.service';
 import { config } from '../app.config';
@@ -229,6 +229,10 @@ export class ProductService {
       formData,
       httpOptions
     );
+  }
+
+  getTechAssets(): Observable<IResponse> {
+    return of({success: true, message: '', data: this.config.techAssets});
   }
 
   productAddTechAssets(file, _id): Observable<IResponse> {

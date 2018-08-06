@@ -205,7 +205,7 @@ module.exports.productAddMainImage = function(req, res, next) {
 };
 
 module.exports.productAddBriefImage = function(req, res, next) {
-  let form = new formidable.IncomingForm({maxFileSize: 10500000});
+  let form = new formidable.IncomingForm({maxFileSize: 15500000});
   form.parse(req, function(err, fields, files) {
     if (err) {
       return next(new ApplicationError('Помилка завантаження зображення - form parse', 400));
