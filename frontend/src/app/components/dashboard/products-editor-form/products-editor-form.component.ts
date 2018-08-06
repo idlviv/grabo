@@ -307,7 +307,7 @@ export class ProductsEditorFormComponent implements OnInit {
     }
   }
 
-  onProductFormSubmit() {
+  onProductFormSubmit(goBack) {
     this.product = {
       _id: this.productForm.getRawValue()._id, // raw because may be disabled
       name: this.productForm.get('name').value,
@@ -323,13 +323,12 @@ export class ProductsEditorFormComponent implements OnInit {
       designs: this.productForm.get('designs').value,
     };
     //
-    console.log('productForm submit', this.product);
     this.productService.productUpsert(this.product)
       .subscribe(result => {
           this.matSnackBar.open(result.message, '',
             {duration: 3000});
-          this.resetForm();
-          if (this.editMode) {
+          if (goBack) {
+            this.resetForm();
             this.goBack();
           }
         },

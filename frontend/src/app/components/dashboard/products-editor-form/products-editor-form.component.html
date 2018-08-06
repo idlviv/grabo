@@ -18,7 +18,7 @@
               <!--</div>-->
             <!--</div>-->
 
-            <form [formGroup]="productForm" #f="ngForm" (submit)="onProductFormSubmit()" novalidate>
+            <form [formGroup]="productForm" #f="ngForm" novalidate>
 
 
 
@@ -196,7 +196,7 @@
                        '/c_fill,w_180,h_180,f_auto/'+
                        config.defaultProductImg}}" alt="Main Image">
                   <input #inputMainImage type="file" (change)="addMainImage($event)"
-                         accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png, .gif" style="display:none;">
+                         accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png, .gif, .svg" style="display:none;">
                   <div class="preview-div-processing">
                     <div *ngIf="processingLoadImage" class="spinner-wrapper">
                       <mat-spinner [diameter]="24"></mat-spinner>
@@ -237,7 +237,7 @@
                        '/c_fill,w_180,h_180,f_auto/'+
                        config.defaultProductImg}}" alt="Main Image">
                     <input #inputBriefImage type="file" (change)="addBriefImage($event)"
-                           accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png, .gif" style="display:none;">
+                           accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png, .gif, .svg" style="display:none;">
                     <div class="preview-div-processing">
                       <div *ngIf="processingLoadBriefImage" class="spinner-wrapper">
                         <mat-spinner [diameter]="24"></mat-spinner>
@@ -288,7 +288,7 @@
                         '/c_fill,w_180,h_180,f_auto/' +
                         config.defaultProductImg}}" alt="product">
                       <input #inputFile type="file" (change)="addAssets($event)"
-                             accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png, .gif" style="display:none;">
+                             accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png, .gif, .svg" style="display:none;">
 
                       <div class="preview-div-processing">
                         <div class="button-wrapper">
@@ -334,7 +334,7 @@
                         '/c_fill,w_180,h_180,f_auto/' +
                         config.defaultProductImg}}" alt="product">
                     <input #inputFile type="file" (change)="addTechAssets($event)"
-                           accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png, .gif" style="display:none;">
+                           accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png, .gif, .svg" style="display:none;">
 
                     <div class="preview-div-processing">
                       <div class="button-wrapper">
@@ -395,17 +395,26 @@
               </div>
 
               <div class="submit-button-wrapper row" fxLayout="row">
-                <div class="cell" fxFlex="65">
+                <div class="cell" fxFlex="40">
 
-                  <button *ngIf="editMode" mat-raised-button color="primary" class="full-width"
+                  <button *ngIf="editMode" mat-raised-button color="primary" class="full-width" type="button" (click)="onProductFormSubmit(false)"
                           [disabled]="!productForm.valid || processingLoadAssets >=0 || processingLoadTechAssets >= 0 || processingLoadImage">
                     Зберегти</button>
-                  <button *ngIf="!editMode" mat-raised-button color="primary" class="full-width"
+                  <button *ngIf="!editMode" mat-raised-button color="primary" class="full-width" type="button" (click)="onProductFormSubmit(false)"
                           [disabled]="!productForm.valid || processingLoadAssets >=0 || processingLoadTechAssets >= 0 || processingLoadImage">
-                    Створити</button>
+                    Зберегти</button>
+                </div>
+                <div class="cell" fxFlex="40">
+
+                  <button *ngIf="editMode" mat-raised-button color="primary" class="full-width" type="button" (click)="onProductFormSubmit(true)"
+                            [disabled]="!productForm.valid || processingLoadAssets >=0 || processingLoadTechAssets >= 0 || processingLoadImage">
+                    Зберегти і повернутись</button>
+                  <button *ngIf="!editMode" mat-raised-button color="primary" class="full-width" type="button" (click)="onProductFormSubmit(true)"
+                          [disabled]="!productForm.valid || processingLoadAssets >=0 || processingLoadTechAssets >= 0 || processingLoadImage">
+                    Створити і повернутись</button>
                 </div>
 
-                <div class="cell" fxFlex="35">
+                <div class="cell" fxFlex="20">
                   <button mat-raised-button  type="button" (click)="goBack()" class="full-width"
                           [disabled]="processingLoadAssets >=0 || processingLoadTechAssets >= 0
                           || processingLoadTechAssets >= 0 || processingLoadImage">Повернутись</button>

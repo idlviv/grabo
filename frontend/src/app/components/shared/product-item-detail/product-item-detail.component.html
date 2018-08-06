@@ -37,12 +37,18 @@
             <div class="row" fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="center center">
                 <div fxFlex.gt-xs="33" class="cell" *ngFor="let asset of product.assets">
                   <div fxFlex="100">
-                    <img class="responsive-image" src="{{
+                    <img *ngIf="media.isActive('gt-xs')" class="responsive-image" src="{{
                         config.imgPath +
                         config.cloudinary.cloud_name +
                         '/c_fill,w_260,h_170,f_auto/' +
                         asset}}"
                                        alt="designImage">
+                    <img *ngIf="media.isActive('xs')" class="responsive-image" src="{{
+                        config.imgPath +
+                        config.cloudinary.cloud_name +
+                        '/c_fill,w_535,h_350,f_auto/' +
+                        asset}}"
+                         alt="designImage">
 
                   </div>
 

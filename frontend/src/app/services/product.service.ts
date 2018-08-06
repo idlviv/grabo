@@ -139,13 +139,13 @@ export class ProductService {
       file.type !== 'image/jpeg' &&
       file.type !== 'image/bmp' &&
       file.type !== 'image/png' &&
+      file.type !== 'image/svg+xml' &&
       file.type !== 'image/webp') {
       return ({success: false, message: 'Виберіть інший тип файлу'});
     } else {
       return ({success: true,  message: ''});
     }
   }
-
   // New
 
   getProductsByCategory(category) {
