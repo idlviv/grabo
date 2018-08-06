@@ -156,15 +156,13 @@ export class ProductsEditorFormComponent implements OnInit {
 
     this.filteredTechAssets = this.productForm.get('tech').valueChanges.pipe(
       startWith(''),
-      tap(value => console.log('value', value)),
       tap(value => this.techAssetValidity = this._checkTechAssetValidity(value)),
       map(value => this._filterTechAssets(value))
     );
 
     this.filteredDesigns = this.productForm.get('des').valueChanges.pipe(
-      // tap(value => console.log('value', value)),
-      tap(value => this.designValidity = this._checkDesignValidity(value)),
       startWith(''),
+      tap(value => this.designValidity = this._checkDesignValidity(value)),
       map(value => this._filter(value))
     );
 
@@ -207,7 +205,6 @@ export class ProductsEditorFormComponent implements OnInit {
 
   addTechAsset() {
     if (this._checkTechAssetValidity(this.productForm.get('tech').value)) {
-      console.log('add design true');
       const techAssetsList = this.productForm.get('techAssets').value || [];
       techAssetsList.push(this.productForm.get('tech').value);
       this.addTechAssetsControl();
@@ -220,7 +217,6 @@ export class ProductsEditorFormComponent implements OnInit {
 
   addDesign() {
     if (this._checkDesignValidity(this.productForm.get('des').value)) {
-      console.log('add design true');
       const designsList = this.productForm.get('designs').value || [];
       designsList.push(this.productForm.get('des').value);
       this.addDesignsControl();

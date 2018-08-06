@@ -8608,10 +8608,8 @@ var ProductsEditorFormComponent = /** @class */ (function () {
             _this.designs = result.data;
             _this.designs.map(function (design) { return _this.designs_id.push(design._id); });
         }, function (err) { return console.log('Помилка завантеження дизайнів', err); });
-        this.filteredTechAssets = this.productForm.get('tech').valueChanges.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["startWith"])(''), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["tap"])(function (value) { return console.log('value', value); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["tap"])(function (value) { return _this.techAssetValidity = _this._checkTechAssetValidity(value); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["map"])(function (value) { return _this._filterTechAssets(value); }));
-        this.filteredDesigns = this.productForm.get('des').valueChanges.pipe(
-        // tap(value => console.log('value', value)),
-        Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["tap"])(function (value) { return _this.designValidity = _this._checkDesignValidity(value); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["startWith"])(''), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["map"])(function (value) { return _this._filter(value); }));
+        this.filteredTechAssets = this.productForm.get('tech').valueChanges.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["startWith"])(''), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["tap"])(function (value) { return _this.techAssetValidity = _this._checkTechAssetValidity(value); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["map"])(function (value) { return _this._filterTechAssets(value); }));
+        this.filteredDesigns = this.productForm.get('des').valueChanges.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["startWith"])(''), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["tap"])(function (value) { return _this.designValidity = _this._checkDesignValidity(value); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["map"])(function (value) { return _this._filter(value); }));
     };
     ProductsEditorFormComponent.prototype._filterTechAssets = function (filterValue) {
         var techAssetsForm = this.productForm.get('techAssets').value;
@@ -8643,7 +8641,6 @@ var ProductsEditorFormComponent = /** @class */ (function () {
     // }
     ProductsEditorFormComponent.prototype.addTechAsset = function () {
         if (this._checkTechAssetValidity(this.productForm.get('tech').value)) {
-            console.log('add design true');
             var techAssetsList = this.productForm.get('techAssets').value || [];
             techAssetsList.push(this.productForm.get('tech').value);
             this.addTechAssetsControl();
@@ -8656,7 +8653,6 @@ var ProductsEditorFormComponent = /** @class */ (function () {
     };
     ProductsEditorFormComponent.prototype.addDesign = function () {
         if (this._checkDesignValidity(this.productForm.get('des').value)) {
-            console.log('add design true');
             var designsList = this.productForm.get('designs').value || [];
             designsList.push(this.productForm.get('des').value);
             this.addDesignsControl();
