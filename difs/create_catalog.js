@@ -69,8 +69,8 @@ db.collection()
 
       { _id: 'gallery', name: 'Галерея', ancestors: ['home', 'common'], parent: 'common',
         auth: 'casual', order: 2, assets: ['catalog'], description: ''},
-      { _id: 'downloads', name: 'Завантаження', ancestors: ['home', 'common'], parent: 'common',
-        auth: 'casual', order: 3, assets: ['catalog'], description: ''},
+      // { _id: 'downloads', name: 'Завантаження', ancestors: ['home', 'common'], parent: 'common',
+      //   auth: 'casual', order: 3, assets: ['catalog'], description: ''},
       // { _id: 'become_dealer', name: 'Стати дилером', ancestors: ['home', 'common'], parent: 'common',
       //   auth: 'casual', order: 4, assets: ['catalog'], description: ''},
       { _id: 'contacts', name: 'Контакти', ancestors: ['home', 'common'], parent: 'common',

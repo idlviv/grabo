@@ -23,6 +23,11 @@ export const config = {
   designStructure: ['дошка', 'художній паркет', 'плитка', 'абстракція'],
   techAssets: [
     {
+      _id: 'fiber',
+      image: 'fiber',
+      description: ''
+    },
+    {
       _id: 'europe',
       image: 'europe',
       description: ''
