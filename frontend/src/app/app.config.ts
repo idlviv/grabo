@@ -92,6 +92,13 @@ export const config = {
       image: 'e_recycle',
       description: ''
     }
-
+  ],
+  homeBanner: [
+    'banner_residential',
+    'banner_commercial',
+    'banner_parquet',
+    'banner_show',
+    'banner_sport',
+    'banner_transport',
   ]
 };

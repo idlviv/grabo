@@ -9,41 +9,18 @@
   </ng-template>
 
 
-  <mat-step>
+  <mat-step *ngFor="let banner of homeBanner">
     <!--<img *ngIf="media.isActive('md')" class="responsive-image-stretch" src="{{-->
-    <img class="responsive-image-stretch" src="{{
+    <img class="responsive-image" src="{{
             config.imgPath +
             config.cloudinary.cloud_name +
-            '/c_fill,w_1100,h_150,f_auto/' +
-            banner[0]}}"
+            '/c_fill,w_960,h_440,f_auto/' +
+            banner}}"
          alt="Image">
       <!--<div>-->
         <!--<button mat-icon-button matStepperNext>-->
           <!--<mat-icon>navigate_next</mat-icon></button>-->
       <!--</div>-->
   </mat-step>
-  <mat-step>
-    <img class="responsive-image-stretch" src="{{
-            config.imgPath +
-            config.cloudinary.cloud_name +
-            '/c_fill,w_1100,h_150,f_auto/' +
-            banner[1]}}"
-         alt="Image">
-      <!--<div>-->
-        <!--<button mat-button matStepperPrevious>Back</button>-->
-        <!--<button mat-button matStepperNext>Next</button>-->
-      <!--</div>-->
-  </mat-step>
-  <mat-step>
-    <img class="responsive-image-stretch" src="{{
-            config.imgPath +
-            config.cloudinary.cloud_name +
-            '/c_fill,w_1100,h_150,f_auto/' +
-            banner[2]}}"
-         alt="Image">
-    <!--<div>-->
-      <!--<button mat-button matStepperPrevious>Back</button>-->
-      <!--<button mat-button (click)="stepper.reset()">Reset</button>-->
-    <!--</div>-->
-  </mat-step>
+
 </mat-horizontal-stepper>

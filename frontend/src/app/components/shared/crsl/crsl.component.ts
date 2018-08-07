@@ -15,12 +15,7 @@ export class CrslComponent implements OnInit {
   stepperIndex: number;
   interval: any;
 
-  banner = [
-    'catalog_residential',
-    'catalog_semi_commercial',
-    'catalog_commercial',
-    'catalog_tile',
-  ];
+  homeBanner = config.homeBanner;
 
   constructor(
     public media: ObservableMedia,
