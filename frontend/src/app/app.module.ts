@@ -37,7 +37,7 @@ const cloudinaryCloudName = config.cloudinary.cloud_name;
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
