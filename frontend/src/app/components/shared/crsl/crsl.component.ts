@@ -48,6 +48,6 @@ export class CrslComponent implements OnInit {
         this.matStepper.next();
       }
 
-    }, 3000);
+    }, 4000);
   }
 }

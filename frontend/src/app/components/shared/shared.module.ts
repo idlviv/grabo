@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
-import { FooterComponent } from './footer/footer.component';
 import { Page404Component } from './page-404/page-404.component';
 import { MaterialModule } from '../../material.module';
 import { HomeComponent } from './home/home.component';
@@ -34,7 +33,6 @@ import { InfoComponent } from './info/info.component';
   ],
   exports: [
     NavbarComponent,
-    FooterComponent,
     Page404Component,
     HomeComponent,
     DesignItemComponent,
@@ -45,7 +43,6 @@ import { InfoComponent } from './info/info.component';
   ],
   declarations: [
     NavbarComponent,
-    FooterComponent,
     Page404Component,
     HomeComponent,
     ConfirmPopupComponent,

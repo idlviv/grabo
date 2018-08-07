@@ -15,8 +15,6 @@ body {
   margin: 0;
 }
 
-
-
 .mat-drawer-container {
   background-color: transparent;
 }
@@ -332,10 +330,6 @@ $primary-background-light: mat-color($primary, 100);
   }
 }
 
-
-
-
-
 .border0 {
   border: 0;
 }
@@ -345,7 +339,6 @@ $primary-background-light: mat-color($primary, 100);
     cursor: pointer;
   }
 }
-
 
 .display-none {
   display: none;
@@ -543,7 +536,6 @@ div.info-block {
     }
   }
 
-
   .info-block-row-wrapper {
     @include after-child-element(2) {
       border-top: 1px solid $border;
@@ -568,6 +560,7 @@ div.info-block {
     }
   }
 }
+
 .clickable {
   cursor: pointer;
 }
@@ -575,6 +568,7 @@ div.info-block {
 .border-0 {
   border: 0 !important;
 }
+
 .mail-verification {
   padding-top: 0 !important;
   color: $_warn;

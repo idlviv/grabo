@@ -11,10 +11,16 @@
 
   <mat-step *ngFor="let banner of homeBanner">
     <!--<img *ngIf="media.isActive('md')" class="responsive-image-stretch" src="{{-->
-    <img class="responsive-image" src="{{
+    <img *ngIf="media.isActive('gt-xs')" class="responsive-image" src="{{
             config.imgPath +
             config.cloudinary.cloud_name +
             '/c_fill,w_960,h_440,f_auto/' +
+            banner}}"
+         alt="Image">
+    <img *ngIf="media.isActive('xs')" class="responsive-image" src="{{
+            config.imgPath +
+            config.cloudinary.cloud_name +
+            '/c_fill,w_590,h_270,f_auto/' +
             banner}}"
          alt="Image">
       <!--<div>-->

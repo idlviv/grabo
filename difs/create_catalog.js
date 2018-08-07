@@ -27,7 +27,7 @@ db.collection()
         //   auth: 'casual', order: 3, prefix: '', assets: ['catalog'], description: ''},
 
         { _id: 'commercial', name: 'Комерційний лінолеум', ancestors: ['home', 'common', 'products'], parent: 'products',
-          auth: 'casual', order: 4, prefix: '', assets: ['catalog'], description: ''},
+          auth: 'casual', order: 3, prefix: '', assets: ['catalog_commercial'], description: ''},
           // { _id: 'diamond_st_fresh', name: 'Diamond standart fresh', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
           //   auth: 'casual', order: 1, prefix: '', assets: ['catalog'], description: ''},
           // { _id: 'diamond_st_metal', name: 'Diamond standart metal', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
@@ -40,14 +40,14 @@ db.collection()
           //   auth: 'casual', order: 5, prefix: '', assets: ['catalog'], description: ''},
 
 //!!!!
-			// { _id: 'safety', name: 'Безпечні покриття', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
-			//   auth: 'casual', order: 1, prefix: '', assets: ['catalog'], description: ''},
-      //
-       //  { _id: 'transport', name: 'Транспортний лінолеум', ancestors: ['home', 'common', 'products'], parent: 'products',
-       //    auth: 'casual', order: 5, prefix: '', assets: ['catalog'], description: ''},
-      //
-       //  { _id: 'show', name: 'Сценічний лінолеум', ancestors: ['home', 'common', 'products'], parent: 'products',
-       //    auth: 'casual', order: 6, prefix: '', assets: ['catalog'], description: ''},
+// 			{ _id: 'safety', name: 'Безпечні покриття', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
+// 			  auth: 'casual', order: 1, prefix: '', assets: ['catalog'], description: ''},
+
+        { _id: 'transport', name: 'Транспортний лінолеум', ancestors: ['home', 'common', 'products'], parent: 'products',
+          auth: 'casual', order: 7, prefix: '', assets: ['catalog_transport'], description: ''},
+
+        { _id: 'show', name: 'Сценічний лінолеум', ancestors: ['home', 'common', 'products'], parent: 'products',
+          auth: 'casual', order: 8, prefix: '', assets: ['catalog_show'], description: ''},
 
 
           // { _id: 'broadway17', name: 'Broadway 17', ancestors: ['home', 'common', 'products', 'show'], parent: 'show',
@@ -56,6 +56,9 @@ db.collection()
           //   auth: 'casual', order: 2, prefix: '', assets: ['catalog'], description: ''},
           // { _id: 'duett', name: 'Duett', ancestors: ['home', 'common', 'products', 'show'], parent: 'show',
           //   auth: 'casual', order: 3, prefix: '', assets: ['catalog'], description: ''},
+
+        { _id: 'parquet', name: 'Паркет', ancestors: ['home', 'common', 'products'], parent: 'products',
+          auth: 'casual', order: 5, prefix: '', assets: ['catalog_parquet'], description: ''},
 
         { _id: 'tile', name: 'Дизайнерська ПВХ плитка', ancestors: ['home', 'common', 'products'], parent: 'products',
           auth: 'casual', order: 6, prefix: '', assets: ['catalog_tile'], description: ''},

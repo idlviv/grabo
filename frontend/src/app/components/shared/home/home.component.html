@@ -7,59 +7,57 @@
     </div>
 
   </div>
-  <div class="row" fxLayout="row">
+  <div fxLayout="row">
+    <div fxFlex="10" fxLayout></div>
+    <div class="row" fxFlex="80" fxLayout="row" fxLayoutAlign="space-between">
 
-    <div class="cell" fxFlex="100" fxLayoutAlign="center">
-      
+        <div class="cell" fxFlex *ngFor="let descendant of descendants" fxLayoutAlign="center">
+          <a fxFlex="100" mat-button class="primary-background-light"
+             [routerLink]="['/products', 'ch', {outlets: {primary: [descendant._id], breadcrumb: [descendant._id]}}]"
+             [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">
+            {{descendant.name}}
+          </a>
+        </div>
+
     </div>
 
   </div>
 
-  <div class="row" fxLayout="column" fxLayout.gt-xs="row">
 
-    <div class="cell"
-         fxFlex.sm="60" fxFlex.md="70" fxFlex.gt-md="80">
-      <div class="item">
-        <mat-card>
+  <!--<div class="row" fxLayout="column" fxLayout.gt-xs="row">-->
 
-          <mat-card-content>
+    <!--<div class="cell"-->
+         <!--fxFlex.sm="60" fxFlex.md="70" fxFlex.gt-md="80">-->
+      <!--<div class="item">-->
+        <!--<mat-card>-->
 
-            <p class="text-justify muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-              ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-              voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-              non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-          </mat-card-content>
-        </mat-card>
-      </div>
+          <!--<mat-card-content>-->
 
-    </div>
+            <!--<p class="text-justify muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod-->
+              <!--tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation-->
+              <!--ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in-->
+              <!--voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat-->
+              <!--non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>-->
+          <!--</mat-card-content>-->
+        <!--</mat-card>-->
+      <!--</div>-->
 
-    <div class="cell" fxFlex.sm="40" fxFlex.md="30" fxFlex.gt-md="20">
-      <div class="item">
-        <mat-card>
-          <!--<div class="avatar-big-block">-->
-            <!--<img class="avatar-big" src="{{-->
-                        <!--config.imgPath +-->
-                        <!--config.cloudinary.cloud_name +-->
-                        <!--'/c_fill,w_180,h_180,f_auto/' +-->
-                        <!--config.defaultProductImg}}" alt="product">-->
-          <!--</div>-->
-          <!--<mat-card-header>-->
-            <!--<mat-card-title>Title</mat-card-title>-->
-            <!--<mat-card-subtitle>Subtitle</mat-card-subtitle>-->
-          <!--</mat-card-header>-->
-          <mat-card-content>
+    <!--</div>-->
 
-            <p class="text-justify muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-              ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-              voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-              non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-          </mat-card-content>
-        </mat-card>
-      </div>
-    </div>
+    <!--<div class="cell" fxFlex.sm="40" fxFlex.md="30" fxFlex.gt-md="20">-->
+      <!--<div class="item">-->
+        <!--<mat-card>-->
+          <!--<mat-card-content>-->
 
-  </div>
+            <!--<p class="text-justify muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod-->
+              <!--tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation-->
+              <!--ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in-->
+              <!--voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat-->
+              <!--non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>-->
+          <!--</mat-card-content>-->
+        <!--</mat-card>-->
+      <!--</div>-->
+    <!--</div>-->
+
+  <!--</div>-->
 </div>

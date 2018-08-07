@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../../services/product.service';
 import { IProduct } from '../../../interfaces/product-interface';
 import { config } from '../../../app.config';
+import { CatalogService } from '../../../services/catalog.service';
 
 @Component({
   selector: 'app-home',
@@ -11,17 +11,17 @@ import { config } from '../../../app.config';
 
 export class HomeComponent implements OnInit {
   config = config;
-  products: IProduct[];
+  descendants: any;
 
   constructor(
-    private productService: ProductService,
+    private catalogService: CatalogService,
 
   ) { }
 
   ngOnInit() {
-    this.productService.getMainPageProducts()
+    this.catalogService.getDescendants('products')
       .subscribe(
-        result => this.products = result.data,
+        result => this.descendants = result.data,
         err => console.log('mainPageProducts load error', err)
       );
   }
