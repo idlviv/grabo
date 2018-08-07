@@ -10,7 +10,6 @@
   <div fxLayout="row">
     <div fxFlex="10" fxLayout></div>
     <div class="row" fxFlex="80" fxLayout="row" fxLayoutAlign="space-between">
-
         <div class="cell-padding" fxFlex *ngFor="let descendant of descendants" fxLayoutAlign="center">
           <a fxFlex="100" mat-button class="primary-background-light"
              [routerLink]="['/products', 'ch', {outlets: {primary: [descendant._id], breadcrumb: [descendant._id]}}]"
