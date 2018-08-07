@@ -28,8 +28,8 @@ db.collection()
 
         { _id: 'commercial', name: 'Комерційний лінолеум', ancestors: ['home', 'common', 'products'], parent: 'products',
           auth: 'casual', order: 3, prefix: '', assets: ['catalog_commercial'], description: ''},
-          // { _id: 'diamond_st_fresh', name: 'Diamond standart fresh', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
-          //   auth: 'casual', order: 1, prefix: '', assets: ['catalog'], description: ''},
+          { _id: 'diamond', name: 'Diamond', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
+            auth: 'casual', order: 1, prefix: '', assets: ['catalog_commercial_diamond'], description: ''},
           // { _id: 'diamond_st_metal', name: 'Diamond standart metal', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
           //   auth: 'casual', order: 2, prefix: '', assets: ['catalog'], description: ''},
           // { _id: 'diamond_st_tech', name: 'Diamond standart tech', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
