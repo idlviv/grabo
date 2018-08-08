@@ -13,6 +13,7 @@ import { DesignsEditorFormComponent } from './designs-editor-form/designs-editor
 import { ProductsEditorComponent } from './products-editor/products-editor.component';
 import { ProductsEditorFormComponent } from './products-editor-form/products-editor-form.component';
 import { ToolsComponent } from './tools/tools.component';
+import { DesignsEditorBatchComponent } from './designs-editor-batch/designs-editor-batch.component';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { ToolsComponent } from './tools/tools.component';
     DesignsEditorFormComponent,
     ProductsEditorComponent,
     ProductsEditorFormComponent,
-    ToolsComponent
+    ToolsComponent,
+    DesignsEditorBatchComponent
   ]
 })
 export class DashboardModule { }

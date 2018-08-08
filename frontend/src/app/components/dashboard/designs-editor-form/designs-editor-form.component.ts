@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
-import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { config } from '../../../app.config';
 import { IProduct } from '../../../interfaces/product-interface';
 import { IDesign } from '../../../interfaces/interface';
@@ -153,5 +153,6 @@ export class DesignsEditorFormComponent implements OnInit {
   goBack() {
     this.location.back();
   }
+
 
 }

@@ -3128,7 +3128,7 @@ var ProductService = /** @class */ (function () {
         if (!file) {
             return ({ success: false, message: 'Файл не вибрано' });
         }
-        else if (file.size > 10500000) {
+        else if (file.size > 10485760) {
             return ({ success: false, message: 'Розмір файлу повинен бути менше 10Мб' });
         }
         else if (file.type !== 'image/jpg' &&

@@ -41,6 +41,24 @@ export class DesignService {
     );
   }
 
+  designAddImagesBatch(files): Observable<IResponse> {
+    const formData: FormData = new FormData();
+    formData.append('fileDes', files, files.name);
+    // files.forEach(file => formData.append('fileDes', file, file.name));
+
+    const token = this.userService.userLocalGetToken('token');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': token
+      })
+    };
+    return this.http.post<IResponse>(
+      'api/design/add-images-batch',
+      formData,
+      httpOptions
+    );
+  }
+
   designAddImage(file, design_id): Observable<IResponse> {
     console.log('file', file);
     const formData: FormData = new FormData();

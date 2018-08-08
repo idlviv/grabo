@@ -188,6 +188,18 @@ var DesignService = /** @class */ (function () {
         };
         return this.http.get('api/design/get-design-by-id/' + _id, httpOptions);
     };
+    DesignService.prototype.designAddImagesBatch = function (files) {
+        var formData = new FormData();
+        formData.append('fileDes', files, files.name);
+        // files.forEach(file => formData.append('fileDes', file, file.name));
+        var token = this.userService.userLocalGetToken('token');
+        var httpOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpHeaders"]({
+                'Authorization': token
+            })
+        };
+        return this.http.post('api/design/add-images-batch', formData, httpOptions);
+    };
     DesignService.prototype.designAddImage = function (file, design_id) {
         console.log('file', file);
         var formData = new FormData();

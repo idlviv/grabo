@@ -24,6 +24,11 @@ router.post('/design/add-image',
   designController.designAddImage
 );
 
+router.post('/design/add-images-batch',
+  passport.authenticate('jwt', {session: false}),
+  designController.designAddImagesBatch
+);
+
 router.post('/design/upsert',
   passport.authenticate('jwt', {session: false}),
   designController.designUpsert

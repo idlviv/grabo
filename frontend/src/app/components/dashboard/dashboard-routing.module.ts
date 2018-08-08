@@ -10,6 +10,7 @@ import { ProductsEditorComponent } from './products-editor/products-editor.compo
 import { ProductsComponent } from '../products/products.component';
 import { ProductsEditorFormComponent } from './products-editor-form/products-editor-form.component';
 import { ToolsComponent } from './tools/tools.component';
+import { DesignsEditorBatchComponent } from './designs-editor-batch/designs-editor-batch.component';
 
 const dashboardRoutes: Routes = [
   {
@@ -56,6 +57,12 @@ const dashboardRoutes: Routes = [
       {
         path: 'designs_editor',
         component: DesignsEditorComponent,
+        canActivate: [AuthGuard],
+        data: { auth: 'manager' },
+      },
+      {
+        path: 'designs_editor_batch',
+        component: DesignsEditorBatchComponent,
         canActivate: [AuthGuard],
         data: { auth: 'manager' },
       },
