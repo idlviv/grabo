@@ -10,33 +10,23 @@
             <div class="row">
               <div class="cell">
                 <h2 class="mat-h2">Групове додавання дизайнів</h2>
+                <mat-spinner *ngIf="processingLoadFile" [diameter]="24"></mat-spinner>
+
               </div>
             </div>
-            <div class="row">
-              <div *ngFor="let rejectedFile of rejectedFiles" class="cell">
-                <p class="mat-body">{{rejectedFile}}</p>
+            <div class="row" fxLayout="row">
+              <div class="cell" fxFlex="50">
+                <p class="mat-body">Відхилено файлів: {{rejectedFiles.length}}</p>
+              </div>
+              <div *ngFor="let successFile of successFiles" class="cell" fxFlex="50">
+                <p class="mat-body">Успішно: {{successFile}}</p>
               </div>
             </div>
+
             <form [formGroup]="designForm" #f="ngForm" (submit)="onDesignFormSubmit()" novalidate>
 
               <div class="row" fxLayout="column" fxLayout.gt-xs="row">
-                <div class="container" fxFlex.gt-xs="50">
-                  <div class="row" fxLayout="column">
-
-                    <!--<div class="cell" fxFlex="100">-->
-                      <!--<mat-form-field>-->
-                        <!--<input matInput placeholder="Дизайн" formControlName="_id" required>-->
-                        <!--<mat-error-->
-                          <!--*ngIf="(designForm.get('_id').errors?.minlength ||-->
-                      <!--designForm.get('_id').errors?.maxlength ||-->
-                      <!--designForm.get('_id').errors?.required) &&-->
-                      <!--designForm.get('_id').touched">-->
-                          <!--Довжина повинна бути від 7 до 12 символів-->
-                        <!--</mat-error>-->
-                      <!--</mat-form-field>-->
-                    <!--</div>-->
-
-                    <div class="cell" fxFlex="100">
+                     <div class="cell" fxFlex="100">
                       <mat-form-field>
                         <mat-select placeholder="Структура" formControlName="structure" required>
                           <mat-option *ngFor="let struct of config.designStructure" [value]="struct">
@@ -51,72 +41,27 @@
                       </mat-form-field>
                     </div>
 
-                  </div>
-                </div>
+
 
                 <input #inputFile type="file" multiple name="designFile[]" (change)="addPictures($event)"
                        accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png, .gif, .svg" style="display:none;">
-                <button mat-mini-fab color="primary" type="button"
-                        (click)="inputFile.click(); designForm.get('structure').disable();"
-                        [disabled]="processingLoadFile">
-                  <mat-icon>add</mat-icon>
-                  </button>
 
-                <div class="cell" fxFlex.gt-xs="50">
-                  <!--<div class="preview-img-wrapper">-->
-                    <!--<img *ngIf="designForm.get('image').value" src="{{-->
-                        <!--config.imgPath +-->
-                        <!--config.cloudinary.cloud_name +-->
-                        <!--'/c_fill,w_180,h_180,f_auto/' +-->
-                        <!--designForm.get('image').value}}"-->
-                         <!--alt="designImage">-->
-                    <!--<img *ngIf="!designForm.get('image').value"-->
-                         <!--src="{{-->
-                        <!--config.imgPath +-->
-                        <!--config.cloudinary.cloud_name +-->
-                        <!--'/c_fill,w_180,h_180,f_auto/' +-->
-                        <!--config.defaultProductImg}}" alt="designImage">-->
-                    <!--<input #inputFile type="file" (change)="addPictures($event)"-->
-                           <!--accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png, .gif, .svg" style="display:none;">-->
-                    <!--<div class="preview-div-processing">-->
-                      <!--<div *ngIf="processingLoadFile" class="spinner-wrapper">-->
-                        <!--<mat-spinner [diameter]="24"></mat-spinner>-->
-                      <!--</div>-->
-
-
-                      <!--<div *ngIf="!processingLoadFile" class="button-wrapper">-->
-                        <!--<button mat-mini-fab color="primary" type="button"-->
-                                <!--(click)="inputFile.click();-->
-                                  <!--designForm.get('_id').disable();-->
-                                  <!--designForm.get('structure').disable();"-->
-                                <!--[disabled]="processingLoadFile || designForm.get('_id').invalid">-->
-                          <!--<mat-icon *ngIf="!designForm.get('image').value">add</mat-icon>-->
-                          <!--<mat-icon *ngIf="designForm.get('image').value">redo</mat-icon>-->
-                        <!--</button>-->
-
-                      <!--</div>-->
-                    <!--</div>-->
-                  <!--</div>-->
-
-                <!--</div>-->
-
-
-              <!--</div>-->
-              <div class="submit-button-wrapper" fxLayout="row">
-                <div>
-                  <button mat-raised-button color="primary" class="full-width"
-                          [disabled]="!designForm.valid || processingLoadFile">Створити</button>
-                </div>
-
-                <div fxFlex></div>
-                <div>
-                  <button mat-raised-button  type="button" (click)="goBack()" class="full-width"
-                          [disabled]="processingLoadFile">Повернутись</button>
-                </div>
-              </div>
-                </div>
               </div>
             </form>
+
+
+          <div class="submit-button-wrapper row" fxLayout="row">
+            <div class="cell" fxFlex="60">
+              <button mat-raised-button color="primary" class="full-width" type="button"
+                      (click)="inputFile.click();"
+                      [disabled]="!designForm.valid || processingLoadFile">Створити</button>
+            </div>
+            <div class="cell" fxFlex="40">
+              <button mat-raised-button  type="button" (click)="goBack()" class="full-width"
+                      [disabled]="processingLoadFile">Повернутись</button>
+            </div>
+          </div>
+
           </div>
         </mat-card-content>
       </mat-card>

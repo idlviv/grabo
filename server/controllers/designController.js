@@ -21,7 +21,6 @@ module.exports.getDesigns = function(req, res, next) {
 
 module.exports.designAddImagesBatch = function(req, res, next) {
   let form = new formidable.IncomingForm({maxFileSize: 10485760});
-
   form.parse(req, function(err, fields, files) {
 
     if (err) {
@@ -39,17 +38,17 @@ module.exports.designAddImagesBatch = function(req, res, next) {
           {width: 180, height: 180, crop: 'fill', fetch_format: 'auto'},
           {width: 40, height: 40, crop: 'fill', fetch_format: 'auto'},
         ]
-      // },
-      // function(err, result) {
-      //   return new Promise(function(resolve, reject) {
-      //     if (err) {
-      //       reject(err);
-      //     } else {
-      //       log.debug('fields.design_id', fields.design_id);
-      //       log.debug('result.public_id', result.public_id);
-      //       return resolve({design_id: fields.design_id, design: result.public_id});
-      //     }
-      //   });
+        // },
+        // function(err, result) {
+        //   return new Promise(function(resolve, reject) {
+        //     if (err) {
+        //       reject(err);
+        //     } else {
+        //       log.debug('fields.design_id', fields.design_id);
+        //       log.debug('result.public_id', result.public_id);
+        //       return resolve({design_id: fields.design_id, design: result.public_id});
+        //     }
+        //   });
       })
       .then((result) => {
 
