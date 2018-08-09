@@ -41,10 +41,12 @@ export class DesignService {
     );
   }
 
-  designAddImagesBatch(files): Observable<IResponse> {
+  designAddImagesBatch(file, design_id, structure): Observable<IResponse> {
+    console.log('file', file);
     const formData: FormData = new FormData();
-    formData.append('fileDes', files, files.name);
-    // files.forEach(file => formData.append('fileDes', file, file.name));
+    formData.append('file', file, file.name);
+    formData.append('design_id', design_id);
+    formData.append('structure', structure);
 
     const token = this.userService.userLocalGetToken('token');
     const httpOptions = {

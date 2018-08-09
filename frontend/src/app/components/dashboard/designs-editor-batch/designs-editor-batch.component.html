@@ -12,7 +12,11 @@
                 <h2 class="mat-h2">Групове додавання дизайнів</h2>
               </div>
             </div>
-
+            <div class="row">
+              <div *ngFor="let rejectedFile of rejectedFiles" class="cell">
+                <p class="mat-body">{{rejectedFile}}</p>
+              </div>
+            </div>
             <form [formGroup]="designForm" #f="ngForm" (submit)="onDesignFormSubmit()" novalidate>
 
               <div class="row" fxLayout="column" fxLayout.gt-xs="row">

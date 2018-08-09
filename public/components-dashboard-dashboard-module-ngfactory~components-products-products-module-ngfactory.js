@@ -188,10 +188,12 @@ var DesignService = /** @class */ (function () {
         };
         return this.http.get('api/design/get-design-by-id/' + _id, httpOptions);
     };
-    DesignService.prototype.designAddImagesBatch = function (files) {
+    DesignService.prototype.designAddImagesBatch = function (file, design_id, structure) {
+        console.log('file', file);
         var formData = new FormData();
-        formData.append('fileDes', files, files.name);
-        // files.forEach(file => formData.append('fileDes', file, file.name));
+        formData.append('file', file, file.name);
+        formData.append('design_id', design_id);
+        formData.append('structure', structure);
         var token = this.userService.userLocalGetToken('token');
         var httpOptions = {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpHeaders"]({

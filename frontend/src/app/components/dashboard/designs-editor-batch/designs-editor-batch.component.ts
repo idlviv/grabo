@@ -5,8 +5,8 @@ import { Location } from '@angular/common';
 import { config } from '../../../app.config';
 import { MatSnackBar } from '@angular/material';
 import { ProductService } from '../../../services/product.service';
-import { mergeMap } from 'rxjs/operators';
-import { from } from 'rxjs';
+import { mergeMap, filter, merge, } from 'rxjs/operators';
+import { Observable, from, of, forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-designs-editor-batch',
@@ -18,6 +18,8 @@ export class DesignsEditorBatchComponent implements OnInit {
   config = config;
   designForm: FormGroup;
   processingLoadFile = false;
+  rejectedFiles = [];
+  designs = [];
 
   constructor(
     private designService: DesignService,
@@ -37,28 +39,87 @@ export class DesignsEditorBatchComponent implements OnInit {
   }
 
   addPictures(event) {
+    const files: File[] = event.target.files;
+
+    if (files.length > 50) {
+      this.matSnackBar.open('Спробуйте вибрати менше ніж 50 файлів', '',
+          {duration: 3000, panelClass: 'snack-bar-danger'});
+      return;
+    }
+
     this.processingLoadFile = true;
-    const files = event.target.files;
+    this.designForm.get('structure').disable();
 
-    // take only supported files
-    const filteredFiles = Array.prototype.filter.call(files, file => this.productService.checkFile(file).success);
-    console.log('filteredFiles', filteredFiles);
-    const $filteredFiles = from(filteredFiles);
+    const arrayOfObservables: Observable<any>[] = Array.prototype.map.call(files,
+      res => of(res)
+        .pipe(
+          filter(file => {
+            if (!this.productService.checkFile(file).success) {
+              this.rejectedFiles.push(file);
+              return false;
+            } else {
+              return true;
+            }
+          }),
+          mergeMap(file => {
+            console.log('mergemap');
+            const design_id = file.name.slice(0, -4);
+            // this.designForm.get('image').setValue(result.data);
+            return this.designService.designAddImagesBatch(file, design_id, this.designForm.get('structure').value);
+          }),
+        )
+    );
 
 
-    $filteredFiles.pipe(
-      mergeMap(file => {
-                        console.log('file', file);
-                      // this.designForm.get('image').setValue(result.data);
-                      return this.designService.designAddImagesBatch(file);
-                    },
-      )
-    )
+    // const $filteredFiles = $files.pipe(
+    //   filter(file => {
+    //     if (!this.productService.checkFile(file).success) {
+    //       this.rejectedFiles.push(file);
+    //       return false;
+    //     } else {
+    //       return true;
+    //     }
+    //   }),
+    //   merge(file => {
+    //     console.log('mergemap');
+    //     const design_id = file.name.slice(0, -4);
+    //        // this.designForm.get('image').setValue(result.data);
+    //     return this.designService.designAddImage(file, design_id);
+    //   }),
+    //
+    // )
+
+    // $arrayOfObservables.pipe(
+    //   filter(file => {
+    //     if (!this.productService.checkFile(file).success) {
+    //       this.rejectedFiles.push(file);
+    //       return false;
+    //     } else {
+    //       return true;
+    //     }
+    //   }),
+    //   merge(file => {
+    //     console.log('mergemap');
+    //     const design_id = file.name.slice(0, -4);
+    //        // this.designForm.get('image').setValue(result.data);
+    //     return this.designService.designAddImage(file, design_id);
+    //   }),
+    // )
+
+      forkJoin(arrayOfObservables)
       .subscribe(
       result => {
         console.log('result batch from server', result);
-        // this.designForm.get('image').setValue(result.data);
         this.processingLoadFile = false;
+        this.designForm.get('structure').enable();
+        // this.designs.push(result.data);
+      },
+      err => {
+        console.log('err', err);
+        this.matSnackBar.open(err.error || 'Помилка', '',
+          {duration: 3000, panelClass: 'snack-bar-danger'});
+        this.processingLoadFile = false;
+        this.designForm.get('structure').enable();
       });
 
     // if (!filteredFiles.length) {
