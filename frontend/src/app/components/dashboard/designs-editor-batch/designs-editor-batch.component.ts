@@ -60,8 +60,15 @@ export class DesignsEditorBatchComponent implements OnInit {
       }
     });
 
+    if (this.rejectedFiles.length === files.length) {
+      this.matSnackBar.open('Ці файли не підходять пол критеріях: тип та/або розір', '',
+        {duration: 3000, panelClass: 'snack-bar-danger'});
+      return;
+    }
+
     this.processingLoadFile = true;
     this.designForm.get('structure').disable();
+
     console.log('filteredFiles', filteredFiles);
     const arrayOfObservables: Observable<IResponse | HttpErrorResponse>[] = Array.prototype.map.call(filteredFiles,
       res => of(res)
@@ -91,24 +98,22 @@ export class DesignsEditorBatchComponent implements OnInit {
         this.processingLoadFile = false;
         this.designForm.get('structure').enable();
         result.forEach( res => {
-          if (res instanceof  HttpErrorResponse || res instanceof  Error) {
+          if (res instanceof  HttpErrorResponse) {
             this.rejectedFiles.push('err');
-            console.log('instance');
           } else {
             this.successFiles.push(res.data._id);
           }
         });
         console.log('rejectedFiles', this.rejectedFiles);
         console.log('successFiles', this.successFiles);
-        // this.designs.push(result.data);
+        this.resetForm();
       },
       err => {
         console.log('err', err);
         this.matSnackBar.open(err.error || 'Помилка', '',
           {duration: 3000, panelClass: 'snack-bar-danger'});
+        this.resetForm();
         this.processingLoadFile = false;
-        this.designForm.get('structure').enable();
-
       });
 
     // if (!filteredFiles.length) {

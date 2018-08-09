@@ -9,17 +9,23 @@
           <div class="container">
             <div class="row">
               <div class="cell">
-                <h2 class="mat-h2">Групове додавання дизайнів</h2>
-                <mat-spinner *ngIf="processingLoadFile" [diameter]="24"></mat-spinner>
+                <h2 class="mat-h2">Групове додавання дизайнів
 
+                </h2>
               </div>
             </div>
             <div class="row" fxLayout="row">
               <div class="cell" fxFlex="50">
                 <p class="mat-body">Відхилено файлів: {{rejectedFiles.length}}</p>
               </div>
-              <div *ngFor="let successFile of successFiles" class="cell" fxFlex="50">
-                <p class="mat-body">Успішно: {{successFile}}</p>
+              <div class="cell" fxFlex="50">
+                <p class="mat-body">Успішно: {{successFiles.length}}</p>
+              </div>
+            </div>
+
+            <div class="row" fxLayout="row">
+              <div *ngFor="let successFile of successFiles" class="cell" fxFlex>
+                {{successFile}}
               </div>
             </div>
 
@@ -41,8 +47,6 @@
                       </mat-form-field>
                     </div>
 
-
-
                 <input #inputFile type="file" multiple name="designFile[]" (change)="addPictures($event)"
                        accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png, .gif, .svg" style="display:none;">
 
@@ -54,7 +58,9 @@
             <div class="cell" fxFlex="60">
               <button mat-raised-button color="primary" class="full-width" type="button"
                       (click)="inputFile.click();"
-                      [disabled]="!designForm.valid || processingLoadFile">Створити</button>
+                      [disabled]="!designForm.valid || processingLoadFile">
+                <mat-icon> <mat-spinner *ngIf="processingLoadFile" [diameter]="24"></mat-spinner> </mat-icon>
+                 Вибрати файли</button>
             </div>
             <div class="cell" fxFlex="40">
               <button mat-raised-button  type="button" (click)="goBack()" class="full-width"

@@ -31,26 +31,15 @@ module.exports.designAddImagesBatch = function(req, res, next) {
       files.file.path,
       {
         public_id: fields.design_id + '_' + Date.now(), // jscs:ignore requireCamelCaseOrUpperCaseIdentifiers
-        // width: 650, height: 650, crop: 'fill'
         eager: [
           {width: 650, height: 650, crop: 'fill', fetch_format: 'auto'},
           {width: 250, height: 250, crop: 'fill', fetch_format: 'auto'},
           {width: 180, height: 180, crop: 'fill', fetch_format: 'auto'},
           {width: 40, height: 40, crop: 'fill', fetch_format: 'auto'},
-        ]
-        // },
-        // function(err, result) {
-        //   return new Promise(function(resolve, reject) {
-        //     if (err) {
-        //       reject(err);
-        //     } else {
-        //       log.debug('fields.design_id', fields.design_id);
-        //       log.debug('result.public_id', result.public_id);
-        //       return resolve({design_id: fields.design_id, design: result.public_id});
-        //     }
-        //   });
+        ],
+        timeout: 120000
       })
-      .then((result) => {
+      .then(result => {
 
         let design = {
           _id: fields.design_id,
@@ -61,16 +50,14 @@ module.exports.designAddImagesBatch = function(req, res, next) {
         // log.debug('design', typeof design.image);
         // log.debug('design', typeof design.structure);
         //
-        DesignModel.findOneAndUpdate(
+        return DesignModel.findOneAndUpdate(
           {_id: design._id},
           {$set: design},
           {upsert: true, new: true} // upsert + return updated object
-        )
-          .then(result => {
-            return res.status(200).json(new ResObj(true, 'Дизайн додано/змінено', result));
-          })
-          .catch(err => next(new DbError(err)));
-
+        );
+      })
+      .then(result => {
+        return res.status(200).json(new ResObj(true, 'Дизайн додано/змінено', result));
       })
       .catch(err => next(new ApplicationError('Помилка завантаження зображення - upload', 400)));
   });
