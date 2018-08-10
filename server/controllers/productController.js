@@ -12,17 +12,14 @@ const catalogController = require('../controllers/catalogController');
 
 module.exports.getProductById = function(req, res, next) {
   const _id = req.query._id;
-  let categories = [];
+  let categories =  [];
+  ProductModel.findById({_id: _id})
 
-      ProductModel.findById(
-        {_id: _id},
-        // {sku: 1, _id: 0}
-      )
-        .then(result => {
-          return res.status(200).json(new ResObj(true, 'Товар', result));
-        })
-        .catch(err => next(new DbError())
-        );
+    .then(result => {
+      return res.status(200).json(new ResObj(true, 'Товар', result));
+    })
+    .catch(err => next(new DbError())
+    );
 };
 
 module.exports.getProducts = function(req, res, next) {

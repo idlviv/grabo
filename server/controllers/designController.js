@@ -10,9 +10,8 @@ const catalogController = require('../controllers/catalogController');
 const util = require('util');
 
 module.exports.getDesigns = function(req, res, next) {
-      DesignModel.find(
-        {},
-      )
+      DesignModel.find({})
+        .sort({_id: 1})
         .then(result => {
           return res.status(200).json(new ResObj(true, 'Дизайни', result));
         })

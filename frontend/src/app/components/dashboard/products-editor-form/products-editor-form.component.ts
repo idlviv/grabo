@@ -356,6 +356,16 @@ export class ProductsEditorFormComponent implements OnInit {
   }
 
   onProductFormSubmit(goBack) {
+
+    const sortedDesigns = this.productForm.get('designs').value.sort(function (a, b) {
+      if (a < b) {
+        return -1;
+      } else if (a > b) {
+        return 1;
+      }
+      return 0;
+    });
+
     this.product = {
       _id: this.productForm.getRawValue()._id, // raw because may be disabled
       name: this.productForm.get('name').value,
@@ -368,7 +378,7 @@ export class ProductsEditorFormComponent implements OnInit {
       description: this.productForm.get('description').value,
       techDescriptions: this.productForm.get('techDescriptions').value,
       recommendations: this.productForm.get('recommendations').value,
-      designs: this.productForm.get('designs').value,
+      designs: sortedDesigns,
     };
     //
     this.productService.productUpsert(this.product)
