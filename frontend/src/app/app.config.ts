@@ -20,7 +20,7 @@ export const config = {
   cloudinary: {
     cloud_name: environment.cloud_name
   },
-  designStructure: ['дошка', 'художній паркет', 'плитка', 'абстракція'],
+  designStructure: ['дошка', 'художній паркет', 'плитка', 'абстракція', 'дитячий'],
   techAssets: [
     {
       _id: 'fiber',

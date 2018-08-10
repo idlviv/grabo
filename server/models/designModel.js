@@ -21,7 +21,7 @@ const DesignSchema = new Schema({
   structure: {
     type: String,
     required: true,
-    enum: ['дошка', 'художній паркет', 'плитка', 'абстракція'],
+    enum: ['дошка', 'художній паркет', 'плитка', 'абстракція', 'дитячий'],
 
   },
   // tags: [{

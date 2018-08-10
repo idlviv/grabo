@@ -6,7 +6,7 @@ import { config } from '../../../app.config';
 import { MatSnackBar } from '@angular/material';
 import { ProductService } from '../../../services/product.service';
 import { mergeMap, filter, merge, catchError } from 'rxjs/operators';
-import { Observable, from, of, forkJoin, throwError  } from 'rxjs';
+import { Observable, from, of, forkJoin, throwError } from 'rxjs';
 import { IResponse } from '../../../interfaces/server-response-interface';
 import { HttpErrorResponse } from '@angular/common/http';
 
