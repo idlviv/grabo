@@ -23,6 +23,7 @@ export class DesignsEditorBatchComponent implements OnInit {
   rejectedFiles = [];
   successFiles = [];
   designs = [];
+  totalFiles = 0;
 
   constructor(
     private designService: DesignService,
@@ -43,8 +44,11 @@ export class DesignsEditorBatchComponent implements OnInit {
   addPictures(event) {
     this.rejectedFiles = [];
     this.successFiles = [];
+    this.totalFiles = 0;
+
     const files: File[] = event.target.files;
 
+    this.totalFiles = files.length;
     if (files.length > 50) {
       this.matSnackBar.open('Спробуйте вибрати менше ніж 50 файлів', '',
           {duration: 3000, panelClass: 'snack-bar-danger'});

@@ -14,19 +14,22 @@
                 </h2>
               </div>
             </div>
-            <div class="row" fxLayout="row">
-              <div class="cell" fxFlex="50">
+            <div class="row" fxLayout="column" fxLayout.gt-xs="row">
+              <div class="cell" fxFlex="33.3">
+                <p class="mat-body">Всього вибрано файлів: {{totalFiles}}</p>
+              </div>
+              <div class="cell" fxFlex="33.3">
                 <p class="mat-body">Відхилено файлів: {{rejectedFiles.length}}</p>
               </div>
-              <div class="cell" fxFlex="50">
+              <div class="cell" fxFlex="33.3">
                 <p class="mat-body">Успішно: {{successFiles.length}}</p>
               </div>
             </div>
 
             <div class="row" fxLayout="row">
-              <div *ngFor="let successFile of successFiles" class="cell" fxFlex>
+              <p *ngFor="let successFile of successFiles" class="cell" fxFlex>
                 {{successFile}}
-              </div>
+              </p>
             </div>
 
             <form [formGroup]="designForm" #f="ngForm" (submit)="onDesignFormSubmit()" novalidate>
@@ -60,7 +63,7 @@
                       (click)="inputFile.click();"
                       [disabled]="!designForm.valid || processingLoadFile">
                 <mat-icon> <mat-spinner *ngIf="processingLoadFile" [diameter]="24"></mat-spinner> </mat-icon>
-                 Вибрати файли</button>
+                 Вибрати файли (максимум 50)</button>
             </div>
             <div class="cell" fxFlex="40">
               <button mat-raised-button  type="button" (click)="goBack()" class="full-width"
