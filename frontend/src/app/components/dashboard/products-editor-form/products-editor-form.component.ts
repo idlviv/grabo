@@ -24,7 +24,8 @@ import {startWith, map, tap} from 'rxjs/operators';
 })
 export class ProductsEditorFormComponent implements OnInit {
   @ViewChild('f') productFormDirective: FormGroupDirective;
-  // @ViewChild('inp') inputDirective;
+  @ViewChild('addDesignButton') addDesignButtonDirective;
+  @ViewChild('addTechAssetsButton') addTechAssetsButtonDirective;
 
   config = config;
   productForm: FormGroup;
@@ -390,6 +391,16 @@ export class ProductsEditorFormComponent implements OnInit {
 
   goBack() {
     this.location.back();
+  }
+
+  onSelectDesign() {
+    console.log('select');
+    this.addDesignButtonDirective.focus();
+  }
+
+  onSelectTechAssets() {
+    console.log('select');
+    this.addTechAssetsButtonDirective.focus();
   }
 
   addAssetsControl() {

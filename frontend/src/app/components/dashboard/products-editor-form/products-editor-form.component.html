@@ -361,7 +361,7 @@
                     <mat-form-field>
                       <input type="text" matInput placeholder="Додати характеристику" formControlName="tech" [matAutocomplete]="autoTech">
                       <mat-autocomplete #autoTech="matAutocomplete">
-                        <mat-option *ngFor="let filteredTechAsset of filteredTechAssets | async" [value]="filteredTechAsset">
+                        <mat-option *ngFor="let filteredTechAsset of filteredTechAssets | async" (click)="onSelectTechAssets()" [value]="filteredTechAsset">
                           {{filteredTechAsset}}
                         </mat-option>
                       </mat-autocomplete>
@@ -370,7 +370,7 @@
 
 
                   <div class="item" fxLayoutAlign="center center" fxFlex="40px">
-                    <button [disabled]="!techAssetValidity" mat-icon-button color="accent" type="button"
+                    <button #addTechAssetsButton [disabled]="!techAssetValidity" mat-icon-button color="accent" type="button"
                             (click)="addTechAsset()"><mat-icon>add_circle</mat-icon></button>
                   </div>
                 </div>
@@ -409,7 +409,7 @@
                     <mat-form-field >
                       <input type="text" matInput placeholder="Додати дизайн" formControlName="des" [matAutocomplete]="auto">
                       <mat-autocomplete #auto="matAutocomplete">
-                        <mat-option *ngFor="let filteredDesign of filteredDesigns | async" [value]="filteredDesign">
+                        <mat-option *ngFor="let filteredDesign of filteredDesigns | async" (click)="onSelectDesign()" [value]="filteredDesign">
                           {{filteredDesign}}
                         </mat-option>
                       </mat-autocomplete>
@@ -418,7 +418,7 @@
 
 
                   <div class="item" fxLayoutAlign="center center" fxFlex="40px">
-                    <button [disabled]="!designValidity" mat-icon-button color="accent" type="button"
+                    <button #addDesignButton [disabled]="!designValidity" mat-icon-button color="accent" type="button"
                             (click)="addDesign()"><mat-icon>add_circle</mat-icon></button>
                   </div>
                 </div>
