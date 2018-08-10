@@ -96,6 +96,16 @@ export const config = {
       _id: 'e_recycle',
       image: 'e_recycle',
       description: ''
+    },
+    {
+      _id: 'e_reachconform',
+      image: 'e_reachconform',
+      description: ''
+    },
+    {
+      _id: 'heavy_metal',
+      image: 'heavy_metal',
+      description: ''
     }
   ],
   homeBanner: [
