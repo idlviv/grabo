@@ -26,6 +26,7 @@ export class ProductsEditorFormComponent implements OnInit {
   @ViewChild('f') productFormDirective: FormGroupDirective;
   @ViewChild('addDesignButton') addDesignButtonDirective;
   @ViewChild('addTechAssetsButton') addTechAssetsButtonDirective;
+  @ViewChild('addDesignInput') addDesignInputDirective;
 
   config = config;
   productForm: FormGroup;
@@ -223,6 +224,7 @@ export class ProductsEditorFormComponent implements OnInit {
       this.addDesignsControl();
       this.productForm.get('designs').setValue(designsList);
       this.productForm.get('des').reset();
+      this.addDesignInputDirective.focus();
     } else {
       console.log('add design false');
     }

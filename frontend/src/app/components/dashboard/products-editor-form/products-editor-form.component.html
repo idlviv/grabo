@@ -407,7 +407,7 @@
                 <div class="cell" fxFlex="50" fxLayout="row">
                   <div class="item" fxFlex="calc(100%-40px)">
                     <mat-form-field >
-                      <input type="text" matInput placeholder="Додати дизайн" formControlName="des" [matAutocomplete]="auto">
+                      <input type="text" #addDesignInput matInput placeholder="Додати дизайн" formControlName="des" [matAutocomplete]="auto">
                       <mat-autocomplete #auto="matAutocomplete">
                         <mat-option *ngFor="let filteredDesign of filteredDesigns | async" (click)="onSelectDesign()" [value]="filteredDesign">
                           {{filteredDesign}}
