@@ -36,14 +36,12 @@
             <img src="./assets/images/grabo_logo.svg" width="140px" height="50px">
           </a>
 
-    <div class="row" fxShow="true" fxHide.lt-md="true" fxLayoutAlign="space-between">
-      <div class="cell" fxFlex *ngFor="let mainMenuCommonItem of mainMenuCommonItems" fxLayoutAlign="center">
-      <a  mat-button fxFlex="100"
+    <div fxShow="true" fxHide.lt-md="true">
+        <a *ngFor="let mainMenuCommonItem of mainMenuCommonItems" mat-button
          [routerLink]="['/', mainMenuCommonItem._id, 'ch']"
          [routerLinkActive]="['accent']" [routerLinkActiveOptions]="{exact: true}">
          {{mainMenuCommonItem.name}}
       </a>
-      </div>
 
 
     </div>
