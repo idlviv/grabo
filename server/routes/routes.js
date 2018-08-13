@@ -46,6 +46,15 @@ router.delete('/design/delete/:_id',
 /**
  * product routes
  */
+
+router.get('/product/get-recommendations',
+  productController.getRecommendations
+);
+
+router.get('/product/get-products-by-recommendation',
+  productController.getProductsByRecommendation
+);
+
 router.post('/product/upsert',
   passport.authenticate('jwt', {session: false}),
   productController.productUpsert

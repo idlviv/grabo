@@ -3,6 +3,8 @@ import { ObservableMedia } from '@angular/flex-layout';
 import { MatDialog } from '@angular/material';
 import { config } from '../../../app.config';
 import { DesignPopupComponent } from '../design-popup/design-popup.component';
+import { ProductService } from '../../../services/product.service';
+import { IProduct } from '../../../interfaces/product-interface';
 
 @Component({
   selector: 'app-gallery',
@@ -26,12 +28,33 @@ export class GalleryComponent implements OnInit {
     'catalog_commercial',
   ];
 
+  recommendations: string[];
+  products: IProduct[];
+
   constructor(
     public dialog: MatDialog,
     public media: ObservableMedia,
+    private productService: ProductService
   ) { }
 
   ngOnInit() {
+    this.productService.getRecommendations()
+      .subscribe(result => {
+        console.log('recommendations', result.data);
+        this.recommendations = result.data;
+      },
+        err => console.log('error get recmmendations', err));
+  }
+
+  onSelectCategory(event) {
+    const recommendation = event.value;
+    console.log('select', event.value);
+    this.productService.getProductsByRecommendation(recommendation)
+      .subscribe(result => {
+          console.log('products', result.data);
+          this.products = result.data;
+        },
+        err => console.log('error get products by recmmendation', err));
   }
 
   // openDialog(design): void {

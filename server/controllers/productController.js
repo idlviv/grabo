@@ -22,6 +22,28 @@ module.exports.getProductById = function(req, res, next) {
     );
 };
 
+
+module.exports.getRecommendations = function(req, res, next) {
+      ProductModel.distinct('recommendations')
+        .then(result => {
+          return res.status(200).json(new ResObj(true, 'Масив рекомендацій', result));
+        })
+        .catch(err => next(new DbError()));
+
+};
+
+module.exports.getProductsByRecommendation = function(req, res, next) {
+  let recommendation = req.query.recommendation;
+
+  ProductModel.find(
+    {recommendations: {$in: recommendation}}
+  )
+    .then(result => {
+      return res.status(200).json(new ResObj(true, 'Масив продуктів згідно рекомендації', result));
+    })
+    .catch(err => next(new DbError()));
+};
+
 module.exports.getProducts = function(req, res, next) {
   let category = req.query.category;
   let categories = [];

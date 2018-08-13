@@ -870,6 +870,18 @@ mat-sidenav-content {
 
 }
 
+mat-card {
+  border-radius: 8px !important;
+}
+
+.mat-tab-content {
+  //display: flex;
+  //align-items: center;
+  //justify-content: center;
+  margin: 16px;
+  padding: 16px;
+  border-radius: 8px;
+}
 
 // overriding materials
 
