@@ -57,19 +57,25 @@ export class GalleryComponent implements OnInit {
         err => console.log('error get products by recmmendation', err));
   }
 
-  // openDialog(design): void {
-  //   const dialogRef = this.dialog.open(DesignPopupComponent, {
-  //     // width: '400px',
-  //     data: design,
-  //     panelClass: 'custom-dialog-container'
-  //   });
-  //
-  //   dialogRef.afterClosed()
-  //     .subscribe(result => {
-  //         console.log('result popup', result);
-  //       },
-  //       err => console.log('err delete', err)
-  //     );
-  // }
+  openDialog(asset, title): void {
+    const imageObject = {
+      image: asset,
+      cloudinaryOptionds: '/c_fill,w_1100,h_550,f_auto/',
+      _id: title
+    };
+
+    const dialogRef = this.dialog.open(DesignPopupComponent, {
+      // width: '400px',
+      data: imageObject,
+      panelClass: 'custom-dialog-container'
+    });
+
+    dialogRef.afterClosed()
+      .subscribe(result => {
+          console.log('result popup', result);
+        },
+        err => console.log('err delete', err)
+      );
+  }
 
 }

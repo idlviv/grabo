@@ -33,6 +33,15 @@
       <mat-tab *ngFor="let product of products" [label]="product.name">
         <div class="container padding-bottom-3">
           <mat-card>
+            <mat-card-subtitle>
+              <a mat-button
+                 [routerLink]="['/products', 'ch', {outlets: {primary: [product.parent, 'details', product._id],
+                  breadcrumb: [product.parent, 'details', product._id]}}]"
+                 [queryParams]="{name: product.name}"
+                 [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">
+                {{product.name}}
+              </a>
+            </mat-card-subtitle>
             <div class="row" fxLayout="column" fxLayout.gt-xs="row">
               <div fxFlex="100" class="cell">{{product.description}}</div>
 
@@ -45,8 +54,8 @@
                   </mat-card-header>
                   <mat-card-content fxLayoutAlign="center center">
 
-                    <!--(click)="openDialog(galleryItem)" src="{{-->
                     <img *ngIf="productAsset" class="responsive-image hover-cursor"
+                         (click)="openDialog(productAsset, product.name)"
                          src="{{
                     config.imgPath +
                     config.cloudinary.cloud_name +
@@ -63,6 +72,7 @@
                   </mat-card-header>
                   <mat-card-content fxLayoutAlign="center center">
                     <img *ngIf="productAsset" class="responsive-image-stretch hover-cursor"
+                         (click)="openDialog(productAsset, product.name)"
                          src="{{
                     config.imgPath +
                     config.cloudinary.cloud_name +
