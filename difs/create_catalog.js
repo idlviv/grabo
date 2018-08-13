@@ -1,4 +1,6 @@
-db.collection()
+db.getCollection('catalogs')
+.drop();
+db.getCollection('catalogs')
 .insertMany([
   { _id: 'home', name: 'Головна', ancestors: [], parent: 'null',
     auth: 'casual', order: 0, assets: ['catalog'], description: ''},
@@ -30,6 +32,14 @@ db.collection()
           auth: 'casual', order: 3, prefix: '', assets: ['catalog_commercial'], description: ''},
           { _id: 'diamond', name: 'Diamond', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
             auth: 'casual', order: 1, prefix: '', assets: ['catalog_commercial_diamond'], description: ''},
+          { _id: 'homogen', name: 'Гомогенні покриття', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
+            auth: 'casual', order: 2, prefix: '', assets: ['low_catalog_homogen'], description: ''},
+          { _id: 'safety', name: 'Безпечні покриття', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
+            auth: 'casual', order: 3, prefix: '', assets: ['low_catalog_safety'], description: ''},
+          { _id: 'acoustic', name: 'Акустичні покриття', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
+            auth: 'casual', order: 4, prefix: '', assets: ['low_catalog_acoustic'], description: ''},
+          { _id: 'silver_knight', name: 'Silver Knight', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
+            auth: 'casual', order: 5, prefix: '', assets: ['low_catalog_silver_knight'], description: ''},
           // { _id: 'diamond_st_metal', name: 'Diamond standart metal', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
           //   auth: 'casual', order: 2, prefix: '', assets: ['catalog'], description: ''},
           // { _id: 'diamond_st_tech', name: 'Diamond standart tech', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
@@ -39,9 +49,12 @@ db.collection()
           // { _id: 'fortis', name: 'Fortis', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
           //   auth: 'casual', order: 5, prefix: '', assets: ['catalog'], description: ''},
 
-//!!!!
-// 			{ _id: 'safety', name: 'Безпечні покриття', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
-// 			  auth: 'casual', order: 1, prefix: '', assets: ['catalog'], description: ''},
+        { _id: 'sport', name: 'Спортивні покриття', ancestors: ['home', 'common', 'products'], parent: 'products',
+          auth: 'casual', order: 4, prefix: '', assets: ['low_catalog_sport'], description: ''},
+          { _id: 'sport_pvc', name: 'Спортивні ПВХ покриття', ancestors: ['home', 'common', 'products', 'sport'], parent: 'sport',
+            auth: 'casual', order: 1, prefix: '', assets: ['low_catalog_sport_pvc'], description: ''},
+          { _id: 'sport_parquet', name: 'Спортивні паркети', ancestors: ['home', 'common', 'products', 'sport'], parent: 'sport',
+            auth: 'casual', order: 2, prefix: '', assets: ['low_catalog_sport_parquet'], description: ''},
 
         { _id: 'transport', name: 'Транспортний лінолеум', ancestors: ['home', 'common', 'products'], parent: 'products',
           auth: 'casual', order: 7, prefix: '', assets: ['catalog_transport'], description: ''},
@@ -62,10 +75,7 @@ db.collection()
 
         { _id: 'tile', name: 'Дизайнерська ПВХ плитка', ancestors: ['home', 'common', 'products'], parent: 'products',
           auth: 'casual', order: 6, prefix: '', assets: ['catalog_tile'], description: ''},
-          // { _id: 'plankit', name: 'Plankit', ancestors: ['home', 'common', 'products', 'tile'], parent: 'tile',
-          //   auth: 'casual', order: 6, prefix: '', assets: ['catalog'], description: ''},
-          // { _id: 'domino', name: 'Domino', ancestors: ['home', 'common', 'products', 'tile'], parent: 'tile',
-          //   auth: 'casual', order: 6, prefix: '', assets: ['catalog'], description: ''},
+
 
       { _id: 'gallery', name: 'Галерея', ancestors: ['home', 'common'], parent: 'common',
         auth: 'casual', order: 2, assets: ['catalog'], description: ''},

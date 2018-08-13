@@ -106,7 +106,27 @@ export const config = {
       _id: 'heavy_metal',
       image: 'heavy_metal',
       description: ''
-    }
+    },
+    {
+      _id: '200cm',
+      image: '200cm',
+      description: ''
+    },
+    {
+      _id: 'clp',
+      image: 'clp',
+      description: ''
+    },
+    {
+      _id: 'silver_knight',
+      image: 'silver_knight',
+      description: ''
+    },
+    {
+      _id: 'floor_score',
+      image: 'floor_score',
+      description: ''
+    },
   ],
   homeBanner: [
     'banner_residential',
