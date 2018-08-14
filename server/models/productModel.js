@@ -44,9 +44,23 @@ const ProductSchema = new Schema({
     required: true
   },
   recommendations: {
-    type: [String],
-    required: true
-  },
+        type: [String],
+        required: true,
+      },
+    // {
+    //   _id: {
+    //     type: String,
+    //     required: true,
+    //   },
+    //   name: {
+    //     type: String,
+    //     required: true,
+    //   },
+    //   sub: {
+    //     type: [],
+    //     required: true,
+    //   }
+    // }
   techDescriptions: [
     {
       techName: {

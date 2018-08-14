@@ -12,11 +12,22 @@
             <div class="cell-padding" fxFlex.xs="100" fxFlex.gt-xs="90">
               <form [formGroup]="recomForm" novalidate>
                 <mat-form-field>
-                  <mat-select class="full-width" formControlName="recom" placeholder="Призначення покриття" (selectionChange)="onSelectCategory($event)">
-                    <mat-option *ngFor="let recommendation of recommendations" [value]="recommendation">
-                      {{recommendation}}
-                    </mat-option>
+
+
+                  <mat-select formControlName="recommendations" placeholder="Призначення покриття" (selectionChange)="onSelectCategory($event)">
+                    <mat-optgroup *ngFor="let recommendation of recommendations" [label]="recommendation.name"
+                                  [disabled]>
+                      <mat-option *ngFor="let sub of recommendation.sub" [value]="sub">
+                        {{sub}}
+                      </mat-option>
+                    </mat-optgroup>
                   </mat-select>
+
+                  <!--<mat-select formControlName="recom" placeholder="Призначення покриття" (selectionChange)="onSelectCategory($event)">-->
+                    <!--<mat-option *ngFor="let recommendation of recommendations" [value]="recommendation">-->
+                      <!--{{recommendation}}-->
+                    <!--</mat-option>-->
+                  <!--</mat-select>-->
                 </mat-form-field>
               </form>
 

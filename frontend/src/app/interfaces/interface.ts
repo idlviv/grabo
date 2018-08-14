@@ -20,3 +20,9 @@ export interface IFeedback {
   contacts: string;
   name: string;
 }
+
+export interface IRecommendation {
+  _id: string;
+  name: string;
+  sub: string[];
+}

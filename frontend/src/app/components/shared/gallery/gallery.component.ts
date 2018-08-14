@@ -6,6 +6,7 @@ import { DesignPopupComponent } from '../design-popup/design-popup.component';
 import { ProductService } from '../../../services/product.service';
 import { IProduct } from '../../../interfaces/product-interface';
 import { FormControl, FormGroup } from '@angular/forms';
+import { IRecommendation } from '../../../interfaces/interface';
 
 @Component({
   selector: 'app-gallery',
@@ -14,22 +15,23 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class GalleryComponent implements OnInit {
   config = config;
-  gallery = [
-    'catalog_residential',
-    'catalog_semi_commercial',
-    'catalog_commercial',
-    'catalog_tile',
-    'catalog_residential',
-    'catalog_commercial',
-    'catalog_tile',
-    'catalog_semi_commercial',
-    'catalog_residential',
-    'catalog_tile',
-    'catalog_semi_commercial',
-    'catalog_commercial',
-  ];
+  // gallery = [
+  //   'catalog_residential',
+  //   'catalog_semi_commercial',
+  //   'catalog_commercial',
+  //   'catalog_tile',
+  //   'catalog_residential',
+  //   'catalog_commercial',
+  //   'catalog_tile',
+  //   'catalog_semi_commercial',
+  //   'catalog_residential',
+  //   'catalog_tile',
+  //   'catalog_semi_commercial',
+  //   'catalog_commercial',
+  // ];
 
-  recommendations: string[];
+  recommendations = <IRecommendation[]>config.recommendations;
+
   products: IProduct[];
   recomForm: FormGroup;
 
@@ -41,17 +43,22 @@ export class GalleryComponent implements OnInit {
 
   ngOnInit() {
     this.recomForm = new FormGroup({
-      recom: new FormControl([])
+      recommendations: new FormControl([
+      ])
     });
+    console.log('rec', this.recommendations[0].sub[0]);
 
-    this.productService.getRecommendations()
-      .subscribe(result => {
-        // console.log('recommendations', result.data);
-        this.recommendations = result.data;
-        this.recomForm.get('recom').setValue(this.recommendations[0]);
-        this.onSelectCategory({value: this.recommendations[0]});
-      },
-        err => console.log('error get recmmendations', err));
+        this.recomForm.get('recommendations').setValue(this.recommendations[0].sub[0]);
+        this.onSelectCategory({value: this.recommendations[0].sub[0]});
+
+    // this.productService.getRecommendations()
+    //   .subscribe(result => {
+    //     // console.log('recommendations', result.data);
+    //     this.recommendations = result.data;
+    //     this.recomForm.get('recom').setValue(this.recommendations[0]);
+    //     this.onSelectCategory({value: this.recommendations[0]});
+    //   },
+    //     err => console.log('error get recmmendations', err));
   }
 
   onSelectCategory(event) {

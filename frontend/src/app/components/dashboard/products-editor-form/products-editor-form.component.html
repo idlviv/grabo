@@ -162,15 +162,33 @@
                 <div formArrayName="recommendations" class="cell" fxFlex="25" fxFlex.lt-md="50"
                   *ngFor="let recommendation of productForm.get('recommendations')['controls']; let i = index">
                   <mat-form-field>
-                    <input matInput placeholder="Рекомендації" formControlName="{{i}}" required>
-                    <!--<mat-hint *ngIf="productForm.get('recommendations').value.length > 1 " align="end"-->
-                              <!--class="remove-field" (click)="removeRecommendationsControl(i)">Видалити</mat-hint>-->
+
+                    <mat-select formControlName="{{i}}" placeholder="Рекомендації">
+                      <!--<mat-option *ngFor="let recommendation of recommendations" [value]="recommendation">-->
+                        <!--{{recommendation._id}}-->
+                      <!--</mat-option>-->
+
+                      <mat-optgroup *ngFor="let recommendation of recommendations" [label]="recommendation.name"
+                                    [disabled]>
+                        <mat-option *ngFor="let sub of recommendation.sub" [value]="sub">
+                          {{sub}}
+                        </mat-option>
+                      </mat-optgroup>
+                    </mat-select>
                     <mat-icon matSuffix color="accent" (click)="removeRecommendationsControl(i)">delete_forever</mat-icon>
                     <mat-error
                       *ngIf="productForm.get('recommendations').at(i).errors?.required &&
                                   productForm.get('recommendations').at(i).touched">
                       Обов'язкове поле
                     </mat-error>
+
+                    <!--<input matInput placeholder="Рекомендації" formControlName="{{i}}" required>-->
+                    <!--<mat-icon matSuffix color="accent" (click)="removeRecommendationsControl(i)">delete_forever</mat-icon>-->
+                    <!--<mat-error-->
+                      <!--*ngIf="productForm.get('recommendations').at(i).errors?.required &&-->
+                                  <!--productForm.get('recommendations').at(i).touched">-->
+                      <!--Обов'язкове поле-->
+                    <!--</mat-error>-->
                   </mat-form-field>
                 </div>
               </div>

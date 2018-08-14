@@ -5,7 +5,7 @@ import { MatSnackBar } from '@angular/material';
 import { FormArray, FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { config } from '../../../app.config';
 import { IProduct } from '../../../interfaces/product-interface';
-import { IDesign, ITechAsset } from '../../../interfaces/interface';
+import { IDesign, IRecommendation, ITechAsset } from '../../../interfaces/interface';
 import { ProductService } from '../../../services/product.service';
 import { DesignService } from '../../../services/design.service';
 import { mergeMap } from 'rxjs/operators';
@@ -46,6 +46,8 @@ export class ProductsEditorFormComponent implements OnInit {
   filteredTechAssets: Observable<string[]>;
   techAssets_id = [];
   techAssetValidity = false;
+
+  recommendations = <IRecommendation[]>config.recommendations;
 
   filteredDesigns: Observable<string[]>;
   // options: string[] = ['4121-260', '4122-260'];
@@ -114,6 +116,7 @@ export class ProductsEditorFormComponent implements OnInit {
     )
       .subscribe(result => {
         if (result) {
+          console.log('result.data', result.data);
           this.editMode = true;
           for (let i = 0; i < result.data.designs.length; i++) {
             this.addDesignsControl();
@@ -130,7 +133,13 @@ export class ProductsEditorFormComponent implements OnInit {
           for (let i = 0; i < result.data.techDescriptions.length; i++) {
             this.addTechDescriptionsControl();
           }
+          // const patch = Object.assign(result.data);
+          // const rec = result.data.recommendations.map(val => val.sub[0]);
+          // patch.recommendations = rec;
+          // console.log('rec', rec);
           this.productForm.patchValue(result.data);
+
+          console.log('this.productForm.get(\'recommendations\').value', this.productForm.get('recommendations').value);
 
           this.productForm.get('_id').disable();
         } else {
@@ -366,6 +375,7 @@ export class ProductsEditorFormComponent implements OnInit {
       return 0;
     });
 
+    console.log('this.productForm.get(\'recommendations\').value', this.productForm.get('recommendations').value);
     this.product = {
       _id: this.productForm.getRawValue()._id, // raw because may be disabled
       name: this.productForm.get('name').value,
@@ -380,6 +390,8 @@ export class ProductsEditorFormComponent implements OnInit {
       recommendations: this.productForm.get('recommendations').value,
       designs: sortedDesigns,
     };
+
+    console.log('this.product', this.product);
     //
     this.productService.productUpsert(this.product)
       .subscribe(result => {
