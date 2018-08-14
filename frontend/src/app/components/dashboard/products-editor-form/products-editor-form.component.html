@@ -22,7 +22,7 @@
 
 
 
-              <div class="row padding-bottom" fxLayout="column" fxLayout.gt-xs="row">
+              <div class="row padding-bottom" fxLayout="row">
                     <div class="cell" fxFlex="25" fxFlex.lt-md="50">
                       <mat-form-field>
                         <input matInput placeholder="Ідентифікатор" formControlName="_id" required>
@@ -78,7 +78,7 @@
                 <!--</div>-->
               </div>
 
-              <div class="row padding-bottom" fxLayout="column" fxLayout.gt-xs="row">
+              <div class="row padding-bottom" fxLayout="row">
                 <div class="cell" fxFlex="100">
                   <mat-form-field>
                     <textarea matInput placeholder="Опис" formControlName="description" required></textarea>
@@ -93,7 +93,7 @@
                 </div>
               </div>
 
-              <div class="row padding-bottom" fxLayout="column" fxLayout.gt-xs="row">
+              <div class="row padding-bottom" fxLayout="row">
                 <div class="cell-header" fxLayout="row" fxFlex="100">
                   <h3 class="mat-h3 margin-0">Технічні характеристики
                     <span>
@@ -105,52 +105,52 @@
 
                 </div>
 
-                  <div formArrayName="techDescriptions" class="cell" fxFlex="100"
-                            *ngFor="let techDescription of productForm.get('techDescriptions')['controls']; let i = index">
-                    <mat-card formGroupName="{{i}}" fxLayout="column" fxLayout.gt-xs="row" >
-                      <!--<div class="cell" fxFlex="100%-100px" fxLayout="column" fxLayout.gt-xs="row" >-->
-                        <mat-form-field class="item" fxFlex="calc((100%-40px)-67%)">
-                          <input matInput placeholder="Характеристика" formControlName="techName" required>
-                          <mat-error
-                            *ngIf="productForm.get('techDescriptions').at(i).get('techName').errors?.required &&
-                                  productForm.get('techDescriptions').at(i).get('techName').touched">
-                            Обов'язкове поле
-                          </mat-error>
-                        </mat-form-field>
-                        <mat-form-field class="item" fxFlex="calc((100%-40px)-67%)">
-                          <input matInput placeholder="Одиниці виміру" formControlName="techUnit" required>
-                          <mat-error
-                            *ngIf="productForm.get('techDescriptions').at(i).get('techUnit').errors?.required &&
-                                  productForm.get('techDescriptions').at(i).get('techUnit').touched">
-                            Обов'язкове поле
-                          </mat-error>
-                        </mat-form-field>
-                        <mat-form-field class="item" fxFlex="calc((100%-40px)-67%)">
-                          <input matInput placeholder="Значення" formControlName="techValue" required>
-                          <mat-error
-                            *ngIf="productForm.get('techDescriptions').at(i).get('techValue').errors?.required &&
-                                  productForm.get('techDescriptions').at(i).get('techValue').touched">
-                            Обов'язкове поле
-                          </mat-error>
-                        </mat-form-field>
+                <div formArrayName="techDescriptions" class="cell" fxFlex="100"
+                          *ngFor="let techDescription of productForm.get('techDescriptions')['controls']; let i = index">
+                  <mat-card formGroupName="{{i}}" fxLayout="row">
+                    <!--<div class="cell" fxFlex="100%-100px" fxLayout="column" fxLayout.gt-xs="row" >-->
+                      <mat-form-field class="item" fxFlex="calc((100%-40px)-67%)">
+                        <input matInput placeholder="Характеристика" formControlName="techName" required>
+                        <mat-error
+                          *ngIf="productForm.get('techDescriptions').at(i).get('techName').errors?.required &&
+                                productForm.get('techDescriptions').at(i).get('techName').touched">
+                          Обов'язкове поле
+                        </mat-error>
+                      </mat-form-field>
+                      <mat-form-field class="item" fxFlex="calc((100%-40px)-67%)">
+                        <input matInput placeholder="Одиниці виміру" formControlName="techUnit" required>
+                        <mat-error
+                          *ngIf="productForm.get('techDescriptions').at(i).get('techUnit').errors?.required &&
+                                productForm.get('techDescriptions').at(i).get('techUnit').touched">
+                          Обов'язкове поле
+                        </mat-error>
+                      </mat-form-field>
+                      <mat-form-field class="item" fxFlex="calc((100%-40px)-67%)">
+                        <input matInput placeholder="Значення" formControlName="techValue" required>
+                        <mat-error
+                          *ngIf="productForm.get('techDescriptions').at(i).get('techValue').errors?.required &&
+                                productForm.get('techDescriptions').at(i).get('techValue').touched">
+                          Обов'язкове поле
+                        </mat-error>
+                      </mat-form-field>
+                    <!--</div>-->
+
+                    <div class="item" fxFlex="40px" fxLayoutAlign="center center">
+                      <!--<div class="margin-auto">-->
+                        <button class="text-align-center"
+                                mat-icon-button color="accent" type="button"
+                                (click)="removeTechDescriptionsControl(i)"><mat-icon>remove_circle</mat-icon></button>
                       <!--</div>-->
 
-                      <div class="item" fxFlex.gt-xs="40px" fxLayoutAlign="center center">
-                        <!--<div class="margin-auto">-->
-                          <button class="text-align-center" *ngIf="productForm.get('techDescriptions').value.length < 5"
-                                  mat-icon-button color="accent" type="button"
-                                  (click)="removeTechDescriptionsControl(i)"><mat-icon>remove_circle</mat-icon></button>
-                        <!--</div>-->
+                    </div>
+                  </mat-card>
 
-                      </div>
-                    </mat-card>
-
-                  </div>
+                </div>
 
               </div>
 
 
-              <div class="row padding-bottom" fxLayout="column" fxLayout.gt-xs="row">
+              <div class="row padding-bottom" fxLayout="row">
                 <div class="cell-header" fxLayout="row" fxFlex="100">
                     <h3 class="mat-h3 margin-0">Рекомендації <span>
                        <button  *ngIf="productForm.get('recommendations').value.length < 7"
@@ -175,11 +175,11 @@
                 </div>
               </div>
 
-              <div class="row padding-bottom" fxLayout="column" fxLayout.gt-xs="row">
+              <div class="row padding-bottom" fxLayout="row">
               <div class="cell-header" fxLayout="row" fxFlex="100">
                 <h3 class="mat-h3 margin-0">Головне зображення колекції</h3>
               </div>
-              <div class="cell" fxFlex="25">
+              <div class="cell" fxFlex.xs="100" fxFlex="25">
                 <div class="preview-img-wrapper" >
                   <img *ngIf="productForm.get('mainImage').value" src="{{
                       config.imgPath +
@@ -219,11 +219,11 @@
 
             </div>
 
-              <div class="row padding-bottom" fxLayout="column" fxLayout.gt-xs="row">
+              <div class="row padding-bottom" fxLayout="row">
                 <div class="cell-header" fxLayout="row" fxFlex="100">
                   <h3 class="mat-h3 margin-0">Зображення колекції в меню</h3>
                 </div>
-                <div class="cell" fxFlex="25">
+                <div class="cell" fxFlex="25" fxFlex.xs="100">
                   <div class="preview-img-wrapper" >
                     <img *ngIf="productForm.get('briefImage').value" src="{{
                       config.imgPath +
@@ -260,12 +260,12 @@
 
               </div>
 
-              <div class="row padding-bottom" fxLayout="column" fxLayout.gt-xs="row">
+              <div class="row padding-bottom" fxLayout="row">
                 <div class="cell-header" fxLayout="row" fxFlex="100">
                     <h3 class="mat-h3 margin-0">Додаткові зображення колекції</h3>
                   </div>
-                  <div formArrayName="assets" class="cell" fxFlex="25" fxFlex.lt-md="50"
-                     *ngFor="let asset of productForm.get('assets')['controls']; let i = index">
+                  <div formArrayName="assets" class="cell" fxFlex="25" fxFlex.xs="100"
+                       *ngFor="let asset of productForm.get('assets')['controls']; let i = index">
                   <div *ngIf="productForm.get('assets').value[i]" class="preview-img-wrapper">
                     <img src="{{config.imgPath + config.cloudinary.cloud_name + '/c_fill,w_260,h_170,f_auto/' + productForm.get('assets').value[i]}}"
                          alt="productImage">
@@ -279,8 +279,8 @@
                        (click)="removeAssetsControl(i)">Видалити зображення</p>
                   </div>
 
-                  <div class="cell" fxFlex="25" fxFlex.lt-md="50"
-                       *ngIf="productForm.get('assets').value.length < 3">
+                  <div class="cell" fxFlex="25" fxFlex.sm="50" fxFlex.xs="100"
+                       *ngIf="productForm.get('assets').value.length < 4">
                     <div class="preview-img-wrapper">
                       <img src="{{
                         config.imgPath +
@@ -303,60 +303,11 @@
                   </div>
                 </div>
 
-
-              <!--<div class="row padding-bottom" fxLayout="column" fxLayout.gt-xs="row">-->
-                <!--<div class="cell-header" fxFlex="100">-->
-                  <!--<h3 class="mat-h3 margin-0">Технічні зображення колекції</h3>-->
-                <!--</div>-->
-                 <!--<div formArrayName="techAssets" class="cell" fxFlex="10" fxFlex.lt-md="25"-->
-                     <!--*ngFor="let asset of productForm.get('techAssets')['controls']; let i = index">-->
-                  <!--<div *ngIf="productForm.get('techAssets').value[i]" class="preview-img-wrapper">-->
-                    <!--<img src="{{config.imgPath + config.cloudinary.cloud_name + '/c_fill,w_55,h_55,f_auto/' + productForm.get('techAssets').value[i]}}"-->
-                         <!--alt="productImage">-->
-                    <!--<div *ngIf="processingLoadTechAssets === i" class="preview-div-processing">-->
-                      <!--<div class="spinner-wrapper">-->
-                        <!--<mat-spinner [diameter]="24"></mat-spinner>-->
-                      <!--</div>-->
-                    <!--</div>-->
-                  <!--</div>-->
-
-                  <!--<p *ngIf="processingLoadTechAssets !== i" class="remove-field text-center"-->
-                     <!--(click)="removeTechAssetsControl(i)">-->
-                    <!--Видалити зображення</p>-->
-                <!--</div>-->
-
-                <!--<div class="cell" fxFlex="25" fxFlex.lt-md="50"-->
-                     <!--*ngIf="productForm.get('techAssets').value.length < 9">-->
-                  <!--<div class="preview-img-wrapper">-->
-                    <!--<img src="{{-->
-                        <!--config.imgPath +-->
-                        <!--config.cloudinary.cloud_name +-->
-                        <!--'/c_fill,w_180,h_180,f_auto/' +-->
-                        <!--config.defaultProductImg}}" alt="product">-->
-                    <!--<input #inputFile type="file" (change)="addTechAssets($event)"-->
-                           <!--accept=".jpg, .jpe, .jpeg, .bmp, .webp, .png, .gif, .svg" style="display:none;">-->
-
-                    <!--<div class="preview-div-processing">-->
-                      <!--<div class="button-wrapper">-->
-                        <!--<button mat-mini-fab color="primary" type="button"-->
-                                <!--(click)="inputFile.click();"-->
-                                <!--[disabled]="processingLoadTechAssets >= 0">-->
-                          <!--<mat-icon>add</mat-icon>-->
-                        <!--</button>-->
-                      <!--</div>-->
-                    <!--</div>-->
-                  <!--</div>-->
-                <!--</div>-->
-              <!--</div>-->
-
-              <div class="row padding-bottom" fxLayout="column" fxLayout.gt-xs="row">
-                <div class="cell-header" fxLayout="column" fxLayout.gt-xs="row" fxFlex="100">
-                  <!--<div class="item" fxFlex="50">-->
-                  <h3 class="mat-h3 margin-0">Технічні властивості
-
-                  </h3>
+              <div class="row padding-bottom" fxLayout="row">
+                <div class="cell-header" fxFlex="100">
+                  <h3 class="mat-h3 margin-0">Технічні властивості</h3>
                 </div>
-                <div class="cell" fxFlex="50" fxLayout="row">
+                <div class="cell" fxFlex.xs="100" fxFlex.gt-xs="50" fxLayout="row">
                   <div class="item" fxFlex="calc(100%-40px)">
                     <mat-form-field>
                       <input type="text" matInput placeholder="Додати характеристику" formControlName="tech" [matAutocomplete]="autoTech">
@@ -374,10 +325,13 @@
                             (click)="addTechAsset()"><mat-icon>add_circle</mat-icon></button>
                   </div>
                 </div>
-                <div class="cell" fxFlex="50">
-                </div>
+                <div class="cell" fxHide.xs fxFlex.gt-xs="50" fxLayout="row"></div>
 
-                <div formArrayName="techAssets" class="cell" fxFlex="25" fxFlex.lt-md="50"
+
+                <!--<div class="cell" fxFlex.xs="100" fxFlex="50">-->
+                <!--</div>-->
+
+                <div formArrayName="techAssets" class="cell" fxFlex="25" fxFlex.sm="50" fxFlex.xs="100"
                      *ngFor="let tech of productForm.get('techAssets')['controls']; let i = index">
                   <h4 *ngIf="productForm.get('techAssets').value[i]"
                       class="mat-h4 text-center">{{productForm.get('techAssets').value[i]}}</h4>
@@ -397,14 +351,11 @@
 
 
 
-              <div class="row padding-bottom" fxLayout="column" fxLayout.gt-xs="row">
-                <div class="cell-header" fxLayout="column" fxLayout.gt-xs="row" fxFlex="100">
-                  <!--<div class="item" fxFlex="50">-->
-                  <h3 class="mat-h3 margin-0">Дизайни
-
-                  </h3>
+              <div class="row padding-bottom" fxLayout="row">
+                <div class="cell-header" fxFlex="100">
+                  <h3 class="mat-h3 margin-0">Дизайни</h3>
                 </div>
-                <div class="cell" fxFlex="50" fxLayout="row">
+                <div class="cell" fxFlex.xs="100" fxFlex.gt-xs="50" fxLayout="row">
                   <div class="item" fxFlex="calc(100%-40px)">
                     <mat-form-field >
                       <input type="text" matInput placeholder="Додати дизайн" formControlName="des" [matAutocomplete]="auto">
@@ -422,10 +373,9 @@
                             (click)="addDesign()"><mat-icon>add_circle</mat-icon></button>
                   </div>
                 </div>
-                <div class="cell" fxFlex="50">
-                </div>
+                <div class="cell" fxHide.xs fxFlex.gt-xs="50" fxLayout="row"></div>
 
-                <div formArrayName="designs" class="cell" fxFlex="25" fxFlex.lt-md="50"
+                <div formArrayName="designs" class="cell" fxFlex="25" fxFlex.sm="50" fxFlex.xs="100"
                      *ngFor="let des of productForm.get('designs')['controls']; let i = index">
                   <h4 *ngIf="productForm.get('designs').value[i]"
                       class="mat-h4 text-center">{{productForm.get('designs').value[i]}}</h4>

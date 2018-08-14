@@ -1,29 +1,32 @@
 <div class="container">
-  <div class="row" fxLayout="column" fxLayout.gt-xs="row">
+  <div class="row" fxLayout="row">
 
     <div class="cell padding-bottom" fxFlex="100">
-      <mat-card>
-        <mat-card-title>
-          <p>Ми допоможемо підібрати покриття згідно ваших потреб</p>
-        </mat-card-title>
-        <mat-card-content>
-          <div class="row" fxLayout="column" fxLayout.gt-xs="row">
+      <!--<mat-card>-->
+        <!--<mat-card-title>-->
+          <!--<p>Ми допоможемо підібрати покриття згідно ваших потреб</p>-->
+        <!--</mat-card-title>-->
+        <!--<mat-card-content>-->
+          <div class="row" fxLayout="row">
             <div class="cell" fxHide.xs fxFlex.gt-xs="5"></div>
-            <div class="cell" fxFlex.xs="100" fxFlex.gt-xs="90">
-              <mat-form-field>
-                <mat-select placeholder="Призначення покриття" (selectionChange)="onSelectCategory($event)">
-                  <mat-option *ngFor="let recommendation of recommendations" [value]="recommendation" >
-                    {{recommendation}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
+            <div class="cell-padding" fxFlex.xs="100" fxFlex.gt-xs="90">
+              <form [formGroup]="recomForm" novalidate>
+                <mat-form-field>
+                  <mat-select class="full-width" formControlName="recom" placeholder="Призначення покриття" (selectionChange)="onSelectCategory($event)">
+                    <mat-option *ngFor="let recommendation of recommendations" [value]="recommendation">
+                      {{recommendation}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </form>
+
 
             </div>
 
             </div>
 
-        </mat-card-content>
-      </mat-card>
+        <!--</mat-card-content>-->
+      <!--</mat-card>-->
 
     </div>
   </div>
@@ -42,10 +45,10 @@
                 {{product.name}}
               </a>
             </mat-card-subtitle>
-            <div class="row" fxLayout="column" fxLayout.gt-xs="row">
-              <div fxFlex="100" class="cell">{{product.description}}</div>
+            <div class="row" fxLayout="row">
+              <div fxFlex="100" class="cell text-justify">{{product.description}}</div>
 
-              <div fxFlex.sm="33" fxFlex.gt-sm="25" class="cell"
+              <div fxFlex.xs="100" fxFlex.sm="33" fxFlex.gt-sm="25" class="cell"
                    fxLayout fxLayoutAlign="center center"
                    *ngFor="let productAsset of product.assets">
                 <mat-card *ngIf="media.isActive('xs')" class="no-padding">

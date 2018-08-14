@@ -5,6 +5,7 @@ import { config } from '../../../app.config';
 import { DesignPopupComponent } from '../design-popup/design-popup.component';
 import { ProductService } from '../../../services/product.service';
 import { IProduct } from '../../../interfaces/product-interface';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-gallery',
@@ -30,6 +31,7 @@ export class GalleryComponent implements OnInit {
 
   recommendations: string[];
   products: IProduct[];
+  recomForm: FormGroup;
 
   constructor(
     public dialog: MatDialog,
@@ -38,20 +40,26 @@ export class GalleryComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.recomForm = new FormGroup({
+      recom: new FormControl([])
+    });
+
     this.productService.getRecommendations()
       .subscribe(result => {
-        console.log('recommendations', result.data);
+        // console.log('recommendations', result.data);
         this.recommendations = result.data;
+        this.recomForm.get('recom').setValue(this.recommendations[0]);
+        this.onSelectCategory({value: this.recommendations[0]});
       },
         err => console.log('error get recmmendations', err));
   }
 
   onSelectCategory(event) {
     const recommendation = event.value;
-    console.log('select', event.value);
+    // console.log('select', event.value);
     this.productService.getProductsByRecommendation(recommendation)
       .subscribe(result => {
-          console.log('products', result.data);
+          // console.log('products', result.data);
           this.products = result.data;
         },
         err => console.log('error get products by recmmendation', err));
