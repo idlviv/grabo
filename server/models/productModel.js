@@ -1,7 +1,22 @@
 const mongoose = require('../config/mongoose');
 const Schema = mongoose.Schema;
-const config = require('../config');
-const DesignModel = require('./designModel');
+
+// const RecommendationSchema = require('./recommendationModel').RecommendationSchema;
+
+// const RecommendationSchema = new Schema({
+//   _id: {
+//     type: String,
+//     required: true
+//   },
+//   name: {
+//     type: String,
+//     required: true,
+//   },
+//   parent: {
+//     type: String,
+//     required: true,
+//   },
+// });
 
 const ProductSchema = new Schema({
   _id: {
@@ -43,24 +58,25 @@ const ProductSchema = new Schema({
     type: String,
     required: true
   },
-  recommendations: {
-        type: [String],
-        required: true,
-      },
-    // {
-    //   _id: {
-    //     type: String,
-    //     required: true,
-    //   },
+  recommendations:
+    {
+      type: [String],
+      required: true,
+    },
+
+      // _id: {
+      //   type: String,
+      //   required: true,
+      // },
     //   name: {
     //     type: String,
     //     required: true,
     //   },
     //   sub: {
-    //     type: [],
+    //     type: [String],
     //     required: true,
     //   }
-    // }
+    // },
   techDescriptions: [
     {
       techName: {

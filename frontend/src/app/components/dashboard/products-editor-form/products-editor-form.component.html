@@ -153,7 +153,7 @@
               <div class="row padding-bottom" fxLayout="row">
                 <div class="cell-header" fxLayout="row" fxFlex="100">
                     <h3 class="mat-h3 margin-0">Рекомендації <span>
-                       <button  *ngIf="productForm.get('recommendations').value.length < 7"
+                       <button  *ngIf="productForm.get('recommendations').value.length < 50"
                                 mat-icon-button color="accent" type="button"
                                 (click)="addRecommendationsControl()"><mat-icon>add_circle</mat-icon></button>
                     </span></h3>
@@ -168,10 +168,10 @@
                         <!--{{recommendation._id}}-->
                       <!--</mat-option>-->
 
-                      <mat-optgroup *ngFor="let recommendation of recommendations" [label]="recommendation.name"
+                      <mat-optgroup *ngFor="let recommendation of recommendations" [label]="recommendation._id"
                                     [disabled]>
-                        <mat-option *ngFor="let sub of recommendation.sub" [value]="sub">
-                          {{sub}}
+                        <mat-option *ngFor="let sub of recommendation.sub" [value]="sub._id">
+                          {{sub.name}}
                         </mat-option>
                       </mat-optgroup>
                     </mat-select>

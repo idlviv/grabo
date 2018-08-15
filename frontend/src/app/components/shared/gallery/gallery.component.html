@@ -15,10 +15,10 @@
 
 
                   <mat-select formControlName="recommendations" placeholder="Призначення покриття" (selectionChange)="onSelectCategory($event)">
-                    <mat-optgroup *ngFor="let recommendation of recommendations" [label]="recommendation.name"
+                    <mat-optgroup *ngFor="let recommendation of recommendations" [label]="recommendation._id"
                                   [disabled]>
-                      <mat-option *ngFor="let sub of recommendation.sub" [value]="sub">
-                        {{sub}}
+                      <mat-option *ngFor="let sub of recommendation.sub" [value]="sub._id">
+                        {{sub.name}}
                       </mat-option>
                     </mat-optgroup>
                   </mat-select>

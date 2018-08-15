@@ -7,6 +7,9 @@ import { ProductService } from '../../../services/product.service';
 import { IProduct } from '../../../interfaces/product-interface';
 import { FormControl, FormGroup } from '@angular/forms';
 import { IRecommendation } from '../../../interfaces/interface';
+import { mergeMap } from 'rxjs/operators';
+import { of } from 'rxjs/index';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-gallery',
@@ -30,15 +33,16 @@ export class GalleryComponent implements OnInit {
   //   'catalog_commercial',
   // ];
 
-  recommendations = <IRecommendation[]>config.recommendations;
-
+  recommendations: IRecommendation[];
+  recommendation_id: string;
   products: IProduct[];
   recomForm: FormGroup;
 
   constructor(
     public dialog: MatDialog,
     public media: ObservableMedia,
-    private productService: ProductService
+    private productService: ProductService,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
@@ -46,10 +50,37 @@ export class GalleryComponent implements OnInit {
       recommendations: new FormControl([
       ])
     });
-    console.log('rec', this.recommendations[0].sub[0]);
 
-        this.recomForm.get('recommendations').setValue(this.recommendations[0].sub[0]);
-        this.onSelectCategory({value: this.recommendations[0].sub[0]});
+    this.productService.getRecommendations().pipe(
+      mergeMap(result => {
+        this.recommendations = result.data;
+        return this.route.paramMap;
+      })
+    )
+      .subscribe(paramMap => {
+        this.recommendation_id = paramMap.get('_id');
+          console.log('this.recommendation_id', this.recommendation_id);
+        if (!this.recommendation_id) {
+          this.recomForm.get('recommendations').setValue(this.recommendations[0].sub[0]._id);
+          this.onSelectCategory({value: this.recommendations[0].sub[0]._id});
+        } else {
+          this.recomForm.get('recommendations').setValue(this.recommendation_id);
+          this.onSelectCategory({value: this.recommendation_id});
+        }
+      },
+        err => console.log('Помилка', err)
+      );
+
+    // this.productService.getRecommendations()
+    //   .subscribe(result => {
+    //       this.recommendations = result.data;
+    //       this.recomForm.get('recommendations').setValue(this.recommendations[0].sub[0]._id);
+    //       this.onSelectCategory({value: this.recommendations[0].sub[0]._id});
+    //     },
+    //     err => console.log('Помилка завантеження рекомендацій', err)
+    //   );
+
+
 
     // this.productService.getRecommendations()
     //   .subscribe(result => {

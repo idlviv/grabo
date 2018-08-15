@@ -21,6 +21,10 @@ const appRoutes: Routes = [
     // pathMatch: 'full'
   },
   {
+    path: 'gallery/ch/:_id',
+    component: GalleryComponent
+  },
+  {
     path: 'gallery/ch',
     component: GalleryComponent
   },

@@ -51,6 +51,10 @@ router.get('/product/get-recommendations',
   productController.getRecommendations
 );
 
+router.get('/product/get-recommendations-by-ids',
+  productController.getRecommendationsByIds
+);
+
 router.get('/product/get-products-by-recommendation',
   productController.getProductsByRecommendation
 );

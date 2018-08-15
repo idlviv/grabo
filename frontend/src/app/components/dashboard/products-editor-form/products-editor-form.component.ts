@@ -9,7 +9,7 @@ import { IDesign, IRecommendation, ITechAsset } from '../../../interfaces/interf
 import { ProductService } from '../../../services/product.service';
 import { DesignService } from '../../../services/design.service';
 import { mergeMap } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { of, combineLatest } from 'rxjs';
 // import { Observable } from 'rxjs/Observable';
 
 import {Observable} from 'rxjs';
@@ -47,11 +47,10 @@ export class ProductsEditorFormComponent implements OnInit {
   techAssets_id = [];
   techAssetValidity = false;
 
-  recommendations = <IRecommendation[]>config.recommendations;
+  // recommendations = <IRecommendation[]>config.recommendations;
+  recommendations: IRecommendation[];
 
   filteredDesigns: Observable<string[]>;
-  // options: string[] = ['4121-260', '4122-260'];
-  // designFilterValue: string;
   designValidity = false;
 
   constructor(
@@ -103,20 +102,23 @@ export class ProductsEditorFormComponent implements OnInit {
       techDescriptions: new FormArray([]),
     });
 
-    this.route.paramMap.pipe(
+    this.productService.getRecommendations().pipe(
+      mergeMap(result => {
+        this.recommendations = result.data;
+        return this.route.paramMap;
+      }),
       mergeMap(paramMap => {
         this.edited_id = paramMap.get('_id');
         this.parentCategory_id = paramMap.get('parentCategory_id');
         this.parentCategoryName = paramMap.get('parentCategoryName');
-         if (!this.edited_id) {
+        if (!this.edited_id) {
           return of(null);
         }
         return this.productService.getProductById(this.edited_id);
-      }),
+      })
     )
-      .subscribe(result => {
+    .subscribe(result => {
         if (result) {
-          console.log('result.data', result.data);
           this.editMode = true;
           for (let i = 0; i < result.data.designs.length; i++) {
             this.addDesignsControl();
@@ -133,19 +135,12 @@ export class ProductsEditorFormComponent implements OnInit {
           for (let i = 0; i < result.data.techDescriptions.length; i++) {
             this.addTechDescriptionsControl();
           }
-          // const patch = Object.assign(result.data);
-          // const rec = result.data.recommendations.map(val => val.sub[0]);
-          // patch.recommendations = rec;
-          // console.log('rec', rec);
           this.productForm.patchValue(result.data);
-
-          console.log('this.productForm.get(\'recommendations\').value', this.productForm.get('recommendations').value);
-
           this.productForm.get('_id').disable();
-        } else {
-          console.log('false');
         }
-      });
+      },
+      err => console.log('Помилка', err)
+    );
 
     this.productService.getTechAssets()
       .subscribe(result => {

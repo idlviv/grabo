@@ -36,12 +36,8 @@ export class ProductsDetailComponent implements OnInit {
     )
       .subscribe(
         result => {
-          // console.log('result', result);
           this.product = result[0].data;
-          console.log('detail product', this.product);
           this.siblings = result[1].data;
-          console.log('detail descendants', this.siblings);
-
         }
       );
   }

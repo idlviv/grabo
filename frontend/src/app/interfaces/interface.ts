@@ -23,6 +23,10 @@ export interface IFeedback {
 
 export interface IRecommendation {
   _id: string;
-  name: string;
-  sub: string[];
+  sub: [
+    {
+      _id: string;
+      name: string;
+    }
+  ];
 }

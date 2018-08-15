@@ -1,5 +1,7 @@
 const CatalogModel = require('../models/catalogModel');
 const ProductModel = require('../models/productModel');
+const RecommendationModel = require('../models/recommendationModel');
+
 const ResObj = require('../libs/responseObject');
 const DbError = require('../errors/dbError');
 const ApplicationError = require('../errors/applicationError');
@@ -23,13 +25,39 @@ module.exports.getProductById = function(req, res, next) {
 };
 
 
-module.exports.getRecommendations = function(req, res, next) {
-      ProductModel.distinct('recommendations')
-        .then(result => {
-          return res.status(200).json(new ResObj(true, 'Масив рекомендацій', result));
-        })
-        .catch(err => next(new DbError()));
+module.exports.getRecommendationsByIds = function(req, res, next) {
+  let ids = req.query.ids.split(',').map(res => ObjectId(res));
 
+  RecommendationModel.aggregate([
+    {
+      $match: {'_id': {'$in': ids}}
+    },
+    {
+      $group: {
+        _id: '$parent',
+        sub: {$addToSet: {name: '$name', _id: '$_id'}},
+      }
+    }
+  ])
+    .then(result => {
+      return res.status(200).json(new ResObj(true, 'Масив рекомендацій', result));
+    })
+    .catch(err => next(new DbError()));
+};
+
+module.exports.getRecommendations = function(req, res, next) {
+  RecommendationModel.aggregate([
+    {
+      $group: {
+        _id: '$parent',
+        sub: {$addToSet: {name: '$name', _id: '$_id'}},
+      }
+    }
+  ])
+    .then(result => {
+      return res.status(200).json(new ResObj(true, 'Масив рекомендацій', result));
+    })
+    .catch(err => next(new DbError()));
 };
 
 module.exports.getProductsByRecommendation = function(req, res, next) {

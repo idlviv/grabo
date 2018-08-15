@@ -46,6 +46,20 @@ export class ProductService {
     );
   }
 
+  getRecommendationsByIds(ids) {
+    console.log('ids', ids);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+      }),
+      params: new HttpParams().set('ids', ids)
+    };
+    return this.http.get<IResponse>(
+      'api/product/get-recommendations-by-ids',
+      httpOptions
+    );
+  }
+
   getProductsByRecommendation(recommendation) {
     const httpOptions = {
       headers: new HttpHeaders({

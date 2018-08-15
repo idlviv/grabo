@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { config } from '../../../app.config';
-import { IDesign } from '../../../interfaces/interface';
+import { IDesign, IRecommendation } from '../../../interfaces/interface';
 import { DesignService } from '../../../services/design.service';
 import { of } from 'rxjs/index';
 import { ConfirmPopupComponent } from '../confirm-popup/confirm-popup.component';
@@ -8,6 +8,8 @@ import { mergeMap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material';
 import { DesignPopupComponent } from '../design-popup/design-popup.component';
 import { ObservableMedia } from '@angular/flex-layout';
+import { ProductService } from '../../../services/product.service';
+import { IProduct } from '../../../interfaces/product-interface';
 
 
 @Component({
@@ -17,15 +19,18 @@ import { ObservableMedia } from '@angular/flex-layout';
 })
 
 export class ProductItemDetailComponent implements OnInit {
-  @Input() product;
+  @Input() product: IProduct;
   @Input() category_id;
   config = config;
   designs: IDesign[];
+  recommendations: IRecommendation[];
+  // panelOpenState = false;
 
   constructor(
     private designService: DesignService,
     public dialog: MatDialog,
     public media: ObservableMedia,
+    private productService: ProductService,
   ) { }
 
   ngOnInit() {
@@ -34,6 +39,14 @@ export class ProductItemDetailComponent implements OnInit {
           this.designs = result.data;
         },
         err => console.log('Помилка завантеження дизайнів', err)
+      );
+
+    this.productService.getRecommendationsByIds(this.product.recommendations)
+      .subscribe(result => {
+          this.recommendations = result.data;
+          console.log('recommendations', this.recommendations);
+        },
+        err => console.log('Помилка завантеження рекомендацій', err)
       );
   }
 
@@ -51,7 +64,6 @@ export class ProductItemDetailComponent implements OnInit {
 
     dialogRef.afterClosed()
       .subscribe(result => {
-          console.log('result popup', result);
         },
         err => console.log('err delete', err)
       );

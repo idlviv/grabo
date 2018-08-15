@@ -79,16 +79,51 @@
                     <H2 class="mat-h2 text-align-center">Рекомендовані області застосування</H2>
                   </div>
                   <div>
-                    <mat-list>
-                      <mat-list-item *ngFor="let recommendation of product.recommendations">
-                        <mat-icon matListIcon>arrow_right</mat-icon>
-                        <h3 matLine> {{recommendation}} </h3>
-                      </mat-list-item>
-                    </mat-list>
-                  </div>
+                    <mat-accordion *ngIf="recommendations">
+                      <mat-expansion-panel *ngFor="let recommendation of recommendations">
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            Сфера застосування
+                          </mat-panel-title>
+                          <mat-panel-description>
+                            {{recommendation._id}}
+                          </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <mat-list>
+                          <mat-list-item *ngFor="let sub of recommendation.sub">
+                            <mat-icon matListIcon>done</mat-icon>
 
+                            <h3 matLine>
+                              <a mat-button
+                                 [routerLink]="['/gallery/ch', sub._id]"
+                                 [routerLinkActive]="['accent']" [routerLinkActiveOptions]="{exact: true}">
+
+                                {{sub.name}}
+                              </a></h3>
+                          </mat-list-item>
+                        </mat-list>
+                      </mat-expansion-panel>
+                    </mat-accordion>
+                  </div>
                 </div>
               </div>
+
+              <!--<div class="row" fxFlex.sm="50" fxLayout="row">-->
+                <!--<div class="cell margin-bottom-3" fxFlex="100">-->
+                  <!--<div fxFlex>-->
+                    <!--<H2 class="mat-h2 text-align-center">Рекомендовані області застосування</H2>-->
+                  <!--</div>-->
+                  <!--<div>-->
+                    <!--<mat-list>-->
+                      <!--<mat-list-item *ngFor="let recommendation of product.recommendations">-->
+                        <!--<mat-icon matListIcon>arrow_right</mat-icon>-->
+                        <!--<h3 matLine> {{recommendation}} </h3>-->
+                      <!--</mat-list-item>-->
+                    <!--</mat-list>-->
+                  <!--</div>-->
+
+                <!--</div>-->
+              <!--</div>-->
 
               <div class="row" fxFlex.sm="50" fxLayout="row">
                 <div class="cell margin-bottom-3" fxFlex="100" fxLayout="column">
