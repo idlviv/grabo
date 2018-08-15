@@ -26,7 +26,7 @@ module.exports.getProductById = function(req, res, next) {
 
 
 module.exports.getRecommendationsByIds = function(req, res, next) {
-  let ids = req.query.ids.split(',').map(res => ObjectId(res));
+  let ids = req.query.ids.split(',')//.map(res => ObjectId(res));
 
   RecommendationModel.aggregate([
     {
@@ -40,6 +40,7 @@ module.exports.getRecommendationsByIds = function(req, res, next) {
     }
   ])
     .then(result => {
+      console.log('result', result);
       return res.status(200).json(new ResObj(true, 'Масив рекомендацій', result));
     })
     .catch(err => next(new DbError()));
