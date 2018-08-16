@@ -1,3 +1,9 @@
+<div *ngIf="category?.description" class="row" fxLayout="row">
+  <div class="cell" fxFlex="100">
+    <p class="mat-body-2">{{category.description}}</p>
+  </div>
+</div>
+
 <div class="row" fxLayout="row" >
   <div *ngFor="let product of products"  class="cell"
        fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="33.3" fxFlex.gt-md="25">
@@ -10,4 +16,3 @@
     <!--<app-catalog-item [descendant]="descendant"></app-catalog-item>-->
   </div>
 </div>
-<p></p>

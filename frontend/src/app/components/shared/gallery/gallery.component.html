@@ -7,13 +7,17 @@
           <!--<p>Ми допоможемо підібрати покриття згідно ваших потреб</p>-->
         <!--</mat-card-title>-->
         <!--<mat-card-content>-->
+      <div class="row" fxLayout="row">
+        <div class="cell" fxHide.xs fxFlex.gt-xs="5"></div>
+        <div class="cell" fxFlex.xs="100" fxFlex.gt-xs="95">
+          <h2 class="mat-h2">Сфера використання: <span class="muted">{{recommendation_parent}}</span></h2>
+        </div>
+      </div>
           <div class="row" fxLayout="row">
             <div class="cell" fxHide.xs fxFlex.gt-xs="5"></div>
-            <div class="cell-padding" fxFlex.xs="100" fxFlex.gt-xs="90">
+            <div class="cell-padding" fxFlex.xs="100" fxFlex.gt-xs="95">
               <form [formGroup]="recomForm" novalidate>
                 <mat-form-field>
-
-
                   <mat-select formControlName="recommendations" placeholder="Призначення покриття" (selectionChange)="onSelectCategory($event)">
                     <mat-optgroup *ngFor="let recommendation of recommendations" [label]="recommendation._id"
                                   [disabled]>

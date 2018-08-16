@@ -35,6 +35,7 @@ export class GalleryComponent implements OnInit {
 
   recommendations: IRecommendation[];
   recommendation_id: string;
+  recommendation_parent: string;
   products: IProduct[];
   recomForm: FormGroup;
 
@@ -94,13 +95,18 @@ export class GalleryComponent implements OnInit {
 
   onSelectCategory(event) {
     const recommendation = event.value;
-    // console.log('select', event.value);
-    this.productService.getProductsByRecommendation(recommendation)
+    console.log('recommendation', recommendation);
+    this.productService.getRecommendationsByIds([recommendation]).pipe(
+      mergeMap ( result => {
+        console.log('recommendation_parent result', result.data[0]._id);
+        this.recommendation_parent = result.data[0]._id;
+        return this.productService.getProductsByRecommendation(recommendation);
+        }
+      ))
       .subscribe(result => {
-          // console.log('products', result.data);
           this.products = result.data;
         },
-        err => console.log('error get products by recmmendation', err));
+        err => console.log('error get products by recommendation', err));
   }
 
   openDialog(asset, title): void {

@@ -128,8 +128,8 @@ router.get('/product/get-products-by-category',
 /**
  * catalog routes
  */
-router.get('/catalog/get-prefix',
-  catalogController.getPrefix
+router.get('/catalog/get-category-by-id',
+  catalogController.getCategoryById
 );
 
 router.get('/catalog/get-all-descendants',

@@ -11,17 +11,17 @@ export class CatalogService {
     private http: HttpClient
   ) { }
 
-  getPrefix(category: string) {
+  getCategoryById(_id: string) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
       }),
       params: new HttpParams({ fromObject: {
-        category
+          _id
       }})
     };
     return this.http.get<IResponse>(
-      'api/catalog/get-prefix',
+      'api/catalog/get-category-by-id',
       httpOptions
     );
   }

@@ -5,12 +5,21 @@ const ApplicationError = require('../errors/applicationError');
 const ObjectId = require('../config/mongoose').Types.ObjectId;
 const log = require('../config/winston')(module);
 
-module.exports.getPrefix = function(req, res, next) {
-  const _id = req.query.category;
-  CatalogModel.findOne({_id}, {prefix: 1, _id: 0})
+// module.exports.getPrefix = function(req, res, next) {
+//   const _id = req.query.category;
+//   CatalogModel.findOne({_id}, {prefix: 1, _id: 0})
+//     .then(result => {
+//     return res.status(200).json(new ResObj(true, 'Префікс', result));
+//   })
+//     .catch(err => next(new DbError()));
+// };
+
+module.exports.getCategoryById = function(req, res, next) {
+  const _id = req.query._id;
+  CatalogModel.findOne({_id})
     .then(result => {
-    return res.status(200).json(new ResObj(true, 'Префікс', result));
-  })
+      return res.status(200).json(new ResObj(true, 'Категорія', result));
+    })
     .catch(err => next(new DbError()));
 };
 
@@ -52,6 +61,8 @@ module.exports.getAllDescendants = function(req, res, next) {
     })
     .catch(err => next(err));
 };
+
+
 
 module.exports.getDescendants = function(req, res, next) {
   item = req.query.item;

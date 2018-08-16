@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { mergeMap } from 'rxjs/operators';
+import { of } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../../services/product.service';
 import { IProduct } from '../../../interfaces/product-interface';
@@ -16,6 +17,7 @@ export class ProductsListComponent implements OnInit {
   products: IProduct[];
   category_id: string;
   descendants: string;
+  category: any
 
   constructor(
     private route: ActivatedRoute,
@@ -31,14 +33,23 @@ export class ProductsListComponent implements OnInit {
     //   );
 
     this.route.paramMap.pipe(
+
       mergeMap(paramMap => {
         this.category_id = paramMap.get('category_id');
         // console.log('list this.category_id', this.category_id);
-
         if (!this.category_id) {
+          return of(null);
+        }
+        return this.catalogService.getCategoryById(this.category_id);
+      }),
+      mergeMap(paramMap => {
+        console.log('paramMap', paramMap);
+        if (paramMap) {
+          this.category = paramMap.data;
+          return this.catalogService.getDescendants(this.category_id);
+        } else {
           return this.catalogService.getDescendants('products');
         }
-        return this.catalogService.getDescendants(this.category_id);
       }),
       mergeMap(result => {
         this.descendants = result.data;

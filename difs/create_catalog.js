@@ -19,7 +19,8 @@ db.getCollection('catalogs')
           //   auth: 'casual', order: 1, prefix: '', assets: ['catalog'], description: ''},
 
         { _id: 'semi_commercial', name: 'Напівкомерційний лінолеум', ancestors: ['home', 'common', 'products'], parent: 'products',
-          auth: 'casual', order: 2, prefix: '', assets: ['catalog_semi_commercial'], description: ''},
+          auth: 'casual', order: 2, prefix: '', assets: ['catalog_semi_commercial'],
+          description: 'Дуже добра зносостійкість Хороша звукоізоляція Хороший комфорт Легко чистити Просте та швидке вкладання Гарна стабільність'},
           // { _id: 'astral_color', name: 'Astral color', ancestors: ['home', 'common', 'products', 'semi_commercial'], parent: 'semi_commercial',
           //   auth: 'casual', order: 2, prefix: '', assets: ['catalog'], description: ''},
           // { _id: 'top', name: 'Top extra', ancestors: ['home', 'common', 'products', 'semi_commercial'], parent: 'semi_commercial',
