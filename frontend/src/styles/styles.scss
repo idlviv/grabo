@@ -251,6 +251,9 @@ body {
 .wrap {
   flex-wrap: wrap;
 }
+.width-200 {
+  width: 200px;
+}
 
 .margin-0,
 .no-margin {
@@ -364,6 +367,10 @@ $primary-background-light: mat-color($primary, 100);
 
 .display-none {
   display: none;
+}
+
+.display-block {
+  display: block;
 }
 
 re-captcha > div{
