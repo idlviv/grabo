@@ -22,9 +22,9 @@
         <mat-icon>folder</mat-icon> {{hierarchyCategoryItem.name}}<mat-icon>keyboard_arrow_right</mat-icon></a>
     </div>
     <div *ngIf="!processing" fxHide.lt-md>
-      <a *ngIf="productName" mat-button
-         [routerLinkActive]="['accent']" [routerLinkActiveOptions]="{exact: true}" disabled>
-        <mat-icon>insert_photo</mat-icon> {{productName}}</a>
+      <button *ngIf="productName" mat-button
+         class="accent" disabled>
+        <mat-icon class="accent">insert_photo</mat-icon> {{productName}}</button>
     </div>
   </div>
 

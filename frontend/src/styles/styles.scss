@@ -290,7 +290,7 @@ $light-gray: #D6E7F7;
 
 
 .accent{
-  color: $_accent;
+  color: $_accent !important;
 }
 
 .accent-background{
