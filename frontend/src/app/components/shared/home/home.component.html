@@ -1,4 +1,54 @@
-<div class="container" >
+
+<div class="container">
+
+  <!--<div class="position-fixed">-->
+    <!--<img class="responsive-image"-->
+         <!--src="{{-->
+                    <!--config.imgPath +-->
+                    <!--config.cloudinary.cloud_name +-->
+                    <!--'/c_fill,w_1800,h_400,f_auto/' +-->
+                    <!--'main'}}"-->
+         <!--alt="Grabo">-->
+  <!--</div>-->
+
+  <!--<div class="row" fxLayout="row" *ngFor="let descendant of descendants">-->
+    <!--<div class="cell" fxFlex="10"></div>-->
+    <!--<div class="cell" fxFlex="80">-->
+      <!--<div class="vh-block">-->
+        <!--<div class="inner">-->
+          <!--<div class="container home-container">-->
+            <!--<div class="row" fxLayout="row">-->
+              <!--<div class="cell" fxFlex.xs="100" fxFlex.gt-xs="70">-->
+                <!--<p class="mat-body-2">Классический текст Lorem Ipsum, используемый с XVI века-->
+                  <!--"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."-->
+
+                  <!--Абзац 1.10.32 "de Finibus Bonorum et Malorum", написанный Цицероном в 45 году н.э.-->
+                  <!--"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</p>-->
+                <!--&lt;!&ndash;<img class="responsive-image"&ndash;&gt;-->
+               <!--&lt;!&ndash;src="{{&ndash;&gt;-->
+                <!--&lt;!&ndash;config.imgPath +&ndash;&gt;-->
+                <!--&lt;!&ndash;config.cloudinary.cloud_name +&ndash;&gt;-->
+                <!--&lt;!&ndash;'/c_fill,w_1800,h_400,f_auto/' +&ndash;&gt;-->
+                <!--&lt;!&ndash;'main'}}"&ndash;&gt;-->
+                <!--&lt;!&ndash;alt="Grabo">&ndash;&gt;-->
+              <!--</div>-->
+              <!--<div class="cell home-button-block" fxFlex.xs="100" fxFlex.gt-xs="30" fxLayout>-->
+                  <!--<a fxFlex="100" class="radius-5 text-center" color="accent" mat-stroked-button-->
+                     <!--[routerLink]="['/products', 'ch', {outlets: {primary: [descendant._id], breadcrumb: [descendant._id]}}]"-->
+                     <!--[routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">-->
+                    <!--{{descendant.name}}-->
+                  <!--</a>-->
+
+
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+
+  <!--</div>-->
 
   <div class="row" fxLayout="row">
 
@@ -11,7 +61,7 @@
     <div fxFlex="10"></div>
     <div class="row wrap full-width" fxFlex="80" fxLayout="row" fxLayoutAlign="space-between">
         <div class="cell-padding" fxFlex="1 1 auto" *ngFor="let descendant of descendants" fxLayout="row">
-            <a fxFlex="1 1 auto" mat-button class="accent-background primary-light"
+            <a fxFlex="1 1 auto" mat-stroked-button class="radius-5 text-center" color="accent"
                [routerLink]="['/products', 'ch', {outlets: {primary: [descendant._id], breadcrumb: [descendant._id]}}]"
                [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">
               {{descendant.name}}

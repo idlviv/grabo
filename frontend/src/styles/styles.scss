@@ -952,3 +952,21 @@ mat-card {
   margin: 0
 }
 
+//.vh-block {
+//  width: 100%;
+//  height: calc(100vh - 250px);
+//  min-height: 250px;
+//  background-color: mat-color($primary, 500, .5);
+//  padding: 10px 0;
+//  border-radius: 8px;
+//  .inner {
+//    height: 100%;
+//    width: 100%;
+//    background-color: mat-color($primary, 100, .9);
+//  }
+//}
+
+.radius-5 {
+  border-radius: .5rem!important;
+}
+
