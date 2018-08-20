@@ -132,6 +132,11 @@ export const config = {
       image: 'fiba',
       description: ''
     },
+    {
+      _id: 'ihf',
+      image: 'ihf',
+      description: ''
+    },
   ],
   homeBanner: [
     'banner_residential',
