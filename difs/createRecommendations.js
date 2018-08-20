@@ -69,7 +69,7 @@ db.getCollection("recommendations")
         {_id: "sp04",                     name: "Шкільні спортзали",            parent: "Спорт"},
         {_id: "sp05",                     name: "Аеробіка",                     parent: "Спорт"},
         {_id: "sp06",                     name: "Йога",                         parent: "Спорт"},
-        {_id: "sp07",                     name: "Групові види спорту з м'ячем", parent: "Спорт"},
+        {_id: "sp07",                     name: "Ігрові види спорту з м'ячем", parent: "Спорт"},
         {_id: "sp08",                     name: "Спортивні змагання",           parent: "Спорт"},
         {_id: "sp09",                     name: "Фехтування",                   parent: "Спорт"},
         {_id: "sp10",                     name: "Гімнастика",                   parent: "Спорт"},
