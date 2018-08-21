@@ -1,14 +1,12 @@
 <div *ngIf="category?.description.p.length" class="row" fxLayout="row">
   <div class="cell" fxFlex="100">
-
     <mat-card>
-
       <mat-card-content>
         <h2 class="mat-h2" *ngIf="category?.description?.title">
           {{category.description.title}}
         </h2>
         <div class="text-justify">
-          <p class="mat-h3" *ngFor="let p of category.description.p">
+          <p class="mat-body-1" *ngFor="let p of category.description.p">
            {{p}}
           </p>
           <div class="category-description-block">

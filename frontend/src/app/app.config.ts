@@ -63,11 +63,6 @@ export const config = {
       description: ''
     },
     {
-      _id: 'silver_knight',
-      image: 'silver_knight',
-      description: ''
-    },
-    {
       _id: 'solvent_free',
       image: 'solvent_free',
       description: ''
