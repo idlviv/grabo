@@ -63,6 +63,9 @@ const ProductSchema = new Schema({
       type: [String],
       required: true,
     },
+  order: {
+    type: Number
+  },
 
       // _id: {
       //   type: String,

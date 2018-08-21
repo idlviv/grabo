@@ -89,6 +89,7 @@ module.exports.getProducts = function(req, res, next) {
         {categories: {$in: categories}},
         // {sku: 1, _id: 0}
         )
+        .sort({order: 1})
         .then(result => {
           return res.status(200).json(new ResObj(true, 'Масив товарів', result));
         })
@@ -111,7 +112,8 @@ module.exports.getSkuList = function(req, res, next) {
   const category = req.query.category;
   ProductModel.find({},
     // {categories: category},
-    {sku: 1, _id: 0}).sort({sku: 1})
+    {sku: 1, _id: 0})
+    .sort({sku: 1})
     .then(result => {
       return res.status(200).json(new ResObj(true, 'Масив артикулів', result));
     })
@@ -215,6 +217,7 @@ module.exports.getProductsByCategory = function(req, res, next) {
   ProductModel.find(
     {parent: category},
   )
+    .sort({order: 1})
     .then(result => {
       return res.status(200).json(new ResObj(true, 'Продукти категорії' + category, result));
     })

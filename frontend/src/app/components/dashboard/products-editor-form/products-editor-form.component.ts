@@ -80,6 +80,9 @@ export class ProductsEditorFormComponent implements OnInit {
       display: new FormControl('', [
         Validators.required,
       ]),
+      order: new FormControl('', [
+        Validators.required,
+      ]),
       mainImage: new FormControl('', [
         Validators.required,
       ]),
@@ -374,6 +377,7 @@ export class ProductsEditorFormComponent implements OnInit {
     this.product = {
       _id: this.productForm.getRawValue()._id, // raw because may be disabled
       name: this.productForm.get('name').value,
+      order: this.productForm.get('order').value,
       parent: this.parentCategory_id,
       display: this.productForm.get('display').value,
       mainImage: this.productForm.get('mainImage').value,

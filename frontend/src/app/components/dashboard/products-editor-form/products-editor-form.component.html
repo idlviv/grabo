@@ -50,6 +50,19 @@
 
                     <div class="cell" fxFlex="25" fxFlex.lt-md="50">
                       <mat-form-field>
+                        <input matInput placeholder="Порядок" formControlName="order" required>
+                        <!--<mat-error-->
+                          <!--*ngIf="(productForm.get('name').errors?.minlength ||-->
+                                      <!--productForm.get('name').errors?.maxlength ||-->
+                                      <!--productForm.get('name').errors?.required) &&-->
+                                      <!--productForm.get('name').touched">-->
+                          <!--Довжина повинна бути від 3 до 50 символів-->
+                        <!--</mat-error>-->
+                      </mat-form-field>
+                    </div>
+
+                    <div class="cell" fxFlex="25" fxFlex.lt-md="50">
+                      <mat-form-field>
                                         <mat-select placeholder="Публікувати" formControlName="display" required>
                           <mat-option [value]="true">
                             Так
