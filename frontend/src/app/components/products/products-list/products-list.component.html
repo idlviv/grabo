@@ -1,14 +1,18 @@
-<div *ngIf="category?.description" class="row" fxLayout="row">
+<div *ngIf="category?.description.p.length" class="row" fxLayout="row">
   <div class="cell" fxFlex="100">
 
     <mat-card>
+
       <mat-card-content>
+        <h2 class="mat-h2" *ngIf="category?.description?.title">
+          {{category.description.title}}
+        </h2>
         <div class="text-justify">
           <p class="mat-h3" *ngFor="let p of category.description.p">
            {{p}}
           </p>
           <div class="category-description-block">
-            <mat-list>
+            <mat-list *ngIf="category?.description?.li">
               <mat-list-item *ngFor="let li of category.description.li">
                 <mat-icon matListIcon>arrow_right</mat-icon>
                 <p>
