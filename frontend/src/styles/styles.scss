@@ -972,7 +972,12 @@ mat-card {
 }
 
 .category-description-block {
-  padding-right: 5rem;
+  @include gt-sm {
+    margin-right: 5rem;
+  }
+  @include sm {
+    margin-right: 2rem;
+  }
   mat-list {
     mat-list-item {
       height: auto!important;
