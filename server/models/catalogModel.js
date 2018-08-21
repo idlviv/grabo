@@ -2,6 +2,19 @@ const mongoose = require('../config/mongoose');
 const Schema = mongoose.Schema;
 const config = require('../config');
 
+const CatalogDescriptionSchema = new Schema({
+
+  title: {
+    type: String,
+  },
+  p: {
+    type: [String],
+  },
+  li: {
+    type: [String],
+  }
+});
+
 const CatalogSchema = new Schema({
   _id: {
     type: String,
@@ -19,9 +32,7 @@ const CatalogSchema = new Schema({
     type: String,
     require: true,
   },
-  description: {
-    type: String,
-  },
+  description: CatalogDescriptionSchema,
   assets: {
     type: [String],
     default: config.get('defaultProductImgPath'),

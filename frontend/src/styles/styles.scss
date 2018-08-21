@@ -908,6 +908,7 @@ mat-card {
     display: none !important;
   }
 }
+
 //.crsl {
 //  .mat-step-label,
 //  .mat-step-label-active,
@@ -970,3 +971,11 @@ mat-card {
   border-radius: .5rem!important;
 }
 
+.category-description-block {
+  padding-right: 5rem;
+  mat-list {
+    mat-list-item {
+      height: auto!important;
+    }
+  }
+}

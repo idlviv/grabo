@@ -1,6 +1,25 @@
 <div *ngIf="category?.description" class="row" fxLayout="row">
   <div class="cell" fxFlex="100">
-    <p class="mat-body-2">{{category.description}}</p>
+
+    <mat-card>
+      <mat-card-content>
+        <div class="text-justify">
+          <p class="mat-h3" *ngFor="let p of category.description.p">
+           {{p}}
+          </p>
+          <div class="category-description-block">
+            <mat-list>
+              <mat-list-item *ngFor="let li of category.description.li">
+                <mat-icon matListIcon>arrow_right</mat-icon>
+                <p>
+                 {{li}}
+                </p>
+              </mat-list-item>
+            </mat-list>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>
 
