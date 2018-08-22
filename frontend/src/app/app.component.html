@@ -118,7 +118,7 @@
                   <input type="text" matInput placeholder="Знайти дизайн" formControlName="findDesign" [matAutocomplete]="designSelector">
                   <mat-autocomplete #designSelector="matAutocomplete">
                     <mat-option *ngFor="let filteredDesign of filteredDesigns | async"
-                                (click)="onSelectDesign(_getDesign(filteredDesign), false)" [value]="filteredDesign">
+                                (click)="onSelectDesign(_getDesign(filteredDesign), true)" [value]="filteredDesign">
                       {{filteredDesign}}
                     </mat-option>
                   </mat-autocomplete>
