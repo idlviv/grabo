@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CatalogService } from './services/catalog.service';
 import { ICatalog } from './interfaces/catalog-interface';
 // import { Cloudinary } from '@cloudinary/angular-5.x';
-import { MatDialog, MatMenuTrigger } from '@angular/material';
+import { MatDialog, MatDrawerContainer, MatMenuTrigger } from '@angular/material';
 // import { SharedService } from './services/shared.service';
 // import { mergeMap } from 'rxjs/operators';
 // import { SystemService } from './services/system.service';
@@ -17,6 +17,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/index';
 import { DesignPopupComponent } from './components/shared/design-popup/design-popup.component';
 import { ProductService } from './services/product.service';
+import { SharedService } from './services/shared.service';
+import { letProto } from 'rxjs-compat/operator/let';
 
 @Component({
   selector: 'app-root',
@@ -32,6 +34,8 @@ export class AppComponent implements OnInit {
   // @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
   @ViewChild('settingsMenuTrigger') settingsMenuTrigger: MatMenuTrigger;
   @ViewChild('settingsSideMenuTrigger') settingsSideMenuTrigger: MatMenuTrigger;
+  @ViewChild('sidenav') sidenav: MatDrawerContainer;
+  @ViewChild('designSelector') designSelector;
 
   subCategoryItems: ICatalog;
   category: any;
@@ -46,8 +50,8 @@ export class AppComponent implements OnInit {
   currentCategory: any;
   hierarchyCategory = [];
 
-
   constructor(
+    private sharedService: SharedService,
     private userService: UserService,
     private router: Router,
     private catalogService: CatalogService,
@@ -57,6 +61,13 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    this.sharedService.getSharingEvent()
+      .subscribe(event => {
+        if(event[0] === 'closeSidenav') {
+          this.sidenav.close();
+        }
+      });
 
     this.findDesignForm = new FormGroup({
       findDesign: new FormControl('', [
@@ -115,13 +126,23 @@ export class AppComponent implements OnInit {
     return this.designs.filter(design => design._id === _id)[0];
   }
 
-  onSelectDesign(design) {
+  // onSelectDesignOption(event) {
+  //   console.log('event', event);
+  //   event.option.deselect();
+  // }
+
+  onSelectDesign(design, closer) {
+    this.findDesignForm.get('findDesign').reset();
+    // console.log('this.designSelector', this.designSelector);
+    // this.findDesignForm.get('findDesign').setValue(null);
+    // this.designSelector.showPanel = false;
     this.productService.getProductsByDesignId(design._id)
       .subscribe(result => {
           const imageObject = {
             image: design.image,
             designProducts: result.data,
-            _id: design._id
+            _id: design._id,
+            closer
           };
 
         const dialogRef = this.dialog.open(DesignPopupComponent, {

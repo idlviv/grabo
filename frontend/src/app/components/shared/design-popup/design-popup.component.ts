@@ -4,6 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { config } from '../../../app.config';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SharedService } from '../../../services/shared.service';
 
 @Component({
   selector: 'app-design-popup',
@@ -20,6 +21,7 @@ export class DesignPopupComponent implements OnInit {
   // productForm: FormGroup;
 
   constructor(
+    private sharedService: SharedService,
     private router: Router,
     public dialogRef: MatDialogRef<DesignPopupComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
@@ -45,9 +47,12 @@ export class DesignPopupComponent implements OnInit {
   }
 
   onProductSelect(product) {
+    if (this.data.closer) {
+      console.log('closer');
+      this.sharedService.sharingEvent(['closeSidenav']);
+    }
     this.onClose();
-
     this.router.navigate(['/products', 'ch', {outlets: {primary: [product.category_id, 'details', product._id],
-      breadcrumb: [product.category_id, 'details', product._id]}}]);
+      breadcrumb: [product.category_id, 'details', product._id]}}], {queryParams: {name: product.name}});
   }
 }

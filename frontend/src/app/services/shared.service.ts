@@ -45,3 +45,4 @@ export class SharedService {
 }
 
 // ['updateDesigns'] design-item-component => design-editor-component
+// ['closeSidenav'] design-popup-component => app-component
