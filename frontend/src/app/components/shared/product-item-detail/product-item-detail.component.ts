@@ -48,16 +48,18 @@ export class ProductItemDetailComponent implements OnInit {
 
     this.route.url
       .subscribe(url => {
-        console.log('url', url);
+        // console.log('url', url);
+
         this.getRecommendations();
       });
   }
 
   getRecommendations() {
+    // console.log('this.product', this.product);
     this.productService.getRecommendationsByIds(this.product.recommendations)
       .subscribe(result => {
           this.recommendations = result.data;
-          console.log('recommendations', this.recommendations);
+          // console.log('recommendations', this.recommendations);
         },
         err => console.log('Помилка завантеження рекомендацій', err)
       );
