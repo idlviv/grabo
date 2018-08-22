@@ -43,6 +43,7 @@ export class ProductService {
   }
 
   getRecommendationsByIds(ids) {
+    // console.log('service ids', ids);
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',

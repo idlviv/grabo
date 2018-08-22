@@ -46,9 +46,8 @@ module.exports.getProductsByDesignId = function(req, res, next) {
 };
 
 module.exports.getRecommendationsByIds = function(req, res, next) {
-  const ids = req.query.ids.split(',') //.map(res => ObjectId(res));
+  const ids = req.query.ids.split(','); //.map(res => ObjectId(res));
 
-  log.debug('ids', ids);
   RecommendationModel.aggregate([
     {
       $match: {'_id': {'$in': ids}}
@@ -61,7 +60,6 @@ module.exports.getRecommendationsByIds = function(req, res, next) {
     }
   ])
     .then(result => {
-      console.log('result -ids', result);
       return res.status(200).json(new ResObj(true, 'Масив рекомендацій', result));
     })
     .catch(err => next(new DbError()));

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 import { config } from '../../../app.config';
 import { IDesign, IRecommendation } from '../../../interfaces/interface';
 import { DesignService } from '../../../services/design.service';
@@ -19,7 +19,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./product-item-detail.component.scss']
 })
 
-export class ProductItemDetailComponent implements OnInit {
+export class ProductItemDetailComponent implements OnInit, OnChanges {
   @Input() product: IProduct;
   @Input() category_id;
   config = config;
@@ -46,12 +46,22 @@ export class ProductItemDetailComponent implements OnInit {
     // this.getRecommendations();
 
 
-    this.route.url
-      .subscribe(url => {
-        console.log('url', url);
+    // this.route.url
+    //   .subscribe(url => {
+    //     console.log('url', url);
+    //
+    //     this.getRecommendations();
+    //   });
+  }
 
-        this.getRecommendations();
-      });
+  ngOnChanges(changes: SimpleChanges) {
+    const productChange: SimpleChange = changes.product;
+    // console.log('prev value: ', productChange.previousValue);
+    // console.log('got name: ', productChange.currentValue);
+    // console.log('productChange: ', productChange);
+    if(productChange) {
+      this.getRecommendations();
+    }
   }
 
   getRecommendations() {
@@ -59,9 +69,9 @@ export class ProductItemDetailComponent implements OnInit {
     this.productService.getRecommendationsByIds(this.product.recommendations)
       .subscribe(result => {
           this.recommendations = result.data;
-          console.log('this.product', this.product.name);
-          console.log('this.product.recommendations', this.product.recommendations);
-          console.log('recommendations', this.recommendations);
+          // console.log('this.product', this.product.name);
+          // console.log('this.product.recommendations', this.product.recommendations);
+          // console.log('recommendations', this.recommendations);
         },
         err => console.log('Помилка завантеження рекомендацій', err)
       );
