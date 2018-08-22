@@ -10,6 +10,7 @@ import { DesignPopupComponent } from '../design-popup/design-popup.component';
 import { ObservableMedia } from '@angular/flex-layout';
 import { ProductService } from '../../../services/product.service';
 import { IProduct } from '../../../interfaces/product-interface';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -31,6 +32,7 @@ export class ProductItemDetailComponent implements OnInit {
     public dialog: MatDialog,
     public media: ObservableMedia,
     private productService: ProductService,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
@@ -41,6 +43,17 @@ export class ProductItemDetailComponent implements OnInit {
         err => console.log('Помилка завантеження дизайнів', err)
       );
 
+    this.getRecommendations();
+
+
+    this.route.url
+      .subscribe(url => {
+        console.log('url', url);
+        this.getRecommendations();
+      });
+  }
+
+  getRecommendations() {
     this.productService.getRecommendationsByIds(this.product.recommendations)
       .subscribe(result => {
           this.recommendations = result.data;
