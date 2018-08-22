@@ -43,12 +43,12 @@ export class ProductItemDetailComponent implements OnInit {
         err => console.log('Помилка завантеження дизайнів', err)
       );
 
-    this.getRecommendations();
+    // this.getRecommendations();
 
 
     this.route.url
       .subscribe(url => {
-        // console.log('url', url);
+        console.log('url', url);
 
         this.getRecommendations();
       });
@@ -59,7 +59,9 @@ export class ProductItemDetailComponent implements OnInit {
     this.productService.getRecommendationsByIds(this.product.recommendations)
       .subscribe(result => {
           this.recommendations = result.data;
-          // console.log('recommendations', this.recommendations);
+          console.log('this.product', this.product.name);
+          console.log('this.product.recommendations', this.product.recommendations);
+          console.log('recommendations', this.recommendations);
         },
         err => console.log('Помилка завантеження рекомендацій', err)
       );
