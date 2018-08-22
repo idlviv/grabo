@@ -33,7 +33,7 @@ export class DesignPopupComponent implements OnInit {
     // });
 
     console.log('data', this.data);
-    this.data.cloudinaryOptionds ?
+    this.data.cloudinaryOptions ?
       this.cloudinaryOptions = this.data.cloudinaryOptions :
       this.cloudinaryOptions = '/c_fill,w_650,h_650,f_auto/';
 

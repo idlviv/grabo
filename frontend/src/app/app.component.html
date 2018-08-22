@@ -95,21 +95,6 @@
          mat-button (click)="userLocalLogout()"><mat-icon>exit_to_app</mat-icon> Вихід</a>
     </div>
 
-      <div class="cell" fxShow="true" fxHide.gt-sm="true">
-        <form [formGroup]="findDesignForm" novalidate>
-
-          <mat-form-field >
-            <input type="text" matInput placeholder="Знайти дизайн" formControlName="findDesign" [matAutocomplete]="auto">
-            <mat-autocomplete #auto="matAutocomplete">
-              <mat-option *ngFor="let filteredDesign of filteredDesigns | async"
-                          (click)="onSelectDesign(_getDesign(filteredDesign))" [value]="filteredDesign">
-                {{filteredDesign}}
-              </mat-option>
-            </mat-autocomplete>
-          </mat-form-field>
-        </form>
-      </div>
-
     <div class="menu-button" fxShow="true" fxHide.gt-sm="true">
       <button mat-button (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
@@ -120,12 +105,26 @@
   </mat-toolbar>
 
   <mat-sidenav-container fxFlexFill>
-    <mat-sidenav #sidenav fxLayout="column"
+    <mat-sidenav #sidenav fxLayout="column" class="theme-dark"
                  position="end" class="sidenav" role="navigation" mode="side">
-
-
       <div fxLayout="column">
         <mat-nav-list>
+          <mat-list-item>
+            <!--<div class="cell" fxShow="true" fxHide.gt-sm="true">-->
+              <form [formGroup]="findDesignForm" novalidate>
+
+                <mat-form-field >
+                  <input type="text" matInput placeholder="Знайти дизайн" formControlName="findDesign" [matAutocomplete]="auto">
+                  <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let filteredDesign of filteredDesigns | async"
+                                (click)="onSelectDesign(_getDesign(filteredDesign))" [value]="filteredDesign">
+                      {{filteredDesign}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+              </form>
+            <!--</div>-->
+          </mat-list-item>
           <mat-list-item *ngFor="let mainMenuCommonItem of mainMenuCommonItems">
             <a matLine
                [routerLinkActive]="['muted']" [routerLinkActiveOptions]="{exact: true}"

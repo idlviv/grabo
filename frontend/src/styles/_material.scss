@@ -135,12 +135,13 @@ $mat-custom-warn: (
 $primary: mat-palette($mat-custom-lighter);
 $accent: mat-palette($mat-custom-darker);
 $warn: mat-palette($mat-custom-warn);
-$theme: mat-light-theme($primary, $accent, $warn);
+$theme-light: mat-light-theme($primary, $accent, $warn);
+$theme-dark: mat-dark-theme($primary, $accent, $warn);
 
 $_primary: mat-color($primary);
 $_accent: mat-color($accent);
 $_warn: mat-color($warn);
 
-@include angular-material-theme($theme);
+@include angular-material-theme($theme-light);
 
 

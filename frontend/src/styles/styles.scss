@@ -19,6 +19,12 @@ body {
   background-color: transparent;
 }
 
+.theme-dark {
+  @include angular-material-theme($theme-dark);
+  $background: map-get($theme-dark, background);
+  background-color: mat-color($background, background);
+}
+
 .container-sidenav {
   @include gt-md {
     padding: 12px 0;
@@ -874,7 +880,6 @@ mat-sidenav-content {
   width: auto;
   max-width: 100%
 }
-
 
 .design-image-title {
   margin-top: .5rem;
