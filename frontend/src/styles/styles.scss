@@ -872,7 +872,7 @@ mat-sidenav-content {
 
 .responsive-image-popup-container
 {
-  height: calc(90vh - 160px);
+  height: calc(80vh - 160px);
 }
 
 .responsive-image-popup {
@@ -917,7 +917,7 @@ mat-card {
 .custom-dialog-container {
   mat-dialog-container {
     padding: 5px;
-    max-height: 90vh;
+    max-height: 80vh;
   }
 }
 
@@ -945,11 +945,6 @@ mat-card {
   height: 48px;
 }
 
-
-//.ie-flex-height-250 {
-//  height: 250px
-//}
-
 // custom fonts styles
 .h1 {
   font: 400 1.7rem/2.3rem Roboto, "Helvetica Neue", sans-serif;
@@ -971,20 +966,6 @@ mat-card {
   margin: 0
 }
 
-//.vh-block {
-//  width: 100%;
-//  height: calc(100vh - 250px);
-//  min-height: 250px;
-//  background-color: mat-color($primary, 500, .5);
-//  padding: 10px 0;
-//  border-radius: 8px;
-//  .inner {
-//    height: 100%;
-//    width: 100%;
-//    background-color: mat-color($primary, 100, .9);
-//  }
-//}
-
 .radius-5 {
   border-radius: .5rem!important;
 }
@@ -998,11 +979,7 @@ mat-card {
   }
   mat-list {
     mat-list-item {
-      height: auto!important;
+      height: auto !important;
     }
   }
 }
-
-//.design-popup-container {
-//  max-height: 80vh;
-//}
