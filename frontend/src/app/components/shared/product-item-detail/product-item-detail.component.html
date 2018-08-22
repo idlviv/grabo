@@ -78,7 +78,6 @@
                     <H2 class="mat-h2 text-align-center">Рекомендовані області застосування</H2>
                   </div>
                   <div fxFlex="100">
-                    {{recommendations | json}}
                     <mat-accordion *ngIf="recommendations">
                       <mat-expansion-panel *ngFor="let recommendation of recommendations">
                         <mat-expansion-panel-header>
