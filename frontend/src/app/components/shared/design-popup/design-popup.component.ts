@@ -1,7 +1,9 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { IConfirmPopupData, IDesign } from '../../../interfaces/interface';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { config } from '../../../app.config';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-design-popup',
@@ -10,22 +12,42 @@ import { config } from '../../../app.config';
 })
 
 export class DesignPopupComponent implements OnInit {
+  @ViewChild('productSelect') productSelect;
   confirmPopupData: IConfirmPopupData;
   config = config;
-  cloudinaryOptionds: string;
+  cloudinaryOptions: string;
+  designProducts: {};
+  // productForm: FormGroup;
 
   constructor(
+    private router: Router,
     public dialogRef: MatDialogRef<DesignPopupComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 
   ngOnInit() {
+
+    // this.productForm = new FormGroup({
+    //   product: new FormControl([
+    //   ])
+    // });
+
+    console.log('data', this.data);
     this.data.cloudinaryOptionds ?
-      this.cloudinaryOptionds = this.data.cloudinaryOptionds :
-      this.cloudinaryOptionds = '/c_fill,w_650,h_650,f_auto/';
+      this.cloudinaryOptions = this.data.cloudinaryOptions :
+      this.cloudinaryOptions = '/c_fill,w_650,h_650,f_auto/';
+
+    this.designProducts = this.data.designProducts;
   }
 
   onClose() {
     this.dialogRef.close();
+  }
+
+  onProductSelect(product) {
+    this.onClose();
+
+    this.router.navigate(['/products', 'ch', {outlets: {primary: [product.category_id, 'details', product._id],
+      breadcrumb: [product.category_id, 'details', product._id]}}]);
   }
 }

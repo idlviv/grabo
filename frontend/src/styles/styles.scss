@@ -864,6 +864,18 @@ mat-sidenav-content {
   height: auto;
 }
 
+.responsive-image-popup-container
+{
+  height: calc(90vh - 160px);
+}
+
+.responsive-image-popup {
+  max-height: 100%;
+  width: auto;
+  max-width: 100%
+}
+
+
 .design-image-title {
   margin-top: .5rem;
 }
@@ -900,6 +912,7 @@ mat-card {
 .custom-dialog-container {
   mat-dialog-container {
     padding: 5px;
+    max-height: 90vh;
   }
 }
 
@@ -984,3 +997,7 @@ mat-card {
     }
   }
 }
+
+//.design-popup-container {
+//  max-height: 80vh;
+//}

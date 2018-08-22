@@ -18,20 +18,6 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class GalleryComponent implements OnInit {
   config = config;
-  // gallery = [
-  //   'catalog_residential',
-  //   'catalog_semi_commercial',
-  //   'catalog_commercial',
-  //   'catalog_tile',
-  //   'catalog_residential',
-  //   'catalog_commercial',
-  //   'catalog_tile',
-  //   'catalog_semi_commercial',
-  //   'catalog_residential',
-  //   'catalog_tile',
-  //   'catalog_semi_commercial',
-  //   'catalog_commercial',
-  // ];
 
   recommendations: IRecommendation[];
   recommendation_id: string;
@@ -112,7 +98,7 @@ export class GalleryComponent implements OnInit {
   openDialog(asset, title): void {
     const imageObject = {
       image: asset,
-      cloudinaryOptionds: '/c_fill,w_1100,h_550,f_auto/',
+      cloudinaryOptions: '/c_fill,w_1100,h_550,f_auto/',
       _id: title
     };
 

@@ -28,6 +28,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ConfirmPopupComponent } from './components/shared/confirm-popup/confirm-popup.component';
 import { DesignPopupComponent } from './components/shared/design-popup/design-popup.component';
+import { ReactiveFormsModule } from '@angular/forms';
 // import { SystemService } from './services/system.service';
 
 const cloudinaryLib = {
@@ -50,6 +51,7 @@ const cloudinaryCloudName = config.cloudinary.cloud_name;
     RecaptchaFormsModule,
     CloudinaryModule.forRoot(cloudinaryLib, { cloud_name: cloudinaryCloudName }),
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
+    ReactiveFormsModule,
   ],
   providers: [
     ValidateService,

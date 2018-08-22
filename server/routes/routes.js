@@ -47,6 +47,10 @@ router.delete('/design/delete/:_id',
  * product routes
  */
 
+router.get('/product/get-products-by-design-id',
+  productController.getProductsByDesignId
+);
+
 router.get('/product/get-recommendations',
   productController.getRecommendations
 );

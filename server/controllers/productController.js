@@ -24,9 +24,29 @@ module.exports.getProductById = function(req, res, next) {
     );
 };
 
+module.exports.getProductsByDesignId = function(req, res, next) {
+  const design_id = req.query.design_id;
+
+  ProductModel.aggregate([
+    {
+      $match: {'designs': design_id}
+    },
+    {
+      $project: {
+        '_id': 1,
+        'name': 1,
+        'category_id': '$parent'
+      }
+    }
+  ])
+    .then(result =>
+      res.status(200).json(new ResObj(true, 'Масив _id продуктів', result))
+    )
+    .catch(err => next(new DbError()));
+};
 
 module.exports.getRecommendationsByIds = function(req, res, next) {
-  let ids = req.query.ids.split(',')//.map(res => ObjectId(res));
+  const ids = req.query.ids.split(',') //.map(res => ObjectId(res));
 
   RecommendationModel.aggregate([
     {

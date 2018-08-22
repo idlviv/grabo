@@ -3,14 +3,28 @@
     <div class="cell">
       <a href="">
         <img src="./assets/images/grabofloors_logo.svg" width="250px" height="90px">
-        <!--<img src="{{-->
-      <!--config.imgPath +-->
-      <!--config.cloudinary.cloud_name +-->
-      <!--'/c_fill,w_250,h_90,f_auto/' +-->
-      <!--config.grabofloorsLogo}}" alt="graboplast logo">-->
       </a>
     </div>
+
     <div fxFlex></div>
+
+    <div class="cell">
+      <form [formGroup]="findDesignForm" novalidate>
+
+        <mat-form-field >
+          <input type="text" matInput placeholder="Знайти дизайн" formControlName="findDesign" [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let filteredDesign of filteredDesigns | async"
+                        (click)="onSelectDesign(_getDesign(filteredDesign))" [value]="filteredDesign">
+              {{filteredDesign}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+    </div>
+
+
+    <!--<div fxFlex></div>-->
 
     <div class="cell" fxLayout="column">
       <div>
@@ -80,6 +94,21 @@
       <a *ngIf='user'
          mat-button (click)="userLocalLogout()"><mat-icon>exit_to_app</mat-icon> Вихід</a>
     </div>
+
+      <div class="cell" fxShow="true" fxHide.gt-sm="true">
+        <form [formGroup]="findDesignForm" novalidate>
+
+          <mat-form-field >
+            <input type="text" matInput placeholder="Знайти дизайн" formControlName="findDesign" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let filteredDesign of filteredDesigns | async"
+                          (click)="onSelectDesign(_getDesign(filteredDesign))" [value]="filteredDesign">
+                {{filteredDesign}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </form>
+      </div>
 
     <div class="menu-button" fxShow="true" fxHide.gt-sm="true">
       <button mat-button (click)="sidenav.toggle()">

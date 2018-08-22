@@ -5,11 +5,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CatalogService } from './services/catalog.service';
 import { ICatalog } from './interfaces/catalog-interface';
 // import { Cloudinary } from '@cloudinary/angular-5.x';
-import { MatMenuTrigger } from '@angular/material';
+import { MatDialog, MatMenuTrigger } from '@angular/material';
 // import { SharedService } from './services/shared.service';
 // import { mergeMap } from 'rxjs/operators';
 // import { SystemService } from './services/system.service';
 import { config } from './app.config';
+import { DesignService } from './services/design.service';
+import { IDesign } from './interfaces/interface';
+import { map, startWith, tap } from 'rxjs/operators';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs/index';
+import { DesignPopupComponent } from './components/shared/design-popup/design-popup.component';
+import { ProductService } from './services/product.service';
 
 @Component({
   selector: 'app-root',
@@ -28,8 +35,13 @@ export class AppComponent implements OnInit {
 
   subCategoryItems: ICatalog;
   category: any;
-
   category_id: string;
+
+  designs: IDesign[];
+  designs_id = [];
+  filteredDesigns: Observable<string[]>;
+  designValidity = false;
+  findDesignForm: FormGroup;
 
   currentCategory: any;
   hierarchyCategory = [];
@@ -39,17 +51,17 @@ export class AppComponent implements OnInit {
     private userService: UserService,
     private router: Router,
     private catalogService: CatalogService,
-    // private sharedService: SharedService,
-    // private systemService: SystemService,
+    private designService: DesignService,
+    private productService: ProductService,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit() {
 
-    // initial get cloud name
-    // this.systemService.getCloudinary()
-    //   .subscribe(
-    //     cloudinary => console.log('cloudinary', cloudinary)
-    //   );
+    this.findDesignForm = new FormGroup({
+      findDesign: new FormControl('', [
+      ]),
+    });
 
     // initial subscribe on user
     this.userService.getUserLocal()
@@ -70,14 +82,62 @@ export class AppComponent implements OnInit {
           console.log(err.error);
         });
 
-    // this.catalogService.getDescendants('common')
-    //   .subscribe(menuItems => {
-    //     this.mainCommonMenuItems = menuItems.data;
-    // },
-    //   err => {
-    //     console.log(err.error);
-    //   });
+    // Design finder
+    this.designService.getDesigns()
+      .subscribe(result => {
+          this.designs = result.data;
+          this.designs.map(design => this.designs_id.push(design._id));
+        },
+        err => console.log('Помилка завантеження дизайнів', err)
+      );
 
+    this.filteredDesigns = this.findDesignForm.get('findDesign').valueChanges.pipe(
+      startWith(''),
+      tap(value => this.designValidity = this._checkDesignValidity(value)),
+      map(value => this._filter(value))
+    );
+
+  }
+
+  // Design finder
+  private _filter(filterValue: string): string[] {
+    // const designsFrom = this.findDesignForm.get('designs').value;
+    return this.designs_id
+      // .filter(option => designsFrom.indexOf(option) === -1) // remove designs, which already in form
+      .filter(option => option.indexOf(filterValue) === 0 ); // filter by input value
+  }
+
+  private _checkDesignValidity(value: string): boolean {
+    return this.designs_id.indexOf(value) !== -1;
+  }
+
+  _getDesign(_id) {
+    return this.designs.filter(design => design._id === _id)[0];
+  }
+
+  onSelectDesign(design) {
+    this.productService.getProductsByDesignId(design._id)
+      .subscribe(result => {
+          const imageObject = {
+            image: design.image,
+            designProducts: result.data,
+            _id: design._id
+          };
+
+        const dialogRef = this.dialog.open(DesignPopupComponent, {
+          // height: '80vh',
+          data: imageObject,
+          panelClass: 'custom-dialog-container'
+        });
+
+        dialogRef.afterClosed()
+          .subscribe(() => {
+            },
+            err => console.log('err delete', err)
+          );
+        },
+        err => console.log('Помилка',  err)
+      );
   }
 
   userLocalLogout() {

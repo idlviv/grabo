@@ -17,22 +17,18 @@ export class ProductService {
     private userService: UserService,
   ) { }
 
-  // getSkuList(category) {
-  //   const token = this.userService.userLocalGetToken('token');
-  //   const httpOptions = {
-  //     headers: new HttpHeaders({
-  //       'Content-Type':  'application/json',
-  //       'Authorization': token
-  //     }),
-  //     params: new HttpParams({fromObject: {
-  //       category
-  //     }})
-  //   };
-  //   return this.http.get<IResponse>(
-  //     'api/product/get-sku-list',
-  //     httpOptions
-  //   );
-  // }
+  getProductsByDesignId(design_id){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+      }),
+      params: new HttpParams().set('design_id', design_id)
+    };
+    return this.http.get<IResponse>(
+      'api/product/get-products-by-design-id',
+      httpOptions
+    );
+  }
 
   getRecommendations() {
     const httpOptions = {
@@ -47,7 +43,6 @@ export class ProductService {
   }
 
   getRecommendationsByIds(ids) {
-    console.log('ids', ids);
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
