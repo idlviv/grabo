@@ -33,9 +33,10 @@ db.getCollection('catalogs')
           description: {
             "title": "Напівкомерційне покриття",
             "p": [
-              "<h3 class='mat-h3'>Основні характеристики: </h3>"
+             "Грабопласт, використовуючи свій понад 50-річний досвід в галузі виробництва вінілового покриття на підлогу, пропонує інноваційні рішення для будь-яких технічних або дизайнерських вимог, що виникають у різних областях."
             ],
             "li": [
+              "<h3 class='mat-h3'>Основні характеристики: </h3>",
               "Висока зносостійкість",
               "Хороша звукоізоляція",
               "Комфорт та зручність для ніг",
@@ -75,7 +76,9 @@ db.getCollection('catalogs')
           { _id: 'acoustic', name: 'Акустичні покриття', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
             auth: 'casual', order: 4, prefix: '', assets: ['low_catalog_acoustic'],description: ''},
           { _id: 'silver_knight', name: 'Silver Knight', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
-            auth: 'casual', order: 5, prefix: '', assets: ['low_catalog_silver_knight'],description: ''},
+            auth: 'casual', order: 5, prefix: '', assets: ['low_catalog_silver_knight'],
+            description: ''
+          },
           // { _id: 'diamond_st_metal', name: 'Diamond standart metal', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
           //   auth: 'casual', order: 2, prefix: '', assets: ['catalog'],description: ''},
           // { _id: 'diamond_st_tech', name: 'Diamond standart tech', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',

@@ -5,7 +5,8 @@
 @import './material';
 @import './materialTypography';
 
-// --start default grid
+$primary-background-light: mat-color($primary, 100);
+
 html {
   font-size: 14px;
   box-sizing: border-box;
@@ -14,6 +15,7 @@ html {
 body {
   padding: 0;
   margin: 0;
+  background-color: $primary-background-light;
 }
 
 .mat-drawer-container {
@@ -38,6 +40,17 @@ body {
   }
   @include xs {
     padding: 8px 0;
+  }
+}
+
+.app-container {
+  @include gt-md {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+  @include md {
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
 
@@ -915,6 +928,10 @@ mat-sidenav-content {
 
 mat-card {
   border-radius: 8px !important;
+}
+
+.mat-horizontal-content-container {
+  background: $primary-background-light;
 }
 
 .custom-dialog-container {
