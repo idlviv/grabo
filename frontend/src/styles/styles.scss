@@ -3,6 +3,7 @@
 //@import './custom-bootstrap';
 //@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 @import './material';
+@import './materialTypography';
 
 // --start default grid
 html {
@@ -899,9 +900,7 @@ mat-sidenav-content {
 
 }
 
-mat-card {
-  border-radius: 8px !important;
-}
+
 
 .m-tab-content {
   display: flex;
@@ -913,6 +912,10 @@ mat-card {
 }
 
 // overriding materials
+
+mat-card {
+  border-radius: 8px !important;
+}
 
 .custom-dialog-container {
   mat-dialog-container {
@@ -970,7 +973,7 @@ mat-card {
   border-radius: .5rem!important;
 }
 
-.category-description-block {
+.category-description-list {
   @include gt-sm {
     margin-right: 5rem;
   }
@@ -982,4 +985,8 @@ mat-card {
       height: auto !important;
     }
   }
+}
+
+.category-description-body {
+  margin-bottom: 2rem;
 }

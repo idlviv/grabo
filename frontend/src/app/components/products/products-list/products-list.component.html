@@ -2,19 +2,22 @@
   <div class="cell" fxFlex="100">
     <mat-card>
       <mat-card-content>
-        <h2 class="mat-h2" *ngIf="category?.description?.title">
-          {{category.description.title}}
+        <h2 class="mat-display-1" *ngIf="category?.description?.title" [innerHTML]="category.description.title">
+          <!--{{category.description.title}}-->
         </h2>
         <div class="text-justify">
-          <p class="mat-body-1" *ngFor="let p of category.description.p">
-           {{p}}
-          </p>
-          <div class="category-description-block">
+          <div class="category-description-body">
+            <p class="mat-body-1" *ngFor="let p of category.description.p" [innerHTML]="p">
+              <!--{{p}}-->
+            </p>
+          </div>
+
+          <div class="category-description-list">
             <mat-list *ngIf="category?.description?.li">
               <mat-list-item *ngFor="let li of category.description.li">
-                <mat-icon matListIcon>arrow_right</mat-icon>
-                <p>
-                 {{li}}
+                <!--<mat-icon matListIcon>check</mat-icon>-->
+                <p [innerHTML]="li">
+                 <!--{{li}}-->
                 </p>
               </mat-list-item>
             </mat-list>
