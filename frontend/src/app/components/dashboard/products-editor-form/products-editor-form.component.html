@@ -50,13 +50,11 @@
                     <div class="cell" fxFlex="25" fxFlex.lt-md="50">
                       <mat-form-field>
                         <input matInput placeholder="Порядок" formControlName="order">
-                        <!--<mat-error-->
-                          <!--*ngIf="(productForm.get('name').errors?.minlength ||-->
-                                      <!--productForm.get('name').errors?.maxlength ||-->
-                                      <!--productForm.get('name').errors?.required) &&-->
-                                      <!--productForm.get('name').touched">-->
-                          <!--Довжина повинна бути від 3 до 50 символів-->
-                        <!--</mat-error>-->
+                        <mat-error
+                          *ngIf="productForm.get('order').errors?.required &&
+                                      productForm.get('order').touched">
+                          Обов'язкове поле
+                        </mat-error>
                       </mat-form-field>
                     </div>
 
@@ -310,7 +308,7 @@
                   </div>
 
                   <div class="cell" fxFlex="25" fxFlex.sm="50" fxFlex.xs="100"
-                       *ngIf="productForm.get('assets').value.length < 8">
+                       *ngIf="productForm.get('assets').value.length < 12">
                     <div class="preview-img-wrapper">
                       <img src="{{
                         config.imgPath +

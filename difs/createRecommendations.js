@@ -83,6 +83,20 @@ db.getCollection("recommendations")
         {_id: "sp18",                     name: "Настольний теніс",             parent: "Спорт"},
         {_id: "sp19",                     name: "Єдиноборства",                 parent: "Спорт"},
         {_id: "sp20",                     name: "Фітнес-студії",                parent: "Спорт"},
+        {_id: "da01",                     name: "Балет",                        parent: "Танці"},
+        {_id: "da02",                     name: "Сучасні танці",                parent: "Танці"},
+        {_id: "da03",                     name: "Джаз / Аеробіка / Хіп-хоп",    parent: "Танці"},
+        {_id: "da04",                     name: "Народні танці / Фламенко",     parent: "Танці"},
+        {_id: "da05",                     name: "Чечітка",                      parent: "Танці"},
+        {_id: "da06",                     name: "Бальні танці",                 parent: "Танці"},
+        {_id: "da07",                     name: "Multidance",                   parent: "Танці"},
+
+        {_id: "en01",                     name: "Театри",                       parent: "Сфера розваг"},
+        {_id: "en02",                     name: "Гастролі",                     parent: "Сфера розваг"},
+        {_id: "en03",                     name: "Виставки",                     parent: "Сфера розваг"},
+        {_id: "en04",                     name: "ТБ / Кіно / Студії звукозапису", parent: "Сфера розваг"},
+        {_id: "en05",                     name: "Кінотеатри",                   parent: "Сфера розваг"},
+        {_id: "en06",                     name: "Казино / Клуби",                   parent: "Сфера розваг"},
 
 
 

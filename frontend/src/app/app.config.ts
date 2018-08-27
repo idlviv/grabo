@@ -132,6 +132,16 @@ export const config = {
       image: 'ihf',
       description: ''
     },
+    {
+      _id: 'portable',
+      image: 'portable',
+      description: ''
+    },
+    {
+      _id: 'e_recycle33',
+      image: 'e_recycle33',
+      description: ''
+    },
   ],
   homeBanner: [
     'banner_residential',

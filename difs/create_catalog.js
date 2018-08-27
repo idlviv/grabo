@@ -68,7 +68,9 @@ db.getCollection('catalogs')
           }
         },
           { _id: 'diamond', name: 'Diamond', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
-            auth: 'casual', order: 1, prefix: '', assets: ['catalog_commercial_diamond'],description: ''},
+            auth: 'casual', order: 1, prefix: '', assets: ['catalog_commercial_diamond'],
+            description: ''
+          },
           { _id: 'homogen', name: 'Гомогенні покриття', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
             auth: 'casual', order: 2, prefix: '', assets: ['low_catalog_homogen'],description: ''},
           { _id: 'safety', name: 'Безпечні покриття', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
@@ -77,7 +79,16 @@ db.getCollection('catalogs')
             auth: 'casual', order: 4, prefix: '', assets: ['low_catalog_acoustic'],description: ''},
           { _id: 'silver_knight', name: 'Silver Knight', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
             auth: 'casual', order: 5, prefix: '', assets: ['low_catalog_silver_knight'],
-            description: ''
+            description: {
+              "title": "Silver Knight",
+              "p": [
+                "Використовуючи запатентовану технологію TECH Surface ми розробили еластичне покриття на підлогу Grabo Silver Knight, що є чудовим рішення проблеми системи охорони здоров'я, розповсюдженням інфекцій по лікарнях.",
+                "Grabo Silver Knight – не просто покриття на підлогу, це перша фотокаталітична самодезінфікуюча поверхня, що є ідеальним вибором в будь-якій області охорони здоров'я.",
+                "Подвійна захисна система, що складається з наносрібла і нано-частинок TiO2, створює антибактеріальну властивість покриття.",
+                "На професійній виставці Neocon в Чикаго в 2010 році, здатність знищувати бактерії покриття на підлогу компанії Грабопласт нагороджено гран-прі в області інновацій продукції.",
+                "Grabo Silver Knight ми пропонуємо трьох конструкціях, в щільному і пінному виконанні."
+              ],
+            }
           },
           // { _id: 'diamond_st_metal', name: 'Diamond standart metal', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
           //   auth: 'casual', order: 2, prefix: '', assets: ['catalog'],description: ''},
@@ -213,6 +224,11 @@ db.getCollection('catalogs')
             ],
           }
         },
+
+  { _id: 'wall', name: 'Покриття для стін', ancestors: ['home', 'common', 'products'], parent: 'products',
+    auth: 'casual', order: 7, prefix: '', assets: ['low_catalog_wall'],
+    description: ''
+  },
 
 
       { _id: 'gallery', name: 'Галерея', ancestors: ['home', 'common'], parent: 'common',
