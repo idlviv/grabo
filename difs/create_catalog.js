@@ -69,14 +69,36 @@ db.getCollection('catalogs')
         },
           { _id: 'diamond', name: 'Diamond', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
             auth: 'casual', order: 1, prefix: '', assets: ['catalog_commercial_diamond'],
-            description: ''
+            description: {
+              "title": "Diamond",
+              "p": [
+                "Grabo Diamond є компактними, гетерогенним покриттям на підлогу в рулонах, товщиною 2,0 мм, з чистим прозорим зносостійким шаром із ПВХ товщиною 0,7 мм.",
+                "Рекомендованими областями застосування покриття на підлогу Grabo Diamond є заклади системи охорони здоров'я, школи, офіси, а також приміщення системи торгівлі та ресторанного бізнесу."
+              ],
+            }
           },
           { _id: 'homogen', name: 'Гомогенні покриття', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
             auth: 'casual', order: 2, prefix: '', assets: ['low_catalog_homogen'],description: ''},
           { _id: 'safety', name: 'Безпечні покриття', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
-            auth: 'casual', order: 3, prefix: '', assets: ['low_catalog_safety'],description: ''},
+            auth: 'casual', order: 3, prefix: '', assets: ['low_catalog_safety'],
+            description: {
+              "title": "Safety",
+              "p": [
+                "Всі колекції Grabo Safety характеризуються високим технічним характеристиками, що задовольняють потреби безпечного покриття на підлогу.",
+                "Широкий асортимент малюнків та кольорів цієї групи буде ідеальним рішенням для  будь-якої області застосування, собливо, де потрібно забезпечити не слизьку поверхню."
+              ],
+            }
+          },
           { _id: 'acoustic', name: 'Акустичні покриття', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
-            auth: 'casual', order: 4, prefix: '', assets: ['low_catalog_acoustic'],description: ''},
+            auth: 'casual', order: 4, prefix: '', assets: ['low_catalog_acoustic'],
+            description: {
+              "title": "Acoustic",
+              "p": [
+                "Застосування покриття на підлогу Acoustic рекомендується в таких установах, де, окрім високої зносостійкості, важливими вимогами зниження шуму та комфорт при ходьбі.",
+                "Широкий асортимент Grabo Acoustic допоможе підібрати відповідний варіант для будь-якої сфери застосування."
+              ],
+            }
+          },
           { _id: 'silver_knight', name: 'Silver Knight', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
             auth: 'casual', order: 5, prefix: '', assets: ['low_catalog_silver_knight'],
             description: {
