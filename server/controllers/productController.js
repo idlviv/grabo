@@ -14,8 +14,14 @@ const catalogController = require('../controllers/catalogController');
 
 module.exports.getProductById = function(req, res, next) {
   const _id = req.query._id;
-  let categories =  [];
-  ProductModel.findById({_id: _id})
+  const displayFilter = req.query.displayFilter;
+
+  let query;
+
+  displayFilter === 'true' ? query = {_id, display: true} : query = {_id};
+
+  // let categories =  [];
+  ProductModel.findById(query)
 
     .then(result => {
       return res.status(200).json(new ResObj(true, 'Товар', result));
@@ -29,7 +35,7 @@ module.exports.getProductsByDesignId = function(req, res, next) {
 
   ProductModel.aggregate([
     {
-      $match: {'designs': design_id}
+      $match: {'designs': design_id, 'display': true}
     },
     {
       $project: {
@@ -84,7 +90,7 @@ module.exports.getProductsByRecommendation = function(req, res, next) {
   let recommendation = req.query.recommendation;
 
   ProductModel.find(
-    {recommendations: {$in: recommendation}}
+    {recommendations: {$in: recommendation}, display: true}
   )
     .then(result => {
       return res.status(200).json(new ResObj(true, 'Масив продуктів згідно рекомендації', result));
@@ -213,29 +219,34 @@ module.exports.productDelete = function(req, res, next) {
   // product.createdAt = Date.now();
   // const productModel = new ProductModel(product);
 
-  res.status(200).json(new ResObj(true, 'FAKE !! Продукт видалено'));
-  // ProductModel.deleteOne({_id: ObjectId(_id)})
-  //   .then(
-  //     result => {
-  //       log.debug('result', result);
-  //
-  //       if (result.n !== 1) {
-  //         next(new ApplicationError('Не вдалося внести зміни', 400));
-  //       } else {
-  //         return res.status(200).json(new ResObj(true, 'Продукт видалено'));
-  //       }
-  //     },
-  //     err => next(new DbError(err.message, err.code))
-  //   );
+  // res.status(200).json(new ResObj(true, 'FAKE !! Продукт видалено'));
+  ProductModel.deleteOne({_id: ObjectId(_id)})
+    .then(
+      result => {
+        log.debug('result', result);
+
+        if (result.n !== 1) {
+          next(new ApplicationError('Не вдалося внести зміни', 400));
+        } else {
+          return res.status(200).json(new ResObj(true, 'Продукт видалено'));
+        }
+      },
+      err => next(new DbError(err.message, err.code))
+    );
 };
 
 // New
 module.exports.getProductsByCategory = function(req, res, next) {
   const category = req.query.category;
 
-  ProductModel.find(
-    {parent: category},
-  )
+  const displayFilter = req.query.displayFilter;
+
+  let query;
+  displayFilter === 'true' ? query = {parent: category, display: true} : query = {parent: category};
+  log.debug('query', query);
+  log.debug('displayFilter', displayFilter);
+
+  ProductModel.find(query)
     .sort({order: 1})
     .then(result => {
       return res.status(200).json(new ResObj(true, 'Продукти категорії' + category, result));

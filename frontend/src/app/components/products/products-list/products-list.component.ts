@@ -59,11 +59,11 @@ export class ProductsListComponent implements OnInit {
         if (!this.descendants.length) {
           // this.sharedService.sharingEvent(['descendants', null]);
           // console.log('NOdescendants', this.descendants);
-          return this.productService.getProductsByCategory(this.category_id);
+          return this.productService.getProductsByCategory(this.category_id, true);
         } else {
           // this.sharedService.sharingEvent(['descendants', this.descendants, 'category', this.category_id]);
           // console.log('YESdescendants', this.descendants);
-          return this.productService.getProductsByCategory(null);
+          return this.productService.getProductsByCategory(null, true);
         }
       }))
       .subscribe(

@@ -181,12 +181,17 @@ export class ProductService {
   }
   // New
 
-  getProductsByCategory(category) {
+  getProductsByCategory(category, displayFilter) {
+    // if (!publishFilter) {
+    //
+    // }
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
       }),
-      params: new HttpParams().set('category', category)
+      params: new HttpParams()
+        .set('category', category)
+        .set('displayFilter', displayFilter)
     };
     return this.http.get<IResponse>(
       'api/product/get-products-by-category',
@@ -194,12 +199,14 @@ export class ProductService {
     );
   }
 
-  getProductById(_id) {
+  getProductById(_id, displayFilter) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
       }),
-      params: new HttpParams().set('_id', _id)
+      params: new HttpParams()
+        .set('_id', _id)
+        .set('displayFilter', displayFilter)
     };
     return this.http.get<IResponse>(
       'api/product/get-product-by-id',

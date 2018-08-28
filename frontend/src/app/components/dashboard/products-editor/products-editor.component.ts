@@ -59,7 +59,7 @@ export class ProductsEditorComponent implements OnInit {
           this.noMoreDescendants = false;
           this.addCategory();
         } else {
-          this.productService.getProductsByCategory(event.value)
+          this.productService.getProductsByCategory(event.value, false)
             .subscribe(result => this.products = result.data,
               err => console.log('помилка завантаження категорій', err)
             );

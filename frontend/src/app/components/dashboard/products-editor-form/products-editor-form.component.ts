@@ -117,7 +117,7 @@ export class ProductsEditorFormComponent implements OnInit {
         if (!this.edited_id) {
           return of(null);
         }
-        return this.productService.getProductById(this.edited_id);
+        return this.productService.getProductById(this.edited_id, false);
       })
     )
     .subscribe(result => {

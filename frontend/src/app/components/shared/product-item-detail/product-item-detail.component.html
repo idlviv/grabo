@@ -69,13 +69,13 @@
 
             <!--<div fxLayout="row" fxFlex="100">-->
 
-              <div class="row" fxFlex="100" fxLayout="row">
+              <div *ngIf="recommendations" class="row" fxFlex="100" fxLayout="row">
                 <div class="cell margin-bottom-3" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.gt-md="100">
                   <div fxFlex="100">
                     <H2 class="mat-h2 text-align-center">Рекомендовані області застосування</H2>
                   </div>
                   <div fxFlex="100">
-                    <mat-accordion *ngIf="recommendations">
+                    <mat-accordion >
                       <mat-expansion-panel *ngFor="let recommendation of recommendations">
                         <mat-expansion-panel-header>
                           <mat-panel-title>
@@ -103,7 +103,7 @@
                   </div>
                 </div>
 
-                <div class="cell margin-bottom-3" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.gt-md="100">
+                <div class="cell margin-bottom-3" *ngIf="product.techDescriptions" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.gt-md="100">
                   <div fxFlex="100">
                     <H2 class="mat-h2 text-align-center">Технічні характеристики</H2>
                   </div>
@@ -133,10 +133,6 @@
 
                 </div>
               </div>
-
-
-
-
           </div>
         </div>
 

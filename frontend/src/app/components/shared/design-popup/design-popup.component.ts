@@ -52,7 +52,7 @@ export class DesignPopupComponent implements OnInit {
       this.sharedService.sharingEvent(['closeSidenav']);
     }
     this.onClose();
-    this.router.navigate(['/products', 'ch', {outlets: {primary: [product.category_id, 'details', product._id],
+    this.router.navigate(['/products', 'ch', {outlets: {primary: [product.category_id, 'details', product._id], //product.category_id[0]
       breadcrumb: [product.category_id, 'details', product._id]}}], {queryParams: {name: product.name}});
   }
 }

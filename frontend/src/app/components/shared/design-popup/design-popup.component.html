@@ -21,25 +21,11 @@
         <mat-form-field fxFlex="100">
         <mat-select placeholder="Колекції" #productSelect (valueChange)="onProductSelect($event)">
           <mat-option *ngFor="let product of designProducts" [value]="product">
-            <!--<a mat-stroked-button (click)="onClose()" class="radius-5 text-center"-->
-               <!--[routerLink]="['/products', 'ch', {outlets: {primary: [product.category_id, 'details', product._id],-->
-                <!--breadcrumb: [product.category_id, 'details', product._id]}}]"-->
-               <!--[queryParams]="{name: product.name}"-->
-               <!--[routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">-->
               {{product.name}}
-            <!--</a>-->
           </mat-option>
         </mat-select>
           </mat-form-field>
-        <!--<div class="cell-padding" fxFlex="1 1 auto" *ngFor="let product of designProducts" fxLayout="row">-->
-          <!--<a fxFlex="1 1 auto" mat-stroked-button (click)="onClose()" class="radius-5 text-center"-->
-             <!--[routerLink]="['/products', 'ch', {outlets: {primary: [product.category_id, 'details', product._id],-->
-           <!--breadcrumb: [product.category_id, 'details', product._id]}}]"-->
-             <!--[queryParams]="{name: product.name}"-->
-             <!--[routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">-->
-            <!--{{product.name}}-->
-          <!--</a>-->
-        <!--</div>-->
+
       </div>
     </div>
   </div>
