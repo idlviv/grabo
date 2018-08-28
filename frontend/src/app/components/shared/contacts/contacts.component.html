@@ -6,40 +6,71 @@
 
       <div class="cell" fxFlex="100">
         <mat-card>
-          <mat-card-header>
-            <h1 class="mat-display-2">Контакти</h1>
 
-          </mat-card-header>
           <mat-card-content>
-            <p class="text-justify muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-              ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-              voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-              non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            <div class="row" fxLayout="column" fxLayout.gt-xs="row">
+
+              <div class="cell" fxFlex.xs="100" fxFlex.gt-xs="40">
+                <img class="responsive-image"
+
+                     src="{{
+                      config.imgPath +
+                      config.cloudinary.cloud_name +
+                      '/c_fill,w_318,h_117,f_auto/' +
+                      config.grabofloorsLogo}}"
+                     alt="design">
+              </div>
+
+            <div class="cell" fxFlex.xs="100" fxFlex.gt-xs="60">
+              <h1 class="mat-display-2">Контакти</h1>
+
+              <h2 class="mat-h2">
+                ТзОВ "Трайс"
+              </h2>
+              <p class="text-justify muted">
+                Адреса: м. Дніпро, вул. Булата, 12
+              </p>
+              <p class="text-justify muted">
+                <a mat-button class="muted"
+                   href="tel:+380563738173">
+                  <mat-icon>phone</mat-icon> 056 373 81 73
+                </a>
+              </p>
+              <p class="text-justify muted">
+                <a mat-button class="muted"
+                   href="tel:+380563738173">
+                  <mat-icon>phone</mat-icon> 056 373 81 73
+                </a>
+              </p>
+            </div>
+
+
+            </div>
           </mat-card-content>
         </mat-card>
 
       </div>
+
+
     </div>
 
+    <!--<div class="row" fxLayout="column" fxLayout.gt-xs="row">-->
 
-    <div class="row" fxLayout="column" fxLayout.gt-xs="row">
+      <!--<div class="cell" fxFlex.xs="100" fxFlex.gt.xs="100">-->
+        <!--<mat-card>-->
+          <!--<mat-card-header>-->
+            <!--<h2 class="mat-h2">Стати дилером</h2>-->
 
-      <div class="cell" fxFlex="100">
-        <mat-card>
-          <mat-card-header>
-            <h2 class="mat-h2">Стати дилером</h2>
-
-          </mat-card-header>
-          <mat-card-content>
-            <p class="text-justify muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-              ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-              voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-              non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-          </mat-card-content>
-        </mat-card>
-      </div>
-    </div>
+          <!--</mat-card-header>-->
+          <!--<mat-card-content>-->
+            <!--<p class="text-justify muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod-->
+              <!--tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation-->
+              <!--ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in-->
+              <!--voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat-->
+              <!--non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>-->
+          <!--</mat-card-content>-->
+        <!--</mat-card>-->
+      <!--</div>-->
+    <!--</div>-->
   </div>
 </div>
