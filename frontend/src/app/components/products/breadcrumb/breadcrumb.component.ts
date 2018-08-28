@@ -47,14 +47,11 @@ export class BreadcrumbComponent implements OnInit {
       $queryParamMap
     )
       .subscribe(result => {
-          // result.data[0].hierarchy to splice home => common => mainCategory
-          // this.currentCategory =  result.data[0];
           this.productName = result[1].get('name');
           this.hierarchyCategory = result[0].data[0].hierarchy;
           this.hierarchyCategory.push(result[0].data[0]);
           this.hierarchyCategory.splice(0, 3);
           this.processing = false;
-
         },
         err => console.log('Помилка breadcrumb', err)
       );

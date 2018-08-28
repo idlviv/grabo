@@ -199,7 +199,6 @@ module.exports.productEdit = function(req, res, next) {
   const product = req.body;
   // product.createdAt = Date.now();
   // const productModel = new ProductModel(product);
-  log.debug('product', product);
 
   ProductModel.update({_id: ObjectId(product._id)}, product)
     .then(
@@ -223,7 +222,6 @@ module.exports.productDelete = function(req, res, next) {
   ProductModel.deleteOne({_id: ObjectId(_id)})
     .then(
       result => {
-        log.debug('result', result);
 
         if (result.n !== 1) {
           next(new ApplicationError('Не вдалося внести зміни', 400));
@@ -243,8 +241,6 @@ module.exports.getProductsByCategory = function(req, res, next) {
 
   let query;
   displayFilter === 'true' ? query = {parent: category, display: true} : query = {parent: category};
-  log.debug('query', query);
-  log.debug('displayFilter', displayFilter);
 
   ProductModel.find(query)
     .sort({order: 1})

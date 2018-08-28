@@ -174,7 +174,7 @@ db.getCollection('catalogs')
 
             ],
             "li": [
-              "<h2 class='h2'>Важливі характерні риси grabo Voyage і Orient:</h2>",
+              "<h2 class='h2'>Важливі характерні риси Grabo Voyage і Orient:</h2>",
 
               "<h3 class='mat-h3'>Безпека</h3>" +
               "<p>Не слизька поверхня, завдяки цій властивості можна запобігти нещасних випадків. Характеризуються екстремально хорошими показниками вогнестійкості та токсичності.</p>" +
@@ -191,7 +191,7 @@ db.getCollection('catalogs')
               "<p>Grabo Voyage і Orient із шаром \"Flexyback\" на зворотному боці просто приклеюються, легко покривають гострі кути і точки зламу.</p>",
 
               "<h3 class='mat-h3'>Індивідуальність</h3>" +
-              "<p>Великий асортимент grabo Voyage і Orient має товщину від 2 мм.</p>" +
+              "<p>Великий асортимент Grabo Voyage і Orient має товщину від 2 мм.</p>" +
               "<p>Широкий вибір дизайнів.</p>" +
               "<p>Вироби в рулонах мають дві стандартні ширини.</p>" +
               "<p>Можна підібрати за кольором зварювальні шнури різних профілів.</p>" +
@@ -206,6 +206,31 @@ db.getCollection('catalogs')
             ]
           }
         },
+          { _id: 'voyage', name: 'Voyage', ancestors: ['home', 'common', 'products', 'transport'], parent: 'transport',
+            auth: 'casual', order: 1, prefix: '', assets: ['low_catalog_voyage'],
+            description: ''},
+            { _id: 'omnis', name: 'Omnis', ancestors: ['home', 'common', 'products', 'transport', 'voyage'], parent: 'voyage',
+              auth: 'casual', order: 1, prefix: '', assets: ['low_catalog_omnis'],
+              description: ''},
+            { _id: 'stop_f', name: 'Stop F', ancestors: ['home', 'common', 'products', 'transport', 'voyage'], parent: 'voyage',
+              auth: 'casual', order: 2, prefix: '', assets: ['low_catalog_stop_f'],
+              description: ''},
+            { _id: 'transport_acoustic', name: 'Acoustic', ancestors: ['home', 'common', 'products', 'transport', 'voyage'], parent: 'voyage',
+              auth: 'casual', order: 3, prefix: '', assets: ['low_catalog_transport_acoustic'],
+              description: ''},
+            { _id: 'jp', name: 'JP', ancestors: ['home', 'common', 'products', 'transport', 'voyage'], parent: 'voyage',
+              auth: 'casual', order: 4, prefix: '', assets: ['low_catalog_jp'],
+              description: ''},
+        { _id: 'orient', name: 'Orient', ancestors: ['home', 'common', 'products', 'transport'], parent: 'transport',
+          auth: 'casual', order: 2, prefix: '', assets: ['low_catalog_orient'],
+          description: ''},
+          { _id: 'classic', name: 'Classic', ancestors: ['home', 'common', 'products', 'transport', 'orient'], parent: 'orient',
+            auth: 'casual', order: 1, prefix: '', assets: ['low_catalog_classic'],
+            description: ''},
+          { _id: 'railway', name: 'Railway', ancestors: ['home', 'common', 'products', 'transport', 'orient'], parent: 'orient',
+            auth: 'casual', order: 2, prefix: '', assets: ['low_catalog_railway'],
+            description: ''},
+
 
         { _id: 'show', name: 'Сценічний лінолеум', ancestors: ['home', 'common', 'products'], parent: 'products',
           auth: 'casual', order: 8, prefix: '', assets: ['catalog_show'],description: ''},
