@@ -55,15 +55,15 @@
             <mat-card>
               <mat-card-subtitle>
                 <a mat-button
-                   [routerLink]="['/products', 'ch', {outlets: {primary: [product.parent, 'details', product._id],
-                    breadcrumb: [product.parent, 'details', product._id]}}]"
+                   [routerLink]="['/products', 'ch', {outlets: {primary: [product.parent[0], 'details', product._id],
+                    breadcrumb: [product.parent[0], 'details', product._id]}}]"
                    [queryParams]="{name: product.name}"
                    [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">
                   {{product.name}}
                 </a>
               </mat-card-subtitle>
               <div class="row" fxLayout="row">
-                <div fxFlex="100" class="cell text-justify">{{product.description}}</div>
+                <div fxFlex="100" class="cell text-justify" [innerHTML]="product.description"></div>
 
                 <div fxFlex.xs="100" fxFlex.sm="33" fxFlex.gt-sm="25" class="cell"
                      fxLayout fxLayoutAlign="center center"

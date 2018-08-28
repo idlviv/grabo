@@ -1,7 +1,7 @@
 export interface IProduct {
   _id: string;
   name: string;
-  parent: string;
+  parent: string[];
   display: boolean;
   mainImage: string;
   briefImage: string;

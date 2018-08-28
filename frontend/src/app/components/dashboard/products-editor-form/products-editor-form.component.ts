@@ -37,6 +37,7 @@ export class ProductsEditorFormComponent implements OnInit {
   editMode = false;
   edited_id: string;
   parentCategory_id: string;
+  parentCategories: string[];
   parentCategoryName: string;
   designs: IDesign[];
   designs_id = [];
@@ -123,6 +124,7 @@ export class ProductsEditorFormComponent implements OnInit {
     .subscribe(result => {
         if (result) {
           this.editMode = true;
+          this.parentCategories = result.parent;
           for (let i = 0; i < result.data.designs.length; i++) {
             this.addDesignsControl();
           }
@@ -140,6 +142,8 @@ export class ProductsEditorFormComponent implements OnInit {
           }
           this.productForm.patchValue(result.data);
           this.productForm.get('_id').disable();
+        } else {
+          this.parentCategories = [this.parentCategory_id];
         }
       },
       err => console.log('Помилка', err)
@@ -378,7 +382,7 @@ export class ProductsEditorFormComponent implements OnInit {
       _id: this.productForm.getRawValue()._id, // raw because may be disabled
       name: this.productForm.get('name').value,
       order: this.productForm.get('order').value,
-      parent: this.parentCategory_id,
+      parent: this.parentCategories,
       display: this.productForm.get('display').value,
       mainImage: this.productForm.get('mainImage').value,
       briefImage: this.productForm.get('briefImage').value,

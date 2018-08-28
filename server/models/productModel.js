@@ -28,7 +28,7 @@ const ProductSchema = new Schema({
     required: true,
   },
   parent: {
-    type: String,
+    type: [String],
     required: true,
   },
   display: {
