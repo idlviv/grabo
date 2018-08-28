@@ -959,6 +959,11 @@ mat-card {
 //  }
 //}
 
+.breadcrumb-button {
+  padding-left: 3px !important;
+  padding-right: 3px !important;
+  min-width: 50px !important;
+}
 
 // fix for ie
 .mat-header-row, .mat-row {

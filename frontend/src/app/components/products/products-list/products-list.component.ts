@@ -43,7 +43,7 @@ export class ProductsListComponent implements OnInit {
         return this.catalogService.getCategoryById(this.category_id);
       }),
       mergeMap(paramMap => {
-        console.log('paramMap', paramMap);
+        // console.log('paramMap', paramMap);
         if (paramMap) {
           this.category = paramMap.data;
           return this.catalogService.getDescendants(this.category_id);
