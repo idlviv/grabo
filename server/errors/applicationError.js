@@ -31,3 +31,4 @@ module.exports = ApplicationError;
 // maxTries (reached max of tries)
 // recaptchaErr ()
 // bc (Bestcrypt errors)
+// notAuthorized (don't have permission)

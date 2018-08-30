@@ -77,9 +77,11 @@ export class UserService {
   }
 
   userCreate(user: IUser, recaptcha): Observable<IResponse> {
+    const token = this.userLocalGetToken('token');
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
+        'Authorization': token
       }),
       params: new HttpParams({ fromObject: {
           recaptcha

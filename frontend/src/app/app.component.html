@@ -90,9 +90,9 @@
 
       </mat-menu>
 
-      <a *ngIf='!user'
-         [routerLinkActive]="['accent']" [routerLinkActiveOptions]="{exact: true}"
-         mat-button [routerLink]="['/user/login']">Вхід</a>
+      <!--<a *ngIf='!user'-->
+         <!--[routerLinkActive]="['accent']" [routerLinkActiveOptions]="{exact: true}"-->
+         <!--mat-button [routerLink]="['/user/login']">Вхід</a>-->
 
       <a *ngIf='user'
          mat-button (click)="userLocalLogout()"><mat-icon>exit_to_app</mat-icon> Вихід</a>

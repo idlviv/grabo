@@ -10,6 +10,7 @@ const designController = require('../controllers/designController');
 const systemController = require('../controllers/systemController');
 const sharedController = require('../controllers/sharedController');
 const recaptcha = require('../middleware/recaptcha');
+const authorization = require('../middleware/authorization');
 
 /**
  * design routes
@@ -21,16 +22,19 @@ router.get('/design/get-designs',
 
 router.post('/design/add-image',
   passport.authenticate('jwt', {session: false}),
+  authorization('manager'),
   designController.designAddImage
 );
 
 router.post('/design/add-images-batch',
   passport.authenticate('jwt', {session: false}),
+  authorization('manager'),
   designController.designAddImagesBatch
 );
 
 router.post('/design/upsert',
   passport.authenticate('jwt', {session: false}),
+  authorization('manager'),
   designController.designUpsert
 );
 
@@ -40,6 +44,7 @@ router.get('/design/get-design-by-id/:_id',
 
 router.delete('/design/delete/:_id',
   passport.authenticate('jwt', {session: false}),
+  authorization('manager'),
   designController.designDelete
 );
 
@@ -65,26 +70,31 @@ router.get('/product/get-products-by-recommendation',
 
 router.post('/product/upsert',
   passport.authenticate('jwt', {session: false}),
+  authorization('manager'),
   productController.productUpsert
 );
 
 router.post('/product/add-main-image',
   passport.authenticate('jwt', {session: false}),
+  authorization('manager'),
   productController.productAddMainImage
 );
 
 router.post('/product/add-brief-image',
   passport.authenticate('jwt', {session: false}),
+  authorization('manager'),
   productController.productAddBriefImage
 );
 
 router.post('/product/add-assets',
   passport.authenticate('jwt', {session: false}),
+  authorization('manager'),
   productController.productAddAssets
 );
 
 router.post('/product/add-techassets',
   passport.authenticate('jwt', {session: false}),
+  authorization('manager'),
   productController.productAddTechAssets
 );
 
@@ -96,32 +106,36 @@ router.get('/product/get-product-by-id',
   productController.getProductById
 );
 
-router.get('/product/get-main-page-products',
-  productController.getMainPageProducts
-);
-
-router.get('/product/get-sku-list',
-  passport.authenticate('jwt', {session: false}),
-  productController.getSkuList
-);
+// router.get('/product/get-main-page-products',
+//   productController.getMainPageProducts
+// );
+//
+// router.get('/product/get-sku-list',
+//   passport.authenticate('jwt', {session: false}),
+//   productController.getSkuList
+// );
 
 router.post('/product/create',
   passport.authenticate('jwt', {session: false}),
+  authorization('manager'),
   productController.productCreate
 );
 
 router.put('/product/edit',
   passport.authenticate('jwt', {session: false}),
+  authorization('manager'),
   productController.productEdit
 );
 
 router.delete('/product/delete/:_id',
   passport.authenticate('jwt', {session: false}),
+  authorization('manager'),
   productController.productDelete
 );
 
 router.post('/product/add-image',
   passport.authenticate('jwt', {session: false}),
+  authorization('manager'),
   productController.productAddImage
 );
 
@@ -159,6 +173,8 @@ router.get('/catalog/get-all-parents',
 
 router.post('/user/create',
   recaptcha,
+  passport.authenticate('jwt', {session: false}),
+  authorization('manager'),
   userController.userCreate
 );
 

@@ -456,18 +456,8 @@ module.exports.userLogin = function(req, res, next) {
 module.exports.userRole = function(req, res, next) {
   const roleFromDb = req.user._doc.role;
   const roleFromQuery = req.query.role;
-  const admin = ['casual', 'guest', 'user', 'manager', 'admin'];
-  const manager = ['casual', 'guest', 'user', 'manager'];
-  const user = ['casual', 'guest', 'user'];
-  const guest = ['casual', 'guest'];
-  const casual = ['casual'];
 
-  const permissions = {
-    admin: ['casual', 'guest', 'user', 'manager', 'admin'],
-    manager: ['casual', 'guest', 'user', 'manager'],
-    user: ['casual', 'guest', 'user'],
-    guest: ['casual', 'guest'],
-    casual: ['casual']};
+  const permissions = config.get('permissions');
   //
   // console.log('roleFromDb', roleFromDb);
   // console.log('roleFromQuery', roleFromQuery);

@@ -20,6 +20,7 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { DownloadsComponent } from './downloads/downloads.component';
 import { InfoComponent } from './info/info.component';
+import { UsagesComponent } from './usages/usages.component';
 
 @NgModule({
   imports: [
@@ -56,6 +57,7 @@ import { InfoComponent } from './info/info.component';
     ContactsComponent,
     DownloadsComponent,
     InfoComponent,
+    UsagesComponent,
   ],
 })
 export class SharedModule { }

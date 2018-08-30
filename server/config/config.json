@@ -6,6 +6,13 @@
     "secure": false,
     "httpOnly": false,
     "maxAge": 1800000
+  },
+  "permissions": {
+    "admin": ["casual", "guest", "user", "manager", "admin"],
+    "manager": ["casual", "guest", "user", "manager"],
+    "user": ["casual", "guest", "user"],
+    "guest": ["casual", "guest"],
+    "casual": ["casual"]
   }
 
 }

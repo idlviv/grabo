@@ -8,6 +8,7 @@ import { GalleryComponent } from './components/shared/gallery/gallery.component'
 import { ContactsComponent } from './components/shared/contacts/contacts.component';
 import { DownloadsComponent } from './components/shared/downloads/downloads.component';
 import { InfoComponent } from './components/shared/info/info.component';
+import { UsagesComponent } from './components/shared/usages/usages.component';
 
 const appRoutes: Routes = [
   // {
@@ -21,13 +22,18 @@ const appRoutes: Routes = [
     // pathMatch: 'full'
   },
   {
-    path: 'gallery/ch/:_id',
-    component: GalleryComponent
-  },
-  {
     path: 'gallery/ch',
     component: GalleryComponent
   },
+  {
+    path: 'usages/ch/:_id',
+    component: UsagesComponent
+  },
+  {
+    path: 'usages/ch',
+    component: UsagesComponent
+  },
+
   {
     path: 'contacts/ch',
     component: ContactsComponent

@@ -111,4 +111,12 @@ db.getCollection("recommendations")
         {_id: "di01",                     name: "Будівельні майданчики",        parent: "Інші"},
         {_id: "di02",                     name: "Захисне покриття",             parent: "Інші"},
 
+        {_id: "tr01",                     name: "Автобуси",                     parent: "Транспорт"},
+        {_id: "tr02",                     name: "Ліфти",                        parent: "Транспорт"},
+        {_id: "tr03",                     name: "Платформи",                    parent: "Транспорт"},
+        {_id: "tr04",                     name: "Посадочні коридори в аеропортах", parent: "Транспорт"},
+        {_id: "tr05",                     name: "Поїзда",                       parent: "Транспорт"},
+        {_id: "tr06",                     name: "Метро",                        parent: "Транспорт"},
+        {_id: "tr07",                     name: "Трамваї",                      parent: "Транспорт"},
+
   ]);

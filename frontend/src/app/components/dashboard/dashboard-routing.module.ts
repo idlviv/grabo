@@ -11,6 +11,7 @@ import { ProductsComponent } from '../products/products.component';
 import { ProductsEditorFormComponent } from './products-editor-form/products-editor-form.component';
 import { ToolsComponent } from './tools/tools.component';
 import { DesignsEditorBatchComponent } from './designs-editor-batch/designs-editor-batch.component';
+import { UserCreateComponent } from '../user/user-create/user-create.component';
 
 const dashboardRoutes: Routes = [
   {
@@ -75,6 +76,12 @@ const dashboardRoutes: Routes = [
       {
         path: 'designs_editor_new',
         component: DesignsEditorFormComponent,
+        canActivate: [AuthGuard],
+        data: { auth: 'manager' },
+      },
+      {
+        path: 'dashboard_signup',
+        component: UserCreateComponent,
         canActivate: [AuthGuard],
         data: { auth: 'manager' },
       },
