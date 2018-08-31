@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 import { config } from '../../../app.config';
-import { IDesign, IRecommendation } from '../../../interfaces/interface';
+import { IDesign, IDesignPopUpData, IRecommendation } from '../../../interfaces/interface';
 import { DesignService } from '../../../services/design.service';
 import { of } from 'rxjs/index';
 import { ConfirmPopupComponent } from '../confirm-popup/confirm-popup.component';
@@ -82,10 +82,17 @@ export class ProductItemDetailComponent implements OnInit, OnChanges {
     return this.designs.filter(design => design._id === _id)[0];
   }
 
-  openDialog(design): void {
+  openDialog(image, cloudinaryOptions, title): void {
+
+    const imageObject = <IDesignPopUpData>{
+      image,
+      cloudinaryOptions,
+      title
+    };
+
     const dialogRef = this.dialog.open(DesignPopupComponent, {
       // height: '80vh',
-      data: design,
+      data: imageObject,
       panelClass: 'custom-dialog-container'
     });
 

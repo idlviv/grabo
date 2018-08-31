@@ -17,7 +17,19 @@ export class ProductService {
     private userService: UserService,
   ) { }
 
-  getProductsByDesignId(design_id){
+  getProductsWithGallery() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+      }),
+    };
+    return this.http.get<IResponse>(
+      'api/product/get-products-with-gallery',
+      httpOptions
+    );
+  }
+
+  getProductsByDesignId(design_id) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',

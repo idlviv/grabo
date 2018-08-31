@@ -52,6 +52,10 @@ router.delete('/design/delete/:_id',
  * product routes
  */
 
+router.get('/product/get-products-with-gallery',
+  productController.getProductsWithGallery
+);
+
 router.get('/product/get-products-by-design-id',
   productController.getProductsByDesignId
 );

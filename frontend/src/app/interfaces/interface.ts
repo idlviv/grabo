@@ -30,3 +30,17 @@ export interface IRecommendation {
     }
   ];
 }
+
+export interface IDesignPopUpData {
+  image: string;
+  designProducts?: IDesignProducts[];
+  title?: string;
+  cloudinaryOptions?: string;
+  closer?: boolean;
+}
+
+export interface IDesignProducts {
+  _id: string;
+  name: string;
+  category_id: string[];
+}

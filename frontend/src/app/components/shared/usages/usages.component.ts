@@ -6,7 +6,7 @@ import { DesignPopupComponent } from '../design-popup/design-popup.component';
 import { ProductService } from '../../../services/product.service';
 import { IProduct } from '../../../interfaces/product-interface';
 import { FormControl, FormGroup } from '@angular/forms';
-import { IRecommendation } from '../../../interfaces/interface';
+import { IDesignPopUpData, IRecommendation } from '../../../interfaces/interface';
 import { mergeMap } from 'rxjs/operators';
 import { of } from 'rxjs/index';
 import { ActivatedRoute } from '@angular/router';
@@ -57,25 +57,6 @@ export class UsagesComponent implements OnInit {
         },
         err => console.log('Помилка', err)
       );
-
-    // this.productService.getRecommendations()
-    //   .subscribe(result => {
-    //       this.recommendations = result.data;
-    //       this.recomForm.get('recommendations').setValue(this.recommendations[0].sub[0]._id);
-    //       this.onSelectCategory({value: this.recommendations[0].sub[0]._id});
-    //     },
-    //     err => console.log('Помилка завантеження рекомендацій', err)
-    //   );
-
-
-    // this.productService.getRecommendations()
-    //   .subscribe(result => {
-    //     // console.log('recommendations', result.data);
-    //     this.recommendations = result.data;
-    //     this.recomForm.get('recom').setValue(this.recommendations[0]);
-    //     this.onSelectCategory({value: this.recommendations[0]});
-    //   },
-    //     err => console.log('error get recmmendations', err));
   }
 
   onSelectCategory(event) {
@@ -94,11 +75,11 @@ export class UsagesComponent implements OnInit {
         err => console.log('error get products by recommendation', err));
   }
 
-  openDialog(asset, title): void {
-    const imageObject = {
-      image: asset,
+  openDialog(image, title): void {
+    const imageObject = <IDesignPopUpData>{
+      image,
       cloudinaryOptions: '/c_fill,w_1100,h_550,f_auto/',
-      _id: title
+      title
     };
 
     const dialogRef = this.dialog.open(DesignPopupComponent, {

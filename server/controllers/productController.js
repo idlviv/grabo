@@ -30,6 +30,19 @@ module.exports.getProductById = function(req, res, next) {
     );
 };
 
+
+
+
+module.exports.getProductsWithGallery = function(req, res, next) {
+
+
+  ProductModel.find({assets: { $exists: true, $not: {$size: 0} }})
+    .then(result =>
+      res.status(200).json(new ResObj(true, 'Масив колекцій з галереєю', result))
+    )
+    .catch(err => next(new DbError()));
+};
+
 module.exports.getProductsByDesignId = function(req, res, next) {
   const design_id = req.query.design_id;
 

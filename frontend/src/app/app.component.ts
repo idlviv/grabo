@@ -11,7 +11,7 @@ import { MatDialog, MatDrawerContainer, MatMenuTrigger } from '@angular/material
 // import { SystemService } from './services/system.service';
 import { config } from './app.config';
 import { DesignService } from './services/design.service';
-import { IDesign } from './interfaces/interface';
+import { IDesign, IDesignPopUpData, IDesignProducts } from './interfaces/interface';
 import { map, startWith, tap } from 'rxjs/operators';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/index';
@@ -138,10 +138,11 @@ export class AppComponent implements OnInit {
     // this.designSelector.showPanel = false;
     this.productService.getProductsByDesignId(design._id)
       .subscribe(result => {
-          const imageObject = {
+          const imageObject = <IDesignPopUpData>{
             image: design.image,
-            designProducts: result.data,
-            _id: design._id,
+            designProducts: <IDesignProducts[]>result.data,
+            title: design._id,
+            cloudinaryOptions: '/c_fill,w_650,h_650,f_auto/',
             closer
           };
 

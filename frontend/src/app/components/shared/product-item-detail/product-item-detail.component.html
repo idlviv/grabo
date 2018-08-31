@@ -33,13 +33,15 @@
             <div class="row margin-bottom" fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="center center">
                 <div fxFlex.gt-xs="33" class="cell" *ngFor="let asset of product.assets">
                   <div fxFlex="100">
-                    <img *ngIf="media.isActive('gt-xs')" class="responsive-image" src="{{
+                    <img *ngIf="media.isActive('gt-xs')" (click)="openDialog(asset, '/c_fill,w_1100,h_550,f_auto/', null)"
+                         class="responsive-image hover-cursor" src="{{
                         config.imgPath +
                         config.cloudinary.cloud_name +
                         '/c_fill,w_260,h_170,f_auto/' +
                         asset}}"
                                        alt="designImage">
-                    <img *ngIf="media.isActive('xs')" class="responsive-image" src="{{
+                    <img *ngIf="media.isActive('xs')" (click)="openDialog(asset, '/c_fill,w_1100,h_550,f_auto/', null)"
+                         class="responsive-image hover-cursor" src="{{
                         config.imgPath +
                         config.cloudinary.cloud_name +
                         '/c_fill,w_535,h_350,f_auto/' +
@@ -150,7 +152,7 @@
               </mat-card-header>
               <mat-card-content fxLayoutAlign="center center">
                  <img *ngIf="designs" class="responsive-image hover-cursor"
-                     (click)="openDialog(getDesign(des))" src="{{
+                     (click)="openDialog(getDesign(des).image, '/c_fill,w_650,h_650,f_auto/', getDesign(des)._id)" src="{{
                     config.imgPath +
                     config.cloudinary.cloud_name +
                     '/c_fill,w_250,h_250,f_auto/' +
@@ -165,7 +167,7 @@
               </mat-card-header>
               <mat-card-content fxLayoutAlign="center center">
                 <img *ngIf="designs" class="responsive-image-stretch hover-cursor"
-                     (click)="openDialog(getDesign(des))" src="{{
+                     (click)="openDialog(getDesign(des).image, '/c_fill,w_650,h_650,f_auto/', getDesign(des)._id)" src="{{
                     config.imgPath +
                     config.cloudinary.cloud_name +
                     '/c_fill,w_180,h_180,f_auto/' +
