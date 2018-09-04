@@ -353,29 +353,70 @@
                             (click)="addTechAsset()"><mat-icon>add_circle</mat-icon></button>
                   </div>
                 </div>
+
                 <div class="cell" fxHide.xs fxFlex.gt-xs="50" fxLayout="row"></div>
+                  <div formArrayName="techAssets" class="cell" fxFlex="25" fxFlex.sm="50" fxFlex.xs="100"
+                       *ngFor="let tech of productForm.get('techAssets')['controls']; let i = index">
+                    <h4 *ngIf="productForm.get('techAssets').value[i]"
+                        class="mat-h4 text-center">{{productForm.get('techAssets').value[i]}}</h4>
+                    <div *ngIf="productForm.get('techAssets').value[i] && techAssets &&
+                          getTechAsset(productForm.get('techAssets').value[i])" class="preview-img-wrapper">
+                      <img alt="techAssetsImage" src="{{
+                      config.imgPath +
+                      config.cloudinary.cloud_name +
+                      '/c_fill,w_180,h_180,f_auto/' +
+                      getTechAsset(productForm.get('techAssets').value[i]).image}}">
+                    </div>
+
+                    <p class="remove-field text-center"
+                       (click)="removeTechAssetsControl(i)">Видалити зображення</p>
+                  </div>
+              </div>
 
 
-                <!--<div class="cell" fxFlex.xs="100" fxFlex="50">-->
-                <!--</div>-->
 
-                <div formArrayName="techAssets" class="cell" fxFlex="25" fxFlex.sm="50" fxFlex.xs="100"
-                     *ngFor="let tech of productForm.get('techAssets')['controls']; let i = index">
-                  <h4 *ngIf="productForm.get('techAssets').value[i]"
-                      class="mat-h4 text-center">{{productForm.get('techAssets').value[i]}}</h4>
-                  <div *ngIf="productForm.get('techAssets').value[i] && techAssets &&
-                        getTechAsset(productForm.get('techAssets').value[i])" class="preview-img-wrapper">
-                    <img alt="techAssetsImage" src="{{
-                    config.imgPath +
-                    config.cloudinary.cloud_name +
-                    '/c_fill,w_180,h_180,f_auto/' +
-                    getTechAsset(productForm.get('techAssets').value[i]).image}}">
+              <div class="row padding-bottom" fxLayout="row">
+                <div class="cell-header" fxFlex="100">
+                  <h3 class="mat-h3 margin-0">Сертифікати</h3>
+                </div>
+                <div class="cell" fxFlex.xs="100" fxFlex.gt-xs="50" fxLayout="row">
+                  <div class="item" fxFlex="calc(100%-40px)">
+                    <mat-form-field>
+                      <input type="text" matInput placeholder="Додати сертифікат" formControlName="cert" [matAutocomplete]="autoCert">
+                      <mat-autocomplete #autoCert="matAutocomplete">
+                        <mat-option *ngFor="let filteredCertAsset of filteredCertAssets | async" (click)="onSelectCertAssets()" [value]="filteredCertAsset">
+                          {{filteredCertAsset}}
+                        </mat-option>
+                      </mat-autocomplete>
+                    </mat-form-field>
+                  </div>
+
+
+                  <div class="item" fxLayoutAlign="center center" fxFlex="40px">
+                    <button #addCertAssetsButton [disabled]="!certAssetValidity" mat-icon-button color="accent" type="button"
+                            (click)="addCertAsset()"><mat-icon>add_circle</mat-icon></button>
+                  </div>
+                </div>
+
+                <div class="cell" fxHide.xs fxFlex.gt-xs="50" fxLayout="row"></div>
+                <div formArrayName="certAssets" class="cell" fxFlex="25" fxFlex.sm="50" fxFlex.xs="100"
+                     *ngFor="let cert of productForm.get('certAssets')['controls']; let i = index">
+                  <h4 *ngIf="productForm.get('certAssets').value[i]"
+                      class="mat-h4 text-center">{{productForm.get('certAssets').value[i]}}</h4>
+                  <div *ngIf="productForm.get('certAssets').value[i] && certAssets &&
+                          getCertAsset(productForm.get('certAssets').value[i])" class="preview-img-wrapper">
+                    <img alt="certAssetsImage" src="{{
+                      config.imgPath +
+                      config.cloudinary.cloud_name +
+                      '/c_fill,w_180,h_180,f_auto/' +
+                      getCertAsset(productForm.get('certAssets').value[i]).image}}">
                   </div>
 
                   <p class="remove-field text-center"
-                     (click)="removeTechAssetsControl(i)">Видалити зображення</p>
+                     (click)="removeCertAssetsControl(i)">Видалити зображення</p>
                 </div>
               </div>
+
 
 
 

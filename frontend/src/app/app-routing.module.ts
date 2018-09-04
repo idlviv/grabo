@@ -9,17 +9,12 @@ import { ContactsComponent } from './components/shared/contacts/contacts.compone
 import { DownloadsComponent } from './components/shared/downloads/downloads.component';
 import { InfoComponent } from './components/shared/info/info.component';
 import { UsagesComponent } from './components/shared/usages/usages.component';
+import { LandingComponent } from './components/shared/landing/landing.component';
 
 const appRoutes: Routes = [
-  // {
-  //   path: 'products',
-  //   loadChildren: './components/product/product.module#ProductModule',
-  //   // pathMatch: 'full'
-  // },
   {
     path: 'products',
     loadChildren: './components/products/products.module#ProductsModule',
-    // pathMatch: 'full'
   },
   {
     path: 'gallery/ch',
@@ -61,7 +56,7 @@ const appRoutes: Routes = [
     component: FeedbackComponent
   },
   { path: 'page-404', component: Page404Component },
-  { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: '', component: LandingComponent, pathMatch: 'full' },
   // { path: '', loadChildren: './components/home/home.module#HomeModule', pathMatch: 'full' },
   { path: '**', component: Page404Component }, // MAKE redirect
 ];

@@ -21,6 +21,18 @@ export const config = {
     cloud_name: environment.cloud_name
   },
   designStructure: ['дошка', 'художній паркет', 'плитка', 'абстракція', 'дитячий'],
+  certAssets: [
+    {
+      _id: 's_color20nv_red',
+      image: 's_color20nv_red',
+      description: ''
+    },
+    {
+      _id: 's_color20nv_blue',
+      image: 's_color20nv_blue',
+      description: ''
+    },
+  ],
   techAssets: [
     {
       _id: 'fiber',

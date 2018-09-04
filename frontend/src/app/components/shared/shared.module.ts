@@ -21,6 +21,9 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { DownloadsComponent } from './downloads/downloads.component';
 import { InfoComponent } from './info/info.component';
 import { UsagesComponent } from './usages/usages.component';
+import { HeaderComponent } from './header/header.component';
+import { DesignSearcherComponent } from './design-searcher/design-searcher.component';
+import { LandingComponent } from './landing/landing.component';
 
 @NgModule({
   imports: [
@@ -41,6 +44,9 @@ import { UsagesComponent } from './usages/usages.component';
     ProductItemDetailComponent,
     CrslComponent,
     FeedbackComponent,
+    HeaderComponent,
+    DesignSearcherComponent,
+    LandingComponent,
   ],
   declarations: [
     NavbarComponent,
@@ -58,6 +64,9 @@ import { UsagesComponent } from './usages/usages.component';
     DownloadsComponent,
     InfoComponent,
     UsagesComponent,
+    HeaderComponent,
+    DesignSearcherComponent,
+    LandingComponent,
   ],
 })
 export class SharedModule { }

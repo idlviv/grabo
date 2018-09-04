@@ -4,18 +4,11 @@ import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import { FormArray, FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { config } from '../../../app.config';
-import { IProduct } from '../../../interfaces/product-interface';
 import { IDesign, IRecommendation, ITechAsset } from '../../../interfaces/interface';
 import { ProductService } from '../../../services/product.service';
 import { DesignService } from '../../../services/design.service';
-import { mergeMap } from 'rxjs/operators';
-import { of, combineLatest } from 'rxjs';
-// import { Observable } from 'rxjs/Observable';
-
-import {Observable} from 'rxjs';
-import {startWith, map, tap} from 'rxjs/operators';
-
-
+import { mergeMap, startWith, map, tap } from 'rxjs/operators';
+import { of, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-products-editor-form',
@@ -26,11 +19,13 @@ export class ProductsEditorFormComponent implements OnInit {
   @ViewChild('f') productFormDirective: FormGroupDirective;
   @ViewChild('addDesignButton') addDesignButtonDirective;
   @ViewChild('addTechAssetsButton') addTechAssetsButtonDirective;
+  @ViewChild('addCertAssetsButton') addCertAssetsButtonDirective;
 
   config = config;
   productForm: FormGroup;
   processingLoadAssets = -1;
   processingLoadTechAssets = -1;
+  processingLoadCertAssets = -1;
   processingLoadImage = false;
   processingLoadBriefImage = false;
 
@@ -48,7 +43,11 @@ export class ProductsEditorFormComponent implements OnInit {
   techAssets_id = [];
   techAssetValidity = false;
 
-  // recommendations = <IRecommendation[]>config.recommendations;
+  certAssets: ITechAsset[];
+  filteredCertAssets: Observable<string[]>;
+  certAssets_id = [];
+  certAssetValidity = false;
+
   recommendations: IRecommendation[];
 
   filteredDesigns: Observable<string[]>;
@@ -92,8 +91,9 @@ export class ProductsEditorFormComponent implements OnInit {
       ]),
       assets: new FormArray([]),
       techAssets: new FormArray([]),
-      tech:  new FormControl('', [
-      ]),
+      tech:  new FormControl('', []),
+      certAssets: new FormArray([]),
+      cert:  new FormControl('', []),
       description: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
@@ -137,6 +137,9 @@ export class ProductsEditorFormComponent implements OnInit {
           for (let i = 0; i < result.data.techAssets.length; i++) {
             this.addTechAssetsControl();
           }
+          for (let i = 0; i < result.data.certAssets.length; i++) {
+            this.addCertAssetsControl();
+          }
           for (let i = 0; i < result.data.techDescriptions.length; i++) {
             this.addTechDescriptionsControl();
           }
@@ -151,11 +154,18 @@ export class ProductsEditorFormComponent implements OnInit {
 
     this.productService.getTechAssets()
       .subscribe(result => {
-          console.log('tech', result);
           this.techAssets = result.data;
           this.techAssets.map(techAsset => this.techAssets_id.push(techAsset._id));
         },
         err => console.log('Помилка завантеження тех властивостей', err)
+      );
+
+    this.productService.getCertAssets()
+      .subscribe(result => {
+          this.certAssets = result.data;
+          this.certAssets.map(certAsset => this.certAssets_id.push(certAsset._id));
+        },
+        err => console.log('Помилка завантеження сертифікатів', err)
       );
 
     this.designService.getDesigns()
@@ -170,6 +180,12 @@ export class ProductsEditorFormComponent implements OnInit {
       startWith(''),
       tap(value => this.techAssetValidity = this._checkTechAssetValidity(value)),
       map(value => this._filterTechAssets(value))
+    );
+
+    this.filteredCertAssets = this.productForm.get('cert').valueChanges.pipe(
+      startWith(''),
+      tap(value => this.certAssetValidity = this._checkCertAssetValidity(value)),
+      map(value => this._filterCertAssets(value))
     );
 
     this.filteredDesigns = this.productForm.get('des').valueChanges.pipe(
@@ -189,6 +205,17 @@ export class ProductsEditorFormComponent implements OnInit {
 
   private _checkTechAssetValidity(value: string): boolean {
     return this.techAssets_id.indexOf(value) !== -1;
+  }
+
+  private _filterCertAssets(filterValue: string): string[] {
+    const certAssetsForm = this.productForm.get('certAssets').value;
+    return this.certAssets_id
+      .filter(option => certAssetsForm.indexOf(option) === -1) // remove designs, which already in form
+      .filter(option => option.indexOf(filterValue) === 0 ); // filter by input value
+  }
+
+  private _checkCertAssetValidity(value: string): boolean {
+    return this.certAssets_id.indexOf(value) !== -1;
   }
 
   private _filter(filterValue: string): string[] {
@@ -211,6 +238,10 @@ export class ProductsEditorFormComponent implements OnInit {
     return this.techAssets.filter(techAsset => techAsset._id === _id)[0];
   }
 
+  getCertAsset(_id) {
+    return this.certAssets.filter(certAsset => certAsset._id === _id)[0];
+  }
+
   // getDesignByImage(image) {
   //   return this.designs.filter(design => design.image === image)[0];
   // }
@@ -222,6 +253,18 @@ export class ProductsEditorFormComponent implements OnInit {
       this.addTechAssetsControl();
       this.productForm.get('techAssets').setValue(techAssetsList);
       this.productForm.get('tech').reset();
+    } else {
+      console.log('add design false');
+    }
+  }
+
+  addCertAsset() {
+    if (this._checkCertAssetValidity(this.productForm.get('cert').value)) {
+      const certAssetsList = this.productForm.get('certAssets').value || [];
+      certAssetsList.push(this.productForm.get('cert').value);
+      this.addCertAssetsControl();
+      this.productForm.get('certAssets').setValue(certAssetsList);
+      this.productForm.get('cert').reset();
     } else {
       console.log('add design false');
     }
@@ -388,6 +431,7 @@ export class ProductsEditorFormComponent implements OnInit {
       briefImage: this.productForm.get('briefImage').value,
       assets: this.productForm.get('assets').value,
       techAssets: this.productForm.get('techAssets').value,
+      certAssets: this.productForm.get('certAssets').value,
       description: this.productForm.get('description').value,
       techDescriptions: this.productForm.get('techDescriptions').value,
       recommendations: this.productForm.get('recommendations').value,
@@ -426,6 +470,10 @@ export class ProductsEditorFormComponent implements OnInit {
     this.addTechAssetsButtonDirective.focus();
   }
 
+  onSelectCertAssets() {
+    this.addCertAssetsButtonDirective.focus();
+  }
+
   addAssetsControl() {
     const control = <FormArray>this.productForm.get('assets');
     control.push(this.initAssetsControl());
@@ -444,7 +492,7 @@ export class ProductsEditorFormComponent implements OnInit {
 
   addTechAssetsControl() {
     const control = <FormArray>this.productForm.get('techAssets');
-    control.push(this.initAssetsControl());
+    control.push(this.initTechAssetsControl());
   }
 
   removeTechAssetsControl(i: number) {
@@ -453,6 +501,22 @@ export class ProductsEditorFormComponent implements OnInit {
   }
 
   initTechAssetsControl() {
+    return new FormControl('', [
+      Validators.required,
+    ]);
+  }
+
+  addCertAssetsControl() {
+    const control = <FormArray>this.productForm.get('certAssets');
+    control.push(this.initCertAssetsControl());
+  }
+
+  removeCertAssetsControl(i: number) {
+    const control = <FormArray>this.productForm.get('certAssets');
+    control.removeAt(i);
+  }
+
+  initCertAssetsControl() {
     return new FormControl('', [
       Validators.required,
     ]);

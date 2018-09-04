@@ -6,27 +6,17 @@
 
       <div class="cell" fxFlex="100">
         <mat-card>
+          <h1 class="mat-display-2">Контакти</h1>
 
           <mat-card-content>
             <div class="row" fxLayout="column" fxLayout.gt-xs="row">
 
-              <div class="cell" fxFlex.xs="100" fxFlex.gt-xs="40">
-                <a href="https://graboplast.com" target="_blank"> <img class="responsive-image"
 
-                     src="{{
-                      config.imgPath +
-                      config.cloudinary.cloud_name +
-                      '/c_fill,w_449,h_117,f_auto/' +
-                      config.graboplastLogo}}"
-                     alt="design"></a>
-              </div>
 
             <div class="cell" fxFlex.xs="100" fxFlex.gt-xs="60">
-              <h1 class="mat-display-2">Контакти</h1>
 
-              <h2 class="mat-h2">
-                ТзОВ "Трайс"
-              </h2>
+                <img src="./assets/images/trice_logo_full.svg" alt="logo" class="contacts-logo-trice">
+
               <p class="text-justify muted">
                 Адреса: м. Дніпро, вул. Булата, 12
               </p>
@@ -44,8 +34,17 @@
               </p>
             </div>
 
+              <div class="cell" fxFlex.xs="100" fxFlex.gt-xs="40">
+                <a href="https://graboplast.com" target="_blank">
+                  <img class="contacts-logo-grabo" src="./assets/images/graboplast_logo.svg" alt="logo"></a>
+                <div>
+                  <a mat-button href="https://graboplast.com" target="_blank">Перейти на сайт виробника</a>
 
+                </div>
+              </div>
             </div>
+
+
           </mat-card-content>
         </mat-card>
 

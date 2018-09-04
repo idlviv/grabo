@@ -902,7 +902,8 @@ mat-card {
 }
 
 .mat-horizontal-content-container {
-  background: $primary-background-light;
+  background: $primary-background-light !important;
+  padding: 0 !important;
 }
 
 .custom-dialog-container {
@@ -970,4 +971,76 @@ mat-card {
 
 .category-description-body {
   margin-bottom: 2rem;
+}
+
+#home-container {
+  background: $primary-background-light url('../assets/images/bg3.svg');
+  //background-color: $primary-background-light;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: grid;
+  grid-template-columns: 1fr 6fr 6fr 1fr;
+  grid-template-rows: 400px auto;
+  grid-gap: 12px;
+  grid-template-areas:
+    ". left right ."
+    ". bottom bottom .";
+  height: calc(100vh - 144px); // header and footer
+  @include lt-md {
+    grid-template-columns: 1fr 6fr 1fr;
+    grid-template-rows: calc(80vh - 144px) 400px auto;
+    grid-template-areas:
+            ". left ."
+            ". right ."
+            ". bottom .";
+  }
+  @include lt-sm {
+    height: calc(100vh - 128px); // header and footer
+  }
+  h1 {
+    color: $muted;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+}
+
+#home-left {
+  grid-area: left;
+  align-self: center;
+  justify-self: center;
+}
+
+#home-right {
+  grid-area: right;
+  align-self: center;
+  justify-self: center;
+}
+
+#home-bottom {
+  grid-area: bottom;
+  align-self: center;
+  justify-self: center;
+}
+
+#home-logo {
+  width: 250px;
+  padding-bottom: 1rem;
+}
+
+.contacts-logo-grabo {
+  width: 250px;
+  //padding-bottom: 1rem;
+}
+
+.contacts-logo-trice {
+  width: 250px;
+  padding-bottom: 1rem;
+}
+
+.info-logo-trice {
+  width: 250px;
+  padding-bottom: 3rem;
+  padding-top: 3rem;
 }

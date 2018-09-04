@@ -1,112 +1,55 @@
-<div class="app-container">
+<app-header *ngIf="showHeader"></app-header>
 
-<div class="container" fxHide.lt-md="true">
-  <div class="row primary-background-light">
-    <div class="cell">
-      <a href="">
-        <img src="./assets/images/grabofloors_logo.svg" width="250px" height="90px">
-      </a>
-    </div>
-
-    <div fxFlex></div>
-
-    <div class="cell">
-      <form [formGroup]="findDesignForm" novalidate>
-
-        <mat-form-field >
-          <input type="text" matInput placeholder="Знайти дизайн" formControlName="findDesign" [matAutocomplete]="designSelector">
-          <mat-autocomplete #designSelector="matAutocomplete">
-            <mat-option *ngFor="let filteredDesign of filteredDesigns | async"
-                        (click)="onSelectDesign(_getDesign(filteredDesign), false)" [value]="filteredDesign">
-              {{filteredDesign}}
-            </mat-option>
-          </mat-autocomplete>
-        </mat-form-field>
-      </form>
-    </div>
-
-
-    <!--<div fxFlex></div>-->
-
-    <div class="cell" fxLayout="column">
-      <div>
-        <a mat-button [routerLink]="['/feedback']" class="muted"
-                         [routerLinkActive]="['accent']" [routerLinkActiveOptions]="{exact: true}">
-        <mat-icon>mail</mat-icon> Задати питання
+<mat-toolbar class="mat-elevation-z4 header toolbar-color">
+  <mat-toolbar-row>
+        <a fxHide.gt-sm="true" mat-button href="">
+          <img src="./assets/images/grabo_logo.svg" width="140px" height="50px">
         </a>
-      </div>
-      <div>
-        <a mat-button class="muted"
-           href="tel:+380563738173">
-          <mat-icon>phone</mat-icon> 056 373 81 73
-        </a>
-      </div>
 
-    </div>
+  <div fxShow="true" fxHide.lt-md="true">
+      <a *ngFor="let mainMenuCommonItem of mainMenuCommonItems" mat-button
+       [routerLink]="['/', mainMenuCommonItem._id, 'ch']"
+       [routerLinkActive]="['accent']" [routerLinkActiveOptions]="{exact: true}">
+       {{mainMenuCommonItem.name}}
+    </a>
   </div>
-</div>
-</div>
+  <div fxFlex></div>
 
-  <mat-toolbar class="mat-elevation-z4 header toolbar-color">
-    <mat-toolbar-row>
-          <a fxHide.gt-sm="true" mat-button href="">
-            <img src="./assets/images/grabo_logo.svg" width="140px" height="50px">
-          </a>
 
-    <div fxShow="true" fxHide.lt-md="true">
-        <a *ngFor="let mainMenuCommonItem of mainMenuCommonItems" mat-button
-         [routerLink]="['/', mainMenuCommonItem._id, 'ch']"
+  <div fxShow="true" fxHide.lt-md="true">
+
+
+    <button *ngIf="user"
+            mat-button [matMenuTriggerFor]="settingsMenu" #settingsMenuTrigger="matMenuTrigger"
+            (mouseover)="onSettingsMenuMouseover()">
+      <mat-icon>settings</mat-icon><span> {{user.login}}</span>
+    </button>
+
+    <mat-menu #settingsMenu="matMenu" xPosition="after" yPosition="above" [overlapTrigger]="false">
+      <span (mouseleave)="onSettingsMenuMouseleave()">
+      <a *ngIf="user"
+         mat-menu-item [routerLink]="['/user/profile']"
          [routerLinkActive]="['accent']" [routerLinkActiveOptions]="{exact: true}">
-         {{mainMenuCommonItem.name}}
-      </a>
+        <mat-icon>account_circle</mat-icon><span>Профіль</span></a>
+      <a *ngIf="user && user?.role === 'manager' || user?.role === 'admin'"
+         mat-menu-item [routerLink]="['/dashboard']"
+         [routerLinkActive]="['accent']" [routerLinkActiveOptions]="{exact: true}">
+        <mat-icon>settings</mat-icon><span>Dashboard</span></a>
+      </span>
+    </mat-menu>
 
+    <a *ngIf='user'
+       mat-button (click)="userLocalLogout()"><mat-icon>exit_to_app</mat-icon> Вихід</a>
+  </div>
 
-    </div>
-    <div fxFlex></div>
-
-
-    <div fxShow="true" fxHide.lt-md="true">
-
-
-      <button *ngIf="user"
-              mat-button [matMenuTriggerFor]="settingsMenu" #settingsMenuTrigger="matMenuTrigger"
-              (mouseover)="onSettingsMenuMouseover()">
-        <mat-icon>settings</mat-icon><span> {{user.login}}</span>
-      </button>
-
-      <mat-menu #settingsMenu="matMenu" xPosition="after" yPosition="above" [overlapTrigger]="false">
-        <span (mouseleave)="onSettingsMenuMouseleave()">
-
-        <a *ngIf="user"
-           mat-menu-item [routerLink]="['/user/profile']"
-           [routerLinkActive]="['accent']" [routerLinkActiveOptions]="{exact: true}">
-          <mat-icon>account_circle</mat-icon><span>Профіль</span></a>
-        <a *ngIf="user && user?.role === 'manager' || user?.role === 'admin'"
-           mat-menu-item [routerLink]="['/dashboard']"
-           [routerLinkActive]="['accent']" [routerLinkActiveOptions]="{exact: true}">
-          <mat-icon>settings</mat-icon><span>Dashboard</span></a>
-
-        </span>
-
-      </mat-menu>
-
-      <!--<a *ngIf='!user'-->
-         <!--[routerLinkActive]="['accent']" [routerLinkActiveOptions]="{exact: true}"-->
-         <!--mat-button [routerLink]="['/user/login']">Вхід</a>-->
-
-      <a *ngIf='user'
-         mat-button (click)="userLocalLogout()"><mat-icon>exit_to_app</mat-icon> Вихід</a>
-    </div>
-
-    <div class="menu-button" fxShow="true" fxHide.gt-sm="true">
-      <button mat-button (click)="sidenav.toggle()">
-        <mat-icon *ngIf="sidenav.opened">format_indent_increase</mat-icon>
-        <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
-      </button>
-    </div>
-    </mat-toolbar-row>
-
-  </mat-toolbar>
+  <div class="menu-button" fxShow="true" fxHide.gt-sm="true">
+    <button mat-button (click)="sidenav.toggle()">
+      <mat-icon *ngIf="sidenav.opened">format_indent_increase</mat-icon>
+      <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
+    </button>
+  </div>
+  </mat-toolbar-row>
+</mat-toolbar>
 
   <mat-sidenav-container fxFlexFill>
     <mat-sidenav #sidenav fxLayout="column" class="theme-dark"
@@ -114,20 +57,7 @@
       <div fxLayout="column">
         <mat-nav-list>
           <mat-list-item>
-            <!--<div class="cell" fxShow="true" fxHide.gt-sm="true">-->
-              <form [formGroup]="findDesignForm" novalidate>
-
-                <mat-form-field >
-                  <input type="text" matInput placeholder="Знайти дизайн" formControlName="findDesign" [matAutocomplete]="designSelector">
-                  <mat-autocomplete #designSelector="matAutocomplete">
-                    <mat-option *ngFor="let filteredDesign of filteredDesigns | async"
-                                (click)="onSelectDesign(_getDesign(filteredDesign), true)" [value]="filteredDesign">
-                      {{filteredDesign}}
-                    </mat-option>
-                  </mat-autocomplete>
-                </mat-form-field>
-              </form>
-            <!--</div>-->
+            <app-design-searcher [closer]="true"></app-design-searcher>
           </mat-list-item>
           <mat-list-item *ngFor="let mainMenuCommonItem of mainMenuCommonItems">
             <a matLine
@@ -135,7 +65,6 @@
                [routerLink]="['/', mainMenuCommonItem._id, 'ch']" (click)="sidenav.toggle()">
               {{mainMenuCommonItem.name}}
             </a>
-
           </mat-list-item>
 
           <mat-expansion-panel *ngIf="user" class="mat-elevation-z0">
@@ -161,7 +90,6 @@
               Dashboard</a>
                 </mat-list-item>
           </mat-expansion-panel>
-
 
           <mat-list-item *ngIf='!user'>
             <a matLine
@@ -198,6 +126,7 @@
     </mat-sidenav-content>
 
   </mat-sidenav-container>
+
   <mat-toolbar class="mat-elevation-z16 footer" color="primary">
     <a fxHide.gt-sm="true" mat-button class="muted"
        href="tel:+380563738173">
@@ -212,5 +141,3 @@
           <mat-icon>mail</mat-icon> Задати питання
         </a>
   </mat-toolbar>
-
-

@@ -287,6 +287,10 @@ export class ProductService {
     return of({success: true, message: '', data: this.config.techAssets});
   }
 
+  getCertAssets(): Observable<IResponse> {
+    return of({success: true, message: '', data: this.config.certAssets});
+  }
+
   productAddTechAssets(file, _id): Observable<IResponse> {
     console.log('file', file);
     const formData: FormData = new FormData();

@@ -66,20 +66,6 @@ const ProductSchema = new Schema({
   order: {
     type: Number
   },
-
-      // _id: {
-      //   type: String,
-      //   required: true,
-      // },
-    //   name: {
-    //     type: String,
-    //     required: true,
-    //   },
-    //   sub: {
-    //     type: [String],
-    //     required: true,
-    //   }
-    // },
   techDescriptions: [
     {
       techName: {
@@ -96,9 +82,10 @@ const ProductSchema = new Schema({
       }
     }
   ],
-  // designs: [
-  //   DesignModel
-  // ],
+  certAssets: {
+    type: [String],
+    required: true
+  },
   designs: {
     type: [String],
     required: true
