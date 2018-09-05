@@ -1044,6 +1044,8 @@ mat-card {
 
 #home-action {
   width: 50%;
+  animation: buttonAppear2 2s forwards;
+  -webkit-animation: buttonAppear2 2s forwards;
 }
 
 .contacts-logo-grabo {
@@ -1065,7 +1067,7 @@ mat-card {
 #scroll-down-btn {
   position: absolute;
   bottom: 70px;
-  right: 70px;
+  right: 35px;
   animation: buttonAppear 5s forwards;
   -webkit-animation: buttonAppear 5s forwards;
   opacity: 0;
@@ -1091,12 +1093,26 @@ mat-card {
 
 @include keyframes(buttonAppear) {
     0% {
+      transform: translateY(0px);
       opacity: 0;
     }
     40% {
+      transform: translateY(8px);
       opacity: 0;
     }
     100% {
+      transform: translateY(20px);
       opacity: 1;
     }
+}
+
+@include keyframes(buttonAppear2) {
+  0% {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
 }
