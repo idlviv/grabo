@@ -129,55 +129,18 @@ $screen-xl-min: 1920px;
     @content
   }
 }
-// mixin
-//@mixin generate-grid($size: '') {
-//  @for $i from 1 through 12 {
-//    $width: calc(100% / ( #{12} / #{$i} ));
-//    @if($size == '') {
-//      .col-#{$i}-#{12} {
-//        flex-grow: #{$i};
-//      }
-//      .col-offset-#{$i}-#{12} {
-//        margin-left: $width;
-//      }
-//    }
-//    @else {
-//      .col-#{$size}-#{$i} {
-//        width: $width;
-//      }
-//      .col-#{$size}-offset-#{$i} {
-//        flex-grow: #{$i};
-//      }
-//    }
-//  }
-//}
 
-// style
-//@include generate-grid();
-//@media (min-width: 1200px) {
-//  @include generate-grid('lg');
-//}
-//
-//@media (max-width: 1200px) {
-//  @include generate-grid('md');
-//  .row {
-//    flex-direction: row;
-//  }
-//}
-//
-//* {
-//}
-//
-//.row {
-//  display: flex;
-//  align-items: flex-start;
-//  justify-content: flex-start;
-//  margin: -.5rem;
-//  flex-wrap: wrap;
-//  //height: 100px;
-//  //border: 1px solid #000;
-//}
-//
-//[class*="col-"] {
-//  float: left;
-//}
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}

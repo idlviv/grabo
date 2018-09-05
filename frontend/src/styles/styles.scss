@@ -1071,20 +1071,32 @@ mat-card {
   opacity: 0;
 }
 
-@-webkit-keyframes buttonAppear{
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
+//@-webkit-keyframes buttonAppear{
+//  from {
+//    opacity: 0;
+//  }
+//  to {
+//    opacity: 1;
+//  }
+//}
+//
+//@keyframes buttonAppear {
+//  from {
+//    opacity: 0;
+//  }
+//  to {
+//    opacity: 1;
+//  }
+//}
 
-@keyframes buttonAppear {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+@include keyframes(buttonAppear) {
+    0% {
+      opacity: 0;
+    }
+    40% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
 }
