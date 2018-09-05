@@ -4,11 +4,12 @@
     <!--<h1 class="mat-h4">покриття на будь-яку підлогу</h1>-->
     <div>
       <a mat-flat-button color="accent" class="radius-5" href="/usages/ch" id="home-action">Підібрати</a>
+      <!--<button mat-fab-button class="radius-5" (click)="onScroll()">Down</button>-->
+      <button *ngIf="media.isActive('lt-md')" color="primary" mat-mini-fab (click)="onScroll()" id="scroll-down-btn"><mat-icon>keyboard_arrow_down</mat-icon></button>
     </div>
   </div>
-  <div id="home-right">
+  <div id="home-right" #scrollPoint>
     <app-design-searcher [closer]="false"></app-design-searcher>
-
     <app-crsl></app-crsl>
   </div>
   <div id="home-bottom">
@@ -19,7 +20,7 @@
           <a fxFlex="1 1 auto" mat-stroked-button class="radius-5 text-center" color="accent"
              [routerLink]="['/products', 'ch', {outlets: {primary: [descendant._id], breadcrumb: [descendant._id]}}]"
              [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">
-            {{descendant.name}}
+             {{descendant.name}}
           </a>
 
         </div>

@@ -988,15 +988,28 @@ mat-card {
     ". left right ."
     ". bottom bottom .";
   height: calc(100vh - 144px); // header and footer
-  @include lt-md {
-    grid-template-columns: 1fr 6fr 1fr;
-    grid-template-rows: calc(80vh - 144px) 400px auto;
+  @include md {
+    grid-template-columns: 1fr 10fr 10fr 1fr;
+    grid-template-rows: 400px 1fr auto;
+    grid-template-areas:
+            ". left right ."
+            ". bottom bottom .";
+  }
+  @include sm {
+    grid-template-columns: 1fr 10fr 1fr;
+    grid-template-rows: calc(100vh - 128px) 1fr auto;
     grid-template-areas:
             ". left ."
             ". right ."
             ". bottom .";
   }
   @include lt-sm {
+    grid-template-columns: 1fr;
+    grid-template-rows: calc(100vh - 128px) 1fr auto;
+    grid-template-areas:
+            "left"
+            "right"
+            "bottom";
     height: calc(100vh - 128px); // header and footer
   }
   h1 {
@@ -1029,6 +1042,10 @@ mat-card {
   padding-bottom: 1rem;
 }
 
+#home-action {
+  width: 50%;
+}
+
 .contacts-logo-grabo {
   width: 250px;
   //padding-bottom: 1rem;
@@ -1043,4 +1060,31 @@ mat-card {
   width: 250px;
   padding-bottom: 3rem;
   padding-top: 3rem;
+}
+
+#scroll-down-btn {
+  position: absolute;
+  bottom: 70px;
+  right: 70px;
+  animation: buttonAppear 5s forwards;
+  -webkit-animation: buttonAppear 5s forwards;
+  opacity: 0;
+}
+
+@-webkit-keyframes buttonAppear{
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes buttonAppear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

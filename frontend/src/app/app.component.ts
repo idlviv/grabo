@@ -43,7 +43,6 @@ export class AppComponent implements OnInit {
       filter(event => event instanceof NavigationStart)
     )
     .subscribe((event: NavigationStart) => {
-      console.log('event', event);
       this.showHeader = !(event.url === '/');
     });
 
