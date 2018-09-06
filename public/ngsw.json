@@ -10,7 +10,7 @@
         "/1.d021263fb90fba5cf216.js",
         "/2.dbb00f428b9a45fa968a.js",
         "/3.35bf5eddc066361574ff.js",
-        "/4.bed59c414c295ba8be50.js",
+        "/4.8c1c4126dfd5374fea11.js",
         "/assets/images/g_logo_animated.svg",
         "/assets/images/grabo_logo.svg",
         "/assets/images/grabofloors_logo.svg",
@@ -19,7 +19,7 @@
         "/index.html",
         "/main.216f5b6e7f84325ca242.js",
         "/polyfills.e185fa9ce214966d338d.js",
-        "/runtime.820737db7e3163c44a57.js",
+        "/runtime.d6573341578260ade2e4.js",
         "/styles.562cd52abba51837f4e9.css"
       ],
       "patterns": []
@@ -55,7 +55,7 @@
     "/1.d021263fb90fba5cf216.js": "2307270d5199f8715b174fc3b5f2588d0e2740b9",
     "/2.dbb00f428b9a45fa968a.js": "b3e19fd2f9f3c4ca81275c9b265826fa9ac38cfd",
     "/3.35bf5eddc066361574ff.js": "f2ac622bc60bcba0c65e516c4a6d0aeab8c4ae3a",
-    "/4.bed59c414c295ba8be50.js": "8dcd817b9c3fb59d839440ddde6e105cf8604514",
+    "/4.8c1c4126dfd5374fea11.js": "5794b3f820df071d27b27fe2b40b96e82d243b82",
     "/assets/icons/icon-128x128.png": "0889d85f094f74ae593054728191d15506245d82",
     "/assets/icons/icon-144x144.png": "98c08fe6ced4bce773b6cc7243ca30548b6f4064",
     "/assets/icons/icon-152x152.png": "f93fd3231dc883e2371c5b9e1e63dea50e53880f",
@@ -78,10 +78,10 @@
     "/assets/images/trice_logo_full.svg": "25c740eabea47fe30d8fe464ce6fcc40e6383060",
     "/common.40dec633240e5df35f7f.js": "3df0d3cc0d124e7a6a8400d07ca9ab91d2b565af",
     "/favicon.ico": "1a707ab30f1abfe467fa07b603f68779dc5faae6",
-    "/index.html": "5e20efedc0c59d41fc7f95d366ac39b993644e4b",
+    "/index.html": "c0e2ef8d1e65cc40810749c74a6ea419d9bab577",
     "/main.216f5b6e7f84325ca242.js": "7edbccd214a8f0be412ca2ed2c8a562e06cd11ed",
     "/polyfills.e185fa9ce214966d338d.js": "7ad68fa768a777eb3c307f7d5da3827c8e20d084",
-    "/runtime.820737db7e3163c44a57.js": "192707eacb97adeea3244b1e2c2422aed63d895f",
+    "/runtime.d6573341578260ade2e4.js": "91732107cfdb254171b20f9a27a5f20f5b0a9d66",
     "/styles.562cd52abba51837f4e9.css": "5a973696672e36b3966d39e0a8c8d7951af170df"
   },
   "navigationUrls": [
