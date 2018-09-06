@@ -1,3 +1,5 @@
+import { ITechAsset } from './interface';
+
 export interface IProduct {
   _id: string;
   name: string;
@@ -16,6 +18,7 @@ export interface IProduct {
       techValue: string;
     }
   ];
+  certAssets: string[];
   designs: string[];
   downloads: [
     {

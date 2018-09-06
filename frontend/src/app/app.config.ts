@@ -32,6 +32,41 @@ export const config = {
       image: 's_color20nv_blue',
       description: ''
     },
+    {
+      _id: 's_diamond',
+      image: 's_diamond',
+      description: ''
+    },
+    {
+      _id: 's_fiba',
+      image: 's_fiba',
+      description: ''
+    },
+    {
+      _id: 's_pvc',
+      image: 's_pvc',
+      description: ''
+    },
+    {
+      _id: 'sez_pvc_01',
+      image: 'sez_pvc_01',
+      description: ''
+    },
+    {
+      _id: 'sez_pvc_02',
+      image: 'sez_pvc_02',
+      description: ''
+    },
+    {
+      _id: 'sez_color_20nv_01',
+      image: 'sez_color_20nv_01',
+      description: ''
+    },
+    {
+      _id: 'sez_color_20nv_02',
+      image: 'sez_color_20nv_02',
+      description: ''
+    },
   ],
   techAssets: [
     {

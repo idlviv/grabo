@@ -65,6 +65,17 @@
               </div>
             </div>
 
+            <div class="row margin-bottom" fxFlex fxLayout="row">
+              <div fxFlex="33" class="cell padding-bottom" fxLayout fxLayoutAlign="center center"
+                   *ngFor="let asset of product.certAssets">
+                <img class="responsive-image" (click)="openDialog(asset, '/c_fill,w_300,h_450,f_auto/', 'Сертифікат')" src="{{
+              config.imgPath +
+              config.cloudinary.cloud_name +
+              '/c_fill,w_100,h_150,f_auto/' +
+              asset}}" alt="certificate">
+              </div>
+            </div>
+
           </div>
 
           <div class="cell" fxFlex.gt-md="35" fxFlex.lt-xl="100">

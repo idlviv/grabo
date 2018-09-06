@@ -42,16 +42,6 @@ export class ProductItemDetailComponent implements OnInit, OnChanges {
         },
         err => console.log('Помилка завантеження дизайнів', err)
       );
-
-    // this.getRecommendations();
-
-
-    // this.route.url
-    //   .subscribe(url => {
-    //     console.log('url', url);
-    //
-    //     this.getRecommendations();
-    //   });
   }
 
   ngOnChanges(changes: SimpleChanges) {
