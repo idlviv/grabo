@@ -1,5 +1,5 @@
 rd public /s /q
 if exist public rd /s /q public
 cd frontend
-ng build --aot --watch
-rem ng build --watch
+rem ng build --aot --watch
+ng build --watch

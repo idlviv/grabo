@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../../material.module';
-import { CloudinaryModule } from '@cloudinary/angular-5.x';
+// import { CloudinaryModule } from '@cloudinary/angular-5.x';
 import { SharedModule } from '../shared/shared.module';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductsRoutingModule } from './products-routing.module';
@@ -19,7 +19,7 @@ import { ProductsDetailSideComponent } from './products-detail-side/products-det
     CommonModule,
     ProductsRoutingModule,
     MaterialModule,
-    CloudinaryModule,
+    // CloudinaryModule,
     SharedModule,
   ],
   exports: [],

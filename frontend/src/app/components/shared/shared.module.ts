@@ -4,7 +4,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { Page404Component } from './page-404/page-404.component';
 import { MaterialModule } from '../../material.module';
 import { HomeComponent } from './home/home.component';
-import { CloudinaryModule } from '@cloudinary/angular-5.x';
+// import { CloudinaryModule } from '@cloudinary/angular-5.x';
 import { RouterModule } from '@angular/router';
 import { ConfirmPopupComponent } from './confirm-popup/confirm-popup.component';
 import { DesignItemComponent } from './design-item/design-item.component';
@@ -29,7 +29,7 @@ import { LandingComponent } from './landing/landing.component';
   imports: [
     CommonModule,
     MaterialModule,
-    CloudinaryModule,
+    // CloudinaryModule,
     RouterModule,
     ReactiveFormsModule,
     RecaptchaModule,

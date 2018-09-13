@@ -20,8 +20,8 @@ import { CatalogService } from './services/catalog.service';
 import { ProductService } from './services/product.service';
 import { SharedService } from './services/shared.service';
 
-import { CloudinaryModule } from '@cloudinary/angular-5.x';
-import { Cloudinary } from 'cloudinary-core/cloudinary-core-shrinkwrap';
+// import { CloudinaryModule } from '@cloudinary/angular-5.x';
+// import { Cloudinary } from 'cloudinary-core/cloudinary-core-shrinkwrap';
 
 import { AuthGuard } from './guards/auth.guard';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -31,10 +31,10 @@ import { DesignPopupComponent } from './components/shared/design-popup/design-po
 import { ReactiveFormsModule } from '@angular/forms';
 // import { SystemService } from './services/system.service';
 
-const cloudinaryLib = {
-  Cloudinary: Cloudinary
-};
-const cloudinaryCloudName = config.cloudinary.cloud_name;
+// const cloudinaryLib = {
+//   Cloudinary: Cloudinary
+// };
+// const cloudinaryCloudName = config.cloudinary.cloud_name;
 
 @NgModule({
   declarations: [
@@ -49,7 +49,7 @@ const cloudinaryCloudName = config.cloudinary.cloud_name;
     SharedModule,
     RecaptchaModule.forRoot(),
     RecaptchaFormsModule,
-    CloudinaryModule.forRoot(cloudinaryLib, { cloud_name: cloudinaryCloudName }),
+    // CloudinaryModule.forRoot(cloudinaryLib, { cloud_name: cloudinaryCloudName }),
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     ReactiveFormsModule,
   ],

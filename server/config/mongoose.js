@@ -9,7 +9,8 @@ const options = {
   reconnectInterval: 500, // Reconnect every 500ms
   poolSize: 10, // Maintain up to 10 socket connections
   // If not connected, return errors immediately rather than waiting for reconnect
-  bufferMaxEntries: 0
+  bufferMaxEntries: 0,
+  useNewUrlParser: true,
 };
 
 const url = config.get('DB_URL');
@@ -22,6 +23,9 @@ mongoose.connect(url, options)
       process.exit(1);
     }
   );
+
+// DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes
+mongoose.set('useCreateIndex', true);
 
 // mongoose.connection.on('error', function(err) {
 //   console.log('on error', err);

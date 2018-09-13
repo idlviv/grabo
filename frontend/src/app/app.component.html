@@ -91,11 +91,11 @@
                 </mat-list-item>
           </mat-expansion-panel>
 
-          <mat-list-item *ngIf='!user'>
-            <a matLine
-               [routerLinkActive]="['muted']" [routerLinkActiveOptions]="{exact: true}"
-               [routerLink]="['/user/login']" (click)="sidenav.toggle()">Вхід</a>
-          </mat-list-item>
+          <!--<mat-list-item *ngIf='!user'>-->
+            <!--<a matLine-->
+               <!--[routerLinkActive]="['muted']" [routerLinkActiveOptions]="{exact: true}"-->
+               <!--[routerLink]="['/user/login']" (click)="sidenav.toggle()">Вхід</a>-->
+          <!--</mat-list-item>-->
           <mat-list-item *ngIf='user'>
             <a matLine
                (click)="userLocalLogout()" (click)="sidenav.toggle()">
