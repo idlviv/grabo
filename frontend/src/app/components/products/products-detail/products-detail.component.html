@@ -11,7 +11,7 @@
   <div class="cell-menu" fxFlex.lt-md="100" fxFlex.gt-sm="250px">
     <app-products-detail-side [siblings]="siblings" [category_id]="category_id"></app-products-detail-side>
   </div>
-  <div class="cell" fxFlex.lt-md="100" fxFlex.gt-sm="100%-250px">
+  <div class="cell" fxFlex.lt-md="100" fxFlex.gt-sm="calc(100%-250px)">
 
     <app-product-item-detail *ngIf="product" [product]="product" [category_id]="category_id"></app-product-item-detail>
   </div>

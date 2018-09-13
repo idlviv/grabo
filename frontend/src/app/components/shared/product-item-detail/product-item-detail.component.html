@@ -8,150 +8,140 @@
       </mat-card-header>
       <mat-card-content>
         <div class="row" fxLayout>
-          <div class="cell margin-bottom" fxFlex>
+          <div class="cell" fxFlex>
             <p class="mat-body text-justify" [innerHTML]="product.description"></p>
           </div>
         </div>
-        <div class="row" fxLayout="row">
+            <div class="row" fxLayout="row">
+              <div class="cell margin-bottom" fxFlex.lt-xl="100" fxFlex.gt-md="65">
 
-          <div class="cell" fxFlex.lt-xl="100" fxFlex.gt-md="65" fxLayout="column">
-
-            <div class="row margin-bottom" fxLayout="row" fxLayoutAlign="center center">
-              <div class="cell" fxFlex="100">
-                <!--<div fxFlex="100">-->
-                  <img class="responsive-image" src="{{
-              config.imgPath +
-              config.cloudinary.cloud_name +
-              '/c_fill,w_535,h_350,f_auto/' +
-              product.mainImage}}"
-                       alt="designImage">
-                <!--</div>-->
-
-              </div>
-            </div>
-
-            <div class="row margin-bottom" fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="center center">
-                <div fxFlex.gt-xs="33" class="cell" *ngFor="let asset of product.assets">
-                  <div fxFlex="100">
-                    <img *ngIf="media.isActive('gt-xs')" (click)="openDialog(asset, '/c_fill,w_1100,h_550,f_auto/', null)"
-                         class="responsive-image hover-cursor" src="{{
-                        config.imgPath +
-                        config.cloudinary.cloud_name +
-                        '/c_fill,w_260,h_170,f_auto/' +
-                        asset}}"
-                                       alt="designImage">
-                    <img *ngIf="media.isActive('xs')" (click)="openDialog(asset, '/c_fill,w_1100,h_550,f_auto/', null)"
-                         class="responsive-image hover-cursor" src="{{
-                        config.imgPath +
-                        config.cloudinary.cloud_name +
-                        '/c_fill,w_535,h_350,f_auto/' +
-                        asset}}"
-                         alt="designImage">
-
-                  </div>
-
+                <div class="row padding-bottom" fxLayout="row">
+                    <div class="cell" fxFlex="100" fxLayoutAlign="center center">
+                          <img class="responsive-image" src="{{
+                      config.imgPath +
+                      config.cloudinary.cloud_name +
+                      '/c_fill,w_535,h_350,f_auto/' +
+                      product.mainImage}}"
+                                alt="designImage">
+                      </div>
                 </div>
-            </div>
 
-            <div class="row margin-bottom" fxFlex fxLayout="row">
-              <div fxFlex="20" class="cell padding-bottom" fxLayout fxLayoutAlign="center center"
-                   *ngFor="let asset of product.techAssets">
-                <img fxflex class="product-detail-image" src="{{
-              config.imgPath +
-              config.cloudinary.cloud_name +
-              '/c_fill,w_55,h_55,f_auto/' +
-              asset}}"
-                     alt="technical Image">
-              </div>
-            </div>
-
-            <div class="row margin-bottom" fxFlex fxLayout="row">
-              <div fxFlex="33" class="cell padding-bottom" fxLayout fxLayoutAlign="center center"
-                   *ngFor="let asset of product.certAssets">
-                <img class="responsive-image hover-cursor" (click)="openDialog(asset, '/c_fill,w_300,h_450,f_auto/', 'Сертифікат')" src="{{
-              config.imgPath +
-              config.cloudinary.cloud_name +
-              '/c_fill,w_100,h_150,f_auto/' +
-              asset}}" alt="certificate">
-              </div>
-            </div>
-
-          </div>
-
-          <div class="cell" fxFlex.gt-md="35" fxFlex.lt-xl="100">
-
-            <!--<div fxLayout="row" fxFlex="100">-->
-
-              <div class="row" fxFlex="100" fxLayout="row">
-                <div class="cell margin-bottom-3" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.gt-md="100">
-                  <div fxFlex="100">
-                    <H2 class="mat-h2 text-align-center">Рекомендовані області застосування</H2>
-                  </div>
-                  <div fxFlex="100">
-                    <mat-accordion *ngIf="recommendations">
-                      <mat-expansion-panel *ngFor="let recommendation of recommendations">
-                        <mat-expansion-panel-header>
-                          <mat-panel-title>
-                            Сфера застосування
-                          </mat-panel-title>
-                          <mat-panel-description>
-                            {{recommendation._id}}
-                          </mat-panel-description>
-                        </mat-expansion-panel-header>
-                        <mat-list>
-                          <mat-list-item *ngFor="let sub of recommendation.sub">
-                            <mat-icon matListIcon>done</mat-icon>
-
-                            <h3 matLine>
-                              <a mat-button
-                                 [routerLink]="['/usages/ch', sub._id]"
-                                 [routerLinkActive]="['accent']" [routerLinkActiveOptions]="{exact: true}">
-
-                                {{sub.name}}
-                              </a></h3>
-                          </mat-list-item>
-                        </mat-list>
-                      </mat-expansion-panel>
-                    </mat-accordion>
+                <div class="row padding-bottom" fxLayout="row" fxLayoutAlign="center center">
+                  <div class="cell" fxFlex.gt-xs="33" fxFlex.xs="100"  *ngFor="let asset of product.assets">
+                    <!-- <div fxFlex="100"> -->
+                      <img *ngIf="media.isActive('gt-xs')" (click)="openDialog(asset, '/c_fill,w_1100,h_550,f_auto/', null)"
+                          class="responsive-image hover-cursor" src="{{
+                          config.imgPath +
+                          config.cloudinary.cloud_name +
+                          '/c_fill,w_260,h_170,f_auto/' +
+                          asset}}"
+                                        alt="designImage">
+                      <img *ngIf="media.isActive('xs')" (click)="openDialog(asset, '/c_fill,w_1100,h_550,f_auto/', null)"
+                          class="responsive-image hover-cursor" src="{{
+                          config.imgPath +
+                          config.cloudinary.cloud_name +
+                          '/c_fill,w_535,h_350,f_auto/' +
+                          asset}}"
+                          alt="designImage">
+                    <!-- </div> -->
                   </div>
                 </div>
 
-                <div class="cell margin-bottom-3" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.gt-md="100">
-                  <div fxFlex="100">
-                    <H2 class="mat-h2 text-align-center">Технічні характеристики</H2>
+                <div class="row padding-bottom" fxLayout="row">
+                  <div class="cell padding-bottom" fxFlex.xs="20" fxFlex.sm="16.6" fxFlex.gt-sm="14.28" *ngFor="let asset of product.techAssets" 
+                  fxLayoutAlign="center center">
+                    <img fxflex class="product-detail-image" src="{{
+                  config.imgPath +
+                  config.cloudinary.cloud_name +
+                  '/c_fill,w_55,h_55,f_auto/' +
+                  asset}}"
+                          alt="technical Image">
                   </div>
-                  <div class="padding-bottom" fxFlex="100" fxLayout="row" fxLayoutAlign="center">
-                    <table mat-table [dataSource]="product.techDescriptions" class="mat-elevation-z0" fxFlex="100">
-
-                      <ng-container matColumnDef="techName">
-                        <!--<th mat-header-cell *matHeaderCellDef> Характеристики </th>-->
-                        <td mat-cell *matCellDef="let element"> {{element.techName}} </td>
-                      </ng-container>
-
-                      <ng-container matColumnDef="techUnit">
-                        <!--<th mat-header-cell *matHeaderCellDef> Одиниці </th>-->
-                        <td mat-cell *matCellDef="let element"> {{element.techUnit}} </td>
-                      </ng-container>
-
-                      <ng-container matColumnDef="techValue">
-                        <!--<th mat-header-cell *matHeaderCellDef>  </th>-->
-                        <td mat-cell *matCellDef="let element"> {{element.techValue}} </td>
-                      </ng-container>
-
-                      <!--<tr mat-header-row *matHeaderRowDef="['techName', 'techUnit', 'techValue']"></tr>-->
-                      <tr mat-row *matRowDef="let row; columns: ['techName', 'techUnit', 'techValue']"></tr>
-                    </table>
+                </div>
+      
+                <div class="row padding-bottom" fxLayout="row">
+                    <div class="cell padding-bottom" fxFlex.xs="33" fxFlex.sm="25" fxFlex.gt-sm="20" *ngFor="let asset of product.certAssets"
+                    fxLayoutAlign="center center">
+                      <img class="responsive-image hover-cursor" (click)="openDialog(asset, '/c_fill,w_300,h_450,f_auto/', 'Сертифікат')" src="{{
+                    config.imgPath +
+                    config.cloudinary.cloud_name +
+                    '/c_fill,w_100,h_150,f_auto/' +
+                    asset}}" alt="certificate">
+                    </div>
                   </div>
+              </div>
+        
+              <div class="cell margin-bottom" fxFlex.lt-xl="100" fxFlex.gt-md="35">
+                <div class="row" fxLayout="row">
+                  <div class="cell" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.gt-md="100">
+                    <div class="row padding-bottom" fxLayout="row">
+                      <div class="cell" fxFlex="100">
+                        <H2 class="mat-h2 text-align-center">Рекомендовані області застосування</H2>
+                      </div>
+                      <div class="cell" fxFlex="100">
+                        <mat-accordion *ngIf="recommendations">
+                          <mat-expansion-panel *ngFor="let recommendation of recommendations">
+                            <mat-expansion-panel-header>
+                              <mat-panel-title>
+                                Сфера застосування
+                              </mat-panel-title>
+                              <mat-panel-description>
+                                {{recommendation._id}}
+                              </mat-panel-description>
+                            </mat-expansion-panel-header>
+                            <mat-list>
+                              <mat-list-item *ngFor="let sub of recommendation.sub">
+                                <mat-icon matListIcon>done</mat-icon>
+                                <h3 matLine>
+                                  <a mat-button
+                                    [routerLink]="['/usages/ch', sub._id]"
+                                    [routerLinkActive]="['accent']" [routerLinkActiveOptions]="{exact: true}">
 
+                                    {{sub.name}}
+                                  </a></h3>
+                              </mat-list-item>
+                            </mat-list>
+                          </mat-expansion-panel>
+                        </mat-accordion>
+                      </div>
+                    </div>
+                </div>
+                
+                <div class="cell" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.gt-md="100">
+                <!-- <div class="cell margin-bottom-3" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.gt-md="100"> -->
+                  <div class="row padding-bottom" fxLayout="row">
+                    <div class="cell" fxFlex="100">
+                      <H2 class="mat-h2 text-align-center">Технічні характеристики</H2>
+                    </div>
+                    <div class="cell" class="padding-bottom" fxFlex="100" fxLayout="row" fxLayoutAlign="center">
+                      <table mat-table [dataSource]="product.techDescriptions" class="mat-elevation-z0" fxFlex="100">
 
+                        <ng-container matColumnDef="techName">
+                          <!--<th mat-header-cell *matHeaderCellDef> Характеристики </th>-->
+                          <td mat-cell *matCellDef="let element"> {{element.techName}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="techUnit">
+                          <!--<th mat-header-cell *matHeaderCellDef> Одиниці </th>-->
+                          <td mat-cell *matCellDef="let element"> {{element.techUnit}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="techValue">
+                          <!--<th mat-header-cell *matHeaderCellDef>  </th>-->
+                          <td mat-cell *matCellDef="let element"> {{element.techValue}} </td>
+                        </ng-container>
+
+                        <!--<tr mat-header-row *matHeaderRowDef="['techName', 'techUnit', 'techValue']"></tr>-->
+                        <tr mat-row *matRowDef="let row; columns: ['techName', 'techUnit', 'techValue']"></tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
                 </div>
               </div>
 
+            </div>
 
-
-
-          </div>
-        </div>
 
         <div class="row" fxLayout="row">
           <div fxFlex.xs="100" fxFlex.sm="25" fxFlex.gt-sm="20" class="cell"
