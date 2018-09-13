@@ -48,8 +48,9 @@ export class UsagesComponent implements OnInit {
           this.recommendation_id = paramMap.get('_id');
           console.log('this.recommendation_id', this.recommendation_id);
           if (!this.recommendation_id) {
-            this.recomForm.get('recommendations').setValue(this.recommendations[0].sub[0]._id);
-            this.onSelectCategory({value: this.recommendations[0].sub[0]._id});
+            console.log('this rec', this.recommendations);
+            this.recomForm.get('recommendations').setValue(this.recommendations[3].sub[6]._id);
+            this.onSelectCategory({value: this.recommendations[3].sub[6]._id});
           } else {
             this.recomForm.get('recommendations').setValue(this.recommendation_id);
             this.onSelectCategory({value: this.recommendation_id});
@@ -61,10 +62,8 @@ export class UsagesComponent implements OnInit {
 
   onSelectCategory(event) {
     const recommendation = event.value;
-    console.log('recommendation', recommendation);
     this.productService.getRecommendationsByIds([recommendation]).pipe(
       mergeMap(result => {
-          console.log('recommendation_parent result', result.data[0]._id);
           this.recommendation_parent = result.data[0]._id;
           return this.productService.getProductsByRecommendation(recommendation);
         }
@@ -90,10 +89,8 @@ export class UsagesComponent implements OnInit {
 
     dialogRef.afterClosed()
       .subscribe(result => {
-          console.log('result popup', result);
         },
         err => console.log('err delete', err)
       );
   }
-
 }
