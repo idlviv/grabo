@@ -47,7 +47,7 @@
                   </div>
                 </div>
 
-                <div class="row padding-bottom" fxLayout="row">
+                <div class="row padding-bottom" fxLayout="row" fxLayoutAlign="center center">
                   <div class="cell padding-bottom" fxFlex.xs="20" fxFlex.sm="16.6" fxFlex.gt-sm="14.28" *ngFor="let asset of product.techAssets" 
                   fxLayoutAlign="center center">
                     <img fxflex class="product-detail-image" src="{{
@@ -59,7 +59,7 @@
                   </div>
                 </div>
       
-                <div class="row padding-bottom" fxLayout="row">
+                <div class="row padding-bottom" fxLayout="row" fxLayoutAlign="center center">
                     <div class="cell padding-bottom" fxFlex.xs="33" fxFlex.sm="25" fxFlex.gt-sm="20" *ngFor="let asset of product.certAssets"
                     fxLayoutAlign="center center">
                       <img class="responsive-image hover-cursor" (click)="openDialog(asset, '/c_fill,w_300,h_450,f_auto/', 'Сертифікат')" src="{{
