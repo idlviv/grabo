@@ -14,6 +14,12 @@
     </a>
   </div>
   <div fxFlex></div>
+  <div *ngIf="!showHeader" fxShow="true" fxHide.lt-md="true">
+    <a mat-button class="muted"
+    href="tel:+380956535511">
+    <mat-icon>phone</mat-icon> 095 653 55 11
+    </a>
+  </div>
 
 
   <div fxShow="true" fxHide.lt-md="true">
