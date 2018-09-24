@@ -11,7 +11,7 @@ db.getCollection('catalogs')
         auth: 'casual', order: 1, assets: ['product'],description: ''},
 
         { _id: 'residential', name: 'Побутовий лінолеум', ancestors: ['home', 'common', 'products'], parent: 'products',
-          auth: 'casual', order: 1, prefix: '', assets: ['catalog_residential'],
+          auth: 'casual', order: 1, prefix: '', assets: ['cat_residential'],
           description: {
             "title": "Побутовий лінолеум",
             "p": [
@@ -29,7 +29,7 @@ db.getCollection('catalogs')
           //   auth: 'casual', order: 1, prefix: '', assets: ['catalog'],description: ''},
 
         { _id: 'semi_commercial', name: 'Напівкомерційний лінолеум', ancestors: ['home', 'common', 'products'], parent: 'products',
-          auth: 'casual', order: 2, prefix: '', assets: ['catalog_semi_commercial'],
+          auth: 'casual', order: 2, prefix: '', assets: ['cat_semi_commercial'],
           description: {
             "title": "Напівкомерційне покриття",
             "p": [
@@ -56,7 +56,7 @@ db.getCollection('catalogs')
         //   auth: 'casual', order: 3, prefix: '', assets: ['catalog'],description: ''},
 
         { _id: 'commercial', name: 'Комерційний лінолеум', ancestors: ['home', 'common', 'products'], parent: 'products',
-          auth: 'casual', order: 3, prefix: '', assets: ['catalog_commercial'],
+          auth: 'casual', order: 3, prefix: '', assets: ['cat_commercial'],
           description: {
             "title": "Комерційний лінолеум",
             "p": [
@@ -68,7 +68,7 @@ db.getCollection('catalogs')
           }
         },
           { _id: 'diamond', name: 'Diamond', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
-            auth: 'casual', order: 1, prefix: '', assets: ['catalog_commercial_diamond'],
+            auth: 'casual', order: 1, prefix: '', assets: ['cat_diamond'],
             description: {
               "title": "Diamond",
               "p": [
@@ -78,7 +78,7 @@ db.getCollection('catalogs')
             }
           },
           { _id: 'homogen', name: 'Гомогенні покриття', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
-            auth: 'casual', order: 2, prefix: '', assets: ['low_catalog_homogen'],
+            auth: 'casual', order: 2, prefix: '', assets: ['cat_homogen'],
             description: {
               "title": "Гомогенне покриття на підлогу",
               "p": [
@@ -89,7 +89,7 @@ db.getCollection('catalogs')
             }
           },
           { _id: 'safety', name: 'Safety - Безпечні покриття', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
-            auth: 'casual', order: 3, prefix: '', assets: ['low_catalog_safety'],
+            auth: 'casual', order: 3, prefix: '', assets: ['cat_safety'],
             description: {
               "title": "Safety - Безпечні покриття",
               "p": [
@@ -99,7 +99,7 @@ db.getCollection('catalogs')
             }
           },
           { _id: 'acoustic', name: 'Акустичні покриття', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
-            auth: 'casual', order: 4, prefix: '', assets: ['low_catalog_acoustic'],
+            auth: 'casual', order: 4, prefix: '', assets: ['cat_acoustic'],
             description: {
               "title": "Acoustic",
               "p": [
@@ -109,7 +109,7 @@ db.getCollection('catalogs')
             }
           },
           { _id: 'silver_knight', name: 'Silver Knight', ancestors: ['home', 'common', 'products', 'commercial'], parent: 'commercial',
-            auth: 'casual', order: 5, prefix: '', assets: ['low_catalog_silver_knight'],
+            auth: 'casual', order: 5, prefix: '', assets: ['cat_silver_knight'],
             description: {
               "title": "Silver Knight",
               "p": [
@@ -131,7 +131,7 @@ db.getCollection('catalogs')
           //   auth: 'casual', order: 5, prefix: '', assets: ['catalog'],description: ''},
 
         { _id: 'sport', name: 'Спортивні покриття', ancestors: ['home', 'common', 'products'], parent: 'products',
-          auth: 'casual', order: 4, prefix: '', assets: ['low_catalog_sport'],
+          auth: 'casual', order: 4, prefix: '', assets: ['cat_sport'],
           description: {
             "title": "Спортивний лінолеум",
             "p": [
@@ -145,7 +145,7 @@ db.getCollection('catalogs')
           }
         },
           { _id: 'sport_pvc', name: 'Спортивні ПВХ покриття', ancestors: ['home', 'common', 'products', 'sport'], parent: 'sport',
-            auth: 'casual', order: 1, prefix: '', assets: ['low_catalog_sport_pvc'],
+            auth: 'casual', order: 1, prefix: '', assets: ['cat_sport_pvc'],
             description: {
               "title": "Спортивні ПВХ покриття",
               "p": [
@@ -168,7 +168,7 @@ db.getCollection('catalogs')
             }
           },
           { _id: 'sport_parquet', name: 'Спортивні паркети', ancestors: ['home', 'common', 'products', 'sport'], parent: 'sport',
-            auth: 'casual', order: 2, prefix: '', assets: ['low_catalog_sport_parquet'],
+            auth: 'casual', order: 2, prefix: '', assets: ['cat_sport_parquet'],
             description: {
               "title": "Спортивні паркети",
               "p": [
@@ -187,7 +187,7 @@ db.getCollection('catalogs')
           },
 
         { _id: 'transport', name: 'Транспортний лінолеум', ancestors: ['home', 'common', 'products'], parent: 'products',
-          auth: 'casual', order: 7, prefix: '', assets: ['catalog_transport'],
+          auth: 'casual', order: 7, prefix: '', assets: ['cat_transport'],
           description: {
             "title": "Транспортний лінолеум",
             "p": [
@@ -362,7 +362,7 @@ db.getCollection('catalogs')
 
 
         { _id: 'show', name: 'Сценічний лінолеум', ancestors: ['home', 'common', 'products'], parent: 'products',
-          auth: 'casual', order: 8, prefix: '', assets: ['catalog_show'],description: ''},
+          auth: 'casual', order: 8, prefix: '', assets: ['cat_show'],description: ''},
 
 
           // { _id: 'broadway17', name: 'Broadway 17', ancestors: ['home', 'common', 'products', 'show'], parent: 'show',
@@ -402,7 +402,7 @@ db.getCollection('catalogs')
         },
 
   { _id: 'wall', name: 'Покриття для стін', ancestors: ['home', 'common', 'products'], parent: 'products',
-    auth: 'casual', order: 7, prefix: '', assets: ['low_catalog_wall'],
+    auth: 'casual', order: 7, prefix: '', assets: ['cat_wall'],
     description: ''
   },
 
