@@ -30,12 +30,7 @@ module.exports.getProductById = function(req, res, next) {
     );
 };
 
-
-
-
 module.exports.getProductsWithGallery = function(req, res, next) {
-
-
   ProductModel.find({assets: { $exists: true, $not: {$size: 0} }})
     .then(result =>
       res.status(200).json(new ResObj(true, 'Масив колекцій з галереєю', result))
@@ -304,7 +299,7 @@ module.exports.productAddBriefImage = function(req, res, next) {
     cloudinary.v2.uploader.upload(
       files.file.path,
       {
-        public_id: fields._id + '_brief_image_' + Date.now(),// jscs:ignore requireCamelCaseOrUpperCaseIdentifiers
+        public_id: 'br_' + fields._id + '_' + Date.now(),// jscs:ignore requireCamelCaseOrUpperCaseIdentifiers
         eager: [
           // {width: 650, height: 650, crop: 'fill', fetch_format: 'auto'},
           {width: 1100, height: 550, crop: 'fill', fetch_format: 'auto'},

@@ -233,10 +233,10 @@ db.getCollection('catalogs')
           }
         },
           { _id: 'voyage', name: 'Voyage', ancestors: ['home', 'common', 'products', 'transport'], parent: 'transport',
-            auth: 'casual', order: 1, prefix: '', assets: ['low_catalog_voyage'],
+            auth: 'casual', order: 1, prefix: '', assets: ['cat_voyage'],
             description: ''},
             { _id: 'omnis', name: 'Omnis', ancestors: ['home', 'common', 'products', 'transport', 'voyage'], parent: 'voyage',
-              auth: 'casual', order: 1, prefix: '', assets: ['low_catalog_omnis'],
+              auth: 'casual', order: 1, prefix: '', assets: ['cat_omnis'],
               description: {
                 "title": "Omnis",
                 "p": [
@@ -246,7 +246,7 @@ db.getCollection('catalogs')
               }
             },
             { _id: 'stop_f', name: 'Stop F', ancestors: ['home', 'common', 'products', 'transport', 'voyage'], parent: 'voyage',
-              auth: 'casual', order: 2, prefix: '', assets: ['low_catalog_stop_f'],
+              auth: 'casual', order: 2, prefix: '', assets: ['cat_stop_f'],
               description: {
                 "title": "Stop F",
                 "p": [
@@ -265,7 +265,7 @@ db.getCollection('catalogs')
               }
             },
             { _id: 'transport_acoustic', name: 'Acoustic', ancestors: ['home', 'common', 'products', 'transport', 'voyage'], parent: 'voyage',
-              auth: 'casual', order: 3, prefix: '', assets: ['low_catalog_transport_acoustic'],
+              auth: 'casual', order: 3, prefix: '', assets: ['cat_transport_acoustic'],
               description: {
                 "title": "Acoustic",
                 "p": [
@@ -276,7 +276,7 @@ db.getCollection('catalogs')
               }
             },
             { _id: 'jp', name: 'JP', ancestors: ['home', 'common', 'products', 'transport', 'voyage'], parent: 'voyage',
-              auth: 'casual', order: 4, prefix: '', assets: ['low_catalog_jp'],
+              auth: 'casual', order: 4, prefix: '', assets: ['cat_jp'],
               description: {
                 "title": "JP",
                 "p": [
@@ -319,10 +319,10 @@ db.getCollection('catalogs')
 
             },
         { _id: 'orient', name: 'Orient', ancestors: ['home', 'common', 'products', 'transport'], parent: 'transport',
-          auth: 'casual', order: 2, prefix: '', assets: ['low_catalog_orient'],
+          auth: 'casual', order: 2, prefix: '', assets: ['cat_orient'],
           description: ''},
           { _id: 'classic', name: 'Classic', ancestors: ['home', 'common', 'products', 'transport', 'orient'], parent: 'orient',
-            auth: 'casual', order: 1, prefix: '', assets: ['low_catalog_classic'],
+            auth: 'casual', order: 1, prefix: '', assets: ['cat_classic'],
             description: {
               "title": "Clsssic",
               "p": [
@@ -341,7 +341,7 @@ db.getCollection('catalogs')
             }
           },
           { _id: 'railway', name: 'Railway', ancestors: ['home', 'common', 'products', 'transport', 'orient'], parent: 'orient',
-            auth: 'casual', order: 2, prefix: '', assets: ['low_catalog_railway'],
+            auth: 'casual', order: 2, prefix: '', assets: ['cat_railway'],
             description: {
               "title": "Railway",
               "p": [
