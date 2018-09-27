@@ -1,113 +1,70 @@
-
-<div class="container">
-
-  <!--<div class="position-fixed">-->
-    <!--<img class="responsive-image"-->
-         <!--src="{{-->
-                    <!--config.imgPath +-->
-                    <!--config.cloudinary.cloud_name +-->
-                    <!--'/c_fill,w_1800,h_400,f_auto/' +-->
-                    <!--'main'}}"-->
-         <!--alt="Grabo">-->
-  <!--</div>-->
-
-  <!--<div class="row" fxLayout="row" *ngFor="let descendant of descendants">-->
-    <!--<div class="cell" fxFlex="10"></div>-->
-    <!--<div class="cell" fxFlex="80">-->
-      <!--<div class="vh-block">-->
-        <!--<div class="inner">-->
-          <!--<div class="container home-container">-->
-            <!--<div class="row" fxLayout="row">-->
-              <!--<div class="cell" fxFlex.xs="100" fxFlex.gt-xs="70">-->
-                <!--<p class="mat-body-2">Классический текст Lorem Ipsum, используемый с XVI века-->
-                  <!--"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."-->
-
-                  <!--Абзац 1.10.32 "de Finibus Bonorum et Malorum", написанный Цицероном в 45 году н.э.-->
-                  <!--"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</p>-->
-                <!--&lt;!&ndash;<img class="responsive-image"&ndash;&gt;-->
-               <!--&lt;!&ndash;src="{{&ndash;&gt;-->
-                <!--&lt;!&ndash;config.imgPath +&ndash;&gt;-->
-                <!--&lt;!&ndash;config.cloudinary.cloud_name +&ndash;&gt;-->
-                <!--&lt;!&ndash;'/c_fill,w_1800,h_400,f_auto/' +&ndash;&gt;-->
-                <!--&lt;!&ndash;'main'}}"&ndash;&gt;-->
-                <!--&lt;!&ndash;alt="Grabo">&ndash;&gt;-->
-              <!--</div>-->
-              <!--<div class="cell home-button-block" fxFlex.xs="100" fxFlex.gt-xs="30" fxLayout>-->
-                  <!--<a fxFlex="100" class="radius-5 text-center" color="accent" mat-stroked-button-->
-                     <!--[routerLink]="['/products', 'ch', {outlets: {primary: [descendant._id], breadcrumb: [descendant._id]}}]"-->
-                     <!--[routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">-->
-                    <!--{{descendant.name}}-->
-                  <!--</a>-->
-
-
-              <!--</div>-->
-            <!--</div>-->
-          <!--</div>-->
-
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
-
-  <!--</div>-->
-
-  <div class="row" fxLayout="row">
-
-    <div class="cell" fxFlex="100" fxLayoutAlign="center">
-      <app-crsl></app-crsl>
-    </div>
-
-  </div>
-  <div fxLayout="row full-width">
-    <div fxFlex="10"></div>
-    <div class="row wrap full-width" fxFlex="80" fxLayout="row" fxLayoutAlign="space-between">
-        <div class="cell-padding" fxFlex="1 1 auto" *ngFor="let descendant of descendants" fxLayout="row">
-            <a fxFlex="1 1 auto" mat-stroked-button class="radius-5 text-center" color="accent"
-               [routerLink]="['/products', 'ch', {outlets: {primary: [descendant._id], breadcrumb: [descendant._id]}}]"
-               [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">
-              {{descendant.name}}
-            </a>
-
+<div class="app-container">
+  <div class="container">
+      <div class="row height100" fxLayout=row    
+      data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
+        <div class="cell" fxFlex=10></div>
+        <div class="cell" fxFlex=80 fxAlign="center center">
+            <img src="./assets/images/grabo_logo_full2.svg" alt="logo">
+            <!--<h1 class="mat-h4">покриття на будь-яку підлогу</h1>-->
+            <!-- <div>
+              <a mat-flat-button color="primary" class="radius-5" href="/usages/ch" id="home-action">Підібрати</a>
+              <button mat-fab-button class="radius-5" (click)="onScroll()">Down</button>-->
+              <!-- <button *ngIf="media.isActive('lt-md')" color="primary" mat-mini-fab (click)="onScroll()" id="scroll-down-btn"><mat-icon>keyboard_arrow_down</mat-icon></button>
+            </div> -->
         </div>
-
-    </div>
-
+      
+        </div>
+      <div class="row height100" fxLayout=row *ngFor="let descendant of descendants"
+      data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
+        <div class="cell" fxFlex=10></div>
+        <div class="cell" fxFlex=40 fxAlign="center center">
+          <h2 class="mat-h2">{{descendant.name}}</h2>
+        </div>
+        <div class="cell" fxFlex=40 fxAlign="center center">
+            <h2 class="mat-h2">{{descendant.description.title}}</h2>
+          </div>
+      </div>
   </div>
-
-
-  <!--<div class="row" fxLayout="column" fxLayout.gt-xs="row">-->
-
-    <!--<div class="cell"-->
-         <!--fxFlex.sm="60" fxFlex.md="70" fxFlex.gt-md="80">-->
-      <!--<div class="item">-->
-        <!--<mat-card>-->
-
-          <!--<mat-card-content>-->
-
-            <!--<p class="text-justify muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod-->
-              <!--tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation-->
-              <!--ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in-->
-              <!--voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat-->
-              <!--non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>-->
-          <!--</mat-card-content>-->
-        <!--</mat-card>-->
-      <!--</div>-->
-
-    <!--</div>-->
-
-    <!--<div class="cell" fxFlex.sm="40" fxFlex.md="30" fxFlex.gt-md="20">-->
-      <!--<div class="item">-->
-        <!--<mat-card>-->
-          <!--<mat-card-content>-->
-
-            <!--<p class="text-justify muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod-->
-              <!--tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation-->
-              <!--ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in-->
-              <!--voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat-->
-              <!--non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>-->
-          <!--</mat-card-content>-->
-        <!--</mat-card>-->
-      <!--</div>-->
-    <!--</div>-->
-
-  <!--</div>-->
+  
 </div>
+
+
+
+<!-- 
+  <div   
+    data-sal="fade"
+    data-sal-delay="300"
+    data-sal-easing="ease-out-bounce"
+    data-sal-duration="2000"
+    id="home-left">
+   
+  </div>
+  <div id="home-right" #scrollPoint>
+    <app-design-searcher [closer]="false"></app-design-searcher>
+    <app-crsl></app-crsl>
+  </div>
+  <div id="home-bottom">
+    <div class="bottom row"
+      data-sal="fade"
+      data-sal-delay="300"
+      data-sal-easing="ease-out-bounce"
+      data-sal-duration="2000"
+      fxLayout="row" 
+      *ngFor="let descendant of descendants">
+      <p>sadfadfgfg</p>
+      <div fxFlex="10"></div>
+      <div fxFlex="40">
+          <h2 class="mat-h2">
+             {{descendant.name}}
+          </h2>
+      </div>
+      <div fxFlex="40">
+         <a fxFlex="1 1 auto" mat-stroked-button class="radius-5 text-center" color="accent"
+             [routerLink]="['/products', 'ch', {outlets: {primary: [descendant._id], breadcrumb: [descendant._id]}}]"
+             [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">
+             {{descendant.name}}
+          </a>
+      </div> -->
+    <!-- </div>
+  </div>
+</div> -->

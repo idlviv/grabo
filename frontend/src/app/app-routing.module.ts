@@ -56,7 +56,7 @@ const appRoutes: Routes = [
     component: FeedbackComponent
   },
   { path: 'page-404', component: Page404Component },
-  { path: '', component: LandingComponent, pathMatch: 'full' },
+  { path: '', component: HomeComponent, pathMatch: 'full' },
   // { path: '', loadChildren: './components/home/home.module#HomeModule', pathMatch: 'full' },
   { path: '**', component: Page404Component }, // MAKE redirect
 ];
