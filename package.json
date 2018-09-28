@@ -12,6 +12,7 @@
     "cookie-parser": "~1.4.3",
     "csurf": "^1.9.0",
     "debug": "^3.1.0",
+    "eslint": "^5.6.0",
     "express": "~4.16.0",
     "formidable": "^1.2.1",
     "http-errors": "~1.6.2",

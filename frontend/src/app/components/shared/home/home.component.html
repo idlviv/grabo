@@ -1,70 +1,116 @@
-<div class="app-container">
   <div class="container">
-      <div class="row height100" fxLayout=row    
-      data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
-        <div class="cell" fxFlex=10></div>
-        <div class="cell" fxFlex=80 fxAlign="center center">
-            <img src="./assets/images/grabo_logo_full2.svg" alt="logo">
-            <!--<h1 class="mat-h4">покриття на будь-яку підлогу</h1>-->
-            <!-- <div>
-              <a mat-flat-button color="primary" class="radius-5" href="/usages/ch" id="home-action">Підібрати</a>
-              <button mat-fab-button class="radius-5" (click)="onScroll()">Down</button>-->
-              <!-- <button *ngIf="media.isActive('lt-md')" color="primary" mat-mini-fab (click)="onScroll()" id="scroll-down-btn"><mat-icon>keyboard_arrow_down</mat-icon></button>
-            </div> -->
+
+      <div class="row" fxLayout=row id="home-top" 
+        data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
+        <div class="cell" fxFlex=10 hxHide.lt-md></div>
+        <div class="cell wrap" fxFlex="100" fxFlex.gt-sm=40 fxLayout="row">
+              <div fxFlex="100" fxLayoutAlign="center center">
+                  <img id="home-logo" src="./assets/images/grabo_logo_full2.svg" alt="logo">
+              </div>
+              <!-- <h1 class="mat-h4">покриття на будь-яку підлогу</h1> -->
+              <!-- <div> -->
+                <!-- <button mat-fab-button class="radius-5" (click)="onScroll()">Down</button> -->
+                <!-- <button *ngIf="media.isActive('lt-md')" color="primary" mat-mini-fab (click)="onScroll()" id="scroll-down-btn"> -->
+                  <!-- <mat-icon>keyboard_arrow_down</mat-icon></button> -->
+              <!-- </div> -->
+              <div class="wrap" fxFlex="100" fxLayoutAlign="end start" fxLayout="row">
+                <div class="padding-bottom" fxFlex="100"  fxLayoutAlign="start center">
+                    <app-design-searcher [closer]="start"></app-design-searcher>
+                </div>
+                <div class="padding-bottom" fxFlex="100" fxLayoutAlign="start center">
+                    <a mat-flat-button color="primary" class="radius-5" href="/usages/ch" id="home-action">
+                      Підібрати покриття</a>
+                </div>
+    
+                <!-- <app-crsl></app-crsl> -->
+              </div>
         </div>
-      
+        <div class="cell wrap" fxFlex="100" fxFlex.gt-sm=40 fxLayout="row">
+
         </div>
-      <div class="row height100" fxLayout=row *ngFor="let descendant of descendants"
-      data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
-        <div class="cell" fxFlex=10></div>
-        <div class="cell" fxFlex=40 fxAlign="center center">
-          <h2 class="mat-h2">{{descendant.name}}</h2>
-        </div>
-        <div class="cell" fxFlex=40 fxAlign="center center">
-            <h2 class="mat-h2">{{descendant.description.title}}</h2>
-          </div>
       </div>
+
+      <div id="home-center">
+          <div class="row home-center-section" fxLayout=row *ngFor="let descendant of descendants" 
+            data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
+            <div class="cell" fxFlex=10 hxHide.lt-md></div>
+            <div class="cell wrap" fxFlex="100" fxFlex.gt-sm=40 fxLayoutAlign="center center">
+                <a fxFlex="100"
+                [routerLink]="['/products', 'ch', {outlets: {primary: [descendant._id], breadcrumb: [descendant._id]}}]"
+                [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">
+                <h2 class="mat-display-1">{{descendant.name}}</h2>
+                </a>
+              <h3 fxFlex="100" class="mat-h2">{{descendant.description.title}}</h3>
+            </div>
+            <div class="cell" fxFlex="100" fxFlex.gt-sm=40 fxLayoutAlign="center center"
+            data-aos="fade-left" data-aos-offset="200" data-aos-easing="ease-in-out-sine" data-aos-duration="600"
+            >
+                <img 
+                *ngIf="media.isActive('gt-xs')"
+                            class="responsive-image" src="{{
+                            config.imgPath +
+                            config.cloudinary.cloud_name +
+                            '/c_fill,w_700,h_350,f_auto/e_saturation:-70/' +
+                            descendant.assets[0]}}"
+                                          alt="designImage">
+                        <img *ngIf="media.isActive('xs')"
+                        class="responsive-image" src="{{
+                        config.imgPath +
+                        config.cloudinary.cloud_name +
+                        '/c_fill,w_600,h_300,f_auto/e_saturation:-70/' +
+                        descendant.assets[0]}}"
+                                      alt="designImage">
+                          
+            </div>
+        </div>
+      </div>
+
+<div class="row" fxLayout=row id="home-bottom"   
+      data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
+      <div class="cell" fxFlex=10></div>
+      <div class="cell" fxFlex=80>
+        <app-contacts></app-contacts>
+      </div>
+</div>
+      
   </div>
   
-</div>
 
 
-
-<!-- 
-  <div   
-    data-sal="fade"
-    data-sal-delay="300"
-    data-sal-easing="ease-out-bounce"
-    data-sal-duration="2000"
-    id="home-left">
-   
-  </div>
-  <div id="home-right" #scrollPoint>
-    <app-design-searcher [closer]="false"></app-design-searcher>
-    <app-crsl></app-crsl>
-  </div>
-  <div id="home-bottom">
-    <div class="bottom row"
-      data-sal="fade"
-      data-sal-delay="300"
-      data-sal-easing="ease-out-bounce"
-      data-sal-duration="2000"
-      fxLayout="row" 
-      *ngFor="let descendant of descendants">
-      <p>sadfadfgfg</p>
-      <div fxFlex="10"></div>
-      <div fxFlex="40">
-          <h2 class="mat-h2">
-             {{descendant.name}}
-          </h2>
+<!-- <div class="app-container">
+    <div class="container">
+      <div id="home-left"
+      data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
+        <img src="./assets/images/grabo_logo_full2.svg" id="home-logo" alt="logo">
+        <h1 class="mat-h4">покриття на будь-яку підлогу</h1>
+        <div>
+          <a mat-flat-button color="primary" class="radius-5" href="/usages/ch" id="home-action">Підібрати</a>
+          <button mat-fab-button class="radius-5" (click)="onScroll()">Down</button>
+          <button *ngIf="media.isActive('lt-md')" color="primary" mat-mini-fab (click)="onScroll()" id="scroll-down-btn"><mat-icon>keyboard_arrow_down</mat-icon></button>
+        </div>
       </div>
-      <div fxFlex="40">
-         <a fxFlex="1 1 auto" mat-stroked-button class="radius-5 text-center" color="accent"
-             [routerLink]="['/products', 'ch', {outlets: {primary: [descendant._id], breadcrumb: [descendant._id]}}]"
-             [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">
-             {{descendant.name}}
-          </a>
-      </div> -->
-    <!-- </div>
-  </div>
-</div> -->
+      <div id="home-right" #scrollPoint>
+        <app-design-searcher [closer]="false"></app-design-searcher>
+        <app-crsl></app-crsl>
+      </div>
+      <div id="home-bottom">
+        <div fxLayout="row full-width"
+         data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600"
+         *ngFor="let descendant of descendants">
+         <div class="cell" fxFlex=10></div>
+         <div class="cell" fxFlex=40 fxAlign="center center">
+           <h2 class="mat-h2">{{descendant.name}}</h2>
+           <a mat-stroked-button class="radius-5 text-center" color="accent"
+           [routerLink]="['/products', 'ch', {outlets: {primary: [descendant._id], breadcrumb: [descendant._id]}}]"
+           [routerLinkActive]="['accent-background']" [routerLinkActiveOptions]="{exact: true}">
+           {{descendant.name}}
+         </a>
+         </div>
+         <div class="cell" fxFlex=40 fxAlign="center center">
+             <h2 class="mat-h2">{{descendant.description.title}}</h2>
+           </div>
+
+        </div>
+      </div>
+    </div>
+  </div> -->

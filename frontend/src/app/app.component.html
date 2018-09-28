@@ -133,7 +133,7 @@
 
   </mat-sidenav-container>
 
-  <mat-toolbar class="mat-elevation-z16 footer" color="primary">
+  <mat-toolbar *ngIf="showHeader" class="mat-elevation-z16 footer" color="primary">
     <a fxHide.gt-sm="true" mat-button class="muted"
        href="tel:+380956535511">
       <mat-icon>phone</mat-icon> 095 653 55 11

@@ -104,6 +104,18 @@ $screen-xl-min: 1920px;
   }
 }
 
+@mixin odd {
+  &:nth-child(odd) {
+    @content
+  }
+}
+
+@mixin even {
+  &:nth-child(even) {
+    @content
+  }
+}
+
 @mixin first {
   &:nth-child(1) {
     @content
