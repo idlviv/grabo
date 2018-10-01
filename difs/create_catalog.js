@@ -12,6 +12,7 @@ db.getCollection('catalogs')
 
         { _id: 'residential', name: 'Побутовий лінолеум', ancestors: ['home', 'common', 'products'], parent: 'products',
           auth: 'casual', order: 1, prefix: '', assets: ['cat_residential'],
+          slogan: 'У побутовому покритті на підлогу поєднуються технічні характеристики та привабливий зовнішній вигляд',
           description: {
             "title": "Побутовий лінолеум",
             "p": [
@@ -30,6 +31,7 @@ db.getCollection('catalogs')
 
         { _id: 'semi_commercial', name: 'Напівкомерційний лінолеум', ancestors: ['home', 'common', 'products'], parent: 'products',
           auth: 'casual', order: 2, prefix: '', assets: ['cat_semi_commercial'],
+          slogan: 'Перевагами є висока зносостійкість, хороша звукоізоляція, легкий догляд, просте та швидке встановлення',
           description: {
             "title": "Напівкомерційне покриття",
             "p": [
@@ -57,6 +59,7 @@ db.getCollection('catalogs')
 
         { _id: 'commercial', name: 'Комерційний лінолеум', ancestors: ['home', 'common', 'products'], parent: 'products',
           auth: 'casual', order: 3, prefix: '', assets: ['cat_commercial'],
+          slogan: 'Інноваційні рішення для будь-яких технічних або дизайнерських вимог, що виникають у різних областях',
           description: {
             "title": "Комерційний лінолеум",
             "p": [
@@ -132,6 +135,7 @@ db.getCollection('catalogs')
 
         { _id: 'sport', name: 'Спортивні покриття', ancestors: ['home', 'common', 'products'], parent: 'products',
           auth: 'casual', order: 4, prefix: '', assets: ['cat_sport'],
+          slogan: 'В процесі розробки спортивного покриття ми враховуємо важливість досягнення відмінних спортивних результатів та максимального захисту здоров\'я спортсменів',
           description: {
             "title": "Спортивний лінолеум",
             "p": [
@@ -188,6 +192,7 @@ db.getCollection('catalogs')
 
         { _id: 'transport', name: 'Транспортний лінолеум', ancestors: ['home', 'common', 'products'], parent: 'products',
           auth: 'casual', order: 7, prefix: '', assets: ['cat_transport'],
+          slogan: 'Втілив у собі досвід, здобутий протягом десятиліть',
           description: {
             "title": "Транспортний лінолеум",
             "p": [
@@ -362,7 +367,8 @@ db.getCollection('catalogs')
 
 
         { _id: 'show', name: 'Сценічний лінолеум', ancestors: ['home', 'common', 'products'], parent: 'products',
-          auth: 'casual', order: 8, prefix: '', assets: ['cat_show'],description: ''},
+          auth: 'casual', order: 8, prefix: '', assets: ['cat_show'],description: '',
+        slogan: 'Підходить для танців, шоу, виставок. Може використовуватись як тимчасовий захист постійного покриття'},
 
 
           // { _id: 'broadway17', name: 'Broadway 17', ancestors: ['home', 'common', 'products', 'show'], parent: 'show',
@@ -374,6 +380,7 @@ db.getCollection('catalogs')
 
         { _id: 'parquet', name: 'Паркет', ancestors: ['home', 'common', 'products'], parent: 'products',
           auth: 'casual', order: 5, prefix: '', assets: ['catalog_parquet'],
+          slogan: 'В гармонії з навколишнім середовищем',
           description: {
             "title": "СПРАВЖНІЙ ПАРКЕТ У ВАШОМУ ДОМІ",
             "p": [
@@ -392,6 +399,7 @@ db.getCollection('catalogs')
 
         { _id: 'tile', name: 'Дизайнерська ПВХ плитка', ancestors: ['home', 'common', 'products'], parent: 'products',
           auth: 'casual', order: 6, prefix: '', assets: ['catalog_tile'],
+          slogan: 'Дуже реалістичне покриття на підлогу. Перевагами є довговічність, відмінна стійкість до подряпин та зносу',
           description: {
             "title": "Дизайнерська LVT плитка",
             "p": [
@@ -403,7 +411,8 @@ db.getCollection('catalogs')
 
   { _id: 'wall', name: 'Покриття для стін', ancestors: ['home', 'common', 'products'], parent: 'products',
     auth: 'casual', order: 7, prefix: '', assets: ['cat_wall'],
-    description: ''
+    description: '',
+    slogan: 'Новітнє гнучке ПВХ покриття для стін'
   },
 
 

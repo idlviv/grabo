@@ -32,6 +32,9 @@ const CatalogSchema = new Schema({
     type: String,
     require: true,
   },
+  slogan: {
+    type: String,
+  },
   description: CatalogDescriptionSchema,
   assets: {
     type: [String],

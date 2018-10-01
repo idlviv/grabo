@@ -137,6 +137,21 @@ body {
   }
 }
 
+.cell-padding-2 {
+  @include gt-md {
+    padding: 12px;
+  }
+  @include md {
+    padding: 12px;
+  }
+  @include sm {
+    padding: 8px 2rem;
+  }
+  @include xs {
+    padding: 8px 2rem;
+  }
+}
+
 .cell-menu {
   @include gt-md {
     padding: 12px 0;
@@ -152,8 +167,6 @@ body {
     //padding: 8px;
   }
 }
-
-
 
 .cell-header {
   @include gt-md {
@@ -213,8 +226,6 @@ body {
 // --end default grid
 
 
-
-
 .sidenav {
   width: 250px;
 }
@@ -266,8 +277,6 @@ body {
 .full-width {
   width: 100%;
 }
-
-
 
 .padding-bottom {
   padding-bottom: 1.5rem;
@@ -422,10 +431,7 @@ re-captcha > div{
   text-align: right;
 };
 
-.text-align-center {
-  text-align: center;
-};
-
+.text-align-center
 .text-center {
   text-align: center;
 }
@@ -1091,7 +1097,7 @@ mat-card {
       background-color: mat-color($primary, 900);
 
     }
-    height: calc(100vh - 250px);
+    height: calc(100vh - 150px);
     a {
       text-decoration: none;
       color: $muted;
@@ -1112,7 +1118,7 @@ mat-card {
   padding-bottom: 1rem;
 }
 
-#home-action {
+.home-action {
   width: 50%;
   animation: buttonAppear2 2s forwards;
   -webkit-animation: buttonAppear2 2s forwards;
