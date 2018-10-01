@@ -1085,6 +1085,7 @@ mat-card {
   -o-background-size: cover;
   background-size: cover;
   height: calc(100vh - 150px);
+  min-height: 480px;
 }
 
 #home-center {
@@ -1098,6 +1099,10 @@ mat-card {
 
     }
     height: calc(100vh - 150px);
+    @include lt-md {
+      min-height: 500px;
+    }
+    min-height: 420px;
     a {
       text-decoration: none;
       color: $muted;
@@ -1123,9 +1128,6 @@ mat-card {
   animation: buttonAppear2 2s forwards;
   -webkit-animation: buttonAppear2 2s forwards;
 }
-
-
-
 
 .contacts-logo-grabo {
   width: 250px;
