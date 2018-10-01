@@ -50,7 +50,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     RecaptchaModule.forRoot(),
     RecaptchaFormsModule,
     // CloudinaryModule.forRoot(cloudinaryLib, { cloud_name: cloudinaryCloudName }),
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('./ngsw-worker.js', { enabled: environment.production }),
     ReactiveFormsModule,
   ],
   providers: [
