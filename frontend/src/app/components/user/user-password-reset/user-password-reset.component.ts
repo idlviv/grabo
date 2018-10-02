@@ -86,7 +86,6 @@ export class UserPasswordResetComponent implements OnInit {
           this.matStepper.next();
           const codeToken = result.data;
           this.userService.userLocalSetToken('codeToken', codeToken);
-          console.log(result);
         },
         err => {
           this.recaptchaRef.reset();
@@ -98,12 +97,10 @@ export class UserPasswordResetComponent implements OnInit {
           }
         }
       );
-    // console.log('this.matStepper', this.matStepper);
   }
 
   onCodeSubmit() {
     this.processing = true;
-    console.log('onCodeSubmit');
     const code = this.codeForm.get('code').value;
 
     const codeToken = this.userService.userLocalGetToken('codeToken');
@@ -113,7 +110,6 @@ export class UserPasswordResetComponent implements OnInit {
           this.processing = false;
           this.codeForm.get('code').setErrors(null);
           this.matStepper.next();
-          console.log('check code', result);
           this.userService.userLocalRemoveToken('codeToken');
           const passwordResetToken = result.data;
           this.userService.userLocalSetToken('passwordResetToken', passwordResetToken);
@@ -141,9 +137,7 @@ export class UserPasswordResetComponent implements OnInit {
 
   onPasswordSubmit() {
     this.processing = true;
-    console.log('onPasswordSubmit');
     const password = this.passwordForm.get('password').value;
-
     const passwordResetToken = this.userService.userLocalGetToken('passwordResetToken');
     this.userService.userPasswordReset(password, passwordResetToken)
       .subscribe(result => {

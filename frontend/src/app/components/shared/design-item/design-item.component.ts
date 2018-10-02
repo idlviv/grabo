@@ -55,7 +55,6 @@ export class DesignItemComponent implements OnInit {
       }))
         .subscribe(result => {
           this.sharedService.sharingEvent(['updateDesigns']);
-          console.log('result delete', result);
           },
           err => console.log('err delete', err)
         );

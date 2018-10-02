@@ -111,7 +111,6 @@ export class UserProfileComponent implements OnInit {
       .subscribe(
         result => {
           this.user = result.data;
-          // console.log('user', this.user);
         },
         err => {
           this.matSnackBar.open(err.error, '',

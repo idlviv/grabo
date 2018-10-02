@@ -20,7 +20,6 @@ dashboardSidenavItems: ICatalog;
     this.catalogService.getDescendants('dashboard')
       .subscribe(menuItems => {
         this.dashboardSidenavItems = menuItems.data;
-        // console.log('dashboardSidenavItems', this.dashboardSidenavItems);
       });
   }
 

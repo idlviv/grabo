@@ -23,18 +23,7 @@ export class CrslComponent implements OnInit {
 
 
   ngOnInit() {
-
-    // this.matStepper.selectionChange
-    //   .subscribe(st => {
-    //     // this.stepperIndex = st.selectedIndex;
-    //     // clearInterval(this.interval);
-    //     // this.setInterval();
-    //     console.log('st', st);
-    //   });
-
     this.setInterval();
-    // console.log('matStepper', this.matStepper);
-
   }
 
   setInterval() {

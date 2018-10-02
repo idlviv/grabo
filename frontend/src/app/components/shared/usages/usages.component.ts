@@ -46,9 +46,7 @@ export class UsagesComponent implements OnInit {
     )
       .subscribe(paramMap => {
           this.recommendation_id = paramMap.get('_id');
-          console.log('this.recommendation_id', this.recommendation_id);
           if (!this.recommendation_id) {
-            console.log('this rec', this.recommendations);
             this.recomForm.get('recommendations').setValue(this.recommendations[3].sub[6]._id);
             this.onSelectCategory({value: this.recommendations[3].sub[6]._id});
           } else {

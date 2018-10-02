@@ -27,23 +27,15 @@ export class ProductsListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.route.paramMap
-    //   .subscribe(
-    //     paramMap => console.log(paramMap.get('category'))
-    //   );
-
     this.route.paramMap.pipe(
-
       mergeMap(paramMap => {
         this.category_id = paramMap.get('category_id');
-        // console.log('list this.category_id', this.category_id);
         if (!this.category_id) {
           return of(null);
         }
         return this.catalogService.getCategoryById(this.category_id);
       }),
       mergeMap(paramMap => {
-        // console.log('paramMap', paramMap);
         if (paramMap) {
           this.category = paramMap.data;
           return this.catalogService.getDescendants(this.category_id);
@@ -53,16 +45,9 @@ export class ProductsListComponent implements OnInit {
       }),
       mergeMap(result => {
         this.descendants = result.data;
-        // console.log('des', this.descendants );
-        // this.sharedService.sharingEvent(['category_id', this.category_id]);
-
         if (!this.descendants.length) {
-          // this.sharedService.sharingEvent(['descendants', null]);
-          // console.log('NOdescendants', this.descendants);
           return this.productService.getProductsByCategory(this.category_id, true);
         } else {
-          // this.sharedService.sharingEvent(['descendants', this.descendants, 'category', this.category_id]);
-          // console.log('YESdescendants', this.descendants);
           return this.productService.getProductsByCategory(null, true);
         }
       }))

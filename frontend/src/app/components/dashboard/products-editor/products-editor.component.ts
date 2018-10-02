@@ -49,11 +49,9 @@ export class ProductsEditorComponent implements OnInit {
     while (level + 1 < this.catalogForm.get('categories')['controls'].length) {
       this.removeCategory(this.catalogForm.get('categories')['controls'].length - 1);
     }
-    // console.log('event', event);
     this.catalogService.getDescendants(event.value)
       .subscribe(result => {
         if (result.data.length) {
-          // console.log('descedants present', result.data);
           this.products = null;
           this.descendants[level + 1] = result.data;
           this.noMoreDescendants = false;
@@ -65,8 +63,6 @@ export class ProductsEditorComponent implements OnInit {
             );
           this.parentCategory_id = event.value;
           this.parentCategoryName = event.source.triggerValue;
-          // console.log('descedants absent', result.data);
-          // console.log('this.parentCategory_id', this.parentCategory_id);
           this.noMoreDescendants = true;
         }
         this.descendants[level + 1] = result.data;
@@ -76,7 +72,6 @@ export class ProductsEditorComponent implements OnInit {
   }
 
   onCatalogFormSubmit() {
-    console.log('onCatalogFormSubmit');
   }
 
   addCategory() {

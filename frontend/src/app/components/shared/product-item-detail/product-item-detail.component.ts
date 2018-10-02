@@ -25,7 +25,6 @@ export class ProductItemDetailComponent implements OnInit, OnChanges {
   config = config;
   designs: IDesign[];
   recommendations: IRecommendation[];
-  // panelOpenState = false;
 
   constructor(
     private designService: DesignService,
@@ -46,22 +45,15 @@ export class ProductItemDetailComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     const productChange: SimpleChange = changes.product;
-    // console.log('prev value: ', productChange.previousValue);
-    // console.log('got name: ', productChange.currentValue);
-    // console.log('productChange: ', productChange);
     if(productChange) {
       this.getRecommendations();
     }
   }
 
   getRecommendations() {
-    // console.log('this.product', this.product);
     this.productService.getRecommendationsByIds(this.product.recommendations)
       .subscribe(result => {
           this.recommendations = result.data;
-          // console.log('this.product', this.product.name);
-          // console.log('this.product.recommendations', this.product.recommendations);
-          // console.log('recommendations', this.recommendations);
         },
         err => console.log('Помилка завантеження рекомендацій', err)
       );

@@ -49,7 +49,6 @@ export class FeedbackComponent implements OnInit {
     this.sharedService.sendFeedbackMessage(this.feedback, this.feedbackForm.get('recaptcha').value)
       .subscribe(
         res => {
-          // console.log('feedback ', res);
           this.matSnackBar.open('Повідомлення надіслано. Ми зв\'яжемось з вами найближчим часом', '',
             {duration: 5000});
           this.processing = false;
@@ -61,7 +60,6 @@ export class FeedbackComponent implements OnInit {
           this.processing = false;
           this.matSnackBar.open('Сталася помилка. Повідомлення не надіслано. Спробуйте пізнше', '',
             {duration: 3000, panelClass: 'warn'});
-          // console.log('feedback err ', err);
         }
         );
   }

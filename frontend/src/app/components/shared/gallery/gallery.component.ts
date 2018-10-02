@@ -46,7 +46,6 @@ export class GalleryComponent implements OnInit {
 
     dialogRef.afterClosed()
       .subscribe(result => {
-          console.log('result popup', result);
         },
         err => console.log('err delete', err)
       );

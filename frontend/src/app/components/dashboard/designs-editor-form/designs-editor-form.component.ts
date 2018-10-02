@@ -53,7 +53,6 @@ export class DesignsEditorFormComponent implements OnInit {
     this.route.paramMap.pipe(
       mergeMap(paramMap => {
           this.edited_id = paramMap.get('_id');
-          console.log('edited design _id', this.edited_id);
 
           if (!this.edited_id) {
             return of(null);
@@ -66,11 +65,9 @@ export class DesignsEditorFormComponent implements OnInit {
         if (result) {
           // this.edited_id = paramMap.get('_id');
           this.editMode = true;
-          console.log('true', result);
           this.designForm.patchValue(result.data);
           this.designForm.get('_id').disable();
         } else {
-          console.log('false');
         }
       });
   }
@@ -89,9 +86,6 @@ export class DesignsEditorFormComponent implements OnInit {
       }
       this.designForm.get('structure').enable();
     } else {
-
-      // this.designForm.get('image').setValue(file);
-      console.log('added file', this.designForm.get('image').value);
       this.designService.designAddImage(file, this.designForm.get('_id').value)
         .subscribe(result => {
             this.designForm.get('image').setValue(result.data);
@@ -121,7 +115,6 @@ export class DesignsEditorFormComponent implements OnInit {
       structure: this.designForm.get('structure').value,
     };
 
-    console.log('design form submit', this.design);
     this.designService.designUpsert(this.design)
       .subscribe(result => {
           this.matSnackBar.open(result.message, '',

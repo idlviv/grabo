@@ -73,7 +73,6 @@ export class DesignsEditorBatchComponent implements OnInit {
     this.processingLoadFile = true;
     this.designForm.get('structure').disable();
 
-    console.log('filteredFiles', filteredFiles);
     const arrayOfObservables: Observable<IResponse | HttpErrorResponse>[] = Array.prototype.map.call(filteredFiles,
       res => of(res)
         .pipe(
@@ -87,18 +86,15 @@ export class DesignsEditorBatchComponent implements OnInit {
           // }),
           mergeMap(file => {
             const design_id = file.name.slice(0, -4).trimEnd();
-            // this.designForm.get('image').setValue(result.data);
             return this.designService.designAddImagesBatch(file, design_id, this.designForm.get('structure').value);
           }),
           catchError(error => of(error))
         )
     );
 
-    console.log('arrayOfObservables', arrayOfObservables);
       forkJoin(arrayOfObservables)
       .subscribe(
       result => {
-        console.log('result batch from server', result);
         this.processingLoadFile = false;
         this.designForm.get('structure').enable();
         result.forEach( res => {
@@ -108,8 +104,6 @@ export class DesignsEditorBatchComponent implements OnInit {
             this.successFiles.push(res.data._id);
           }
         });
-        console.log('rejectedFiles', this.rejectedFiles);
-        console.log('successFiles', this.successFiles);
         this.resetForm();
       },
       err => {
@@ -119,29 +113,9 @@ export class DesignsEditorBatchComponent implements OnInit {
         this.resetForm();
         this.processingLoadFile = false;
       });
-
-    // if (!filteredFiles.length) {
-    //   this.matSnackBar.open('Помилка вибору файлів (невірний тип, розмір, ..)', '',
-    //     {duration: 3000, panelClass: 'snack-bar-danger'});
-    //   this.processingLoadFile = false;
-    //   this.designForm.get('structure').enable();
-    // } else {
-    //
-    //     this.designService.designAddImagesBatch(filteredFiles)
-    //           .subscribe(result => {
-    //               console.log('result batch from server', result);
-    //             // this.designForm.get('image').setValue(result.data);
-    //             this.processingLoadFile = false;
-    //           },
-    //       err => console.log('add design service response err', err)
-    //           );
-    //
-    // }
-
   }
 
   onDesignFormSubmit() {
-
   }
 
   resetForm() {
@@ -151,21 +125,4 @@ export class DesignsEditorBatchComponent implements OnInit {
   goBack() {
     this.location.back();
   }
-
-    // addDesignsControl() {
-    //   const control = <FormArray>this.designForm.get('images');
-    //   control.push(this.initDesignsControl());
-    // }
-    //
-    // removeDesignsControl(i: number) {
-    //   const control = <FormArray>this.designForm.get('images');
-    //   control.removeAt(i);
-    // }
-    //
-    // initDesignsControl() {
-    //   return new FormControl('', [
-    //     Validators.required,
-    //   ]);
-    // }
-
 }

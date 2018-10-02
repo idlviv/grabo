@@ -28,9 +28,6 @@ export class BreadcrumbComponent implements OnInit {
   ngOnInit() {
     const $paramMap = this.route.paramMap;
     const $queryParamMap = this.route.queryParamMap;
-    // this.processing = true;
-    // const c = $paramMap.pipe(res => combineLatest(res, $queryParamMap));
-    // c.subscribe(res => console.log('res', res);)
     combineLatest(
       $paramMap
         .pipe(
@@ -55,48 +52,5 @@ export class BreadcrumbComponent implements OnInit {
         },
         err => console.log('Помилка breadcrumb', err)
       );
-
-
-
-
-    ////////////////////////////
-
-    // this.route.paramMap.pipe(
-    //   mergeMap(paramMap => {
-    //     this.category_id = paramMap.get('category_id');
-    //     this.product_id = paramMap.get('product_id');
-    //
-    //     // const $getProduct = this.productService.getProductById(this.product_id);
-    //
-    //     console.log('bread this.category_id', this.category_id);
-    //     console.log('bread this.product_id', this.product_id);
-    //     if (!this.category_id) {
-    //       return forkJoin(
-    //         this.catalogService.getAllParents('products'),
-    //         this.productService.getProductById(this.product_id)
-    //       );
-    //       // return this.catalogService.getAllParents('products');
-    //     }
-    //     return forkJoin(
-    //       this.catalogService.getAllParents(this.category_id),
-    //       this.productService.getProductById(this.product_id)
-    //     );
-    //   })
-    // )
-    //   .subscribe(result => {
-    //       console.log('result bread hierarchy', result[0].data);
-    //       console.log('result bread product', result[1].data);
-    //       // result.data[0].hierarchy to splice home => common => mainCategory
-    //       // this.currentCategory =  result.data[0];
-    //       this.product = result[1].data;
-    //       this.hierarchyCategory = result[0].data[0].hierarchy;
-    //       this.hierarchyCategory.push(result[0].data[0]);
-    //       this.hierarchyCategory.splice(0, 3);
-    //       console.log('hierarchyCategory', this.hierarchyCategory);
-    //
-    //     },
-    //     err => console.log('Помилка breadcrumb', err)
-    //   );
   }
-
 }

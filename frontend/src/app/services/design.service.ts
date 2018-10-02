@@ -42,7 +42,6 @@ export class DesignService {
   }
 
   designAddImagesBatch(file, design_id, structure): Observable<IResponse> {
-    console.log('file', file);
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
     formData.append('design_id', design_id);
@@ -62,7 +61,6 @@ export class DesignService {
   }
 
   designAddImage(file, design_id): Observable<IResponse> {
-    console.log('file', file);
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
     formData.append('design_id', design_id);
@@ -81,7 +79,6 @@ export class DesignService {
   }
 
   designUpsert(design: IDesign): Observable<IResponse> {
-    console.log('desUpsert', design);
     const token = this.userService.userLocalGetToken('token');
     const httpOptions = {
       headers: new HttpHeaders({

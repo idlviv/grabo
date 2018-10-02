@@ -55,7 +55,6 @@ export class ProductService {
   }
 
   getRecommendationsByIds(ids) {
-    // console.log('service ids', ids);
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -107,7 +106,6 @@ export class ProductService {
   }
 
   productAddImage(file, sku): Observable<IResponse> {
-    console.log('file', file);
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
     formData.append('sku', sku);
@@ -141,7 +139,6 @@ export class ProductService {
   }
 
   productEdit(product: IProduct): Observable<IResponse> {
-    console.log('prodEdit', product);
     const token = this.userService.userLocalGetToken('token');
     const httpOptions = {
       headers: new HttpHeaders({
@@ -157,8 +154,6 @@ export class ProductService {
   }
 
   productDelete(_id: string): Observable<IResponse> {
-    console.log('config', config.serverUrl);
-    console.log('this.config', this.config.serverUrl);
     const token = this.userService.userLocalGetToken('token');
     const httpOptions = {
       headers: new HttpHeaders({
@@ -227,7 +222,6 @@ export class ProductService {
   }
 
   productAddMainImage(file, _id): Observable<IResponse> {
-    console.log('file', file);
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
     formData.append('_id', _id);
@@ -246,7 +240,6 @@ export class ProductService {
   }
 
   productAddBriefImage(file, _id): Observable<IResponse> {
-    console.log('file', file);
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
     formData.append('_id', _id);
@@ -265,7 +258,6 @@ export class ProductService {
   }
 
   productAddAssets(file, _id): Observable<IResponse> {
-    console.log('file', file);
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
     formData.append('_id', _id);
@@ -292,7 +284,6 @@ export class ProductService {
   }
 
   productAddTechAssets(file, _id): Observable<IResponse> {
-    console.log('file', file);
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
     formData.append('_id', _id);
