@@ -12,7 +12,8 @@ import * as aos from 'aos';
 })
 
 export class HomeComponent implements OnInit {
-  @ViewChild('scrollPoint') scrollPoint: ElementRef;
+  @ViewChild('scrollPointCenter') scrollPointCenter: ElementRef;
+  @ViewChild('scrollPointTop') scrollPointTop: ElementRef;
   config = config;
   descendants: any;
 
@@ -32,7 +33,11 @@ export class HomeComponent implements OnInit {
       );
   }
 
-  onScroll() {
-    this.scrollPoint.nativeElement.scrollIntoView({behavior: 'smooth', block: 'start'});
+  onScrollToCenter() {
+    this.scrollPointCenter.nativeElement.scrollIntoView({behavior: 'smooth', block: 'start'});
+  }
+
+  onScrollTop() {
+    this.scrollPointTop.nativeElement.scrollIntoView({behavior: 'smooth', block: 'start'});
   }
 }

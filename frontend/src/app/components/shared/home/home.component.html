@@ -1,6 +1,6 @@
   <div class="container">
 
-      <div class="row" fxLayout=row id="home-top" 
+      <div class="row" fxLayout=row id="home-top" #scrollPointTop 
         data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
         <div class="cell" fxFlex=5 hxHide.lt-md></div>
         <div class="cell-padding-2 wrap" fxFlex="100" fxFlex.gt-sm=40 fxLayout="row">
@@ -34,9 +34,10 @@
         <div class="cell" fxHide.lt-md="100" fxFlex.gt-sm=50 fxLayout="row" fxLayoutAlign="center center">
                 <app-crsl></app-crsl>
         </div>
+        <button  mat-icon-button (click)="onScrollToCenter()" id="scroll-to-center-btn"><mat-icon>keyboard_arrow_down</mat-icon></button>
       </div>
 
-      <div id="home-center">
+      <div id="home-center" #scrollPointCenter>
           <div class="row home-center-section" fxLayout=row *ngFor="let descendant of descendants" 
             data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
             <div class="cell" fxFlex=5 hxHide.lt-md></div>
@@ -86,6 +87,7 @@
       </div> -->
 
       <div class="row" fxLayout="row" fxLayoutAlign.xs="center" fxLayoutAlign.sm="start" fxLayoutAlign.gt-sm="center">
+        <button mat-icon-button (click)="onScrollTop()" id="scroll-top-btn"><mat-icon>keyboard_arrow_up</mat-icon></button>
         <div class="cell" fxFlex.xs="100" fxFlex.sm="50" fxFlex.gt-sm="33.3">
                 <h3 class="mat-h2 text-align-center">Головний офіс</h3>
                 <p class="text-justify muted">

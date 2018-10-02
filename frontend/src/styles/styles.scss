@@ -1065,12 +1065,21 @@ td.mat-cell {
   padding-top: 3rem;
 }
 
-#scroll-down-btn {
+#scroll-to-center-btn {
   position: absolute;
-  bottom: 70px;
+  bottom: 35px;
   right: 35px;
   animation: buttonAppear 5s forwards;
   -webkit-animation: buttonAppear 5s forwards;
+  opacity: 0;
+}
+
+#scroll-top-btn {
+  position: absolute;
+  top: 35px;
+  right: 35px;
+  animation: buttonAppear 2s forwards;
+  -webkit-animation: buttonAppear 2s forwards;
   opacity: 0;
 }
 
