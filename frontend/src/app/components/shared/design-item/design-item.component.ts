@@ -48,7 +48,7 @@ export class DesignItemComponent implements OnInit {
 
     dialogRef.afterClosed().pipe(
       mergeMap(result => {
-        if (!result || !result.data.choice){
+        if (!result || !result.data.choice) {
           return of(null);
         }
         return this.designService.designDelete(result.data._id);

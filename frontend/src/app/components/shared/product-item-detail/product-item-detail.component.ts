@@ -45,7 +45,7 @@ export class ProductItemDetailComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     const productChange: SimpleChange = changes.product;
-    if(productChange) {
+    if (productChange) {
       this.getRecommendations();
     }
   }

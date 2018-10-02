@@ -44,6 +44,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     RecaptchaModule.forRoot(),
     RecaptchaFormsModule,
     // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    environment.production ? ServiceWorkerModule.register('ngsw-worker.js') : [],
     ReactiveFormsModule,
   ],
   providers: [

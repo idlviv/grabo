@@ -122,10 +122,10 @@ export class UserPasswordResetComponent implements OnInit {
             this.codeForm.get('code').setErrors({maxTries: true});
             this.codeForm.setValidators(this.validateService.maxTries);
             setTimeout(() => {
-              this.router.navigate(['/'])}, 3000);
+              this.router.navigate(['/']);
+            }, 3000);
               this.matSnackBar.open('Код невірний, спрпобуйте пізніше', '',
               {duration: 4000, panelClass: 'snack-bar-danger'});
-
           } else {
             this.codeForm.get('code').setErrors({unrecognizedError: true});
             console.log(err);
