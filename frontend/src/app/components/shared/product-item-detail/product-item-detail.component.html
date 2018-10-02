@@ -114,7 +114,11 @@
                       <H2 class="mat-h2 text-align-center">Технічні характеристики</H2>
                     </div>
                     <div class="cell" class="padding-bottom" fxFlex="100" fxLayout="row" fxLayoutAlign="center">
-                      <table mat-table [dataSource]="product.techDescriptions" class="mat-elevation-z0" fxFlex="100">
+                      <table mat-table [dataSource]="product.techDescriptions" class="mat-elevation-z0" 
+                      fxFlex.xs="1 1 300px"
+                      fxFlex.gt-xs="1 1 250px"
+                      
+                      >
 
                         <ng-container matColumnDef="techName">
                           <!--<th mat-header-cell *matHeaderCellDef> Характеристики </th>-->

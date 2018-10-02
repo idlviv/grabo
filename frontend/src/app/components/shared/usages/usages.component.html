@@ -48,8 +48,8 @@
       </div>
     </div>
 
-    <div class="row" fxLayout="column">
-      <mat-tab-group dynamicHeight [backgroundColor]="'accent'">
+    <div class="row" fxLayout="row">
+      <mat-tab-group dynamicHeight [backgroundColor]="'accent'" fxFlex="100">
         <mat-tab *ngFor="let product of products" [label]="product.name">
           <div class="container padding-bottom-3">
             <mat-card>
