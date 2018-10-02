@@ -108,17 +108,16 @@
                 </div>
                 
                 <div class="cell" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.gt-md="100">
-                <!-- <div class="cell margin-bottom-3" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.gt-md="100"> -->
                   <div class="row padding-bottom" fxLayout="row">
                     <div class="cell" fxFlex="100">
                       <H2 class="mat-h2 text-align-center">Технічні характеристики</H2>
                     </div>
                     <div class="cell" class="padding-bottom" fxFlex="100" fxLayout="row" fxLayoutAlign="center">
-                      <table mat-table [dataSource]="product.techDescriptions" class="mat-elevation-z0" 
-                      fxFlex.xs="1 1 300px"
+                      <table mat-table [dataSource]="product.techDescriptions" class="mat-elevation-z0" fxFlex="100">
+                      <!-- fxFlex.xs="1 1 300px"
                       fxFlex.gt-xs="1 1 250px"
                       
-                      >
+                      > -->
 
                         <ng-container matColumnDef="techName">
                           <!--<th mat-header-cell *matHeaderCellDef> Характеристики </th>-->
@@ -148,7 +147,7 @@
 
 
         <div class="row" fxLayout="row">
-          <div fxFlex.xs="100" fxFlex.sm="25" fxFlex.gt-sm="20" class="cell"
+          <div fxFlex.xs="100" fxFlex.sm="33" fxFlex.md="25" fxFlex.gt-md="20" class="cell"
                fxLayout fxLayoutAlign="center center"
                *ngFor="let des of product.designs">
             <mat-card *ngIf="media.isActive('xs')" class="only-padding-bottom">
