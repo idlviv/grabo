@@ -22,7 +22,7 @@
           <div class="row" fxLayout="row">
             <div fxFlex="100" class="cell text-justify" [innerHTML]="product.description"></div>
 
-            <div fxFlex.xs="100" fxFlex.sm="33" fxFlex.gt-sm="25" class="cell"
+            <div fxFlex.xs="100" fxFlex.sm="50" fxFlex.gt-sm="33" class="cell"
                  fxLayout fxLayoutAlign="center center"
                  *ngFor="let productAsset of product.assets">
               <mat-card *ngIf="media.isActive('xs')" class="no-padding">

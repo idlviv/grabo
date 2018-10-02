@@ -334,7 +334,9 @@ module.exports.productAddAssets = function(req, res, next) {
       {
         public_id: fields._id + '_assets_' + Date.now(),// jscs:ignore requireCamelCaseOrUpperCaseIdentifiers
         eager: [
-          // {width: 650, height: 650, crop: 'fill', fetch_format: 'auto'},
+          {width: 1100, height: 550, crop: 'fill', fetch_format: 'auto'},
+          {width: 590, height: 295, crop: 'fill', fetch_format: 'auto'},
+          {width: 350, height: 175, crop: 'fill', fetch_format: 'auto'},
           {width: 535, height: 350, crop: 'fill', fetch_format: 'auto'}, //1.53
           {width: 260, height: 170, crop: 'fill', fetch_format: 'auto'},
           {width: 180, height: 180, crop: 'fill', fetch_format: 'auto'},
