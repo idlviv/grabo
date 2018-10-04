@@ -13,8 +13,7 @@
         "/assets/images/grabofloors_logo.svg",
         "/assets/images/bg3.svg",
         "/*.css",
-        "/*.js",
-        "/*.json"
+        "/*.js"
       ]
     }
   }, {
