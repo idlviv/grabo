@@ -16,3 +16,12 @@ platformBrowserDynamic().bootstrapModule(AppModule)
   }
 })
   .catch(err => console.log('bootstrapModule error', err));
+// platformBrowserDynamic().bootstrapModule(AppModule)
+//   .then(() => {
+//      if (environment.production && 'serviceWorker' in navigator) {
+//         navigator.serviceWorker.getRegistration()
+//           .then(active => !active && navigator.serviceWorker.register('/ngsw-worker.js'))
+//           .catch(err => console.log('sw error', err));
+//         }
+//       })
+//     .catch(err => console.log('bootstrapModule error', err));
