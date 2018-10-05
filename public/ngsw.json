@@ -19,11 +19,11 @@
         "/common.b098bf1f0dd8d42ee02d.js",
         "/favicon.ico",
         "/index.html",
-        "/main.e9840f2a05dcd6e01d7b.js",
+        "/main.6214b0d08a9af8dc2d21.js",
         "/polyfills.30a5c39ffa47de6f8b03.js",
         "/runtime.43dfceb797425641f0b9.js",
         "/scripts.d1a4a51347c220973e96.js",
-        "/styles.30d948c35eea4f6ea266.css"
+        "/styles.e1a30a20c2af69f84a57.css"
       ],
       "patterns": []
     },
@@ -77,12 +77,12 @@
     "/assets/images/trice_logo_full.svg": "25c740eabea47fe30d8fe464ce6fcc40e6383060",
     "/common.b098bf1f0dd8d42ee02d.js": "f68d88c8d47529f0ee1b9084e49b4d440fc117dd",
     "/favicon.ico": "1a707ab30f1abfe467fa07b603f68779dc5faae6",
-    "/index.html": "d6cdd8a3043b247c5cd281c81a6f4f6065785861",
-    "/main.e9840f2a05dcd6e01d7b.js": "b7e9c32f86d41655dc98970d92af4bb0fbc39714",
+    "/index.html": "58e0568170679b9622ac290dbe15bf69c833964d",
+    "/main.6214b0d08a9af8dc2d21.js": "d5dadf6b877ad798ce8596b5e2933d0923d470c2",
     "/polyfills.30a5c39ffa47de6f8b03.js": "67dc68ab1227b3190eee18e867c8bb3befd0cb6e",
     "/runtime.43dfceb797425641f0b9.js": "19f0abafcb6202a90978fde0e594253a76c5eeee",
     "/scripts.d1a4a51347c220973e96.js": "4932f744a454bcf073a7f1ce2af9e21dd5169b9b",
-    "/styles.30d948c35eea4f6ea266.css": "07b7a6a358a4e67c30fe81dcdb8df147e8e6084e"
+    "/styles.e1a30a20c2af69f84a57.css": "47f3d0f4bd93902d5ecfc198ecb86876aff5802d"
   },
   "navigationUrls": [
     {
