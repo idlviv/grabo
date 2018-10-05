@@ -8,10 +8,10 @@
         "/favicon.ico",
         "/index.html",
         "/assets/images/g_logo.png",
-        "/assets/images/grabo_logo.svg",
-        "/assets/images/grabo_logo_full2.svg",
-        "/assets/images/grabofloors_logo.svg",
-        "/assets/images/bg3.svg",
+        "/assets/images/grabo_logo.png",
+        "/assets/images/grabo_logo_full2.png",
+        "/assets/images/grabofloors_logo.png",
+        "/assets/images/bg3.png",
         "/*.css",
         "/*.js"
       ]
