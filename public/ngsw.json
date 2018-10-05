@@ -7,7 +7,7 @@
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "urls": [
-        "/1.245e53e46b0b7dbdfb7f.js",
+        "/1.b8aa42b5162da3db4984.js",
         "/2.bb2e120a5ba88bb944e6.js",
         "/3.835a27af894725ee7f04.js",
         "/4.2dfe20adc50ab9eaff21.js",
@@ -20,9 +20,9 @@
         "/common.b098bf1f0dd8d42ee02d.js",
         "/favicon.ico",
         "/index.html",
-        "/main.bd236096d69e3ad41e4e.js",
+        "/main.44d12313d2fe9fcccb8e.js",
         "/polyfills.30a5c39ffa47de6f8b03.js",
-        "/runtime.43dfceb797425641f0b9.js",
+        "/runtime.fef4ea8dc96b8efd8ec7.js",
         "/scripts.d1a4a51347c220973e96.js",
         "/styles.e1a30a20c2af69f84a57.css"
       ],
@@ -53,7 +53,7 @@
   ],
   "dataGroups": [],
   "hashTable": {
-    "/1.245e53e46b0b7dbdfb7f.js": "9118d8051826f2c3a48de7f4223e8f95d424c357",
+    "/1.b8aa42b5162da3db4984.js": "5202179d81b5f2598c9e04fe86d943de4cbcff9b",
     "/2.bb2e120a5ba88bb944e6.js": "67de91cd58235e2b3f8b97474e5ff6cfeb855fd4",
     "/3.835a27af894725ee7f04.js": "81e99e072ea363795d033ed0d2380527e23c0448",
     "/4.2dfe20adc50ab9eaff21.js": "a488c5f37108b5b83de6dd392456d9fdaa4958ff",
@@ -79,10 +79,10 @@
     "/assets/images/trice_logo_full.svg": "25c740eabea47fe30d8fe464ce6fcc40e6383060",
     "/common.b098bf1f0dd8d42ee02d.js": "f68d88c8d47529f0ee1b9084e49b4d440fc117dd",
     "/favicon.ico": "1a707ab30f1abfe467fa07b603f68779dc5faae6",
-    "/index.html": "36bdacf09efef28a0f422616df6f57aa60da8784",
-    "/main.bd236096d69e3ad41e4e.js": "b318485715d07430b4f135790e8d29868a3d8c0f",
+    "/index.html": "30c2da399441d232a680bfb19f08e90a3bbf25d8",
+    "/main.44d12313d2fe9fcccb8e.js": "4d044457454aa6987a98327112ea05a655dd7d92",
     "/polyfills.30a5c39ffa47de6f8b03.js": "67dc68ab1227b3190eee18e867c8bb3befd0cb6e",
-    "/runtime.43dfceb797425641f0b9.js": "19f0abafcb6202a90978fde0e594253a76c5eeee",
+    "/runtime.fef4ea8dc96b8efd8ec7.js": "3d5a465cd7b86e38b3dc39bfda2a7f108355f029",
     "/scripts.d1a4a51347c220973e96.js": "4932f744a454bcf073a7f1ce2af9e21dd5169b9b",
     "/styles.e1a30a20c2af69f84a57.css": "47f3d0f4bd93902d5ecfc198ecb86876aff5802d"
   },
