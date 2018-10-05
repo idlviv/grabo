@@ -82,7 +82,7 @@ body {
     padding: 8px;
   }
   @include xs {
-    padding: 8px 0;
+    padding: 8px 4px;
     //padding: 8px;
   }
 }
@@ -101,7 +101,7 @@ body {
     margin: -8px;
   }
   @include xs {
-    margin: -8px 0;
+    margin: -8px -4px;
     //margin: -8px;
   }
 }
@@ -117,7 +117,7 @@ body {
     padding: 8px;
   }
   @include xs {
-    padding: 8px 0;
+    padding: 8px 4px;
     //padding: 8px;
   }
 }
@@ -998,7 +998,7 @@ td.mat-cell {
 }
 
 #home-top {
-  background: $primary-background-light url('../assets/images/bg3.svg');
+  background: $primary-background-light url('/assets/images/bg3.svg');
   //background-color: $primary-background-light;
   -webkit-background-size: cover;
   -moz-background-size: cover;
