@@ -13,18 +13,31 @@
 </head>
 <body>
   <app-root>
-    <!-- <div style="width: 100vw; text-align: center">
-      <div style="display: inline-block; padding-top: 20px">
-        <img src="./assets/images/g_logo_animated.svg" width="210px" height="210px" alt="Loading..">
+    <style type="text/css">
+      .loading-container {
+        width: 100vw; 
+        text-align: center
+      }
+
+      .loading-image {
+        display: inline-block;
+        padding-top: 20px
+      }
+
+    </style>
+    <div class="loading-container">
+      <div class="loading-image">
+        <img src="./assets/images/g_logo.svg" width="150px" height="150px" alt="Loading..">
       </div>
-    </div> -->
-    <div style="width: 100vw; text-align: center">
+    </div>
+    
+    <!-- <div style="width: 100vw; text-align: center">
       <div style="display: inline-block; padding-top: 20px">
         <object type="image/svg+xml" data="./assets/images/g_logo_animated.svg" width="210px" height="210px">
           Loading..
         </object>
       </div>
-    </div>
+    </div> -->
   </app-root>
   <noscript>Please enable JavaScript to continue using this application.</noscript>
 </body>
