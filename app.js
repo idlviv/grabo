@@ -16,6 +16,7 @@ const ApplicationError = require('./server/errors/applicationError');
 const errorHandler = require('./server/errors/errorHandler');
 
 const util = require('util');
+const log = require('./server/config/winston')(module);
 
 const app = express();
 app.use(compression());
@@ -40,12 +41,14 @@ app.set('view engine', 'pug');
 app.use(logger('dev'));
 
 app.use (function (req, res, next) {
+  log.debug('req.secure', req.secure);
   if (req.secure) {
           // request was via https, so do no special handling
-          next();
+        next();
   } else {
           // request was via http, so redirect to https
-          res.redirect('https://' + req.headers.host + req.url);
+        req.app.get('env') === 'development' ? next() : res.redirect('https://' + req.get('Host') + req.url);
+          
   }
 });
 
