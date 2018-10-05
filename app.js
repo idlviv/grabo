@@ -40,17 +40,18 @@ app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 
-app.use (function (req, res, next) {
-  log.debug('req.secure', req.secure);
-  if (req.secure) {
-          // request was via https, so do no special handling
-        next();
-  } else {
-          // request was via http, so redirect to https
-        req.app.get('env') === 'development' ? next() : res.redirect('https://' + req.get('Host') + req.url);
+
+// app.use (function (req, res, next) {
+//   log.debug('req.secure', req.secure);
+//   if (req.secure) {
+//           // request was via https, so do no special handling
+//         next();
+//   } else {
+//           // request was via http, so redirect to https
+//         req.app.get('env') === 'development' ? next() : res.redirect('https://' + req.get('Host') + req.url);
           
-  }
-});
+//   }
+// });
 
 app.use(express.static(path.join(__dirname, 'public')));
 
